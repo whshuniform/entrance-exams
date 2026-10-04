@@ -1,0 +1,52 @@
+// PrimeVue 全域覆寫：把元件改成手繪線條（PrimeVue 樣式在 primevue layer，這裡不分層即可覆蓋）
+@use './mixins' as *;
+
+:root {
+  --p-font-family: var(--font-family-base);
+}
+
+.p-radiobutton-box,
+.p-checkbox-box {
+  @include sketch-border(2px);
+
+  background: var(--color-card);
+}
+
+// 單選維持圓形，但留一點手畫的歪斜
+.p-radiobutton-box {
+  border-radius: 52% 48% 55% 45% / 47% 55% 45% 53%;
+}
+
+.p-radiobutton-checked .p-radiobutton-icon {
+  background: var(--color-card);
+}
+
+.p-checkbox-checked .p-checkbox-icon {
+  color: var(--color-card);
+}
+
+.p-checkbox-box {
+  @include sketch-border(2px, true);
+}
+
+.p-radiobutton-checked .p-radiobutton-box,
+.p-checkbox-checked .p-checkbox-box {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.p-button {
+  @include sketch-border(2px);
+
+  padding: 0.5em 1.5em;
+  box-shadow: var(--shadow-sketch);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: transform 0.1s, box-shadow 0.1s;
+
+  &:not(:disabled):active {
+    box-shadow: 1px 1px 0 var(--color-ink);
+    transform: translate(2px, 3px);
+  }
+}

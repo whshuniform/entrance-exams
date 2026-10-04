@@ -1,0 +1,24 @@
+// SCSS 編譯期變數
+$spacing-base: 8px;
+
+// CSS custom properties：手繪風主題色票
+:root {
+  --color-paper: #fbf7ec;
+  --color-paper-line: #dfe7f1;
+  --color-paper-margin: #f2b8b5;
+  --color-card: #fffdf7;
+  --color-ink: #22365c;
+  --color-ink-soft: #4e5d78;
+  --color-pencil: #6b614b;
+  --color-pen-red: #d1372e;
+  --color-marker: #ffe58a;
+  --color-tape: rgb(240 216 140 / 70%);
+
+  --radius-sketch: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-sketch-alt: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  --shadow-sketch: 3px 4px 0 var(--color-ink);
+
+  --font-family-base: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", "PingFang TC",
+    "Microsoft JhengHei", serif;
+  --font-size-base: 18px;
+}
