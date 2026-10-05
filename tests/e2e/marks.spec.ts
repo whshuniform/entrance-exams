@@ -21,8 +21,8 @@ test.describe('作答標記工具', () => {
     await quiz.dragAcrossStem('115-chinese-1')
     await expect(quiz.question('115-chinese-1').getByTestId('stem').locator('mark').first()).toBeVisible()
 
-    await quiz.option('115-chinese-1', 'C').locator('label').click()
-    await expect(quiz.option('115-chinese-1', 'C').locator('input')).not.toBeChecked()
+    // 螢光筆模式下選項暫時鎖住，避免畫線時誤選
+    await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeDisabled()
 
     await quiz.answerTool.click()
     await quiz.option('115-chinese-1', 'C').locator('label').click()
@@ -34,6 +34,7 @@ test.describe('作答標記工具', () => {
     await quiz.goto()
 
     const canvas = await quiz.openScratch('115-mathA-1')
+    await canvas.scrollIntoViewIfNeeded()
     const box = await canvas.boundingBox()
     if (!box) throw new Error('canvas not visible')
     await page.mouse.move(box.x + 20, box.y + 20)

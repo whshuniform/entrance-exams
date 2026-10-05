@@ -49,4 +49,19 @@
     box-shadow: 1px 1px 0 var(--color-ink);
     transform: translate(2px, 3px);
   }
+
+  &.p-button-sm {
+    padding: 0.2em 0.9em;
+    box-shadow: 2px 2px 0 var(--color-ink);
+    font-size: 0.9rem;
+  }
+
+  // 文字按鈕：像鉛筆寫的連結，不加框
+  &.p-button-text {
+    padding: 0.2em 0.4em;
+    border-color: transparent;
+    box-shadow: none;
+    text-decoration: underline dashed;
+    text-underline-offset: 0.3em;
+  }
 }

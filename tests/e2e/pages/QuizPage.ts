@@ -39,7 +39,9 @@ export class QuizPage {
 
   /** 用滑鼠在題幹上從左拖到右（模擬螢光筆） */
   async dragAcrossStem(id: string) {
-    const box = await this.question(id).getByTestId('stem').boundingBox()
+    const stem = this.question(id).getByTestId('stem')
+    await stem.scrollIntoViewIfNeeded()
+    const box = await stem.boundingBox()
     if (!box) throw new Error('stem not visible')
     const y = box.y + 14
     await this.page.mouse.move(box.x + 4, y)

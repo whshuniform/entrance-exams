@@ -4,19 +4,29 @@
       <h1 :class="$style['quiz-page__title']">
         <span :class="$style['quiz-page__highlight']">學測練習本</span>
       </h1>
-      <p :class="$style['quiz-page__subtitle']">115 學年度・國語文綜合能力測驗・試作 {{ questions.length }} 題</p>
+      <p :class="$style['quiz-page__subtitle']">115 學年度・試作 {{ questions.length }} 題</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
     </header>
 
-    <QuizQuestionCard
-      v-for="question in questions"
-      :key="question.id"
-      :question="question"
-      :model-value="answers[question.id] ?? ''"
-      :submitted="submitted"
-      :result="results[question.id]"
-      @update:model-value="setAnswer(question.id, $event)"
-    />
+    <section v-for="section in sections" :key="section.title">
+      <h2 :class="$style['quiz-page__section']">{{ section.title }}</h2>
+      <QuizQuestionCard
+        v-for="question in section.questions"
+        :key="question.id"
+        :question="question"
+        :model-value="answers[question.id] ?? ''"
+        :submitted="submitted"
+        :result="results[question.id]"
+        :pen-mode="tool === 'highlighter'"
+        :highlights="highlights"
+        :eliminated="eliminated[question.id]"
+        :scratch="scratch[question.id]"
+        @update:model-value="setAnswer(question.id, $event)"
+        @mark="markText"
+        @eliminate="toggleEliminate(question.id, $event)"
+        @update:scratch="setScratch(question.id, $event)"
+      />
+    </section>
 
     <section :class="$style['quiz-page__footer']">
       <div v-if="submitted" :class="$style['quiz-page__result']">
@@ -28,15 +38,45 @@
     </section>
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
+
+    <nav :class="$style['quiz-page__toolbar']" aria-label="作答工具">
+      <Button
+        data-test="tool-answer"
+        label="✎ 作答"
+        size="small"
+        :outlined="tool !== 'answer'"
+        :aria-pressed="tool === 'answer' ? 'true' : 'false'"
+        @click="tool = 'answer'"
+      />
+      <Button
+        data-test="tool-highlighter"
+        label="螢光筆"
+        size="small"
+        :outlined="tool !== 'highlighter'"
+        :aria-pressed="tool === 'highlighter' ? 'true' : 'false'"
+        @click="tool = 'highlighter'"
+      />
+      <span v-if="tool === 'highlighter'" :class="$style['quiz-page__hint']">在題目上橫向拖曳畫線，點一下可擦掉</span>
+    </nav>
   </main>
 </template>
 
 <script setup lang="ts">
 import { sample115Chinese } from '~/data/sample-115-chinese'
+import { sample115MathA } from '~/data/sample-115-math'
 
-const questions = sample115Chinese
+type Tool = 'answer' | 'highlighter'
+
+const sections = [
+  { title: '國語文綜合能力測驗', questions: sample115Chinese },
+  { title: '數學A', questions: sample115MathA },
+]
+const questions = sections.flatMap(section => section.questions)
+
 const { answers, submitted, maxScore, answeredCount, results, totalScore, setAnswer, submit, reset } =
   useQuiz(questions)
+const { highlights, eliminated, scratch, markText, toggleEliminate, setScratch, clearAll } = useMarks()
+const tool = ref<Tool>('answer')
 
 function formatScore(score: number) {
   return String(Number(score.toFixed(2)))
@@ -44,6 +84,8 @@ function formatScore(score: number) {
 
 function onReset() {
   reset()
+  clearAll()
+  tool.value = 'answer'
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
@@ -54,7 +96,7 @@ function onReset() {
 .quiz-page {
   max-width: 46rem;
   margin: 0 auto;
-  padding: 2rem 1rem 3rem 3.5rem;
+  padding: 2rem 1rem 7rem 3.5rem;
 
   &__header {
     margin-bottom: 2rem;
@@ -80,6 +122,41 @@ function onReset() {
     margin: 0;
     font-size: 0.9rem;
     color: var(--color-pencil);
+  }
+
+  &__section {
+    margin: 2.5rem 0 1.25rem;
+    font-size: 1.25rem;
+    color: var(--color-pencil);
+  }
+
+  &__toolbar {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    z-index: 10;
+    max-width: calc(100% - 2rem);
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem 0.5rem;
+
+    @include sketch-border(2px, true);
+
+    background: var(--color-card);
+    box-shadow: var(--shadow-sketch);
+    transform: translateX(-50%);
+    user-select: none;
+  }
+
+  &__hint {
+    flex-basis: 100%;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--color-pencil);
+    text-align: center;
   }
 
   &__footer {
@@ -117,7 +194,7 @@ function onReset() {
   }
 
   @include respond-to('xs') {
-    padding: 1.25rem 0.75rem 2rem 3rem;
+    padding: 1.25rem 0.75rem 8rem 3rem;
 
     &__title {
       font-size: 2rem;

@@ -1,6 +1,6 @@
 import type { GradeResult, QuizQuestion } from '~/types/quiz'
 
-const toSet = (value: string) => new Set(value.replace(/[^A-Z]/g, '').split('').filter(Boolean))
+const toSet = (value: string) => new Set(value.replace(/[^A-Z0-9]/g, '').split('').filter(Boolean))
 
 /**
  * 依學測計分方式批改一題。

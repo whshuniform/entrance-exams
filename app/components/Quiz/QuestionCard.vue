@@ -1,28 +1,53 @@
 <template>
   <article
     class="quiz-question-card"
-    :class="[$style['question-card'], props.question.number % 2 === 0 && $style['question-card--tilt']]"
+    :class="[
+      $style['question-card'],
+      props.question.number % 2 === 0 && $style['question-card--tilt'],
+      props.penMode && $style['question-card--pen'],
+    ]"
     :data-test="`question-${props.question.id}`"
   >
     <header :class="$style['question-card__header']">
       <span :class="$style['question-card__number']">{{ props.question.number }}.</span>
       <span :class="$style['question-card__type']">{{ typeLabel }}</span>
-      <span
-        v-if="props.submitted && props.result"
-        data-test="question-score"
-        :class="[$style['question-card__score'], props.result.isCorrect && $style['question-card__score--full']]"
-      >
-        {{ scoreText }}
+      <span :class="$style['question-card__actions']">
+        <Button
+          data-test="scratch-toggle"
+          :label="showScratch ? '收起計算紙' : '計算紙'"
+          size="small"
+          severity="secondary"
+          text
+          :aria-expanded="showScratch ? 'true' : 'false'"
+          @click="showScratch = !showScratch"
+        />
+        <span
+          v-if="props.submitted && props.result"
+          data-test="question-score"
+          :class="[$style['question-card__score'], props.result.isCorrect && $style['question-card__score--full']]"
+        >
+          {{ scoreText }}
+        </span>
       </span>
     </header>
 
-    <p :class="$style['question-card__stem']">
-      <QuizMarkupText :text="props.question.stem" />
+    <p data-test="stem" :class="[$style['question-card__stem'], $style['question-card__writable']]">
+      <QuizMarkupText
+        :text="props.question.stem"
+        :ranges="rangesOf('stem')"
+        :pen-mode="props.penMode"
+        @mark="emit('mark', fieldId('stem'), $event)"
+      />
     </p>
 
     <ol v-if="props.question.passage?.length" :class="$style['question-card__passage']">
-      <li v-for="line in props.question.passage" :key="line">
-        <QuizMarkupText :text="line" />
+      <li v-for="(line, index) in props.question.passage" :key="line" :class="$style['question-card__writable']">
+        <QuizMarkupText
+          :text="line"
+          :ranges="rangesOf(`passage:${index}`)"
+          :pen-mode="props.penMode"
+          @mark="emit('mark', fieldId(`passage:${index}`), $event)"
+        />
       </li>
     </ol>
 
@@ -32,7 +57,12 @@
         :key="option.key"
         :data-test="`option-${option.key}`"
         :data-state="optionState(option.key)"
-        :class="[$style['question-card__option'], optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`]]"
+        :data-eliminated="isEliminated(option.key) ? 'true' : undefined"
+        :class="[
+          $style['question-card__option'],
+          optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
+          isEliminated(option.key) && $style['question-card__option--eliminated'],
+        ]"
       >
         <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
           <RadioButton
@@ -41,7 +71,7 @@
             :name="props.question.id"
             :value="option.key"
             :model-value="props.modelValue"
-            :disabled="props.submitted"
+            :disabled="props.submitted || props.penMode"
             @update:model-value="pickSingle"
           />
           <Checkbox
@@ -50,7 +80,7 @@
             :name="props.question.id"
             :value="option.key"
             :model-value="selectedKeys"
-            :disabled="props.submitted"
+            :disabled="props.submitted || props.penMode"
             @update:model-value="pickMulti"
           />
           <span :class="$style['question-card__key']">
@@ -64,17 +94,41 @@
               <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
             </svg>
           </span>
-          <span :class="$style['question-card__text']">
-            <span :class="$style['question-card__mark']"><QuizMarkupText :text="option.text" /></span>
+          <span :class="[$style['question-card__text'], $style['question-card__writable']]">
+            <span :class="$style['question-card__mark']">
+              <QuizMarkupText
+                :text="option.text"
+                :ranges="rangesOf(`option:${option.key}`)"
+                :pen-mode="props.penMode"
+                @mark="emit('mark', fieldId(`option:${option.key}`), $event)"
+              />
+            </span>
           </span>
         </label>
+        <button
+          type="button"
+          :data-test="`eliminate-${option.key}`"
+          :aria-label="`刪去選項 (${option.key})`"
+          :aria-pressed="isEliminated(option.key) ? 'true' : 'false'"
+          :disabled="props.submitted"
+          :class="[$style['question-card__eliminate'], isEliminated(option.key) && $style['question-card__eliminate--on']]"
+          @click="emit('eliminate', option.key)"
+        >
+          ✕
+        </button>
       </li>
     </ul>
+
+    <QuizScratchPad
+      v-if="showScratch"
+      :strokes="props.scratch"
+      @update:strokes="emit('update:scratch', $event)"
+    />
   </article>
 </template>
 
 <script setup lang="ts">
-import type { GradeResult, QuizQuestion } from '~/types/quiz'
+import type { GradeResult, QuizQuestion, ScratchStroke, TextRange } from '~/types/quiz'
 
 type OptionState = 'hit' | 'answer' | 'wrong' | undefined
 
@@ -83,16 +137,31 @@ interface Props {
   modelValue: string
   submitted?: boolean
   result?: GradeResult
+  /** 螢光筆模式：拖曳畫線，不作答 */
+  penMode?: boolean
+  /** key 為 `${題目 id}:stem`、`${題目 id}:option:A` 等 */
+  highlights?: Record<string, TextRange[]>
+  eliminated?: string[]
+  scratch?: ScratchStroke[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   submitted: false,
   result: undefined,
+  penMode: false,
+  highlights: () => ({}),
+  eliminated: () => [],
+  scratch: () => [],
 })
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
+  (e: 'mark', fieldId: string, range: TextRange): void
+  (e: 'eliminate', key: string): void
+  (e: 'update:scratch', value: ScratchStroke[]): void
 }>()
+
+const showScratch = ref(false)
 
 const typeLabel = computed(() => (props.question.type === 'single' ? '單選' : '多選'))
 const selectedKeys = computed(() => props.modelValue.split('').filter(Boolean))
@@ -100,6 +169,18 @@ const scoreText = computed(() => {
   const score = Number((props.result?.score ?? 0).toFixed(2))
   return score > 0 ? `+${score}` : '0'
 })
+
+function fieldId(part: string) {
+  return `${props.question.id}:${part}`
+}
+
+function rangesOf(part: string) {
+  return props.highlights[fieldId(part)] ?? []
+}
+
+function isEliminated(key: string) {
+  return props.eliminated.includes(key)
+}
 
 function inputId(key: string) {
   return `${props.question.id}-${key}`
@@ -175,8 +256,14 @@ function pickMulti(values: string[]) {
     color: var(--color-pencil);
   }
 
-  &__score {
+  &__actions {
     margin-left: auto;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  &__score {
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-pen-red);
@@ -208,6 +295,9 @@ function pickMulti(values: string[]) {
   &__option {
     margin: 0.25rem 0;
     padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.25rem;
     border-radius: var(--radius-sketch-alt);
 
     &--wrong {
@@ -218,6 +308,7 @@ function pickMulti(values: string[]) {
   }
 
   &__label {
+    flex: 1;
     display: flex;
     align-items: flex-start;
     gap: 0.6rem;
@@ -248,10 +339,55 @@ function pickMulti(values: string[]) {
     flex: 1;
   }
 
-  // 正解用螢光筆逐行畫底
+  // 刪去法：鉛筆小叉叉
+  &__eliminate {
+    width: 1.9em;
+    height: 1.9em;
+    flex-shrink: 0;
+    padding: 0;
+    background: transparent;
+    border: 1.5px dashed var(--color-pencil);
+    border-radius: 52% 48% 55% 45% / 47% 55% 45% 53%;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: var(--color-pencil);
+    cursor: pointer;
+
+    &--on {
+      background: var(--color-pencil);
+      border-style: solid;
+      color: var(--color-card);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+
+  &__option--eliminated &__label {
+    opacity: 0.5;
+  }
+
+  &__option--eliminated &__text {
+    text-decoration: line-through;
+    text-decoration-color: var(--color-pencil);
+    text-decoration-thickness: 1.5px;
+  }
+
+  // 螢光筆模式：橫向拖曳畫線、直向仍可捲動
+  &--pen &__writable {
+    touch-action: pan-y;
+  }
+
+  &--pen &__label {
+    cursor: crosshair;
+  }
+
+  // 批改後正解用紅色螢光筆逐行畫底（和考生自己的黃色螢光筆區分）
   &__option--hit &__mark,
   &__option--answer &__mark {
-    background: linear-gradient(transparent 55%, var(--color-marker) 55%, var(--color-marker) 92%, transparent 92%);
+    background: linear-gradient(transparent 55%, var(--color-marker-answer) 55%, var(--color-marker-answer) 92%, transparent 92%);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
