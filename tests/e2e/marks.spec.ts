@@ -67,3 +67,50 @@ test.describe('作答標記工具', () => {
     expect(inked).toBe(true)
   })
 })
+
+test.describe('計算紙手機觸控', () => {
+  test.skip(({ isMobile }) => !isMobile, '只有手機需要觸控手勢')
+
+  test('計算紙_一指寫字_兩指上下滑動應捲動頁面且不留筆跡', async ({ page, context }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    const canvas = await quiz.openScratch('115-mathA-1')
+    await canvas.scrollIntoViewIfNeeded()
+    const box = await canvas.boundingBox()
+    if (!box) throw new Error('canvas not visible')
+    const cdp = await context.newCDPSession(page)
+    const touch = (type: string, points: { x: number, y: number }[]) =>
+      cdp.send('Input.dispatchTouchEvent', { type, touchPoints: points })
+    const ink = () => canvas.evaluate((el: HTMLCanvasElement) => {
+      const data = el.getContext('2d')!.getImageData(0, 0, el.width, el.height).data
+      return data.some((value, index) => index % 4 === 3 && value > 0)
+    })
+
+    // 兩指往下滑 → 頁面往上捲
+    const scrollBefore = await page.evaluate(() => window.scrollY)
+    const x1 = box.x + 60
+    const x2 = box.x + 160
+    const yStart = box.y + 30
+    await touch('touchStart', [{ x: x1, y: yStart }, { x: x2, y: yStart }])
+    for (let step = 1; step <= 10; step++) {
+      const y = yStart + step * 15
+      await touch('touchMove', [{ x: x1, y }, { x: x2, y }])
+    }
+    await touch('touchEnd', [])
+
+    expect(await page.evaluate(() => window.scrollY)).toBeLessThan(scrollBefore - 50)
+    expect(await ink()).toBe(false)
+
+    // 一指寫字
+    await canvas.scrollIntoViewIfNeeded()
+    const after = await canvas.boundingBox()
+    if (!after) throw new Error('canvas not visible')
+    await touch('touchStart', [{ x: after.x + 30, y: after.y + 30 }])
+    for (let step = 1; step <= 8; step++) {
+      await touch('touchMove', [{ x: after.x + 30 + step * 10, y: after.y + 30 + step * 5 }])
+    }
+    await touch('touchEnd', [])
+
+    expect(await ink()).toBe(true)
+  })
+})

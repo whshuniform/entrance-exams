@@ -7,7 +7,7 @@
       <p :class="$style['quiz-page__subtitle']">115 學年度・試作 {{ questions.length }} 題</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
       <p :class="$style['quiz-page__tip']">
-        小技巧：在字上橫向拖曳可畫螢光筆，同一段再拖一次就擦掉；選項右邊的 ✕ 可刪去選項；每題的「計算紙」可以寫算式。
+        小技巧：在字上橫向拖曳可畫螢光筆，同一段再拖一次就擦掉；選項右邊的 ✕ 可刪去選項；每題的「計算紙」可以寫算式，在計算紙上用兩指滑動可以捲動頁面。
       </p>
     </header>
 

@@ -59,6 +59,16 @@ const tool = ref<ScratchTool>('pen')
 let current: ScratchStroke | null = null
 let resizeObserver: ResizeObserver | null = null
 
+// 一指寫字、兩指上下滑動捲動頁面
+const touches = new Map<number, number>()
+let scrolling = false
+let lastAverageY = 0
+
+function averageY() {
+  const ys = [...touches.values()]
+  return ys.reduce((sum, y) => sum + y, 0) / ys.length
+}
+
 function context() {
   return canvas.value?.getContext('2d') ?? null
 }
@@ -98,11 +108,30 @@ function pointFrom(event: PointerEvent): [number, number] {
 
 function onPointerDown(event: PointerEvent) {
   if (event.pointerType === 'mouse' && event.button !== 0) return
+  if (event.pointerType === 'touch') {
+    touches.set(event.pointerId, event.clientY)
+    if (touches.size >= 2) {
+      // 第二根手指放下：取消第一根手指剛開始的筆畫，改成捲動
+      current = null
+      scrolling = true
+      lastAverageY = averageY()
+      redraw()
+      return
+    }
+  }
+  if (scrolling) return
   canvas.value?.setPointerCapture?.(event.pointerId)
   current = { tool: tool.value, points: [pointFrom(event)] }
 }
 
 function onPointerMove(event: PointerEvent) {
+  if (touches.has(event.pointerId)) touches.set(event.pointerId, event.clientY)
+  if (scrolling) {
+    const y = averageY()
+    window.scrollBy(0, lastAverageY - y)
+    lastAverageY = y
+    return
+  }
   const ctx = context()
   if (!current || !ctx || !canvas.value) return
   const last = current.points.at(-1)!
@@ -111,7 +140,13 @@ function onPointerMove(event: PointerEvent) {
   drawStroke(ctx, { tool: current.tool, points: [last, next] }, canvas.value.clientWidth)
 }
 
-function onPointerUp() {
+function onPointerUp(event: PointerEvent) {
+  touches.delete(event.pointerId)
+  if (scrolling) {
+    if (touches.size === 0) scrolling = false
+    else lastAverageY = averageY()
+    return
+  }
   if (!current) return
   emit('update:strokes', [...props.strokes, current])
   current = null
