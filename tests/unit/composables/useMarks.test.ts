@@ -32,17 +32,6 @@ describe('useMarks', () => {
     expect(marks.highlights.value['q1:stem']).toEqual([{ start: 0, end: 2 }, { start: 4, end: 6 }])
   })
 
-  it('useMarks_ToggleEliminate_ShouldCrossOutAndRestore', () => {
-    const marks = useMarks()
-
-    marks.toggleEliminate('q1', 'B')
-    marks.toggleEliminate('q1', 'D')
-    expect(marks.eliminated.value.q1).toEqual(['B', 'D'])
-
-    marks.toggleEliminate('q1', 'B')
-    expect(marks.eliminated.value.q1).toEqual(['D'])
-  })
-
   it('useMarks_SetInk_ShouldKeepStrokesPerQuestion', () => {
     const marks = useMarks()
 
@@ -55,13 +44,11 @@ describe('useMarks', () => {
   it('useMarks_ClearAll_ShouldRemoveEveryMark', () => {
     const marks = useMarks()
     marks.markText('q1:stem', { start: 0, end: 4 })
-    marks.toggleEliminate('q1', 'B')
     marks.setInk('q1', [stroke])
 
     marks.clearAll()
 
     expect(marks.highlights.value).toEqual({})
-    expect(marks.eliminated.value).toEqual({})
     expect(marks.ink.value).toEqual({})
   })
 })

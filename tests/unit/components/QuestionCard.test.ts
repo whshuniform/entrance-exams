@@ -63,22 +63,12 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
 
-  it('QuestionCard_ClickEliminate_ShouldEmitOptionKey', async () => {
+  it('QuestionCard_Render_ShouldNotHaveEliminateButtons', async () => {
+    // 刪去法改用原子筆在選項上劃掉
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
 
-    await wrapper.find('[data-test="eliminate-B"]').trigger('click')
-
-    expect(wrapper.emitted('eliminate')?.at(-1)).toEqual(['B'])
-  })
-
-  it('QuestionCard_EliminatedOption_ShouldBeCrossedOut', async () => {
-    const wrapper = await mountSuspended(QuestionCard, {
-      props: { question: single, modelValue: '', eliminated: ['B'] },
-    })
-
-    expect(wrapper.find('[data-test="option-B"]').attributes('data-eliminated')).toBe('true')
-    expect(wrapper.find('[data-test="option-A"]').attributes('data-eliminated')).toBeUndefined()
-    expect(wrapper.find('[data-test="eliminate-B"]').attributes('aria-pressed')).toBe('true')
+    expect(wrapper.findAll('[data-test^="eliminate-"]')).toHaveLength(0)
+    expect(wrapper.findAll('[data-test^="option-"] button')).toHaveLength(0)
   })
 
   it('QuestionCard_Highlights_ShouldMarkStemText', async () => {
@@ -136,12 +126,12 @@ describe('QuestionCard', () => {
     expect(click.defaultPrevented).toBe(false)
   })
 
-  it('QuestionCard_EliminateWhileDrawing_ShouldStillWork', async () => {
+  it('QuestionCard_ToggleScratchWhileDrawing_ShouldStillWork', async () => {
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'pen' } })
 
-    await wrapper.find('[data-test="eliminate-B"]').trigger('click')
+    await wrapper.find('[data-test="scratch-toggle"]').trigger('click')
 
-    expect(wrapper.emitted('eliminate')?.at(-1)).toEqual(['B'])
+    expect(wrapper.find('[data-test="scratch-area"]').exists()).toBe(true)
   })
 
   it('QuestionCard_TextFields_ShouldExposeFieldIdsForMarking', async () => {

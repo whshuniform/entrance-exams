@@ -42,7 +42,7 @@ test.describe('右下角繪畫工具列', () => {
     await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
   })
 
-  test('螢光筆_在題幹拖曳應畫線_點選項不會作答_刪去仍可用', async ({ page }) => {
+  test('螢光筆_在題幹拖曳應畫線_點選項不會作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
     await quiz.useTool('highlighter')
@@ -54,9 +54,6 @@ test.describe('右下角繪畫工具列', () => {
 
     await quiz.option('115-chinese-1', 'C').locator('label').click()
     await expect(quiz.option('115-chinese-1', 'C').locator('input')).not.toBeChecked()
-
-    await quiz.eliminate('115-chinese-1', 'B')
-    await expect(quiz.option('115-chinese-1', 'B')).toHaveAttribute('data-eliminated', 'true')
   })
 
   test('螢光筆_在選項文字上拖曳_應畫線', async ({ page }) => {
@@ -79,6 +76,19 @@ test.describe('右下角繪畫工具列', () => {
 
     expect(await quiz.inkPixels('115-chinese-1')).toBeGreaterThan(0)
     await expect(quiz.option('115-chinese-1', 'A').locator('input')).not.toBeChecked()
+  })
+
+  test('刪去法_沒有叉叉按鈕_用原子筆在選項上劃掉', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await expect(quiz.question('115-chinese-1').locator('[data-test^="eliminate-"]')).toHaveCount(0)
+    await quiz.useTool('pen')
+
+    const option = quiz.optionText('115-chinese-1', 'B')
+    await quiz.dragAcross(option, 0, 0.9)
+
+    expect(await quiz.inkPixels('115-chinese-1', option)).toBeGreaterThan(0)
+    await expect(quiz.option('115-chinese-1', 'B').locator('input')).not.toBeChecked()
   })
 
   test('原子筆_在計算紙寫算式_收起再打開筆跡應保留', async ({ page }) => {

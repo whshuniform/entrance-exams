@@ -29,10 +29,6 @@ export class QuizPage {
     return this.question(id).getByTestId(`option-${key}`)
   }
 
-  async eliminate(id: string, key: string) {
-    await this.question(id).getByTestId(`eliminate-${key}`).click()
-  }
-
   stem(id: string) {
     return this.question(id).getByTestId('stem')
   }
