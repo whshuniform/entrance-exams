@@ -89,12 +89,57 @@ describe('QuestionCard', () => {
     expect(wrapper.find('mark').text()).toBe('讀音')
   })
 
-  it('QuestionCard_ToggleScratch_ShouldShowScratchPad', async () => {
+  it('QuestionCard_ToggleScratch_ShouldShowScratchArea', async () => {
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
-    expect(wrapper.find('canvas').exists()).toBe(false)
+    expect(wrapper.find('[data-test="scratch-area"]').exists()).toBe(false)
 
     await wrapper.find('[data-test="scratch-toggle"]').trigger('click')
 
-    expect(wrapper.find('canvas').exists()).toBe(true)
+    expect(wrapper.find('[data-test="scratch-area"]').exists()).toBe(true)
+  })
+
+  it('QuestionCard_Render_ShouldHaveInkLayerOverCard', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+
+    expect(wrapper.find('canvas[data-test="ink-layer"]').exists()).toBe(true)
+  })
+
+  it('QuestionCard_DefaultTool_ShouldNotBeDrawing', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+
+    expect(wrapper.attributes('data-drawing')).toBeUndefined()
+  })
+
+  it('QuestionCard_DrawingTool_ShouldMarkCardAsDrawing', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'pen' } })
+
+    expect(wrapper.attributes('data-drawing')).toBe('pen')
+  })
+
+  it('QuestionCard_ClickOptionWhileDrawing_ShouldNotAnswer', async () => {
+    const wrapper = await mountSuspended(QuestionCard, {
+      props: { question: single, modelValue: '', tool: 'highlighter' },
+    })
+
+    await wrapper.find('[data-test="option-C"] label').trigger('click')
+    await wrapper.find('[data-test="option-C"] input').trigger('click')
+
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+  })
+
+  it('QuestionCard_EliminateWhileDrawing_ShouldStillWork', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'pen' } })
+
+    await wrapper.find('[data-test="eliminate-B"]').trigger('click')
+
+    expect(wrapper.emitted('eliminate')?.at(-1)).toEqual(['B'])
+  })
+
+  it('QuestionCard_TextFields_ShouldExposeFieldIdsForMarking', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+
+    expect(wrapper.find('[data-test="stem"]').attributes('data-field')).toBe('q1:stem')
+    expect(wrapper.find('[data-test="option-B"] [data-test="option-text"]').attributes('data-field'))
+      .toBe('q1:option:B')
   })
 })

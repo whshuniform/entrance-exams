@@ -1,32 +1,68 @@
 import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
-test.describe('作答標記工具', () => {
-  test('刪去法_點選項旁的叉叉_選項應被劃掉且可復原', async ({ page }) => {
+test.describe('右下角繪畫工具列', () => {
+  test('工具列_固定在右下角由上而下四顆_題目不被擋住', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
+    const viewport = page.viewportSize()!
 
-    await quiz.eliminate('115-chinese-1', 'B')
-    await expect(quiz.option('115-chinese-1', 'B')).toHaveAttribute('data-eliminated', 'true')
+    const boxes = []
+    for (const name of ['off', 'highlighter', 'pen', 'eraser'] as const) {
+      const box = await quiz.tool(name).boundingBox()
+      if (!box) throw new Error(`tool ${name} not visible`)
+      boxes.push(box)
+    }
+    for (let i = 1; i < boxes.length; i++) {
+      expect(boxes[i]!.y).toBeGreaterThanOrEqual(boxes[i - 1]!.y + boxes[i - 1]!.height - 1)
+      expect(Math.abs(boxes[i]!.x - boxes[0]!.x)).toBeLessThan(2)
+    }
+    const last = boxes.at(-1)!
+    expect(viewport.width - (last.x + last.width)).toBeLessThan(32)
+    expect(viewport.height - (last.y + last.height)).toBeLessThan(40)
 
-    await quiz.eliminate('115-chinese-1', 'B')
-    await expect(quiz.option('115-chinese-1', 'B')).not.toHaveAttribute('data-eliminated', 'true')
+    const card = await quiz.question('115-chinese-1').boundingBox()
+    expect(card!.x + card!.width).toBeLessThanOrEqual(boxes[0]!.x)
+
+    await page.evaluate(() => window.scrollTo(0, 900))
+    const afterScroll = await quiz.tool('off').boundingBox()
+    expect(afterScroll!.y).toBeCloseTo(boxes[0]!.y, 0)
   })
 
-  test('螢光筆_不用切換_在題幹拖曳應畫線且點選項仍可作答', async ({ page }) => {
+  test('預設關閉繪畫_拖曳文字不畫線_點選項可作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
+    await expect(quiz.tool('off')).toHaveAttribute('aria-pressed', 'true')
+
     await quiz.dragAcross(quiz.stem('115-chinese-1'))
-    await expect(quiz.stem('115-chinese-1').locator('mark').first()).toBeVisible()
+    await expect(quiz.stem('115-chinese-1').locator('mark')).toHaveCount(0)
 
     await quiz.option('115-chinese-1', 'C').locator('label').click()
     await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
   })
 
-  test('螢光筆_在選項文字上拖曳_應畫線且不會選到該選項', async ({ page }) => {
+  test('螢光筆_在題幹拖曳應畫線_點選項不會作答_刪去仍可用', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
+    await quiz.useTool('highlighter')
+    await expect(quiz.tool('highlighter')).toHaveAttribute('aria-pressed', 'true')
+    await expect(quiz.tool('off')).toHaveAttribute('aria-pressed', 'false')
+
+    await quiz.dragAcross(quiz.stem('115-chinese-1'))
+    await expect(quiz.stem('115-chinese-1').locator('mark').first()).toBeVisible()
+
+    await quiz.option('115-chinese-1', 'C').locator('label').click()
+    await expect(quiz.option('115-chinese-1', 'C').locator('input')).not.toBeChecked()
+
+    await quiz.eliminate('115-chinese-1', 'B')
+    await expect(quiz.option('115-chinese-1', 'B')).toHaveAttribute('data-eliminated', 'true')
+  })
+
+  test('螢光筆_在選項文字上拖曳_應畫線', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('highlighter')
 
     await quiz.dragAcross(quiz.optionText('115-chinese-2', 'B'), 0.05, 0.7)
 
@@ -34,57 +70,79 @@ test.describe('作答標記工具', () => {
     await expect(quiz.option('115-chinese-2', 'B').locator('input')).not.toBeChecked()
   })
 
-  test('螢光筆_同一段再拖一次_應擦掉', async ({ page }) => {
+  test('原子筆_在題目上寫字_應留下筆跡且不會作答', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('pen')
+
+    await quiz.scribble(quiz.option('115-chinese-1', 'A'), [0.1, 0.3], [0.5, 0.8])
+
+    expect(await quiz.inkPixels('115-chinese-1')).toBeGreaterThan(0)
+    await expect(quiz.option('115-chinese-1', 'A').locator('input')).not.toBeChecked()
+  })
+
+  test('原子筆_在計算紙寫算式_收起再打開筆跡應保留', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('pen')
+
+    const scratch = await quiz.openScratch('115-mathA-1')
+    await quiz.scribble(scratch)
+    expect(await quiz.inkPixels('115-mathA-1', scratch)).toBeGreaterThan(0)
+
+    await quiz.question('115-mathA-1').getByTestId('scratch-toggle').click()
+    await quiz.question('115-mathA-1').getByTestId('scratch-toggle').click()
+
+    expect(await quiz.inkPixels('115-mathA-1', scratch)).toBeGreaterThan(0)
+  })
+
+  test('橡皮擦_應擦掉原子筆筆跡和螢光筆', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
+    await quiz.useTool('pen')
+    const scratch = await quiz.openScratch('115-mathA-1')
+    await quiz.scribble(scratch)
+    await quiz.useTool('highlighter')
     await quiz.dragAcross(quiz.stem('115-chinese-1'))
-    await quiz.dragAcross(quiz.stem('115-chinese-1'))
+    await expect(quiz.stem('115-chinese-1').locator('mark').first()).toBeVisible()
 
+    await quiz.useTool('eraser')
+    await quiz.scribble(scratch)
+    await quiz.dragAcross(quiz.stem('115-chinese-1'), 0, 0.7)
+
+    expect(await quiz.inkPixels('115-mathA-1')).toBe(0)
     await expect(quiz.stem('115-chinese-1').locator('mark')).toHaveCount(0)
   })
 
-  test('計算紙_畫線後收起再打開_筆跡應保留', async ({ page }) => {
+  test('關閉繪畫_畫過的線保留_點選項恢復作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
+    await quiz.useTool('highlighter')
+    await quiz.dragAcross(quiz.stem('115-chinese-1'))
 
-    const canvas = await quiz.openScratch('115-mathA-1')
-    await canvas.scrollIntoViewIfNeeded()
-    const box = await canvas.boundingBox()
-    if (!box) throw new Error('canvas not visible')
-    await page.mouse.move(box.x + 20, box.y + 20)
-    await page.mouse.down()
-    await page.mouse.move(box.x + 120, box.y + 80, { steps: 10 })
-    await page.mouse.up()
+    await quiz.useTool('off')
+    await quiz.option('115-chinese-1', 'C').locator('label').click()
 
-    await quiz.question('115-mathA-1').getByTestId('scratch-toggle').click()
-    await quiz.question('115-mathA-1').getByTestId('scratch-toggle').click()
-
-    const inked = await quiz.question('115-mathA-1').locator('canvas').evaluate((el: HTMLCanvasElement) => {
-      const data = el.getContext('2d')!.getImageData(0, 0, el.width, el.height).data
-      return data.some((value, index) => index % 4 === 3 && value > 0)
-    })
-    expect(inked).toBe(true)
+    await expect(quiz.stem('115-chinese-1').locator('mark').first()).toBeVisible()
+    await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
   })
 })
 
-test.describe('計算紙手機觸控', () => {
+test.describe('手機觸控', () => {
   test.skip(({ isMobile }) => !isMobile, '只有手機需要觸控手勢')
 
-  test('計算紙_一指寫字_兩指上下滑動應捲動頁面且不留筆跡', async ({ page, context }) => {
+  test('開啟繪畫時_一指寫字_兩指上下滑動應捲動頁面且不留筆跡', async ({ page, context }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
-    const canvas = await quiz.openScratch('115-mathA-1')
-    await canvas.scrollIntoViewIfNeeded()
-    const box = await canvas.boundingBox()
-    if (!box) throw new Error('canvas not visible')
+    await quiz.useTool('pen')
+    const scratch = await quiz.openScratch('115-mathA-1')
+    await scratch.scrollIntoViewIfNeeded()
+    const box = await scratch.boundingBox()
+    if (!box) throw new Error('scratch area not visible')
     const cdp = await context.newCDPSession(page)
     const touch = (type: string, points: { x: number, y: number }[]) =>
       cdp.send('Input.dispatchTouchEvent', { type, touchPoints: points })
-    const ink = () => canvas.evaluate((el: HTMLCanvasElement) => {
-      const data = el.getContext('2d')!.getImageData(0, 0, el.width, el.height).data
-      return data.some((value, index) => index % 4 === 3 && value > 0)
-    })
 
     // 兩指往下滑 → 頁面往上捲
     const scrollBefore = await page.evaluate(() => window.scrollY)
@@ -99,18 +157,18 @@ test.describe('計算紙手機觸控', () => {
     await touch('touchEnd', [])
 
     expect(await page.evaluate(() => window.scrollY)).toBeLessThan(scrollBefore - 50)
-    expect(await ink()).toBe(false)
+    expect(await quiz.inkPixels('115-mathA-1')).toBe(0)
 
     // 一指寫字
-    await canvas.scrollIntoViewIfNeeded()
-    const after = await canvas.boundingBox()
-    if (!after) throw new Error('canvas not visible')
+    await scratch.scrollIntoViewIfNeeded()
+    const after = await scratch.boundingBox()
+    if (!after) throw new Error('scratch area not visible')
     await touch('touchStart', [{ x: after.x + 30, y: after.y + 30 }])
     for (let step = 1; step <= 8; step++) {
       await touch('touchMove', [{ x: after.x + 30 + step * 10, y: after.y + 30 + step * 5 }])
     }
     await touch('touchEnd', [])
 
-    expect(await ink()).toBe(true)
+    expect(await quiz.inkPixels('115-mathA-1', scratch)).toBeGreaterThan(0)
   })
 })

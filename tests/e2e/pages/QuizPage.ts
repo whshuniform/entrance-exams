@@ -53,8 +53,57 @@ export class QuizPage {
     await this.page.mouse.up()
   }
 
+  /** 用滑鼠在區塊內斜斜畫一筆（座標為區塊寬高比例） */
+  async scribble(target: Locator, from: [number, number] = [0.1, 0.2], to: [number, number] = [0.6, 0.7]) {
+    await target.scrollIntoViewIfNeeded()
+    const box = await target.boundingBox()
+    if (!box) throw new Error('target not visible')
+    await this.page.mouse.move(box.x + box.width * from[0], box.y + box.height * from[1])
+    await this.page.mouse.down()
+    await this.page.mouse.move(box.x + box.width * to[0], box.y + box.height * to[1], { steps: 12 })
+    await this.page.mouse.up()
+  }
+
+  tool(name: 'off' | 'highlighter' | 'pen' | 'eraser') {
+    return this.page.getByTestId(`tool-${name}`)
+  }
+
+  async useTool(name: 'off' | 'highlighter' | 'pen' | 'eraser') {
+    await this.tool(name).click()
+  }
+
+  inkLayer(id: string) {
+    return this.question(id).getByTestId('ink-layer')
+  }
+
+  /** 題目卡片的筆跡層上有幾個有顏色的像素；給 within 時只算該區塊範圍 */
+  async inkPixels(id: string, within?: Locator) {
+    const layer = this.inkLayer(id)
+    const layerBox = await layer.boundingBox()
+    const area = within ? await within.boundingBox() : layerBox
+    if (!layerBox || !area) throw new Error('ink layer not visible')
+    const region = {
+      left: area.x - layerBox.x,
+      top: area.y - layerBox.y,
+      width: area.width,
+      height: area.height,
+    }
+    return layer.evaluate((el: HTMLCanvasElement, r) => {
+      const scale = el.width / el.clientWidth
+      const x = Math.max(0, Math.floor(r.left * scale))
+      const y = Math.max(0, Math.floor(r.top * scale))
+      const w = Math.min(el.width - x, Math.ceil(r.width * scale))
+      const h = Math.min(el.height - y, Math.ceil(r.height * scale))
+      if (w <= 0 || h <= 0) return 0
+      const data = el.getContext('2d')!.getImageData(x, y, w, h).data
+      let count = 0
+      for (let i = 3; i < data.length; i += 4) if (data[i]! > 0) count++
+      return count
+    }, region)
+  }
+
   async openScratch(id: string) {
     await this.question(id).getByTestId('scratch-toggle').click()
-    return this.question(id).locator('canvas')
+    return this.question(id).getByTestId('scratch-area')
   }
 }

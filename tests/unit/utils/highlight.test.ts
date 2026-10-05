@@ -1,37 +1,53 @@
 import { describe, it, expect } from 'vitest'
-import { buildSegments, toggleRange } from '~/utils/highlight'
+import { addRange, buildSegments, eraseRange } from '~/utils/highlight'
 
-describe('toggleRange', () => {
-  it('toggleRange_EmptyList_ShouldAddRange', () => {
-    expect(toggleRange([], { start: 2, end: 5 })).toEqual([{ start: 2, end: 5 }])
+describe('addRange', () => {
+  it('addRange_EmptyList_ShouldAddRange', () => {
+    expect(addRange([], { start: 2, end: 5 })).toEqual([{ start: 2, end: 5 }])
   })
 
-  it('toggleRange_ReversedRange_ShouldNormalize', () => {
+  it('addRange_ReversedRange_ShouldNormalize', () => {
     // 從右往左拖也算
-    expect(toggleRange([], { start: 5, end: 2 })).toEqual([{ start: 2, end: 5 }])
+    expect(addRange([], { start: 5, end: 2 })).toEqual([{ start: 2, end: 5 }])
   })
 
-  it('toggleRange_EmptyRange_ShouldIgnore', () => {
+  it('addRange_EmptyRange_ShouldIgnore', () => {
     const ranges = [{ start: 0, end: 3 }]
 
-    expect(toggleRange(ranges, { start: 4, end: 4 })).toEqual(ranges)
+    expect(addRange(ranges, { start: 4, end: 4 })).toEqual(ranges)
   })
 
-  it('toggleRange_OverlappingRange_ShouldMerge', () => {
-    const result = toggleRange([{ start: 0, end: 3 }, { start: 8, end: 10 }], { start: 2, end: 6 })
+  it('addRange_OverlappingRange_ShouldMerge', () => {
+    const result = addRange([{ start: 0, end: 3 }, { start: 8, end: 10 }], { start: 2, end: 6 })
 
     expect(result).toEqual([{ start: 0, end: 6 }, { start: 8, end: 10 }])
   })
 
-  it('toggleRange_AdjacentRange_ShouldMerge', () => {
-    expect(toggleRange([{ start: 0, end: 3 }], { start: 3, end: 5 })).toEqual([{ start: 0, end: 5 }])
+  it('addRange_AdjacentRange_ShouldMerge', () => {
+    expect(addRange([{ start: 0, end: 3 }], { start: 3, end: 5 })).toEqual([{ start: 0, end: 5 }])
   })
 
-  it('toggleRange_AlreadyHighlighted_ShouldErase', () => {
-    // 在已畫線處再畫一次 = 擦掉那一段
-    const result = toggleRange([{ start: 0, end: 10 }], { start: 3, end: 6 })
+  it('addRange_AlreadyHighlighted_ShouldKeepIt', () => {
+    // 螢光筆只負責畫，擦掉交給橡皮擦
+    expect(addRange([{ start: 0, end: 10 }], { start: 3, end: 6 })).toEqual([{ start: 0, end: 10 }])
+  })
+})
+
+describe('eraseRange', () => {
+  it('eraseRange_InsideHighlight_ShouldSplitIt', () => {
+    const result = eraseRange([{ start: 0, end: 10 }], { start: 3, end: 6 })
 
     expect(result).toEqual([{ start: 0, end: 3 }, { start: 6, end: 10 }])
+  })
+
+  it('eraseRange_ReversedRange_ShouldNormalize', () => {
+    expect(eraseRange([{ start: 0, end: 10 }], { start: 10, end: 4 })).toEqual([{ start: 0, end: 4 }])
+  })
+
+  it('eraseRange_OutsideHighlights_ShouldKeepThem', () => {
+    const ranges = [{ start: 0, end: 3 }]
+
+    expect(eraseRange(ranges, { start: 5, end: 8 })).toEqual(ranges)
   })
 })
 
