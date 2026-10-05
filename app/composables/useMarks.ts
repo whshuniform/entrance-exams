@@ -1,16 +1,22 @@
-import type { ScratchStroke, TextRange } from '~/types/quiz'
+import type { InkStroke, TextRange } from '~/types/quiz'
 
-/** 考生在題本上的標記：螢光筆畫線、刪去法、計算紙 */
+/** 考生在題本上的標記：螢光筆畫線、刪去法、原子筆筆跡 */
 export function useMarks() {
   const highlights = ref<Record<string, TextRange[]>>({})
   const eliminated = ref<Record<string, string[]>>({})
-  const scratch = ref<Record<string, ScratchStroke[]>>({})
+  const ink = ref<Record<string, InkStroke[]>>({})
 
   function markText(fieldId: string, range: TextRange) {
     highlights.value = {
       ...highlights.value,
-      [fieldId]: toggleRange(highlights.value[fieldId] ?? [], range),
+      [fieldId]: addRange(highlights.value[fieldId] ?? [], range),
     }
+  }
+
+  function eraseText(fieldId: string, range: TextRange) {
+    const current = highlights.value[fieldId]
+    if (!current?.length) return
+    highlights.value = { ...highlights.value, [fieldId]: eraseRange(current, range) }
   }
 
   function toggleEliminate(questionId: string, key: string) {
@@ -19,15 +25,15 @@ export function useMarks() {
     eliminated.value = { ...eliminated.value, [questionId]: next }
   }
 
-  function setScratch(questionId: string, strokes: ScratchStroke[]) {
-    scratch.value = { ...scratch.value, [questionId]: strokes }
+  function setInk(questionId: string, strokes: InkStroke[]) {
+    ink.value = { ...ink.value, [questionId]: strokes }
   }
 
   function clearAll() {
     highlights.value = {}
     eliminated.value = {}
-    scratch.value = {}
+    ink.value = {}
   }
 
-  return { highlights, eliminated, scratch, markText, toggleEliminate, setScratch, clearAll }
+  return { highlights, eliminated, ink, markText, eraseText, toggleEliminate, setInk, clearAll }
 }

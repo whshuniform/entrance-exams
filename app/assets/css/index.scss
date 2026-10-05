@@ -1,4 +1,5 @@
 @use './variables';
+@use './mixins' as *;
 @use './primevue';
 
 html,
@@ -22,6 +23,12 @@ body {
   font-size: var(--font-size-base);
   line-height: 1.7;
   color: var(--color-ink);
+
+  // 手機版面整頁靠左，拿掉左側紅色邊線
+  @include respond-to('xs') {
+    background-image:
+      repeating-linear-gradient(var(--color-paper) 0 calc(2rem - 1px), var(--color-paper-line) calc(2rem - 1px) 2rem);
+  }
 }
 
 .container {

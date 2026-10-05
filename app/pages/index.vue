@@ -7,7 +7,7 @@
       <p :class="$style['quiz-page__subtitle']">115 學年度・試作 {{ questions.length }} 題</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
       <p :class="$style['quiz-page__tip']">
-        小技巧：在字上橫向拖曳可畫螢光筆，同一段再拖一次就擦掉；選項右邊的 ✕ 可刪去選項；每題的「計算紙」可以寫算式，在計算紙上用兩指滑動可以捲動頁面。
+        小技巧：右下角選螢光筆、原子筆或橡皮擦，就能在題目、選項和計算紙上畫，這時用兩指上下滑動捲動頁面；要作答時按「關閉繪畫」。選項右邊的 ✕ 可刪去選項。
       </p>
     </header>
 
@@ -22,11 +22,13 @@
         :result="results[question.id]"
         :highlights="highlights"
         :eliminated="eliminated[question.id]"
-        :scratch="scratch[question.id]"
+        :tool="tool"
+        :ink="ink[question.id]"
         @update:model-value="setAnswer(question.id, $event)"
         @mark="markText"
+        @erase="eraseText"
         @eliminate="toggleEliminate(question.id, $event)"
-        @update:scratch="setScratch(question.id, $event)"
+        @update:ink="setInk(question.id, $event)"
       />
     </section>
 
@@ -41,12 +43,14 @@
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
 
+    <QuizDrawToolbar v-model="tool" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { sample115Chinese } from '~/data/sample-115-chinese'
 import { sample115MathA } from '~/data/sample-115-math'
+import type { DrawTool } from '~/types/quiz'
 
 const sections = [
   { title: '國語文綜合能力測驗', questions: sample115Chinese },
@@ -56,7 +60,9 @@ const questions = sections.flatMap(section => section.questions)
 
 const { answers, submitted, maxScore, answeredCount, results, totalScore, setAnswer, submit, reset } =
   useQuiz(questions)
-const { highlights, eliminated, scratch, markText, toggleEliminate, setScratch, clearAll } = useMarks()
+const { highlights, eliminated, ink, markText, eraseText, toggleEliminate, setInk, clearAll } = useMarks()
+/** 右下角工具列，預設關閉繪畫 */
+const tool = ref<DrawTool>('off')
 
 function formatScore(score: number) {
   return String(Number(score.toFixed(2)))
@@ -65,6 +71,7 @@ function formatScore(score: number) {
 function onReset() {
   reset()
   clearAll()
+  tool.value = 'off'
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
@@ -72,10 +79,11 @@ function onReset() {
 <style module lang="scss">
 @use '@/assets/css/mixins' as *;
 
+// 右側留給固定在右下角的繪畫工具列，整頁往左移
 .quiz-page {
-  max-width: 46rem;
+  max-width: 51rem;
   margin: 0 auto;
-  padding: 2rem 1rem 3rem 3.5rem;
+  padding: 2rem 6rem 3rem 3.5rem;
 
   &__header {
     margin-bottom: 2rem;
@@ -154,7 +162,8 @@ function onReset() {
   }
 
   @include respond-to('xs') {
-    padding: 1.25rem 0.75rem 2rem 3rem;
+    width: 100%;
+    padding: 1.25rem 4.4rem 2rem 0.75rem;
 
     &__title {
       font-size: 2rem;

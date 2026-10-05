@@ -1,11 +1,19 @@
 <template>
   <article
+    ref="card"
     class="quiz-question-card"
     :class="[
       $style['question-card'],
       props.question.number % 2 === 0 && $style['question-card--tilt'],
+      isDrawing && $style['question-card--drawing'],
     ]"
     :data-test="`question-${props.question.id}`"
+    :data-drawing="isDrawing ? props.tool : undefined"
+    @pointerdown="drawing.onPointerDown"
+    @pointermove="drawing.onPointerMove"
+    @pointerup="drawing.onPointerUp"
+    @pointercancel="drawing.onPointerCancel"
+    @click.capture="drawing.onClickCapture"
   >
     <header :class="$style['question-card__header']">
       <span :class="$style['question-card__number']">{{ props.question.number }}.</span>
@@ -30,21 +38,13 @@
       </span>
     </header>
 
-    <p data-test="stem" :class="[$style['question-card__stem'], $style['question-card__writable']]">
-      <QuizMarkupText
-        :text="props.question.stem"
-        :ranges="rangesOf('stem')"
-        @mark="emit('mark', fieldId('stem'), $event)"
-      />
+    <p data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
+      <QuizMarkupText :text="props.question.stem" :ranges="rangesOf('stem')" />
     </p>
 
     <ol v-if="props.question.passage?.length" :class="$style['question-card__passage']">
-      <li v-for="(line, index) in props.question.passage" :key="line" :class="$style['question-card__writable']">
-        <QuizMarkupText
-          :text="line"
-          :ranges="rangesOf(`passage:${index}`)"
-          @mark="emit('mark', fieldId(`passage:${index}`), $event)"
-        />
+      <li v-for="(line, index) in props.question.passage" :key="line" :data-field="fieldId(`passage:${index}`)">
+        <QuizMarkupText :text="line" :ranges="rangesOf(`passage:${index}`)" />
       </li>
     </ol>
 
@@ -91,13 +91,13 @@
               <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
             </svg>
           </span>
-          <span data-test="option-text" :class="[$style['question-card__text'], $style['question-card__writable']]">
+          <span
+            data-test="option-text"
+            :data-field="fieldId(`option:${option.key}`)"
+            :class="$style['question-card__text']"
+          >
             <span :class="$style['question-card__mark']">
-              <QuizMarkupText
-                :text="option.text"
-                :ranges="rangesOf(`option:${option.key}`)"
-                      @mark="emit('mark', fieldId(`option:${option.key}`), $event)"
-              />
+              <QuizMarkupText :text="option.text" :ranges="rangesOf(`option:${option.key}`)" />
             </span>
           </span>
         </label>
@@ -115,16 +115,17 @@
       </li>
     </ul>
 
-    <QuizScratchPad
-      v-if="showScratch"
-      :strokes="props.scratch"
-      @update:strokes="emit('update:scratch', $event)"
-    />
+    <div v-if="showScratch" data-test="scratch-area" aria-label="計算紙" :class="$style['question-card__scratch']">
+      <span v-if="!isDrawing" :class="$style['question-card__scratch-hint']">點右下角的「原子筆」就能在這裡寫算式</span>
+    </div>
+
+    <!-- 手寫筆跡層：蓋在整張卡片上，不擋點擊 -->
+    <canvas ref="inkCanvas" data-test="ink-layer" aria-hidden="true" :class="$style['question-card__ink']" />
   </article>
 </template>
 
 <script setup lang="ts">
-import type { GradeResult, QuizQuestion, ScratchStroke, TextRange } from '~/types/quiz'
+import type { DrawTool, GradeResult, InkStroke, QuizQuestion, TextRange } from '~/types/quiz'
 
 type OptionState = 'hit' | 'answer' | 'wrong' | undefined
 
@@ -136,7 +137,9 @@ interface Props {
   /** key 為 `${題目 id}:stem`、`${題目 id}:option:A` 等 */
   highlights?: Record<string, TextRange[]>
   eliminated?: string[]
-  scratch?: ScratchStroke[]
+  /** 右下角工具列目前的工具；off 時可作答 */
+  tool?: DrawTool
+  ink?: InkStroke[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -144,17 +147,33 @@ const props = withDefaults(defineProps<Props>(), {
   result: undefined,
   highlights: () => ({}),
   eliminated: () => [],
-  scratch: () => [],
+  tool: 'off',
+  ink: () => [],
 })
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
   (e: 'mark', fieldId: string, range: TextRange): void
+  (e: 'erase', fieldId: string, range: TextRange): void
   (e: 'eliminate', key: string): void
-  (e: 'update:scratch', value: ScratchStroke[]): void
+  (e: 'update:ink', value: InkStroke[]): void
 }>()
 
+const card = ref<HTMLElement | null>(null)
+const inkCanvas = ref<HTMLCanvasElement | null>(null)
 const showScratch = ref(false)
+const isDrawing = computed(() => props.tool !== 'off')
+
+const drawing = useCardDrawing({
+  card,
+  canvas: inkCanvas,
+  tool: () => props.tool,
+  strokes: () => props.ink,
+  hasHighlights: id => Boolean(props.highlights[id]?.length),
+  onStrokes: strokes => emit('update:ink', strokes),
+  onMark: (id, range) => emit('mark', id, range),
+  onErase: (id, range) => emit('erase', id, range),
+})
 
 const typeLabel = computed(() => (props.question.type === 'single' ? '單選' : '多選'))
 const selectedKeys = computed(() => props.modelValue.split('').filter(Boolean))
@@ -168,7 +187,11 @@ function fieldId(part: string) {
 }
 
 function rangesOf(part: string) {
-  return props.highlights[fieldId(part)] ?? []
+  const id = fieldId(part)
+  const ranges = props.highlights[id] ?? []
+  // 螢光筆拖曳中即時預覽
+  const preview = drawing.preview.value
+  return preview?.fieldId === id ? addRange(ranges, preview.range) : ranges
 }
 
 function isEliminated(key: string) {
@@ -228,6 +251,18 @@ function pickMulti(values: string[]) {
     @include sketch-border(2px, true);
 
     transform: rotate(0.35deg);
+  }
+
+  // 開啟繪畫：一指寫字（兩指捲動由程式處理）、不選取文字
+  &--drawing {
+    cursor: crosshair;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  &--drawing &__label {
+    cursor: crosshair;
   }
 
   &__header {
@@ -368,9 +403,37 @@ function pickMulti(values: string[]) {
     text-decoration-thickness: 1.5px;
   }
 
-  // 文字上橫向拖曳畫線、直向仍可捲動
-  &__writable {
-    touch-action: pan-y;
+  // 方格計算紙
+  &__scratch {
+    height: 15rem;
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.6rem;
+
+    @include sketch-border(1.5px, true);
+
+    background-color: var(--color-card);
+    background-image:
+      linear-gradient(var(--color-paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-paper-line) 1px, transparent 1px);
+    background-size: 1.25rem 1.25rem;
+  }
+
+  &__scratch-hint {
+    font-size: 0.8rem;
+    color: var(--color-pencil);
+  }
+
+  &__ink {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    // 螢光筆疊在字上，字仍清楚
+    mix-blend-mode: multiply;
+    pointer-events: none;
   }
 
   // 批改後正解用紅色螢光筆逐行畫底（和考生自己的黃色螢光筆區分）

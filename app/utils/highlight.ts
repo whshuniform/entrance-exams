@@ -27,15 +27,18 @@ function subtract(ranges: TextRange[], cut: TextRange): TextRange[] {
   })
 }
 
-/**
- * 螢光筆畫一段：若整段已畫過就擦掉，否則加上並與相鄰區間合併。
- */
-export function toggleRange(ranges: TextRange[], range: TextRange): TextRange[] {
+/** 螢光筆畫一段：加上並與重疊、相鄰的區間合併 */
+export function addRange(ranges: TextRange[], range: TextRange): TextRange[] {
   const target = normalize(range)
   if (target.start === target.end) return ranges
+  return merge([...ranges, target])
+}
 
-  const covered = ranges.some(r => r.start <= target.start && r.end >= target.end)
-  return covered ? subtract(ranges, target) : merge([...ranges, target])
+/** 橡皮擦擦過一段：把這段從畫線中挖掉 */
+export function eraseRange(ranges: TextRange[], range: TextRange): TextRange[] {
+  const target = normalize(range)
+  if (target.start === target.end) return ranges
+  return subtract(ranges, target)
 }
 
 /** 把含 __底線__ 標記的文字，依畫線區間切成可渲染的片段 */

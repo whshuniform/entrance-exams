@@ -45,10 +45,14 @@ export interface HighlightSegment {
   highlight: boolean
 }
 
-export type ScratchTool = 'pen' | 'eraser'
+/** 右下角工具列：off 為關閉繪畫（可作答、正常捲動） */
+export type DrawTool = 'off' | 'highlighter' | 'pen' | 'eraser'
 
-export interface ScratchStroke {
-  tool: ScratchTool
-  /** x 為畫布寬度比例（0–1），y 為 px */
+export type InkTool = Exclude<DrawTool, 'off'>
+
+/** 題目卡片上的一筆手寫筆跡 */
+export interface InkStroke {
+  tool: InkTool
+  /** x 為卡片寬度比例（0–1），y 為距卡片上緣的 px */
   points: [number, number][]
 }

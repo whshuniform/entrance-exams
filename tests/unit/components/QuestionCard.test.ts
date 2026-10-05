@@ -116,15 +116,24 @@ describe('QuestionCard', () => {
     expect(wrapper.attributes('data-drawing')).toBe('pen')
   })
 
-  it('QuestionCard_ClickOptionWhileDrawing_ShouldNotAnswer', async () => {
+  it('QuestionCard_ClickOptionWhileDrawing_ShouldCancelTheClick', async () => {
     const wrapper = await mountSuspended(QuestionCard, {
       props: { question: single, modelValue: '', tool: 'highlighter' },
     })
+    const click = new MouseEvent('click', { bubbles: true, cancelable: true })
 
-    await wrapper.find('[data-test="option-C"] label').trigger('click')
-    await wrapper.find('[data-test="option-C"] input').trigger('click')
+    wrapper.find('[data-test="option-C"] input').element.dispatchEvent(click)
 
-    expect(wrapper.emitted('update:modelValue')).toBeUndefined()
+    expect(click.defaultPrevented).toBe(true)
+  })
+
+  it('QuestionCard_ClickOptionWithDrawingOff_ShouldLetTheClickThrough', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+    const click = new MouseEvent('click', { bubbles: true, cancelable: true })
+
+    wrapper.find('[data-test="option-C"] input').element.dispatchEvent(click)
+
+    expect(click.defaultPrevented).toBe(false)
   })
 
   it('QuestionCard_EliminateWhileDrawing_ShouldStillWork', async () => {
