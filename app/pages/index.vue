@@ -7,7 +7,7 @@
       <p :class="$style['quiz-page__subtitle']">115 學年度・試作 {{ questions.length }} 題</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
       <p :class="$style['quiz-page__tip']">
-        小技巧：右下角選螢光筆、原子筆或橡皮擦，就能在題目、選項和計算紙上畫，這時用兩指上下滑動捲動頁面；要作答時按「關閉繪畫」。選項右邊的 ✕ 可刪去選項。
+        小技巧：右下角選螢光筆、原子筆或橡皮擦，就能在題目、選項和計算紙上畫，這時用兩指上下滑動捲動頁面；要作答時按「關閉繪畫」。想用刪去法，就用原子筆把選項劃掉。
       </p>
     </header>
 
@@ -21,13 +21,11 @@
         :submitted="submitted"
         :result="results[question.id]"
         :highlights="highlights"
-        :eliminated="eliminated[question.id]"
         :tool="tool"
         :ink="ink[question.id]"
         @update:model-value="setAnswer(question.id, $event)"
         @mark="markText"
         @erase="eraseText"
-        @eliminate="toggleEliminate(question.id, $event)"
         @update:ink="setInk(question.id, $event)"
       />
     </section>
@@ -60,7 +58,7 @@ const questions = sections.flatMap(section => section.questions)
 
 const { answers, submitted, maxScore, answeredCount, results, totalScore, setAnswer, submit, reset } =
   useQuiz(questions)
-const { highlights, eliminated, ink, markText, eraseText, toggleEliminate, setInk, clearAll } = useMarks()
+const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 /** 右下角工具列，預設關閉繪畫 */
 const tool = ref<DrawTool>('off')
 

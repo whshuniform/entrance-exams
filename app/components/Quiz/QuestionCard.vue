@@ -54,11 +54,9 @@
         :key="option.key"
         :data-test="`option-${option.key}`"
         :data-state="optionState(option.key)"
-        :data-eliminated="isEliminated(option.key) ? 'true' : undefined"
         :class="[
           $style['question-card__option'],
           optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
-          isEliminated(option.key) && $style['question-card__option--eliminated'],
         ]"
       >
         <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
@@ -101,17 +99,6 @@
             </span>
           </span>
         </label>
-        <button
-          type="button"
-          :data-test="`eliminate-${option.key}`"
-          :aria-label="`刪去選項 (${option.key})`"
-          :aria-pressed="isEliminated(option.key) ? 'true' : 'false'"
-          :disabled="props.submitted"
-          :class="[$style['question-card__eliminate'], isEliminated(option.key) && $style['question-card__eliminate--on']]"
-          @click="emit('eliminate', option.key)"
-        >
-          ✕
-        </button>
       </li>
     </ul>
 
@@ -136,7 +123,6 @@ interface Props {
   result?: GradeResult
   /** key 為 `${題目 id}:stem`、`${題目 id}:option:A` 等 */
   highlights?: Record<string, TextRange[]>
-  eliminated?: string[]
   /** 右下角工具列目前的工具；off 時可作答 */
   tool?: DrawTool
   ink?: InkStroke[]
@@ -146,7 +132,6 @@ const props = withDefaults(defineProps<Props>(), {
   submitted: false,
   result: undefined,
   highlights: () => ({}),
-  eliminated: () => [],
   tool: 'off',
   ink: () => [],
 })
@@ -155,7 +140,6 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
   (e: 'mark', fieldId: string, range: TextRange): void
   (e: 'erase', fieldId: string, range: TextRange): void
-  (e: 'eliminate', key: string): void
   (e: 'update:ink', value: InkStroke[]): void
 }>()
 
@@ -192,10 +176,6 @@ function rangesOf(part: string) {
   // 螢光筆拖曳中即時預覽
   const preview = drawing.preview.value
   return preview?.fieldId === id ? addRange(ranges, preview.range) : ranges
-}
-
-function isEliminated(key: string) {
-  return props.eliminated.includes(key)
 }
 
 function inputId(key: string) {
@@ -365,42 +345,6 @@ function pickMulti(values: string[]) {
 
   &__text {
     flex: 1;
-  }
-
-  // 刪去法：鉛筆小叉叉
-  &__eliminate {
-    width: 1.9em;
-    height: 1.9em;
-    flex-shrink: 0;
-    padding: 0;
-    background: transparent;
-    border: 1.5px dashed var(--color-pencil);
-    border-radius: 52% 48% 55% 45% / 47% 55% 45% 53%;
-    font-family: inherit;
-    font-size: 0.8rem;
-    color: var(--color-pencil);
-    cursor: pointer;
-
-    &--on {
-      background: var(--color-pencil);
-      border-style: solid;
-      color: var(--color-card);
-    }
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: default;
-    }
-  }
-
-  &__option--eliminated &__label {
-    opacity: 0.5;
-  }
-
-  &__option--eliminated &__text {
-    text-decoration: line-through;
-    text-decoration-color: var(--color-pencil);
-    text-decoration-thickness: 1.5px;
   }
 
   // 方格計算紙

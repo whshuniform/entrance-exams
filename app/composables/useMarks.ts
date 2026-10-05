@@ -1,9 +1,8 @@
 import type { InkStroke, TextRange } from '~/types/quiz'
 
-/** 考生在題本上的標記：螢光筆畫線、刪去法、原子筆筆跡 */
+/** 考生在題本上的標記：螢光筆畫線、原子筆筆跡（刪去法也是用原子筆劃） */
 export function useMarks() {
   const highlights = ref<Record<string, TextRange[]>>({})
-  const eliminated = ref<Record<string, string[]>>({})
   const ink = ref<Record<string, InkStroke[]>>({})
 
   function markText(fieldId: string, range: TextRange) {
@@ -19,21 +18,14 @@ export function useMarks() {
     highlights.value = { ...highlights.value, [fieldId]: eraseRange(current, range) }
   }
 
-  function toggleEliminate(questionId: string, key: string) {
-    const current = eliminated.value[questionId] ?? []
-    const next = current.includes(key) ? current.filter(k => k !== key) : [...current, key].sort()
-    eliminated.value = { ...eliminated.value, [questionId]: next }
-  }
-
   function setInk(questionId: string, strokes: InkStroke[]) {
     ink.value = { ...ink.value, [questionId]: strokes }
   }
 
   function clearAll() {
     highlights.value = {}
-    eliminated.value = {}
     ink.value = {}
   }
 
-  return { highlights, eliminated, ink, markText, eraseText, toggleEliminate, setInk, clearAll }
+  return { highlights, ink, markText, eraseText, setInk, clearAll }
 }

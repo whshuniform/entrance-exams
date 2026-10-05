@@ -127,7 +127,7 @@ export function useCardDrawing(options: Options) {
     if (!isDrawing()) return
     if (event.pointerType === 'mouse' && event.button !== 0) return
     const target = event.target as Element
-    // 選項旁的 ✕、計算紙按鈕照常可以按
+    // 計算紙按鈕照常可以按
     if (target.closest('button')) return
 
     if (event.pointerType === 'touch') {
