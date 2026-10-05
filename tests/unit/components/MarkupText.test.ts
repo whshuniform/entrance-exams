@@ -11,10 +11,4 @@ describe('MarkupText', () => {
     expect(wrapper.find('mark').text()).toBe('沆瀣')
     expect(wrapper.findAll('u').map(u => u.text()).join('')).toBe('沆瀣一氣')
   })
-
-  it('MarkupText_PenMode_ShouldFlagRootForHighlighting', async () => {
-    const wrapper = await mountSuspended(MarkupText, { props: { text: '題幹', penMode: true } })
-
-    expect(wrapper.attributes('data-pen')).toBe('true')
-  })
 })

@@ -4,7 +4,6 @@
     :class="[
       $style['question-card'],
       props.question.number % 2 === 0 && $style['question-card--tilt'],
-      props.penMode && $style['question-card--pen'],
     ]"
     :data-test="`question-${props.question.id}`"
   >
@@ -35,7 +34,6 @@
       <QuizMarkupText
         :text="props.question.stem"
         :ranges="rangesOf('stem')"
-        :pen-mode="props.penMode"
         @mark="emit('mark', fieldId('stem'), $event)"
       />
     </p>
@@ -45,7 +43,6 @@
         <QuizMarkupText
           :text="line"
           :ranges="rangesOf(`passage:${index}`)"
-          :pen-mode="props.penMode"
           @mark="emit('mark', fieldId(`passage:${index}`), $event)"
         />
       </li>
@@ -71,7 +68,7 @@
             :name="props.question.id"
             :value="option.key"
             :model-value="props.modelValue"
-            :disabled="props.submitted || props.penMode"
+            :disabled="props.submitted"
             @update:model-value="pickSingle"
           />
           <Checkbox
@@ -80,7 +77,7 @@
             :name="props.question.id"
             :value="option.key"
             :model-value="selectedKeys"
-            :disabled="props.submitted || props.penMode"
+            :disabled="props.submitted"
             @update:model-value="pickMulti"
           />
           <span :class="$style['question-card__key']">
@@ -94,13 +91,12 @@
               <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
             </svg>
           </span>
-          <span :class="[$style['question-card__text'], $style['question-card__writable']]">
+          <span data-test="option-text" :class="[$style['question-card__text'], $style['question-card__writable']]">
             <span :class="$style['question-card__mark']">
               <QuizMarkupText
                 :text="option.text"
                 :ranges="rangesOf(`option:${option.key}`)"
-                :pen-mode="props.penMode"
-                @mark="emit('mark', fieldId(`option:${option.key}`), $event)"
+                      @mark="emit('mark', fieldId(`option:${option.key}`), $event)"
               />
             </span>
           </span>
@@ -137,8 +133,6 @@ interface Props {
   modelValue: string
   submitted?: boolean
   result?: GradeResult
-  /** 螢光筆模式：拖曳畫線，不作答 */
-  penMode?: boolean
   /** key 為 `${題目 id}:stem`、`${題目 id}:option:A` 等 */
   highlights?: Record<string, TextRange[]>
   eliminated?: string[]
@@ -148,7 +142,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   submitted: false,
   result: undefined,
-  penMode: false,
   highlights: () => ({}),
   eliminated: () => [],
   scratch: () => [],
@@ -375,13 +368,9 @@ function pickMulti(values: string[]) {
     text-decoration-thickness: 1.5px;
   }
 
-  // 螢光筆模式：橫向拖曳畫線、直向仍可捲動
-  &--pen &__writable {
+  // 文字上橫向拖曳畫線、直向仍可捲動
+  &__writable {
     touch-action: pan-y;
-  }
-
-  &--pen &__label {
-    cursor: crosshair;
   }
 
   // 批改後正解用紅色螢光筆逐行畫底（和考生自己的黃色螢光筆區分）

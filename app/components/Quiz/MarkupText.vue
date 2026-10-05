@@ -1,12 +1,12 @@
 <template>
   <span
     ref="root"
-    :class="[$style['markup-text'], props.penMode && $style['markup-text--pen']]"
-    :data-pen="props.penMode ? 'true' : undefined"
+    :class="$style['markup-text']"
     @pointerdown="onPointerDown"
     @pointermove="onPointerMove"
     @pointerup="onPointerUp"
-    @pointercancel="dragStart = null"
+    @pointercancel="cancelDrag"
+    @click.capture="onClick"
   >
     <template v-for="segment in segments" :key="segment.start">
       <mark v-if="segment.highlight" :data-start="segment.start" :class="$style['markup-text__mark']">
@@ -27,13 +27,14 @@ import type { TextRange } from '~/types/quiz'
 interface Props {
   text: string
   ranges?: TextRange[]
-  penMode?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   ranges: () => [],
-  penMode: false,
 })
+
+/** 移動超過這個距離（px）才算拖曳畫線，否則當作點擊（例如點選項作答） */
+const DRAG_THRESHOLD = 6
 
 const emit = defineEmits<{
   (e: 'mark', range: TextRange): void
@@ -42,6 +43,10 @@ const emit = defineEmits<{
 const root = ref<HTMLElement | null>(null)
 const dragStart = ref<number | null>(null)
 const dragEnd = ref<number | null>(null)
+let downX = 0
+let downY = 0
+let dragging = false
+let suppressClick = false
 
 // 拖曳中即時預覽畫線結果
 const segments = computed(() => {
@@ -78,44 +83,58 @@ function offsetAt(x: number, y: number): number | null {
   return Number(holder.getAttribute('data-start')) + (isText ? offset : 0)
 }
 
+function cancelDrag() {
+  dragStart.value = null
+  dragEnd.value = null
+  dragging = false
+}
+
 function onPointerDown(event: PointerEvent) {
-  if (!props.penMode || event.button !== 0) return
-  event.preventDefault()
+  if (event.pointerType === 'mouse' && event.button !== 0) return
+  downX = event.clientX
+  downY = event.clientY
+  dragging = false
   dragStart.value = offsetAt(event.clientX, event.clientY)
   dragEnd.value = dragStart.value
-  root.value?.setPointerCapture?.(event.pointerId)
 }
 
 function onPointerMove(event: PointerEvent) {
   if (dragStart.value === null) return
+  if (!dragging) {
+    if (Math.hypot(event.clientX - downX, event.clientY - downY) < DRAG_THRESHOLD) return
+    dragging = true
+    root.value?.setPointerCapture?.(event.pointerId)
+  }
   dragEnd.value = offsetAt(event.clientX, event.clientY) ?? dragEnd.value
 }
 
 function onPointerUp(event: PointerEvent) {
   if (dragStart.value === null) return
   const start = dragStart.value
-  const end = offsetAt(event.clientX, event.clientY) ?? dragEnd.value ?? start
-  dragStart.value = null
-  dragEnd.value = null
+  const end = dragging ? offsetAt(event.clientX, event.clientY) ?? dragEnd.value ?? start : start
+  const wasDragging = dragging
+  cancelDrag()
 
-  if (start !== end) {
-    emit('mark', { start, end })
-    return
-  }
-  // 點一下已畫線處 = 擦掉那一段
-  const hit = props.ranges.find(r => r.start <= start && start < r.end)
-  if (hit) emit('mark', hit)
+  // 只是點一下：交給選項作答，不畫線
+  if (!wasDragging || start === end) return
+  suppressClick = true
+  emit('mark', { start, end })
+}
+
+/** 拖曳畫線結束後瀏覽器仍會送出 click，擋下來避免順便選到選項 */
+function onClick(event: MouseEvent) {
+  if (!suppressClick) return
+  suppressClick = false
+  event.preventDefault()
+  event.stopPropagation()
 }
 </script>
 
 <style module lang="scss">
 .markup-text {
-  // touch-action 對行內元素無效，由外層區塊（題幹、選項）設定 pan-y
-  &--pen {
-    cursor: crosshair;
-    user-select: none;
-    -webkit-user-select: none;
-  }
+  // 拖曳就是畫線，關掉瀏覽器原生選取；touch-action 對行內元素無效，由外層區塊設定 pan-y
+  user-select: none;
+  -webkit-user-select: none;
 
   &__mark {
     background: linear-gradient(transparent 40%, var(--color-marker) 40%, var(--color-marker) 95%, transparent 95%);
