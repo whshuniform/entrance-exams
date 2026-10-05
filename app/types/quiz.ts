@@ -30,3 +30,25 @@ export interface MarkupSegment {
   text: string
   underline: boolean
 }
+
+/** 純文字（去掉 __ 標記後）的字元區間，end 不含 */
+export interface TextRange {
+  start: number
+  end: number
+}
+
+export interface HighlightSegment {
+  text: string
+  /** 此片段在純文字中的起始位置 */
+  start: number
+  underline: boolean
+  highlight: boolean
+}
+
+export type ScratchTool = 'pen' | 'eraser'
+
+export interface ScratchStroke {
+  tool: ScratchTool
+  /** x 為畫布寬度比例（0–1），y 為 px */
+  points: [number, number][]
+}

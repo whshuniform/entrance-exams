@@ -11,9 +11,10 @@ test.describe('試作作答頁', () => {
     await quiz.pick('115-chinese-5', 'C')
     await quiz.pick('115-chinese-25', 'BE')
     await quiz.pick('115-chinese-26', 'ABD')
+    await quiz.pick('115-mathA-1', '2')
     await quiz.submitButton.click()
 
-    await expect(quiz.totalScore).toHaveText('14')
+    await expect(quiz.totalScore).toHaveText('19')
   })
 
   test('多選錯一個選項_應得部分分數並可重新作答', async ({ page }) => {

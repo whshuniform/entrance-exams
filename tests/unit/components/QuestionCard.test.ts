@@ -62,4 +62,39 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="question-score"]').text()).toContain('0')
     expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
+
+  it('QuestionCard_ClickEliminate_ShouldEmitOptionKey', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+
+    await wrapper.find('[data-test="eliminate-B"]').trigger('click')
+
+    expect(wrapper.emitted('eliminate')?.at(-1)).toEqual(['B'])
+  })
+
+  it('QuestionCard_EliminatedOption_ShouldBeCrossedOut', async () => {
+    const wrapper = await mountSuspended(QuestionCard, {
+      props: { question: single, modelValue: '', eliminated: ['B'] },
+    })
+
+    expect(wrapper.find('[data-test="option-B"]').attributes('data-eliminated')).toBe('true')
+    expect(wrapper.find('[data-test="option-A"]').attributes('data-eliminated')).toBeUndefined()
+    expect(wrapper.find('[data-test="eliminate-B"]').attributes('aria-pressed')).toBe('true')
+  })
+
+  it('QuestionCard_Highlights_ShouldMarkStemText', async () => {
+    const wrapper = await mountSuspended(QuestionCard, {
+      props: { question: single, modelValue: '', highlights: { 'q1:stem': [{ start: 2, end: 4 }] } },
+    })
+
+    expect(wrapper.find('mark').text()).toBe('讀音')
+  })
+
+  it('QuestionCard_ToggleScratch_ShouldShowScratchPad', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+    expect(wrapper.find('canvas').exists()).toBe(false)
+
+    await wrapper.find('[data-test="scratch-toggle"]').trigger('click')
+
+    expect(wrapper.find('canvas').exists()).toBe(true)
+  })
 })

@@ -73,3 +73,19 @@ describe('gradeQuestion — 多選題（n-2k 計分）', () => {
     expect(result.score).toBe(0)
   })
 })
+
+describe('gradeQuestion — 數字選項（數學）', () => {
+  const mathQuestion: QuizQuestion = {
+    id: 'math1', number: 1, type: 'single', stem: '期望值為何？',
+    options: ['1', '2', '3', '4', '5'].map(key => ({ key, text: key })),
+    answer: '2', points: 5,
+  }
+
+  it('gradeQuestion_NumericKeyCorrect_ShouldGetFullPoints', () => {
+    expect(gradeQuestion(mathQuestion, '2').score).toBe(5)
+  })
+
+  it('gradeQuestion_NumericKeyWrong_ShouldGetZero', () => {
+    expect(gradeQuestion(mathQuestion, '3').score).toBe(0)
+  })
+})
