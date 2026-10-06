@@ -97,13 +97,14 @@ test.describe('右下角繪畫工具列', () => {
     const question = quiz.question('115-mathA-1')
     const lastOption = await quiz.option('115-mathA-1', '5').boundingBox()
 
-    const toggle = question.getByTestId('scratch-toggle')
-    const toggleBox = await toggle.boundingBox()
+    const toggleBox = await question.getByTestId('scratch-toggle').boundingBox()
     expect(toggleBox!.y).toBeGreaterThanOrEqual(lastOption!.y + lastOption!.height - 1)
 
+    // 按下按鈕會捲動頁面，重新量位置
     const scratch = await quiz.openScratch('115-mathA-1')
     const scratchBox = await scratch.boundingBox()
-    expect(scratchBox!.y).toBeGreaterThanOrEqual(lastOption!.y + lastOption!.height - 1)
+    const lastOptionNow = await quiz.option('115-mathA-1', '5').boundingBox()
+    expect(scratchBox!.y).toBeGreaterThanOrEqual(lastOptionNow!.y + lastOptionNow!.height - 1)
   })
 
   test('原子筆_在計算紙寫算式_收起再打開筆跡應保留', async ({ page }) => {

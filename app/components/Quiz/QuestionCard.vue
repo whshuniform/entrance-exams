@@ -19,15 +19,6 @@
       <span :class="$style['question-card__number']">{{ props.question.number }}.</span>
       <span :class="$style['question-card__type']">{{ typeLabel }}</span>
       <span :class="$style['question-card__actions']">
-        <Button
-          data-test="scratch-toggle"
-          :label="showScratch ? '收起計算紙' : '計算紙'"
-          size="small"
-          severity="secondary"
-          text
-          :aria-expanded="showScratch ? 'true' : 'false'"
-          @click="showScratch = !showScratch"
-        />
         <span
           v-if="props.submitted && props.result"
           data-test="question-score"
@@ -102,6 +93,18 @@
       </li>
     </ul>
 
+    <!-- 計算紙放在所有選項下面 -->
+    <div :class="$style['question-card__scratch-bar']">
+      <Button
+        data-test="scratch-toggle"
+        :label="showScratch ? '收起計算紙' : '計算紙'"
+        size="small"
+        severity="secondary"
+        text
+        :aria-expanded="showScratch ? 'true' : 'false'"
+        @click="showScratch = !showScratch"
+      />
+    </div>
     <div v-if="showScratch" data-test="scratch-area" aria-label="計算紙" :class="$style['question-card__scratch']">
       <span v-if="!isDrawing" :class="$style['question-card__scratch-hint']">點右下角的「原子筆」就能在這裡寫算式</span>
     </div>
@@ -347,10 +350,15 @@ function pickMulti(values: string[]) {
     flex: 1;
   }
 
+  &__scratch-bar {
+    margin-top: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
   // 方格計算紙
   &__scratch {
     height: 15rem;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
     padding: 0.4rem 0.6rem;
 
     @include sketch-border(1.5px, true);
