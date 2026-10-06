@@ -78,6 +78,11 @@ export class QuizPage {
     return this.question(id).getByTestId(`option-${key}`)
   }
 
+  /** 數學選項是 1～5，其他科是 A～E */
+  firstOptionKey(id: string) {
+    return id.includes('mathA') ? '1' : 'A'
+  }
+
   stem(id: string) {
     return this.question(id).getByTestId('stem')
   }

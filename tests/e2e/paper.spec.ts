@@ -62,3 +62,41 @@ test.describe('題型標示跟試題 PDF 一樣', () => {
     await expect(page.locator('article[data-test^="question-"]').filter({ hasText: /單選|多選/ })).toHaveCount(0)
   })
 })
+
+async function boxOf(locator: Locator) {
+  const box = await locator.boundingBox()
+  if (!box) throw new Error('element not visible')
+  return box
+}
+
+test.describe('題號與選項排法跟試題 PDF 一樣', () => {
+  for (const id of ['115-chinese-1', '115-chinese-25', '115-mathA-1']) {
+    test(`${id}_題目接在題號後面同一行_選項和題目第一個字對齊`, async ({ page }) => {
+      const quiz = new QuizPage(page)
+      await quiz.goto()
+      await quiz.showQuestion(id)
+
+      const number = await boxOf(quiz.question(id).getByTestId('number'))
+      const stem = await boxOf(quiz.stem(id))
+      // 題號的中線落在題目第一行內，且題目在題號右邊
+      expect(number.y + number.height / 2).toBeGreaterThan(stem.y)
+      expect(number.y + number.height / 2).toBeLessThan(stem.y + 40)
+      expect(stem.x).toBeGreaterThanOrEqual(number.x + number.width - 1)
+
+      // 選項（含框框）從題目第一個字的位置開始，像原卷的縮排
+      const option = await boxOf(quiz.option(id, quiz.firstOptionKey(id)).getByTestId('option'))
+      expect(Math.abs(option.x - stem.x)).toBeLessThan(2)
+    })
+  }
+
+  test('選項之間_間距不超過 4px', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+
+    const rows = []
+    for (const key of ['A', 'B', 'C', 'D']) rows.push(await boxOf(quiz.option('115-chinese-1', key).getByTestId('option')))
+    for (let i = 1; i < rows.length; i++) {
+      expect(rows[i]!.y - (rows[i - 1]!.y + rows[i - 1]!.height)).toBeLessThanOrEqual(4.5)
+    }
+  })
+})
