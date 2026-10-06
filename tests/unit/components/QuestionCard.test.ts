@@ -79,6 +79,15 @@ describe('QuestionCard', () => {
     expect(wrapper.find('mark').text()).toBe('讀音')
   })
 
+  it('QuestionCard_ScratchToggle_ShouldSitBelowAllOptions', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+    const lastOption = wrapper.find('[data-test="option-D"]').element
+    const toggle = wrapper.find('[data-test="scratch-toggle"]').element
+
+    expect(wrapper.find('header [data-test="scratch-toggle"]').exists()).toBe(false)
+    expect(lastOption.compareDocumentPosition(toggle) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
   it('QuestionCard_ToggleScratch_ShouldShowScratchArea', async () => {
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
     expect(wrapper.find('[data-test="scratch-area"]').exists()).toBe(false)
