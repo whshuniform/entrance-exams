@@ -1,14 +1,62 @@
-import type { Locator, Page } from '@playwright/test'
+import { expect, type Locator, type Page } from '@playwright/test'
 
 export class QuizPage {
   readonly submitButton: Locator
   readonly resetButton: Locator
-  readonly totalScore: Locator
+  readonly pager: Locator
+  readonly nextButton: Locator
+  readonly prevButton: Locator
+  readonly resultSheet: Locator
 
   constructor(private readonly page: Page) {
     this.submitButton = page.getByRole('button', { name: '交卷批改' })
     this.resetButton = page.getByRole('button', { name: '重新作答' })
-    this.totalScore = page.getByTestId('total-score')
+    this.pager = page.getByTestId('pager')
+    this.nextButton = page.getByTestId('next-page')
+    this.prevButton = page.getByTestId('prev-page')
+    this.resultSheet = page.getByTestId('result-sheet')
+  }
+
+  /** 目前這一頁的題目 id；成績頁為 result */
+  async currentPage() {
+    return this.pager.getAttribute('data-question')
+  }
+
+  private async flip(button: Locator) {
+    const before = await this.currentPage()
+    await button.click()
+    await expect(this.pager).not.toHaveAttribute('data-question', before ?? '')
+  }
+
+  async next() {
+    await this.flip(this.nextButton)
+  }
+
+  async prev() {
+    await this.flip(this.prevButton)
+  }
+
+  /** 一頁一題：往後或往前翻到該題 */
+  async showQuestion(id: string) {
+    for (let i = 0; i < 20 && (await this.currentPage()) !== id; i++) {
+      if (!(await this.nextButton.isVisible())) break
+      await this.next()
+    }
+    for (let i = 0; i < 20 && (await this.currentPage()) !== id; i++) {
+      await this.prev()
+    }
+    await expect(this.question(id)).toBeVisible()
+  }
+
+  /** 翻到最後一頁交卷 */
+  async submit() {
+    while (!(await this.submitButton.isVisible())) await this.next()
+    await this.submitButton.click()
+    await expect(this.resultSheet).toBeVisible()
+  }
+
+  report(subject: string) {
+    return this.page.getByTestId(`report-${subject}`)
   }
 
   async goto() {
@@ -20,6 +68,7 @@ export class QuizPage {
   }
 
   async pick(id: string, keys: string) {
+    await this.showQuestion(id)
     for (const key of keys) {
       await this.question(id).getByTestId(`option-${key}`).locator('label').click()
     }
@@ -99,6 +148,7 @@ export class QuizPage {
   }
 
   async openScratch(id: string) {
+    await this.showQuestion(id)
     await this.question(id).getByTestId('scratch-toggle').click()
     return this.question(id).getByTestId('scratch-area')
   }

@@ -60,6 +60,7 @@ test.describe('右下角繪畫工具列', () => {
     const quiz = new QuizPage(page)
     await quiz.goto()
     await quiz.useTool('highlighter')
+    await quiz.showQuestion('115-chinese-2')
 
     await quiz.dragAcross(quiz.optionText('115-chinese-2', 'B'), 0.05, 0.7)
 
@@ -94,6 +95,7 @@ test.describe('右下角繪畫工具列', () => {
   test('計算紙_按鈕和紙都在所有選項下面', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
+    await quiz.showQuestion('115-mathA-1')
     const question = quiz.question('115-mathA-1')
     const lastOption = await quiz.option('115-mathA-1', '5').boundingBox()
 
@@ -126,19 +128,19 @@ test.describe('右下角繪畫工具列', () => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    await quiz.useTool('pen')
-    const scratch = await quiz.openScratch('115-mathA-1')
-    await quiz.scribble(scratch)
     await quiz.useTool('highlighter')
     await quiz.dragAcross(quiz.stem('115-chinese-1'))
     await expect(quiz.stem('115-chinese-1').locator('mark').first()).toBeVisible()
+    await quiz.useTool('eraser')
+    await quiz.dragAcross(quiz.stem('115-chinese-1'), 0, 0.7)
+    await expect(quiz.stem('115-chinese-1').locator('mark')).toHaveCount(0)
 
+    await quiz.useTool('pen')
+    const scratch = await quiz.openScratch('115-mathA-1')
+    await quiz.scribble(scratch)
     await quiz.useTool('eraser')
     await quiz.scribble(scratch)
-    await quiz.dragAcross(quiz.stem('115-chinese-1'), 0, 0.7)
-
     expect(await quiz.inkPixels('115-mathA-1')).toBe(0)
-    await expect(quiz.stem('115-chinese-1').locator('mark')).toHaveCount(0)
   })
 
   test('關閉繪畫_畫過的線保留_點選項恢復作答', async ({ page }) => {

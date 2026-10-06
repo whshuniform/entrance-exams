@@ -18,6 +18,13 @@ describe('sample115Papers', () => {
     ])
   })
 
+  it('Papers_ShouldUse115LevelTablesWithFullMarks100', () => {
+    const [chinese, math] = sample115Papers
+
+    expect([chinese!.year, chinese!.fullMarks, chinese!.stats.total]).toEqual([115, 100, 118026])
+    expect([math!.year, math!.fullMarks, math!.stats.total]).toEqual([115, 100, 90579])
+  })
+
   it('Papers_EachGroup_ShouldOnlyHoldItsQuestionType', () => {
     for (const group of groups) {
       const type = group.title.includes('單選題') ? 'single' : 'multi'

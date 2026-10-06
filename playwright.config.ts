@@ -11,6 +11,8 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     testIdAttribute: 'data-test',
     trace: 'on-first-retry',
+    // 翻頁動畫在「減少動態效果」時關閉，測試才不用等動畫
+    contextOptions: { reducedMotion: 'reduce' },
     launchOptions: process.env.PLAYWRIGHT_CHROMIUM_PATH
       ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH }
       : {},

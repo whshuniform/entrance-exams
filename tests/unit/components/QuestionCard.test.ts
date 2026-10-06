@@ -105,6 +105,18 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="scratch-area"]').exists()).toBe(true)
   })
 
+  it('QuestionCard_ScratchOpenModel_ShouldFollowParent', async () => {
+    // 翻頁後再回來，計算紙開關由外層記住
+    const wrapper = await mountSuspended(QuestionCard, {
+      props: { question: single, modelValue: '', scratchOpen: true },
+    })
+    expect(wrapper.find('[data-test="scratch-area"]').exists()).toBe(true)
+
+    await wrapper.find('[data-test="scratch-toggle"]').trigger('click')
+
+    expect(wrapper.emitted('update:scratchOpen')?.at(-1)).toEqual([false])
+  })
+
   it('QuestionCard_Render_ShouldHaveInkLayerOverCard', async () => {
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
 
