@@ -56,3 +56,23 @@ export interface InkStroke {
   /** x 為卡片寬度比例（0–1），y 為距卡片上緣的 px */
   points: [number, number][]
 }
+
+/** 試卷裡的一個題型段落，例如「一、單選題（占48分）」 */
+export interface QuizGroup {
+  title: string
+  /** 標題下的說明，例如「說明：第1題至第24題，每題2分。」 */
+  note: string
+  questions: QuizQuestion[]
+}
+
+/** 試卷的一個部分，例如「第壹部分、選擇題（占76分）」 */
+export interface QuizPart {
+  title: string
+  groups: QuizGroup[]
+}
+
+/** 一科試卷，依原試題 PDF 的部分、題型分段 */
+export interface QuizPaper {
+  subject: string
+  parts: QuizPart[]
+}

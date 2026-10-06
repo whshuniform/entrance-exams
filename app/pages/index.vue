@@ -11,23 +11,31 @@
       </p>
     </header>
 
-    <section v-for="section in sections" :key="section.title">
-      <h2 :class="$style['quiz-page__section']">{{ section.title }}</h2>
-      <QuizQuestionCard
-        v-for="question in section.questions"
-        :key="question.id"
-        :question="question"
-        :model-value="answers[question.id] ?? ''"
-        :submitted="submitted"
-        :result="results[question.id]"
-        :highlights="highlights"
-        :tool="tool"
-        :ink="ink[question.id]"
-        @update:model-value="setAnswer(question.id, $event)"
-        @mark="markText"
-        @erase="eraseText"
-        @update:ink="setInk(question.id, $event)"
-      />
+    <!-- 跟原試題 PDF 一樣：科目 → 部分 → 題型標題與說明 → 題目 -->
+    <section v-for="paper in papers" :key="paper.subject">
+      <h2 :class="$style['quiz-page__section']">{{ paper.subject }}</h2>
+      <template v-for="part in paper.parts" :key="part.title">
+        <h3 :class="$style['quiz-page__part']">{{ part.title }}</h3>
+        <template v-for="group in part.groups" :key="group.title">
+          <h4 :class="$style['quiz-page__group']">{{ group.title }}</h4>
+          <p :class="$style['quiz-page__note']">{{ group.note }}</p>
+          <QuizQuestionCard
+            v-for="question in group.questions"
+            :key="question.id"
+            :question="question"
+            :model-value="answers[question.id] ?? ''"
+            :submitted="submitted"
+            :result="results[question.id]"
+            :highlights="highlights"
+            :tool="tool"
+            :ink="ink[question.id]"
+            @update:model-value="setAnswer(question.id, $event)"
+            @mark="markText"
+            @erase="eraseText"
+            @update:ink="setInk(question.id, $event)"
+          />
+        </template>
+      </template>
     </section>
 
     <section :class="$style['quiz-page__footer']">
@@ -46,15 +54,11 @@
 </template>
 
 <script setup lang="ts">
-import { sample115Chinese } from '~/data/sample-115-chinese'
-import { sample115MathA } from '~/data/sample-115-math'
+import { sample115Papers } from '~/data/sample-115-papers'
 import type { DrawTool } from '~/types/quiz'
 
-const sections = [
-  { title: '國語文綜合能力測驗', questions: sample115Chinese },
-  { title: '數學A', questions: sample115MathA },
-]
-const questions = sections.flatMap(section => section.questions)
+const papers = sample115Papers
+const questions = paperQuestions(papers)
 
 const { answers, submitted, maxScore, answeredCount, results, totalScore, setAnswer, submit, reset } =
   useQuiz(questions)
@@ -113,6 +117,22 @@ function onReset() {
     margin: 2.5rem 0 1.25rem;
     font-size: 1.25rem;
     color: var(--color-pencil);
+  }
+
+  &__part {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  &__group {
+    margin: 1.5rem 0 0;
+    font-size: 1rem;
+  }
+
+  &__note {
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
   }
 
   &__tip {

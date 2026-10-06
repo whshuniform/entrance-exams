@@ -17,7 +17,6 @@
   >
     <header :class="$style['question-card__header']">
       <span :class="$style['question-card__number']">{{ props.question.number }}.</span>
-      <span :class="$style['question-card__type']">{{ typeLabel }}</span>
       <span :class="$style['question-card__actions']">
         <span
           v-if="props.submitted && props.result"
@@ -162,7 +161,6 @@ const drawing = useCardDrawing({
   onErase: (id, range) => emit('erase', id, range),
 })
 
-const typeLabel = computed(() => (props.question.type === 'single' ? '單選' : '多選'))
 const selectedKeys = computed(() => props.modelValue.split('').filter(Boolean))
 const scoreText = computed(() => {
   const score = Number((props.result?.score ?? 0).toFixed(2))
@@ -257,14 +255,6 @@ function pickMulti(values: string[]) {
   &__number {
     font-size: 1.5rem;
     font-weight: 700;
-  }
-
-  &__type {
-    padding: 0 0.6em;
-    border: 1.5px dashed var(--color-pencil);
-    border-radius: 999px 900px 950px 990px;
-    font-size: 0.85rem;
-    color: var(--color-pencil);
   }
 
   &__actions {
