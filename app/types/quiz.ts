@@ -112,15 +112,21 @@ export interface QuizSheet {
   pageCount: number
 }
 
+export interface NumberRange {
+  min: number
+  max: number
+}
+
 /** 交卷後的一科成績 */
 export interface SubjectReport {
   subject: string
   /** 試作題目的得分與滿分 */
   earned: number
   sampleMax: number
-  /** 依得分比例換算成整卷的分數 */
-  projected: number
   fullMarks: number
-  level: number
+  /** 整卷分數範圍：沒考到的題目全錯（min）到全對（max） */
+  scoreRange: NumberRange
+  levelRange: NumberRange
+  /** 最好名次取最高級分、最差名次取最低級分 */
   rank: RankRange
 }

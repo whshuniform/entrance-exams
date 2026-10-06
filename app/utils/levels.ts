@@ -1,4 +1,6 @@
-import type { GradeResult, LevelStats, QuizPaper, RankRange, SubjectReport } from '~/types/quiz'
+import type { GradeResult, LevelStats, NumberRange, QuizPaper, RankRange, SubjectReport } from '~/types/quiz'
+
+const round2 = (value: number) => Math.round(value * 100) / 100
 
 /** 原始得分 → 級分（依該年官方級分表；0 分為 0 級分） */
 export function toLevel(stats: LevelStats, raw: number): number {
@@ -14,26 +16,30 @@ export function rankRange(stats: LevelStats, level: number): RankRange {
   return { best: above + 1, worst: above + (stats.counts[level] ?? 0), total: stats.total }
 }
 
-/** 試作只有幾題：依得分比例換算成整卷分數（四捨五入到小數第二位） */
-export function projectScore(earned: number, sampleMax: number, fullMarks: number): number {
-  if (sampleMax <= 0) return 0
-  return Math.round((earned / sampleMax) * fullMarks * 100) / 100
+/** 級分落在 minLevel～maxLevel 時的名次範圍 */
+export function rankBetween(stats: LevelStats, minLevel: number, maxLevel: number): RankRange {
+  return { best: rankRange(stats, maxLevel).best, worst: rankRange(stats, minLevel).worst, total: stats.total }
 }
 
-/** 一科的成績：試作得分 → 換算整卷 → 級分 → 全國名次 */
+/** 試作只有部分題目：沒考到的題目全錯到全對，得到整卷分數的範圍 */
+export function scoreRange(earned: number, sampleMax: number, fullMarks: number): NumberRange {
+  return { min: round2(earned), max: round2(earned + Math.max(fullMarks - sampleMax, 0)) }
+}
+
+/** 一科的成績：試作得分 → 整卷分數範圍 → 級分範圍 → 全國名次範圍 */
 export function buildReport(paper: QuizPaper, results: Record<string, GradeResult>): SubjectReport {
   const questions = paperQuestions([paper])
-  const earned = Math.round(questions.reduce((sum, q) => sum + (results[q.id]?.score ?? 0), 0) * 100) / 100
+  const earned = round2(questions.reduce((sum, q) => sum + (results[q.id]?.score ?? 0), 0))
   const sampleMax = questions.reduce((sum, q) => sum + q.points, 0)
-  const projected = projectScore(earned, sampleMax, paper.fullMarks)
-  const level = toLevel(paper.stats, projected)
+  const scores = scoreRange(earned, sampleMax, paper.fullMarks)
+  const levelRange = { min: toLevel(paper.stats, scores.min), max: toLevel(paper.stats, scores.max) }
   return {
     subject: paper.subject,
     earned,
     sampleMax,
-    projected,
     fullMarks: paper.fullMarks,
-    level,
-    rank: rankRange(paper.stats, level),
+    scoreRange: scores,
+    levelRange,
+    rank: rankBetween(paper.stats, levelRange.min, levelRange.max),
   }
 }
