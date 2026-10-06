@@ -30,6 +30,17 @@ const HandDrawnPreset = definePreset(Aura, {
       },
     },
   },
+  // 選擇題框框放大到 2rem，手指好點
+  components: {
+    radiobutton: {
+      root: { width: '2rem', height: '2rem' },
+      icon: { size: '1rem' },
+    },
+    checkbox: {
+      root: { width: '2rem', height: '2rem' },
+      icon: { size: '1.25rem' },
+    },
+  },
 })
 
 export default HandDrawnPreset

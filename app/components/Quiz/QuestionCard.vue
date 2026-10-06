@@ -1,7 +1,6 @@
 <template>
   <article
     ref="card"
-    class="quiz-question-card"
     :class="[
       $style['question-card'],
       props.question.number % 2 === 0 && $style['question-card--tilt'],
@@ -309,8 +308,10 @@ function pickMulti(values: string[]) {
     }
   }
 
+  // 整列都能點，至少 3rem 高，手指好點
   &__label {
     flex: 1;
+    min-height: 3rem;
     display: flex;
     align-items: flex-start;
     gap: 0.6rem;
@@ -348,7 +349,7 @@ function pickMulti(values: string[]) {
 
   // 方格計算紙
   &__scratch {
-    height: 15rem;
+    height: 26rem;
     margin-top: 0.5rem;
     padding: 0.4rem 0.6rem;
 
@@ -390,13 +391,5 @@ function pickMulti(values: string[]) {
   @include respond-to('xs') {
     padding: 1rem 1rem 0.75rem;
   }
-}
-</style>
-
-<!-- 覆寫 PrimeVue → 不加 module，限縮在根 class 下 -->
-<style lang="scss">
-.quiz-question-card .p-radiobutton,
-.quiz-question-card .p-checkbox {
-  margin-top: 0.3em;
 }
 </style>
