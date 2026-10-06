@@ -14,9 +14,10 @@
     @pointercancel="drawing.onPointerCancel"
     @click.capture="drawing.onClickCapture"
   >
-    <header :class="$style['question-card__header']">
-      <span :class="$style['question-card__number']">{{ props.question.number }}.</span>
-      <span :class="$style['question-card__actions']">
+    <!-- 跟原卷一樣：題目接在題號後面，換行和選項都對齊題目第一個字 -->
+    <div :class="$style['question-card__body']">
+      <span data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
+      <div :class="$style['question-card__content']">
         <span
           v-if="props.submitted && props.result"
           data-test="question-score"
@@ -24,85 +25,86 @@
         >
           {{ scoreText }}
         </span>
-      </span>
-    </header>
 
-    <p data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
-      <QuizMarkupText :text="props.question.stem" :ranges="rangesOf('stem')" />
-    </p>
+        <p data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
+          <QuizMarkupText :text="props.question.stem" :ranges="rangesOf('stem')" />
+        </p>
 
-    <ol v-if="props.question.passage?.length" :class="$style['question-card__passage']">
-      <li v-for="(line, index) in props.question.passage" :key="line" :data-field="fieldId(`passage:${index}`)">
-        <QuizMarkupText :text="line" :ranges="rangesOf(`passage:${index}`)" />
-      </li>
-    </ol>
+        <ol v-if="props.question.passage?.length" :class="$style['question-card__passage']">
+          <li v-for="(line, index) in props.question.passage" :key="line" :data-field="fieldId(`passage:${index}`)">
+            <QuizMarkupText :text="line" :ranges="rangesOf(`passage:${index}`)" />
+          </li>
+        </ol>
 
-    <ul :class="$style['question-card__options']">
-      <li
-        v-for="option in props.question.options"
-        :key="option.key"
-        :data-test="`option-${option.key}`"
-        :data-state="optionState(option.key)"
-        :class="[
-          $style['question-card__option'],
-          optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
-        ]"
-      >
-        <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
-          <RadioButton
-            v-if="props.question.type === 'single'"
-            :input-id="inputId(option.key)"
-            :name="props.question.id"
-            :value="option.key"
-            :model-value="props.modelValue"
-            :disabled="props.submitted"
-            @update:model-value="pickSingle"
-          />
-          <Checkbox
-            v-else
-            :input-id="inputId(option.key)"
-            :name="props.question.id"
-            :value="option.key"
-            :model-value="selectedKeys"
-            :disabled="props.submitted"
-            @update:model-value="pickMulti"
-          />
-          <span :class="$style['question-card__key']">
-            ({{ option.key }})
-            <svg
-              v-if="optionState(option.key) === 'answer' || optionState(option.key) === 'hit'"
-              :class="$style['question-card__circle']"
-              viewBox="0 0 44 34"
-              aria-hidden="true"
-            >
-              <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
-            </svg>
-          </span>
-          <span
-            data-test="option-text"
-            :data-field="fieldId(`option:${option.key}`)"
-            :class="$style['question-card__text']"
+        <ul :class="$style['question-card__options']">
+          <li
+            v-for="option in props.question.options"
+            :key="option.key"
+            :data-test="`option-${option.key}`"
+            :data-state="optionState(option.key)"
+            :class="[
+              $style['question-card__option'],
+              optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
+            ]"
           >
-            <span :class="$style['question-card__mark']">
-              <QuizMarkupText :text="option.text" :ranges="rangesOf(`option:${option.key}`)" />
-            </span>
-          </span>
-        </label>
-      </li>
-    </ul>
+            <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
+              <RadioButton
+                v-if="props.question.type === 'single'"
+                :input-id="inputId(option.key)"
+                :name="props.question.id"
+                :value="option.key"
+                :model-value="props.modelValue"
+                :disabled="props.submitted"
+                @update:model-value="pickSingle"
+              />
+              <Checkbox
+                v-else
+                :input-id="inputId(option.key)"
+                :name="props.question.id"
+                :value="option.key"
+                :model-value="selectedKeys"
+                :disabled="props.submitted"
+                @update:model-value="pickMulti"
+              />
+              <span :class="$style['question-card__key']">
+                ({{ option.key }})
+                <svg
+                  v-if="optionState(option.key) === 'answer' || optionState(option.key) === 'hit'"
+                  :class="$style['question-card__circle']"
+                  viewBox="0 0 44 34"
+                  aria-hidden="true"
+                >
+                  <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
+                </svg>
+              </span>
+              <span
+                data-test="option-text"
+                :data-field="fieldId(`option:${option.key}`)"
+                :class="$style['question-card__text']"
+              >
+                <span :class="$style['question-card__mark']">
+                  <QuizMarkupText :text="option.text" :ranges="rangesOf(`option:${option.key}`)" />
+                </span>
+              </span>
+            </label>
+          </li>
+        </ul>
 
-    <!-- 計算紙放在所有選項下面 -->
-    <div :class="$style['question-card__scratch-bar']">
-      <Button
-        data-test="scratch-toggle"
-        :label="showScratch ? '收起計算紙' : '計算紙'"
-        size="small"
-        severity="secondary"
-        text
-        :aria-expanded="showScratch ? 'true' : 'false'"
-        @click="showScratch = !showScratch"
-      />
+        <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
+        <div :class="$style['question-card__scratch-bar']">
+          <Button
+            data-test="scratch-toggle"
+            :label="showScratch ? '收起計算紙' : '計算紙'"
+            size="small"
+            severity="secondary"
+            text
+            :aria-expanded="showScratch ? 'true' : 'false'"
+            @click="showScratch = !showScratch"
+          />
+        </div>
+      </div>
     </div>
+
     <div v-if="showScratch" data-test="scratch-area" aria-label="計算紙" :class="$style['question-card__scratch']">
       <span v-if="!isDrawing" :class="$style['question-card__scratch-hint']">點右下角的「原子筆」就能在這裡寫算式</span>
     </div>
@@ -246,25 +248,23 @@ function pickMulti(values: string[]) {
     cursor: crosshair;
   }
 
-  &__header {
-    display: flex;
+  // 題號一欄、題目與選項一欄：題目接在題號後面，換行對齊題目第一個字
+  &__body {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: baseline;
-    gap: 0.75rem;
+    column-gap: 0.4rem;
   }
 
   &__number {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
   }
 
-  &__actions {
-    margin-left: auto;
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-
+  // 老師批改的紅字分數，浮在題目右上，題目文字繞開
   &__score {
+    float: right;
+    margin: -0.5rem 0 0 0.75rem;
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-pen-red);
@@ -276,7 +276,7 @@ function pickMulti(values: string[]) {
   }
 
   &__stem {
-    margin: 0.5rem 0;
+    margin: 0 0 0.5rem;
   }
 
   &__passage {
@@ -293,13 +293,11 @@ function pickMulti(values: string[]) {
     list-style: none;
   }
 
+  // 選項和題目第一個字對齊，上下只留一點間距
   &__option {
-    margin: 0.25rem 0;
-    padding: 0.25rem 0.5rem;
+    padding: 0.125rem 0;
     display: flex;
     align-items: flex-start;
-    gap: 0.25rem;
-    border-radius: var(--radius-sketch-alt);
 
     &--wrong {
       text-decoration: line-through;
@@ -343,8 +341,7 @@ function pickMulti(values: string[]) {
   }
 
   &__scratch-bar {
-    margin-top: 0.5rem;
-    padding-left: 0.25rem;
+    margin-top: 0.25rem;
   }
 
   // 方格計算紙
