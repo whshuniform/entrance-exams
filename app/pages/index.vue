@@ -11,41 +11,68 @@
       </p>
     </header>
 
-    <!-- 跟原試題 PDF 一樣：科目 → 部分 → 題型標題與說明 → 題目 -->
-    <section v-for="paper in papers" :key="paper.subject">
-      <h2 :class="$style['quiz-page__section']">{{ paper.subject }}</h2>
-      <template v-for="part in paper.parts" :key="part.title">
-        <h3 :class="$style['quiz-page__part']">{{ part.title }}</h3>
-        <template v-for="group in part.groups" :key="group.title">
-          <h4 :class="$style['quiz-page__group']">{{ group.title }}</h4>
-          <p :class="$style['quiz-page__note']">{{ group.note }}</p>
+    <!-- 像真實試卷：一頁一題，翻頁做下一題；標題跟原試題 PDF 一樣只印在段落開頭 -->
+    <div ref="sheetTop" :class="$style['quiz-page__desk']">
+      <Transition
+        mode="out-in"
+        :enter-from-class="$style[`flip-${direction}-enter-from`]"
+        :enter-active-class="$style['flip-enter-active']"
+        :leave-active-class="$style['flip-leave-active']"
+        :leave-to-class="$style[`flip-${direction}-leave-to`]"
+      >
+        <section
+          v-if="currentSheet"
+          :key="currentSheet.question.id"
+          data-test="sheet"
+         
+        >
+          <header data-test="running-header" :class="$style['quiz-page__running']">
+            <span>{{ currentSheet.paper.year }}年學測　{{ currentSheet.paper.subject }}</span>
+            <span>第 {{ currentSheet.pageNumber }} 頁 共 {{ currentSheet.pageCount }} 頁</span>
+          </header>
+          <h3 v-if="currentSheet.startsPart" :class="$style['quiz-page__part']">{{ currentSheet.part.title }}</h3>
+          <template v-if="currentSheet.startsGroup">
+            <h4 :class="$style['quiz-page__group']">{{ currentSheet.group.title }}</h4>
+            <p :class="$style['quiz-page__note']">{{ currentSheet.group.note }}</p>
+          </template>
           <QuizQuestionCard
-            v-for="question in group.questions"
-            :key="question.id"
-            :question="question"
-            :model-value="answers[question.id] ?? ''"
+            :question="currentSheet.question"
+            :model-value="answers[currentSheet.question.id] ?? ''"
             :submitted="submitted"
-            :result="results[question.id]"
+            :result="results[currentSheet.question.id]"
             :highlights="highlights"
             :tool="tool"
-            :ink="ink[question.id]"
-            @update:model-value="setAnswer(question.id, $event)"
+            :ink="ink[currentSheet.question.id]"
+            :scratch-open="scratchOpen[currentSheet.question.id] ?? false"
+            @update:model-value="setAnswer(currentSheet.question.id, $event)"
             @mark="markText"
             @erase="eraseText"
-            @update:ink="setInk(question.id, $event)"
+            @update:ink="setInk(currentSheet.question.id, $event)"
+            @update:scratch-open="setScratchOpen(currentSheet.question.id, $event)"
           />
-        </template>
-      </template>
-    </section>
+        </section>
+        <section v-else key="result" data-test="result-sheet">
+          <QuizResultSheet :reports="reports" />
+        </section>
+      </Transition>
+    </div>
 
-    <section :class="$style['quiz-page__footer']">
-      <div v-if="submitted" :class="$style['quiz-page__result']">
-        <span :class="$style['quiz-page__total']" data-test="total-score">{{ formatScore(totalScore) }}</span>
-        <span :class="$style['quiz-page__max']">/ {{ maxScore }} 分</span>
-      </div>
-      <Button v-if="!submitted" label="交卷批改" @click="submit" />
+    <nav
+      data-test="pager"
+      :data-question="currentSheet ? currentSheet.question.id : 'result'"
+      aria-label="翻頁"
+      :class="$style['quiz-page__pager']"
+    >
+      <Button data-test="prev-page" label="上一頁" severity="secondary" :disabled="isFirst" @click="flip(prev)" />
+      <Button
+        v-if="!isLast"
+        data-test="next-page"
+        :label="submitted && index === sheets.length - 1 ? '看成績' : '下一頁'"
+        @click="flip(next)"
+      />
+      <Button v-else-if="!submitted" label="交卷批改" @click="onSubmit" />
       <Button v-else label="重新作答" severity="secondary" @click="onReset" />
-    </section>
+    </nav>
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
 
@@ -59,21 +86,45 @@ import type { DrawTool } from '~/types/quiz'
 
 const papers = sample115Papers
 const questions = paperQuestions(papers)
+const sheets = buildPages(papers)
 
-const { answers, submitted, maxScore, answeredCount, results, totalScore, setAnswer, submit, reset } =
-  useQuiz(questions)
+const { answers, submitted, answeredCount, results, setAnswer, submit, reset } = useQuiz(questions)
 const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 /** 右下角工具列，預設關閉繪畫 */
 const tool = ref<DrawTool>('off')
+/** 每題計算紙開著與否，翻頁回來仍記得 */
+const scratchOpen = ref<Record<string, boolean>>({})
 
-function formatScore(score: number) {
-  return String(Number(score.toFixed(2)))
+// 交卷後多一頁成績單
+const pageCount = computed(() => sheets.length + (submitted.value ? 1 : 0))
+const { index, direction, isFirst, isLast, goTo, next, prev } = usePaging(() => pageCount.value)
+const currentSheet = computed(() => sheets[index.value])
+const reports = computed(() => papers.map(paper => buildReport(paper, results.value)))
+
+const sheetTop = ref<HTMLElement | null>(null)
+
+/** 翻頁後若題目頂端已捲出畫面，捲回這一頁的開頭 */
+function flip(action: () => void) {
+  action()
+  const top = sheetTop.value?.getBoundingClientRect().top ?? 0
+  if (top < 0) sheetTop.value?.scrollIntoView({ block: 'start' })
+}
+
+function setScratchOpen(id: string, open: boolean) {
+  scratchOpen.value = { ...scratchOpen.value, [id]: open }
+}
+
+function onSubmit() {
+  submit()
+  flip(() => goTo(sheets.length))
 }
 
 function onReset() {
   reset()
   clearAll()
+  scratchOpen.value = {}
   tool.value = 'off'
+  goTo(0)
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
@@ -113,10 +164,29 @@ function onReset() {
     color: var(--color-pencil);
   }
 
-  &__section {
-    margin: 2.5rem 0 1.25rem;
-    font-size: 1.25rem;
+  &__desk {
+    // 翻頁時以左邊為書背
+    perspective: 1600px;
+  }
+
+  // 試卷頁首：像原卷每頁上方的「115年學測　科目　第 n 頁 共 m 頁」
+  &__running {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1.5px solid var(--color-pencil);
+    font-size: 0.85rem;
     color: var(--color-pencil);
+  }
+
+  &__pager {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
   }
 
   &__part {
@@ -145,33 +215,6 @@ function onReset() {
     color: var(--color-pencil);
   }
 
-  &__footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  &__result {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    color: var(--color-pen-red);
-    transform: rotate(-4deg);
-  }
-
-  &__total {
-    padding: 0 0.3em;
-    border-bottom: 3px double var(--color-pen-red);
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  &__max {
-    font-size: 1.5rem;
-  }
-
   &__source {
     margin-top: 2.5rem;
     font-size: 0.8rem;
@@ -186,6 +229,36 @@ function onReset() {
     &__title {
       font-size: 2rem;
     }
+  }
+}
+
+// 翻頁：往後翻時這頁以左邊為軸翻過去，往前翻時反過來
+.flip-leave-active,
+.flip-enter-active {
+  transform-origin: left center;
+  transition: transform 0.28s ease-in, opacity 0.28s ease-in;
+}
+
+.flip-enter-active {
+  transition-timing-function: ease-out;
+}
+
+.flip-next-leave-to,
+.flip-prev-enter-from {
+  opacity: 0;
+  transform: rotateY(-70deg);
+}
+
+.flip-next-enter-from,
+.flip-prev-leave-to {
+  opacity: 0;
+  transform: translateX(1.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-leave-active,
+  .flip-enter-active {
+    transition: none;
   }
 }
 </style>

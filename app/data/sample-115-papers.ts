@@ -1,6 +1,7 @@
 import type { QuizPaper } from '~/types/quiz'
 import { sample115Chinese } from './sample-115-chinese'
 import { sample115MathA } from './sample-115-math'
+import { stats115 } from './stats-115'
 
 /**
  * 試作用試卷：部分、題型標題與說明照抄 115 學年度學測試題（gsat/115/國綜、數學A 的 question.docx）。
@@ -9,6 +10,10 @@ import { sample115MathA } from './sample-115-math'
 export const sample115Papers: QuizPaper[] = [
   {
     subject: '國語文綜合能力測驗',
+    year: 115,
+    // 國綜整卷 100 分（第壹部分 76 分＋第貳部分 24 分），級分表為「國文」
+    fullMarks: 100,
+    stats: stats115.國文,
     parts: [
       {
         title: '第壹部分、選擇題（占76分）',
@@ -29,6 +34,9 @@ export const sample115Papers: QuizPaper[] = [
   },
   {
     subject: '數學A',
+    year: 115,
+    fullMarks: 100,
+    stats: stats115['數學A'],
     parts: [
       {
         title: '第壹部分、選擇（填）題（占85分）',

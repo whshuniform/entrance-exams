@@ -147,7 +147,8 @@ const emit = defineEmits<{
 
 const card = ref<HTMLElement | null>(null)
 const inkCanvas = ref<HTMLCanvasElement | null>(null)
-const showScratch = ref(false)
+/** 計算紙開關；外層有綁 v-model 時由外層記住（翻頁後回來仍開著） */
+const showScratch = defineModel<boolean>('scratchOpen', { default: false })
 const isDrawing = computed(() => props.tool !== 'off')
 
 const drawing = useCardDrawing({

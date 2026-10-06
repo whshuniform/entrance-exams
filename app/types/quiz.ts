@@ -71,8 +71,56 @@ export interface QuizPart {
   groups: QuizGroup[]
 }
 
+/** 某年某科的級分換算表與各級分人數（大考中心統計資料） */
+export interface LevelStats {
+  /** 由 15 級分排到 1 級分；原始得分「大於」above 才達該級分 */
+  levels: { level: number, above: number }[]
+  /** 各級分人數 */
+  counts: Record<number, number>
+  /** 到考人數 */
+  total: number
+}
+
+/** 全國名次區間：同級分的人無法再細分 */
+export interface RankRange {
+  best: number
+  worst: number
+  total: number
+}
+
 /** 一科試卷，依原試題 PDF 的部分、題型分段 */
 export interface QuizPaper {
   subject: string
+  year: number
+  /** 整卷滿分（換算級分用） */
+  fullMarks: number
+  stats: LevelStats
   parts: QuizPart[]
+}
+
+/** 試卷的一頁：一頁一題 */
+export interface QuizSheet {
+  paper: QuizPaper
+  part: QuizPart
+  group: QuizGroup
+  question: QuizQuestion
+  /** 部分、題型段落從這頁開始，要印標題 */
+  startsPart: boolean
+  startsGroup: boolean
+  /** 在該科試卷中的第幾頁、共幾頁 */
+  pageNumber: number
+  pageCount: number
+}
+
+/** 交卷後的一科成績 */
+export interface SubjectReport {
+  subject: string
+  /** 試作題目的得分與滿分 */
+  earned: number
+  sampleMax: number
+  /** 依得分比例換算成整卷的分數 */
+  projected: number
+  fullMarks: number
+  level: number
+  rank: RankRange
 }
