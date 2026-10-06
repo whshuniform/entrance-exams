@@ -24,7 +24,15 @@ describe('QuestionCard', () => {
     expect(wrapper.text()).toContain('1.')
     expect(wrapper.text()).toContain('下列讀音前後相同的是')
     expect(wrapper.findAll('[data-test="option"]')).toHaveLength(4)
-    expect(wrapper.text()).toContain('單選')
+  })
+
+  it('QuestionCard_Render_ShouldNotTagQuestionType', async () => {
+    // 跟試題 PDF 一樣，題型標在分段標題，不貼在每一題
+    const single1 = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+    const multi1 = await mountSuspended(QuestionCard, { props: { question: multi, modelValue: '' } })
+
+    expect(single1.text()).not.toContain('單選')
+    expect(multi1.text()).not.toContain('多選')
   })
 
   it('QuestionCard_Render_ShouldUnderlineMarkedWords', async () => {
