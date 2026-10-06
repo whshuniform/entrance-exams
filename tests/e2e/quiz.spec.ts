@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
 test.describe('試作作答頁', () => {
-  test('全部答對_交卷後應顯示各科15級分與全國名次', async ({ page }) => {
+  test('試作全對_交卷後應以沒考的題全錯到全對給級分與名次範圍', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
@@ -16,14 +16,15 @@ test.describe('試作作答頁', () => {
 
     const chinese = quiz.report('國語文綜合能力測驗')
     await expect(chinese.getByTestId('report-score')).toContainText('14 / 14')
-    await expect(chinese.getByTestId('report-level')).toHaveText('15 級分')
-    await expect(chinese.getByTestId('report-rank')).toContainText('第 1～2,563 名')
+    await expect(chinese.getByTestId('report-score')).toContainText('14～100')
+    await expect(chinese.getByTestId('report-level')).toHaveText('3～15 級分')
+    await expect(chinese.getByTestId('report-rank')).toContainText('第 1～117,401 名')
     const math = quiz.report('數學A')
-    await expect(math.getByTestId('report-level')).toHaveText('15 級分')
-    await expect(math.getByTestId('report-rank')).toContainText('第 1～1,112 名')
+    await expect(math.getByTestId('report-level')).toHaveText('1～15 級分')
+    await expect(math.getByTestId('report-rank')).toContainText('第 1～90,559 名')
   })
 
-  test('多選錯一個選項_應得部分分數換算級分並可重新作答', async ({ page }) => {
+  test('多選錯一個選項_應得部分分數給級分範圍並可重新作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
@@ -32,8 +33,9 @@ test.describe('試作作答頁', () => {
 
     const chinese = quiz.report('國語文綜合能力測驗')
     await expect(chinese.getByTestId('report-score')).toContainText('2.4 / 14')
-    await expect(chinese.getByTestId('report-level')).toHaveText('4 級分')
-    await expect(chinese.getByTestId('report-rank')).toContainText('第 115,251～116,472 名')
+    await expect(chinese.getByTestId('report-score')).toContainText('2.4～88.4')
+    await expect(chinese.getByTestId('report-level')).toHaveText('1～15 級分')
+    await expect(chinese.getByTestId('report-rank')).toContainText('第 1～118,018 名')
 
     await quiz.showQuestion('115-chinese-25')
     await expect(quiz.question('115-chinese-25').getByTestId('question-score')).toHaveText('+2.4')
