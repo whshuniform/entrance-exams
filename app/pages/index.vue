@@ -1,5 +1,5 @@
 <template>
-  <main :class="['container', $style['quiz-page']]">
+  <main :class="['container', $style['quiz-page'], !toolsVisible && $style['quiz-page--full']]">
     <header :class="$style['quiz-page__header']">
       <h1 :class="$style['quiz-page__title']">
         <span :class="$style['quiz-page__highlight']">學測練習本</span>
@@ -75,7 +75,7 @@
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
 
-    <QuizDrawToolbar v-model="tool" />
+    <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
   </main>
 </template>
 
@@ -91,6 +91,8 @@ const { answers, submitted, answeredCount, results, setAnswer, submit, reset } =
 const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 /** 右下角工具列，預設關閉繪畫 */
 const tool = ref<DrawTool>('off')
+/** 工具列隱藏時，題目往右延伸變滿版 */
+const toolsVisible = ref(true)
 /** 每題計算紙開著與否，翻頁回來仍記得 */
 const scratchOpen = ref<Record<string, boolean>>({})
 
@@ -139,11 +141,16 @@ function onReset() {
 <style module lang="scss">
 @use '@/assets/css/mixins' as *;
 
-// 右側留給固定在右下角的繪畫工具列，整頁往左移
+// 右側留給固定在右下角的繪畫工具列，整頁往左移；工具隱藏時左右對稱變滿版
 .quiz-page {
   max-width: 51rem;
   margin: 0 auto;
   padding: 2rem 6rem 3rem 3.5rem;
+  transition: padding-right 0.3s ease;
+
+  &--full {
+    padding-right: 3.5rem;
+  }
 
   &__header {
     margin-bottom: 2rem;
@@ -233,9 +240,17 @@ function onReset() {
     width: 100%;
     padding: 1.25rem 4.4rem 2rem 0.75rem;
 
+    &--full {
+      padding-right: 0.75rem;
+    }
+
     &__title {
       font-size: 2rem;
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 
