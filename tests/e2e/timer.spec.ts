@@ -54,16 +54,41 @@ test.describe('計時作答', () => {
     await expect(quiz.option('115-chinese-1', 'A').locator('input')).toBeEnabled()
   })
 
-  test('計時中往下捲動_倒數一直看得到', async ({ page }) => {
+  test('倒數固定在畫面最上方的細長條_往下捲也停在最上方', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto({ minutes: 10 })
+    const viewport = page.viewportSize()!
+
+    const bar = (await quiz.timer.boundingBox())!
+    expect(bar.y).toBeLessThanOrEqual(1)
+    expect(bar.height).toBeLessThanOrEqual(36)
+    expect(bar.width).toBeGreaterThanOrEqual(viewport.width - 20)
 
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+    const scrolled = (await quiz.timer.boundingBox())!
+    expect(scrolled.y).toBeLessThanOrEqual(1)
+  })
 
-    const box = await quiz.timer.boundingBox()
-    expect(box).not.toBeNull()
-    expect(box!.y).toBeGreaterThanOrEqual(0)
-    expect(box!.y + box!.height).toBeLessThanOrEqual(page.viewportSize()!.height)
+  test('倒數長條_不蓋住頁面最上面的回首頁', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.openCover({ minutes: 10 })
+
+    const bar = (await quiz.timer.boundingBox())!
+    const home = (await page.getByRole('link', { name: '回首頁' }).boundingBox())!
+
+    expect(home.y).toBeGreaterThanOrEqual(bar.y + bar.height)
+  })
+
+  test('計時中翻頁_新一頁的頁首不被倒數長條蓋住', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ minutes: 10 })
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+
+    await quiz.next()
+
+    const bar = (await quiz.timer.boundingBox())!
+    const header = (await page.getByTestId('running-header').boundingBox())!
+    expect(header.y).toBeGreaterThanOrEqual(bar.y + bar.height - 1)
   })
 
   test('不計時_作答頁沒有倒數', async ({ page }) => {
