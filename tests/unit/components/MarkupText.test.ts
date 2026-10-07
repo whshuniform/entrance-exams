@@ -11,4 +11,13 @@ describe('MarkupText', () => {
     expect(wrapper.find('mark').text()).toBe('沆瀣')
     expect(wrapper.findAll('u').map(u => u.text()).join('')).toBe('沆瀣一氣')
   })
+
+  it('MarkupText_FillInBlank_ShouldRenderBlankAsOneUnbreakablePiece', async () => {
+    const wrapper = await mountSuspended(MarkupText, {
+      props: { text: 'reached the ＿＿＿＿ that we would go' },
+    })
+
+    expect(wrapper.findAll('[data-test="blank"]').map(blank => blank.text())).toEqual(['＿＿＿＿'])
+    expect(wrapper.text()).toBe('reached the ＿＿＿＿ that we would go')
+  })
 })

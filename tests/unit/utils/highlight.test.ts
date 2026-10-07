@@ -73,4 +73,16 @@ describe('buildSegments', () => {
       { text: '，貪', start: 6, underline: false, highlight: false },
     ])
   })
+
+  it('buildSegments_FillInBlank_ShouldKeepBlankFlagAndOffsets', () => {
+    const result = buildSegments('the ＿＿＿＿ that', [{ start: 2, end: 6 }])
+
+    expect(result).toEqual([
+      { text: 'th', start: 0, underline: false, highlight: false },
+      { text: 'e ', start: 2, underline: false, highlight: true },
+      { text: '＿＿', start: 4, underline: false, highlight: true, blank: true },
+      { text: '＿＿', start: 6, underline: false, highlight: false, blank: true },
+      { text: ' that', start: 8, underline: false, highlight: false },
+    ])
+  })
 })

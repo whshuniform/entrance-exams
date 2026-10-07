@@ -68,6 +68,18 @@ async function boxOf(locator: Locator) {
   return box
 }
 
+test.describe('英文填空題', () => {
+  test('填空線_整條在同一行_不會被拆成兩半', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    // 109 年第 1 題的填空線在手機寬度剛好落在行尾
+    await quiz.goto({ subject: 'english', years: [109] })
+
+    const blank = quiz.stem('109-english-1').getByTestId('blank')
+    await expect(blank).toHaveText('＿＿＿＿')
+    expect(await blank.evaluate(element => element.getClientRects().length)).toBe(1)
+  })
+})
+
 test.describe('題號與選項排法跟試題 PDF 一樣', () => {
   for (const id of ['115-chinese-1', '115-chinese-25', '115-mathA-1']) {
     test(`${id}_題目接在題號後面同一行_電腦選項對齊題目_手機選項靠左`, async ({ page }) => {

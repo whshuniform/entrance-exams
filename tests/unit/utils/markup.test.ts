@@ -15,4 +15,13 @@ describe('parseMarkup', () => {
       { text: '，貪贓枉法', underline: false },
     ])
   })
+
+  it('parseMarkup_FillInBlank_ShouldBeItsOwnSegment', () => {
+    // 英文填空線「＿＿＿＿」要整段一起換行，所以拆成自己的片段
+    expect(parseMarkup('reached the ＿＿＿＿ that')).toEqual([
+      { text: 'reached the ', underline: false },
+      { text: '＿＿＿＿', underline: false, blank: true },
+      { text: ' that', underline: false },
+    ])
+  })
 })
