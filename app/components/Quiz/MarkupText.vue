@@ -3,11 +3,18 @@
     <template v-for="segment in segments" :key="segment.start">
       <mark v-if="segment.highlight" :data-start="segment.start" :class="$style['markup-text__mark']">
         <u v-if="segment.underline" :class="$style['markup-text__underline']">{{ segment.text }}</u>
+        <span v-else-if="segment.blank" data-test="blank" :class="$style['markup-text__blank']">{{ segment.text }}</span>
         <template v-else>{{ segment.text }}</template>
       </mark>
       <u v-else-if="segment.underline" :data-start="segment.start" :class="$style['markup-text__underline']">
         {{ segment.text }}
       </u>
+      <span
+        v-else-if="segment.blank"
+        data-test="blank"
+        :data-start="segment.start"
+        :class="$style['markup-text__blank']"
+      >{{ segment.text }}</span>
       <span v-else :data-start="segment.start">{{ segment.text }}</span>
     </template>
   </span>
@@ -34,6 +41,11 @@ const segments = computed(() => buildSegments(props.text, props.ranges))
   &__mark {
     background: linear-gradient(transparent 40%, var(--color-marker) 40%, var(--color-marker) 95%, transparent 95%);
     color: inherit;
+  }
+
+  // 填空線由全形「＿」組成，瀏覽器會在字和字之間換行，整條要放在同一行
+  &__blank {
+    white-space: nowrap;
   }
 
   &__underline {

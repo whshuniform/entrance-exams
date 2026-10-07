@@ -29,6 +29,8 @@ export interface GradeResult {
 export interface MarkupSegment {
   text: string
   underline: boolean
+  /** 原卷的填空線「＿＿＿＿」，整條不換行 */
+  blank?: boolean
 }
 
 /** 純文字（去掉 __ 標記後）的字元區間，end 不含 */
@@ -43,6 +45,7 @@ export interface HighlightSegment {
   start: number
   underline: boolean
   highlight: boolean
+  blank?: boolean
 }
 
 /** 右下角工具列：off 為關閉繪畫（可作答、正常捲動） */

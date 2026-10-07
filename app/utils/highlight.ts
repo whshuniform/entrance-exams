@@ -44,7 +44,7 @@ export function eraseRange(ranges: TextRange[], range: TextRange): TextRange[] {
 /** 把含 __底線__ 標記的文字，依畫線區間切成可渲染的片段 */
 export function buildSegments(markup: string, ranges: TextRange[]): HighlightSegment[] {
   let offset = 0
-  return parseMarkup(markup).flatMap(({ text, underline }) => {
+  return parseMarkup(markup).flatMap(({ text, underline, blank }) => {
     const segmentStart = offset
     const segmentEnd = offset + text.length
     offset = segmentEnd
@@ -59,6 +59,7 @@ export function buildSegments(markup: string, ranges: TextRange[]): HighlightSeg
       start,
       underline,
       highlight: ranges.some(r => r.start <= start && start < r.end),
+      ...(blank ? { blank } : {}),
     }))
   })
 }
