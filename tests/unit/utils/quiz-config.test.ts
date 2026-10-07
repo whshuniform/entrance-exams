@@ -26,8 +26,10 @@ describe('defaultMinutes', () => {
   })
 
   it('defaultMinutes_RandomAcrossYears_ShouldAverageWholePool', () => {
-    // 111–115 共 17 題，合計 34.2 分鐘，平均每題約 2 分鐘
+    // 111–115 共 22 題，合計 43.2 分鐘，平均每題約 2 分鐘
     expect(defaultMinutes(chinese(111, 112, 113, 114, 115), 'random', 5)).toBe(10)
+    // 109–110 國文考科 80 分鐘、每題 2 分，每題 1.6 分鐘
+    expect(defaultMinutes(chinese(109, 110), 'random', 5)).toBe(8)
   })
 
   it('defaultMinutes_RandomMoreThanPool_ShouldOnlyCountQuestionsThatExist', () => {
@@ -106,10 +108,19 @@ describe('parseQuizQuery', () => {
     expect(quiz?.papers.map(paper => paper.year)).toEqual([111, 112, 113, 114, 115])
   })
 
+  it('parseQuizQuery_OldCurriculum_ShouldOnlyTakeThatCurriculumsYears', () => {
+    const chineseQuiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'random', curriculum: '101課綱' }, examCatalog)
+    const englishQuiz = parseQuizQuery({ exam: 'gsat', subject: 'english', mode: 'random', curriculum: '99課綱' }, examCatalog)
+
+    expect(chineseQuiz?.config).toMatchObject({ curriculum: '101課綱', years: [109, 110] })
+    expect(englishQuiz?.config).toMatchObject({ curriculum: '99課綱', years: [109, 110] })
+    expect(englishQuiz?.papers.map(paper => paper.subject)).toEqual(['英文', '英文'])
+  })
+
   it('parseQuizQuery_FullPaper_ShouldTakeOneYearAndCountEveryQuestion', () => {
     const quiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'full', years: '114' }, examCatalog)
 
-    expect(quiz?.config).toEqual({ exam: 'gsat', subject: 'chinese', mode: 'full', years: [114], count: 3, minutes: 0 })
+    expect(quiz?.config).toEqual({ exam: 'gsat', subject: 'chinese', mode: 'full', years: [114], count: 4, minutes: 0 })
     expect(quiz?.papers.map(paper => paper.year)).toEqual([114])
   })
 
@@ -132,7 +143,7 @@ describe('parseQuizQuery', () => {
     expect(parseQuizQuery({ ...base, exam: 'cap' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '99' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '' }, examCatalog)).toBeNull()
-    expect(parseQuizQuery({ ...base, subject: 'english' }, examCatalog)).toBeNull()
+    expect(parseQuizQuery({ ...base, subject: 'social' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, subject: 'math-a', years: '114' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, mode: 'random', years: undefined, curriculum: '99課綱' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({}, examCatalog)).toBeNull()

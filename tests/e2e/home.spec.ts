@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage'
 import { QuizPage } from './pages/QuizPage'
 
 const CHINESE = ['115-chinese-1', '115-chinese-2', '115-chinese-5', '115-chinese-25', '115-chinese-26']
+const ALL_YEARS = [115, 114, 113, 112, 111, 110, 109]
 const yearOf = (id: string) => Number(id.split('-')[0])
 
 /** 題庫裡的順序：年度由舊到新，同一年照原卷題號 */
@@ -20,6 +21,7 @@ test.describe('首頁選考試項目和模式', () => {
       await expect(home.exam(id).locator('input')).toBeDisabled()
     }
     await expect(home.subject('chinese')).toContainText('國語文綜合能力測驗')
+    await expect(home.subject('english')).toContainText('英文')
     await expect(home.subject('math-a')).toContainText('數學A')
   })
 
@@ -50,7 +52,7 @@ test.describe('首頁選考試項目和模式', () => {
     await quiz.startButton.click()
 
     await expect(page.getByTestId('running-header')).toContainText('114年學測')
-    expect(await quiz.questionIds()).toEqual(['114-chinese-1', '114-chinese-2', '114-chinese-3'])
+    expect(await quiz.questionIds()).toEqual(['114-chinese-1', '114-chinese-2', '114-chinese-3', '114-chinese-4'])
   })
 
   test('隨機抽題_先選科目再複選年度_預設5題_只出所選年度的題目', async ({ page }) => {
@@ -60,10 +62,10 @@ test.describe('首頁選考試項目和模式', () => {
 
     await home.choose(home.mode('random'))
     await home.choose(home.subject('chinese'))
-    for (const year of [115, 114, 113, 112, 111]) {
+    for (const year of ALL_YEARS) {
       await expect(home.year(year).locator('input')).toBeChecked()
     }
-    for (const year of [114, 113, 112]) await home.toggleYear(year, false)
+    for (const year of [114, 113, 112, 110, 109]) await home.toggleYear(year, false)
     await expect(home.countInput).toHaveValue('5')
     await home.startButton.click()
     await quiz.startButton.click()
@@ -80,7 +82,7 @@ test.describe('首頁選考試項目和模式', () => {
     await home.goto()
 
     await home.choose(home.mode('random'))
-    for (const year of [115, 114, 113, 112, 111]) await home.toggleYear(year, false)
+    for (const year of ALL_YEARS) await home.toggleYear(year, false)
 
     await expect(home.startButton).toBeDisabled()
     await expect(page.getByText('至少選一個年度')).toBeVisible()
@@ -103,21 +105,60 @@ test.describe('首頁選考試項目和模式', () => {
     expect(await quiz.questionIds()).toHaveLength(5)
   })
 
+  test('隨機抽題選英文99課綱_只出109和110年的英文詞彙題', async ({ page }) => {
+    const home = new HomePage(page)
+    const quiz = new QuizPage(page)
+    await home.goto()
+
+    await home.choose(home.mode('random'))
+    await home.choose(home.subject('english'))
+    await home.choose(home.scope('curriculum'))
+    await expect(home.curriculum('108課綱')).toContainText('111–115 年')
+    await home.choose(home.curriculum('99課綱'))
+    await expect(home.curriculum('99課綱')).toContainText('109–110 年')
+    await home.startButton.click()
+
+    await expect(page).toHaveURL(/subject=english/)
+    await expect(page).toHaveURL(/curriculum=99/)
+    await quiz.startButton.click()
+    const ids = await quiz.questionIds()
+    expect(ids).toHaveLength(5)
+    expect(ids.every(id => /^(109|110)-english-\d+$/.test(id))).toBe(true)
+  })
+
+  test('整份考卷選109年國文_舊試卷沒有部分標題_直接從單選題開始', async ({ page }) => {
+    const home = new HomePage(page)
+    const quiz = new QuizPage(page)
+    await home.goto()
+
+    await home.choose(home.year(109))
+    await home.startButton.click()
+    await quiz.startButton.click()
+
+    const sheet = page.getByTestId('sheet')
+    await expect(page.getByTestId('running-header')).toContainText('109年學測')
+    await expect(sheet.getByRole('heading', { level: 3 })).toHaveCount(0)
+    await expect(sheet.getByRole('heading', { level: 4 })).toHaveText('一、單選題（占68分）')
+    expect(await quiz.questionIds()).toHaveLength(12)
+  })
+
   test('隨機抽題_題數不設上限_超過題庫就全部作答', async ({ page }) => {
     const home = new HomePage(page)
     const quiz = new QuizPage(page)
     await home.goto()
 
     await home.choose(home.mode('random'))
+    await home.choose(home.scope('curriculum'))
     await home.countInput.fill('30')
     await home.countInput.press('Tab')
     await expect(home.countInput).toHaveValue('30')
-    await expect(page.getByTestId('random-count')).toContainText('17 題')
+    // 108課綱國文 111–115 年共 22 題
+    await expect(page.getByTestId('random-count')).toContainText('22 題')
     await home.startButton.click()
 
     await expect(page).toHaveURL(/count=30/)
     await quiz.startButton.click()
-    await expect(page.getByTestId('running-header')).toContainText('共 17 頁')
+    await expect(page.getByTestId('running-header')).toContainText('共 22 頁')
   })
 
   test('隨機抽題交卷_成績單看答對率和答對題數_每題標答對答錯', async ({ page }) => {

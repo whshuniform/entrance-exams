@@ -2,7 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test'
 
 /** 首頁選好的試卷：預設 115 學測國綜整份考卷、不計時 */
 export interface QuizOptions {
-  subject?: 'chinese' | 'math-a'
+  subject?: 'chinese' | 'english' | 'math-a'
   mode?: 'full' | 'random'
   /** 整份考卷取第一個年度；隨機抽題可以多選 */
   years?: number[]
