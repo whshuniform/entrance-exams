@@ -67,6 +67,7 @@ export interface QuizGroup {
 
 /** 試卷的一個部分，例如「第壹部分、選擇題（占76分）」 */
 export interface QuizPart {
+  /** 原卷沒有部分標題時（例如 109、110 年國文考科）為空字串，不顯示 */
   title: string
   groups: QuizGroup[]
 }

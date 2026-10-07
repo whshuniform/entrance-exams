@@ -46,7 +46,11 @@ export function useQuizSetup(catalog: ExamKind[]) {
       item.years.push(paper.year)
       item.questionCount += paperQuestions([paper]).length
     }
-    for (const item of list) item.years.sort((a, b) => b - a)
+    // 同一科不同年度的名稱可能不同（109、110 年「國文」、111 年起「國語文綜合能力測驗」），用最新一年的
+    for (const item of list) {
+      item.years.sort((a, b) => b - a)
+      item.name = exam.value?.papers.find(paper => paper.id === item.id && paper.year === item.years[0])?.subject ?? item.name
+    }
     return list
   })
   const subject = ref(subjects.value[0]?.id ?? '')

@@ -1,12 +1,60 @@
 import type { LevelStats } from '~/types/quiz'
 
 /**
- * 111–114 學年度學測「國文」級分換算與各級分人數（大考中心「學科能力測驗 統計資料」），
+ * 109–114 學年度學測「國文」級分換算與各級分人數（大考中心「學科能力測驗 統計資料」），
  * 由 gsat/stats/conversion.json、distribution.json 轉出，作法同 stats-115.ts。
- * 111 起國文級分只算國綜（國寫另計）；gsat/stats 裡 113、114 年國文級分表的分數區間相同（人數分布不同）。
+ * 109、110 年國文級分只算國文考科（國寫另計），111 起只算國綜；gsat/stats 裡 113、114 年國文級分表的分數區間相同（人數分布不同）。
  * levels.above：原始得分「大於」此分數才達該級分。
  */
-export const chineseStats111To114: Record<number, LevelStats> = {
+export const chineseStats109To114: Record<number, LevelStats> = {
+  109: {
+    levels: [
+      { level: 15, above: 76.58 },
+      { level: 14, above: 71.11 },
+      { level: 13, above: 65.64 },
+      { level: 12, above: 60.17 },
+      { level: 11, above: 54.7 },
+      { level: 10, above: 49.23 },
+      { level: 9, above: 43.76 },
+      { level: 8, above: 38.29 },
+      { level: 7, above: 32.82 },
+      { level: 6, above: 27.35 },
+      { level: 5, above: 21.88 },
+      { level: 4, above: 16.41 },
+      { level: 3, above: 10.94 },
+      { level: 2, above: 5.47 },
+      { level: 1, above: 0 },
+    ],
+    counts: {
+      15: 4274, 14: 11069, 13: 19540, 12: 23182, 11: 21439, 10: 17564, 9: 11878, 8: 7769,
+      7: 5254, 6: 3627, 5: 2544, 4: 1771, 3: 1059, 2: 276, 1: 19, 0: 7,
+    },
+    total: 131272,
+  },
+  110: {
+    levels: [
+      { level: 15, above: 75.32 },
+      { level: 14, above: 69.94 },
+      { level: 13, above: 64.56 },
+      { level: 12, above: 59.18 },
+      { level: 11, above: 53.8 },
+      { level: 10, above: 48.42 },
+      { level: 9, above: 43.04 },
+      { level: 8, above: 37.66 },
+      { level: 7, above: 32.28 },
+      { level: 6, above: 26.9 },
+      { level: 5, above: 21.52 },
+      { level: 4, above: 16.14 },
+      { level: 3, above: 10.76 },
+      { level: 2, above: 5.38 },
+      { level: 1, above: 0 },
+    ],
+    counts: {
+      15: 4064, 14: 10241, 13: 17091, 12: 21250, 11: 21015, 10: 18078, 9: 13073, 8: 8428,
+      7: 5248, 6: 3279, 5: 2110, 4: 1269, 3: 878, 2: 247, 1: 8, 0: 8,
+    },
+    total: 126287,
+  },
   111: {
     levels: [
       { level: 15, above: 74.76 },

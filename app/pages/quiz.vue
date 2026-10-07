@@ -55,7 +55,7 @@
             <span>{{ currentSheet.paper.year }}年{{ currentSheet.paper.exam }}　{{ currentSheet.paper.subject }}</span>
             <span>第 {{ currentSheet.pageNumber }} 頁 共 {{ currentSheet.pageCount }} 頁</span>
           </header>
-          <h3 v-if="currentSheet.startsPart" :class="$style['quiz-page__part']">{{ currentSheet.part.title }}</h3>
+          <h3 v-if="currentSheet.startsPart && currentSheet.part.title" :class="$style['quiz-page__part']">{{ currentSheet.part.title }}</h3>
           <template v-if="currentSheet.startsGroup">
             <h4 :class="$style['quiz-page__group']">{{ currentSheet.group.title }}</h4>
             <p :class="$style['quiz-page__note']">{{ currentSheet.group.note }}</p>
