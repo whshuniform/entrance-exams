@@ -2,15 +2,15 @@ import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
 test.describe('右下角繪畫工具列', () => {
-  test('工具列_固定在右下角由上而下四顆_題目不被擋住', async ({ page }) => {
+  test('工具列_固定在右下角由上而下四顆加顯示隱藏按鈕_題目不被擋住', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
     const viewport = page.viewportSize()!
 
     const boxes = []
-    for (const name of ['off', 'highlighter', 'pen', 'eraser'] as const) {
-      const box = await quiz.tool(name).boundingBox()
-      if (!box) throw new Error(`tool ${name} not visible`)
+    for (const locator of [...(['off', 'highlighter', 'pen', 'eraser'] as const).map(name => quiz.tool(name)), quiz.toolbarToggle]) {
+      const box = await locator.boundingBox()
+      if (!box) throw new Error('toolbar button not visible')
       boxes.push(box)
     }
     for (let i = 1; i < boxes.length; i++) {
@@ -27,6 +27,44 @@ test.describe('右下角繪畫工具列', () => {
     await page.evaluate(() => window.scrollTo(0, 900))
     const afterScroll = await quiz.tool('off').boundingBox()
     expect(afterScroll!.y).toBeCloseTo(boxes[0]!.y, 0)
+  })
+
+  test('隱藏工具_工具收起來_題目往右延伸變滿版_再按顯示工具回來', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    const card = quiz.question('115-chinese-1')
+    const before = (await card.boundingBox())!
+
+    await expect(quiz.toolbarToggle).toHaveText('隱藏工具')
+    await quiz.toolbarToggle.click()
+
+    for (const name of ['off', 'highlighter', 'pen', 'eraser'] as const) await expect(quiz.tool(name)).toBeHidden()
+    await expect(quiz.toolbarToggle).toHaveText('顯示工具')
+    await expect.poll(async () => (await card.boundingBox())!.width).toBeGreaterThan(before.width + 24)
+    if (page.viewportSize()!.width < 768) {
+      // 手機：卡片右邊延伸到接近螢幕邊緣
+      await expect.poll(async () => {
+        const box = (await card.boundingBox())!
+        return page.viewportSize()!.width - (box.x + box.width)
+      }).toBeLessThan(24)
+    }
+
+    await quiz.toolbarToggle.click()
+    await expect(quiz.tool('pen')).toBeVisible()
+    await expect(quiz.toolbarToggle).toHaveText('隱藏工具')
+  })
+
+  test('畫畫時隱藏工具_應自動關閉繪畫_點選項可作答', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('pen')
+
+    await quiz.toolbarToggle.click()
+    await quiz.option('115-chinese-1', 'B').locator('label').click()
+
+    await expect(quiz.option('115-chinese-1', 'B').locator('input')).toBeChecked()
+    await quiz.toolbarToggle.click()
+    await expect(quiz.tool('off')).toHaveAttribute('aria-pressed', 'true')
   })
 
   test('預設關閉繪畫_拖曳文字不畫線_點選項可作答', async ({ page }) => {

@@ -131,6 +131,11 @@ export class QuizPage {
     await this.tool(name).click()
   }
 
+  /** 工具列最下面的顯示／隱藏工具按鈕 */
+  get toolbarToggle() {
+    return this.page.getByTestId('toolbar-toggle')
+  }
+
   inkLayer(id: string) {
     return this.question(id).getByTestId('ink-layer')
   }
