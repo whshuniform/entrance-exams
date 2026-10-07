@@ -35,6 +35,7 @@ export function buildReport(paper: QuizPaper, results: Record<string, GradeResul
   const levelRange = { min: toLevel(paper.stats, scores.min), max: toLevel(paper.stats, scores.max) }
   return {
     subject: paper.subject,
+    year: paper.year,
     earned,
     sampleMax,
     fullMarks: paper.fullMarks,

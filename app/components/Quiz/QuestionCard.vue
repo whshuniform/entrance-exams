@@ -130,6 +130,8 @@ interface Props {
   /** 右下角工具列目前的工具；off 時可作答 */
   tool?: DrawTool
   ink?: InkStroke[]
+  /** points：交卷後標得分；accuracy：隨機抽題只標答對或答錯 */
+  scoring?: 'points' | 'accuracy'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -138,6 +140,7 @@ const props = withDefaults(defineProps<Props>(), {
   highlights: () => ({}),
   tool: 'off',
   ink: () => [],
+  scoring: 'points',
 })
 
 const emit = defineEmits<{
@@ -166,6 +169,7 @@ const drawing = useCardDrawing({
 
 const selectedKeys = computed(() => props.modelValue.split('').filter(Boolean))
 const scoreText = computed(() => {
+  if (props.scoring === 'accuracy') return props.result?.isCorrect ? '答對' : '答錯'
   const score = Number((props.result?.score ?? 0).toFixed(2))
   return score > 0 ? `+${score}` : '0'
 })

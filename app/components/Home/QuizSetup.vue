@@ -1,5 +1,5 @@
 <template>
-  <form data-test="quiz-setup" :data-ready="ready" :class="$style['quiz-setup']" @submit.prevent="emit('start', config)">
+  <form data-test="quiz-setup" :data-ready="ready" :class="$style['quiz-setup']" @submit.prevent="onSubmit">
     <fieldset :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
         <span :class="$style['quiz-setup__number']">1</span>選考試
@@ -31,48 +31,7 @@
 
     <fieldset :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">2</span>選年度
-      </legend>
-      <div :class="$style['quiz-setup__choices']">
-        <label
-          v-for="item in years"
-          :key="item"
-          :data-test="`year-${item}`"
-          :for="`${uid}-year-${item}`"
-          :class="choiceClass(year === item)"
-        >
-          <RadioButton v-model="year" :input-id="`${uid}-year-${item}`" name="year" :value="item" />
-          <span :class="$style['quiz-setup__text']">
-            <strong>{{ item }} 學年度</strong>
-          </span>
-        </label>
-      </div>
-    </fieldset>
-
-    <fieldset :class="$style['quiz-setup__step']">
-      <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">3</span>選科目
-      </legend>
-      <div :class="$style['quiz-setup__choices']">
-        <label
-          v-for="item in papers"
-          :key="item.id"
-          :data-test="`subject-${item.id}`"
-          :for="`${uid}-subject-${item.id}`"
-          :class="choiceClass(subject === item.id)"
-        >
-          <RadioButton v-model="subject" :input-id="`${uid}-subject-${item.id}`" name="subject" :value="item.id" />
-          <span :class="$style['quiz-setup__text']">
-            <strong>{{ item.subject }}</strong>
-            <small :class="$style['quiz-setup__sub']">試作 {{ questionCount(item) }} 題・考試時間 {{ item.minutes }} 分鐘</small>
-          </span>
-        </label>
-      </div>
-    </fieldset>
-
-    <fieldset :class="$style['quiz-setup__step']">
-      <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">4</span>作答方式
+        <span :class="$style['quiz-setup__number']">2</span>作答方式
       </legend>
       <div :class="$style['quiz-setup__choices']">
         <label
@@ -89,25 +48,124 @@
           </span>
         </label>
       </div>
-      <div v-if="mode === 'random'" data-test="random-count" :class="$style['quiz-setup__field']">
+    </fieldset>
+
+    <fieldset :class="$style['quiz-setup__step']">
+      <legend :class="$style['quiz-setup__legend']">
+        <span :class="$style['quiz-setup__number']">3</span>選科目
+      </legend>
+      <div :class="$style['quiz-setup__choices']">
+        <label
+          v-for="item in subjects"
+          :key="item.id"
+          :data-test="`subject-${item.id}`"
+          :for="`${uid}-subject-${item.id}`"
+          :class="choiceClass(subject === item.id)"
+        >
+          <RadioButton v-model="subject" :input-id="`${uid}-subject-${item.id}`" name="subject" :value="item.id" />
+          <span :class="$style['quiz-setup__text']">
+            <strong>{{ item.name }}</strong>
+            <small :class="$style['quiz-setup__sub']">{{ formatYears(item.years) }} 年・題庫 {{ item.questionCount }} 題</small>
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- 整份考卷：選一個年度 -->
+    <fieldset v-if="mode === 'full'" :class="$style['quiz-setup__step']">
+      <legend :class="$style['quiz-setup__legend']">
+        <span :class="$style['quiz-setup__number']">4</span>選年度
+      </legend>
+      <div :class="$style['quiz-setup__choices']">
+        <label
+          v-for="item in years"
+          :key="item"
+          :data-test="`year-${item}`"
+          :for="`${uid}-year-${item}`"
+          :class="choiceClass(year === item)"
+        >
+          <RadioButton v-model="year" :input-id="`${uid}-year-${item}`" name="year" :value="item" />
+          <span :class="$style['quiz-setup__text']">
+            <strong>{{ item }} 學年度</strong>
+            <small :class="$style['quiz-setup__sub']">試作 {{ questionsIn(item) }} 題・考試時間 {{ minutesOf(item) }} 分鐘</small>
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- 隨機抽題：依年度（可複選）或依課綱選範圍 -->
+    <fieldset v-else :class="$style['quiz-setup__step']">
+      <legend :class="$style['quiz-setup__legend']">
+        <span :class="$style['quiz-setup__number']">4</span>選範圍
+      </legend>
+      <div :class="$style['quiz-setup__scopes']">
+        <label
+          v-for="item in SCOPES"
+          :key="item.value"
+          :data-test="`scope-${item.value}`"
+          :for="`${uid}-scope-${item.value}`"
+          :class="[$style['quiz-setup__scope'], scope === item.value && $style['quiz-setup__scope--checked']]"
+        >
+          <RadioButton v-model="scope" :input-id="`${uid}-scope-${item.value}`" name="scope" :value="item.value" />
+          <span>{{ item.label }}</span>
+        </label>
+      </div>
+      <div v-if="scope === 'years'" :class="$style['quiz-setup__choices']">
+        <label
+          v-for="item in years"
+          :key="item"
+          :data-test="`year-${item}`"
+          :for="`${uid}-years-${item}`"
+          :class="choiceClass(pickedYears.includes(item))"
+        >
+          <Checkbox v-model="pickedYears" :input-id="`${uid}-years-${item}`" name="years" :value="item" />
+          <span :class="$style['quiz-setup__text']">
+            <strong>{{ item }} 學年度</strong>
+            <small :class="$style['quiz-setup__sub']">題庫 {{ questionsIn(item) }} 題</small>
+          </span>
+        </label>
+      </div>
+      <div v-else :class="$style['quiz-setup__choices']">
+        <label
+          v-for="item in curricula"
+          :key="item.name"
+          :data-test="`curriculum-${item.name}`"
+          :for="`${uid}-curriculum-${item.name}`"
+          :class="choiceClass(curriculum === item.name)"
+        >
+          <RadioButton v-model="curriculum" :input-id="`${uid}-curriculum-${item.name}`" name="curriculum" :value="item.name" />
+          <span :class="$style['quiz-setup__text']">
+            <strong>{{ item.name }}</strong>
+            <small :class="$style['quiz-setup__sub']">{{ formatYears(item.years) }} 年</small>
+          </span>
+        </label>
+      </div>
+      <p v-if="!canStart" :class="[$style['quiz-setup__hint'], $style['quiz-setup__hint--warn']]">至少選一個年度才能開始。</p>
+    </fieldset>
+
+    <fieldset v-if="mode === 'random'" :class="$style['quiz-setup__step']">
+      <legend :class="$style['quiz-setup__legend']">
+        <span :class="$style['quiz-setup__number']">5</span>題數
+      </legend>
+      <div data-test="random-count" :class="$style['quiz-setup__field']">
         <label :for="`${uid}-count`">抽</label>
         <InputNumber
           v-model="count"
           :input-id="`${uid}-count`"
           :min="1"
-          :max="poolSize"
           show-buttons
           button-layout="horizontal"
           :allow-empty="false"
           :class="$style['quiz-setup__number-input']"
         />
-        <span>題（最多 {{ poolSize }} 題）</span>
+        <span>題</span>
+        <p :class="$style['quiz-setup__hint']">想做幾題就填幾題。所選範圍目前題庫共 {{ poolSize }} 題，超過就全部作答。</p>
       </div>
     </fieldset>
 
     <fieldset :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">5</span>計時
+        <span :class="$style['quiz-setup__number']">{{ mode === 'random' ? 6 : 5 }}</span>計時
       </legend>
       <label data-test="timer-switch" :for="`${uid}-timed`" :class="$style['quiz-setup__switch']">
         <ToggleSwitch v-model="timed" :input-id="`${uid}-timed`" />
@@ -130,23 +188,37 @@
       </div>
     </fieldset>
 
-    <Button type="submit" data-test="start-quiz" label="開始測驗" :class="$style['quiz-setup__start']" />
+    <Button
+      type="submit"
+      data-test="start-quiz"
+      label="開始測驗"
+      :disabled="!canStart"
+      :class="$style['quiz-setup__start']"
+    />
   </form>
 </template>
 
 <script setup lang="ts">
 import { examCatalog } from '~/data/catalog'
-import type { QuizConfig, QuizMode, QuizPaper } from '~/types/quiz'
+import type { QuizConfig, QuizMode, RandomScope } from '~/types/quiz'
 
 const emit = defineEmits<{ start: [config: QuizConfig] }>()
 
 const MODES: { value: QuizMode, label: string, hint: string }[] = [
-  { value: 'full', label: '整份考卷', hint: '照原卷順序一題一題作答' },
-  { value: 'random', label: '隨機抽題', hint: '從這份考卷隨機抽幾題' },
+  { value: 'full', label: '整份考卷', hint: '選一個年度，照原卷順序作答' },
+  { value: 'random', label: '隨機抽題', hint: '選科目和年度範圍，隨機抽題作答' },
+]
+
+const SCOPES: { value: RandomScope, label: string }[] = [
+  { value: 'years', label: '依年度（可複選）' },
+  { value: 'curriculum', label: '依課綱' },
 ]
 
 const uid = useId()
-const { exams, examId, years, year, papers, subject, poolSize, mode, count, timed, minutes, config } = useQuizSetup(examCatalog)
+const {
+  exams, examId, mode, subjects, subject, subjectPapers, years, year, scope, pickedYears, curricula, curriculum,
+  poolSize, canStart, count, timed, minutes, config,
+} = useQuizSetup(examCatalog)
 
 /** 畫面可以操作了（E2E 等這個再點選） */
 const ready = ref(false)
@@ -164,8 +236,21 @@ function choiceClass(checked: boolean, disabled = false) {
   ]
 }
 
-function questionCount(paper: QuizPaper) {
-  return paperQuestions([paper]).length
+function paperOf(year: number) {
+  return subjectPapers.value.find(paper => paper.year === year)
+}
+
+function questionsIn(year: number) {
+  const paper = paperOf(year)
+  return paper ? paperQuestions([paper]).length : 0
+}
+
+function minutesOf(year: number) {
+  return paperOf(year)?.minutes ?? 0
+}
+
+function onSubmit() {
+  if (canStart.value) emit('start', config.value)
 }
 </script>
 
@@ -268,6 +353,31 @@ function questionCount(paper: QuizPaper) {
     }
   }
 
+  // 隨機抽題的範圍：兩顆像手寫圈選的小標籤
+  &__scopes {
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__scope {
+    padding: 0.3rem 0.9rem 0.3rem 0.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: 999px;
+    background: var(--color-paper);
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    &--checked {
+      background: var(--color-marker);
+      font-weight: 700;
+    }
+  }
+
   &__field {
     margin-top: 0.75rem;
     display: flex;
@@ -301,6 +411,13 @@ function questionCount(paper: QuizPaper) {
     margin: 0;
     font-size: 0.85rem;
     color: var(--color-pencil);
+
+    // 紅筆提醒
+    &--warn {
+      margin-top: 0.5rem;
+      font-weight: 700;
+      color: var(--color-pen-red);
+    }
   }
 
   &__start {

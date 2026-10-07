@@ -13,6 +13,7 @@ export const sample115Papers: QuizPaper[] = [
     exam: '學測',
     subject: '國語文綜合能力測驗',
     year: 115,
+    curriculum: '108課綱',
     // 原卷卷頭「考試時間：90 分鐘」
     minutes: 90,
     // 國綜整卷 100 分（第壹部分 76 分＋第貳部分 24 分），級分表為「國文」
@@ -41,6 +42,7 @@ export const sample115Papers: QuizPaper[] = [
     exam: '學測',
     subject: '數學A',
     year: 115,
+    curriculum: '108課綱',
     minutes: 100,
     fullMarks: 100,
     stats: stats115['數學A'],

@@ -5,7 +5,7 @@
         <span :class="$style['home-page__highlight']">考古題練習本</span>
       </h1>
       <p :class="$style['home-page__subtitle']">
-        選好考試、科目和作答方式，像真的考試一樣一頁一題作答，交卷馬上批改、看級分和全國名次。
+        選好考試、作答方式和科目，像真的考試一樣一頁一題作答。交卷馬上批改：整份考卷看級分和全國名次，隨機抽題看答對率。
       </p>
     </header>
 

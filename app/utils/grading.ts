@@ -1,4 +1,4 @@
-import type { GradeResult, QuizQuestion } from '~/types/quiz'
+import type { Accuracy, GradeResult, QuizQuestion } from '~/types/quiz'
 
 const toSet = (value: string) => new Set(value.replace(/[^A-Z0-9]/g, '').split('').filter(Boolean))
 
@@ -24,4 +24,11 @@ export function gradeQuestion(question: QuizQuestion, response: string): GradeRe
   const n = question.options.length
   const score = Math.max(0, (question.points * (n - 2 * wrongCount)) / n)
   return { score, isCorrect, wrongCount }
+}
+
+/** 隨機抽題的成績：只算整題答對的題數（多選題要全對），沒作答算錯；答對率取整數百分比 */
+export function buildAccuracy(questions: QuizQuestion[], results: Record<string, GradeResult>): Accuracy {
+  const correct = questions.filter(question => results[question.id]?.isCorrect).length
+  const total = questions.length
+  return { correct, total, rate: total ? Math.round(correct / total * 100) : 0 }
 }

@@ -96,6 +96,8 @@ export interface QuizPaper {
   exam: string
   subject: string
   year: number
+  /** 命題依據的課綱，例如「108課綱」（gsat/stats/curriculum_by_year.csv） */
+  curriculum: string
   /** 原試題卷頭的考試時間（分鐘） */
   minutes: number
   /** 整卷滿分（換算級分用） */
@@ -126,6 +128,8 @@ export interface NumberRange {
 /** 交卷後的一科成績 */
 export interface SubjectReport {
   subject: string
+  /** 查哪一年的級分表與各級分人數 */
+  year: number
   /** 試作題目的得分與滿分 */
   earned: number
   sampleMax: number
@@ -147,27 +151,40 @@ export interface ExamKind {
   papers: QuizPaper[]
 }
 
-/** full：整份考卷；random：從這份考卷隨機抽幾題 */
+/** full：整份考卷；random：從選定科目的幾個年度或一個課綱隨機抽題 */
 export type QuizMode = 'full' | 'random'
+
+/** 隨機抽題的範圍：依年度（可複選）或依課綱 */
+export type RandomScope = 'years' | 'curriculum'
 
 /** 首頁選好、帶到作答頁網址的設定 */
 export interface QuizConfig {
   exam: string
-  year: number
   /** 試卷的科目代號（QuizPaper.id） */
   subject: string
   mode: QuizMode
-  /** 隨機抽題的題數；整份考卷時為全部題數 */
+  /** 選的年度，由舊到新；整份考卷只有一個 */
+  years: number[]
+  /** 隨機抽題依課綱選範圍時的課綱；這時 years 是該課綱的所有年度 */
+  curriculum?: string
+  /** 隨機抽題想做的題數（不設上限，題庫不夠就全出）；整份考卷時為全部題數 */
   count: number
   /** 限時幾分鐘；0 為不計時 */
   minutes: number
 }
 
-/** 從網址找到的考試項目與試卷 */
+/** 從網址找到的考試項目與試卷（年度由舊到新） */
 export interface ResolvedQuiz {
   config: QuizConfig
   exam: ExamKind
-  paper: QuizPaper
+  papers: QuizPaper[]
+}
+
+/** 隨機抽題的成績：答對幾題、共幾題、答對率（整數百分比） */
+export interface Accuracy {
+  correct: number
+  total: number
+  rate: number
 }
 
 /** 倒數計時：waiting 還沒開始、stopped 提早交卷停下、expired 時間到 */

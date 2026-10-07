@@ -18,7 +18,7 @@
     <header :class="$style['quiz-page__header']">
       <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
       <h1 :class="$style['quiz-page__title']">
-        <span :class="$style['quiz-page__highlight']">{{ quiz.paper.exam }}練習本</span>
+        <span :class="$style['quiz-page__highlight']">{{ quiz.papers[0]?.exam }}練習本</span>
       </h1>
       <p :class="$style['quiz-page__subtitle']">{{ subtitle }}</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
@@ -69,6 +69,7 @@
             :tool="tool"
             :ink="ink[currentSheet.question.id]"
             :scratch-open="scratchOpen[currentSheet.question.id] ?? false"
+            :scoring="isRandom ? 'accuracy' : 'points'"
             @update:model-value="setAnswer(currentSheet.question.id, $event)"
             @mark="markText"
             @erase="eraseText"
@@ -77,7 +78,7 @@
           />
         </section>
         <section v-else key="result" data-test="result-sheet">
-          <QuizResultSheet :reports="reports" :time-up="timeUp" />
+          <QuizResultSheet :reports="reports" :accuracy="accuracy" :time-up="timeUp" />
         </section>
       </Transition>
     </div>
@@ -109,23 +110,34 @@
 import { examCatalog } from '~/data/catalog'
 import type { DrawTool } from '~/types/quiz'
 
-// 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
+// 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時從所選年度或課綱一起抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
 const route = useRoute()
 const quiz = parseQuizQuery(route.query, examCatalog)
-const paper = quiz && (quiz.config.mode === 'random' ? pickQuestions(quiz.paper, quiz.config.count) : quiz.paper)
-const papers = paper ? [paper] : []
+const isRandom = quiz?.config.mode === 'random'
+const papers = !quiz ? [] : isRandom ? pickQuestions(quiz.papers, quiz.config.count) : quiz.papers
 const questions = paperQuestions(papers)
-const sheets = buildPages(papers)
+// 隨機抽題跨年度時，整份練習卷連續編頁碼
+const sheets = buildPages(papers, { continuous: isRandom })
 
 const subtitle = computed(() => {
-  if (!quiz) return ''
-  const { year, subject } = quiz.paper
-  const mode = quiz.config.mode === 'random' ? `隨機抽 ${questions.length} 題` : `整份考卷・試作 ${questions.length} 題`
-  const limit = quiz.config.minutes > 0 ? `・限時 ${quiz.config.minutes} 分鐘` : ''
-  return `${year} 學年度・${subject}・${mode}${limit}`
+  const first = quiz?.papers[0]
+  if (!quiz || !first) return ''
+  const { config } = quiz
+  const range = config.curriculum ? `${config.curriculum}（${formatYears(config.years)} 年）` : `${formatYears(config.years)} 學年度`
+  const mode = isRandom ? `隨機抽 ${questions.length} 題` : `整份考卷・試作 ${questions.length} 題`
+  const limit = config.minutes > 0 ? `・限時 ${config.minutes} 分鐘` : ''
+  return `${range}・${first.subject}・${mode}${limit}`
 })
 
-useHead({ title: quiz ? `${quiz.paper.year}${quiz.paper.exam} ${quiz.paper.subject}｜考古題練習本` : '找不到考卷｜考古題練習本' })
+useHead({ title: pageTitle() })
+
+function pageTitle() {
+  const first = quiz?.papers[0]
+  if (!first) return '找不到考卷｜考古題練習本'
+  return isRandom
+    ? `${first.exam} ${first.subject} 隨機抽題｜考古題練習本`
+    : `${first.year}${first.exam} ${first.subject}｜考古題練習本`
+}
 
 const { answers, submitted, answeredCount, results, setAnswer, submit, reset } = useQuiz(questions)
 const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
@@ -147,7 +159,9 @@ const nextLabel = computed(() => {
   if (isGuide.value) return '開始作答'
   return submitted.value && index.value === resultPage - 1 ? '看成績' : '下一頁'
 })
-const reports = computed(() => papers.map(item => buildReport(item, results.value)))
+// 整份考卷看級分和名次；隨機抽題看答對率和答對題數
+const reports = computed(() => (isRandom ? [] : papers.map(item => buildReport(item, results.value))))
+const accuracy = computed(() => (isRandom ? buildAccuracy(questions, results.value) : undefined))
 
 // 計時作答：離開作答注意事項（按「開始作答」）才開始倒數，時間到自動交卷
 const totalSeconds = (quiz?.config.minutes ?? 0) * 60
