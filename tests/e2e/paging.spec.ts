@@ -32,11 +32,19 @@ test.describe('像真實試卷一樣翻頁', () => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    await quiz.showQuestion('115-mathA-1')
+    await quiz.showQuestion('115-chinese-26')
 
-    await expect(page.getByTestId('running-header')).toContainText('數學A')
-    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 1 頁')
+    await expect(page.getByTestId('running-header')).toContainText('第 5 頁 共 5 頁')
     await expect(quiz.nextButton).toBeHidden()
+    await expect(quiz.submitButton).toBeVisible()
+  })
+
+  test('數學A試卷_頁首寫數學A和自己的頁數', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ subject: 'math-a' })
+
+    await expect(page.getByTestId('running-header')).toContainText('115年學測　數學A')
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 1 頁')
     await expect(quiz.submitButton).toBeVisible()
   })
 
@@ -44,14 +52,14 @@ test.describe('像真實試卷一樣翻頁', () => {
     const quiz = new QuizPage(page)
     await quiz.goto()
     await quiz.useTool('pen')
-    const scratch = await quiz.openScratch('115-mathA-1')
+    const scratch = await quiz.openScratch('115-chinese-1')
     await quiz.scribble(scratch)
 
-    await quiz.prev()
     await quiz.next()
+    await quiz.prev()
 
     await expect(scratch).toBeVisible()
-    expect(await quiz.inkPixels('115-mathA-1', scratch)).toBeGreaterThan(0)
+    expect(await quiz.inkPixels('115-chinese-1', scratch)).toBeGreaterThan(0)
   })
 
   test('交卷後_應翻到成績頁且可翻回去看批改', async ({ page }) => {
@@ -62,6 +70,6 @@ test.describe('像真實試卷一樣翻頁', () => {
     await expect(quiz.pager).toHaveAttribute('data-question', 'result')
 
     await quiz.prev()
-    await expect(quiz.question('115-mathA-1').getByTestId('question-score')).toBeVisible()
+    await expect(quiz.question('115-chinese-26').getByTestId('question-score')).toBeVisible()
   })
 })

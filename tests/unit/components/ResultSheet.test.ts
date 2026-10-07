@@ -39,4 +39,17 @@ describe('ResultSheet', () => {
 
     expect(wrapper.findAll('[data-test^="report-"][data-subject]')).toHaveLength(2)
   })
+
+  it('ResultSheet_TimeUp_ShouldSayHandedInAutomatically', async () => {
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [report], timeUp: true } })
+
+    expect(wrapper.find('[data-test="time-up"]').text()).toContain('時間到')
+    expect(wrapper.find('[data-test="time-up"]').text()).toContain('自動交卷')
+  })
+
+  it('ResultSheet_HandedInByStudent_ShouldNotShowTimeUp', async () => {
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [report] } })
+
+    expect(wrapper.find('[data-test="time-up"]').exists()).toBe(false)
+  })
 })

@@ -11,7 +11,6 @@ test.describe('試作作答頁', () => {
     await quiz.pick('115-chinese-5', 'C')
     await quiz.pick('115-chinese-25', 'BE')
     await quiz.pick('115-chinese-26', 'ABD')
-    await quiz.pick('115-mathA-1', '2')
     await quiz.submit()
 
     const chinese = quiz.report('國語文綜合能力測驗')
@@ -19,9 +18,21 @@ test.describe('試作作答頁', () => {
     await expect(chinese.getByTestId('report-score')).toContainText('14～100')
     await expect(chinese.getByTestId('report-level')).toHaveText('3～15 級分')
     await expect(chinese.getByTestId('report-rank')).toContainText('第 1～117,401 名')
+    // 一次考一科，成績單只有這一科
+    await expect(quiz.report('數學A')).toHaveCount(0)
+  })
+
+  test('數學A試作全對_成績單只有數學A的級分與名次範圍', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ subject: 'math-a' })
+
+    await quiz.pick('115-mathA-1', '2')
+    await quiz.submit()
+
     const math = quiz.report('數學A')
     await expect(math.getByTestId('report-level')).toHaveText('1～15 級分')
     await expect(math.getByTestId('report-rank')).toContainText('第 1～90,559 名')
+    await expect(quiz.report('國語文綜合能力測驗')).toHaveCount(0)
   })
 
   test('多選錯一個選項_應得部分分數給級分範圍並可重新作答', async ({ page }) => {
@@ -40,7 +51,7 @@ test.describe('試作作答頁', () => {
     await quiz.showQuestion('115-chinese-25')
     await expect(quiz.question('115-chinese-25').getByTestId('question-score')).toHaveText('+2.4')
 
-    await quiz.showQuestion('115-mathA-1')
+    await quiz.showQuestion('115-chinese-26')
     await quiz.next()
     await quiz.resetButton.click()
     await expect(quiz.resultSheet).toBeHidden()

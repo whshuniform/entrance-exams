@@ -132,7 +132,7 @@ test.describe('右下角繪畫工具列', () => {
 
   test('計算紙_按鈕和紙都在所有選項下面', async ({ page }) => {
     const quiz = new QuizPage(page)
-    await quiz.goto()
+    await quiz.goto({ subject: 'math-a' })
     await quiz.showQuestion('115-mathA-1')
     const question = quiz.question('115-mathA-1')
     const lastOption = await quiz.option('115-mathA-1', '5').boundingBox()
@@ -149,7 +149,7 @@ test.describe('右下角繪畫工具列', () => {
 
   test('原子筆_在計算紙寫算式_收起再打開筆跡應保留', async ({ page }) => {
     const quiz = new QuizPage(page)
-    await quiz.goto()
+    await quiz.goto({ subject: 'math-a' })
     await quiz.useTool('pen')
 
     const scratch = await quiz.openScratch('115-mathA-1')
@@ -174,11 +174,11 @@ test.describe('右下角繪畫工具列', () => {
     await expect(quiz.stem('115-chinese-1').locator('mark')).toHaveCount(0)
 
     await quiz.useTool('pen')
-    const scratch = await quiz.openScratch('115-mathA-1')
+    const scratch = await quiz.openScratch('115-chinese-1')
     await quiz.scribble(scratch)
     await quiz.useTool('eraser')
     await quiz.scribble(scratch)
-    expect(await quiz.inkPixels('115-mathA-1')).toBe(0)
+    expect(await quiz.inkPixels('115-chinese-1')).toBe(0)
   })
 
   test('關閉繪畫_畫過的線保留_點選項恢復作答', async ({ page }) => {
@@ -200,7 +200,7 @@ test.describe('手機觸控', () => {
 
   test('開啟繪畫時_一指寫字_兩指上下滑動應捲動頁面且不留筆跡', async ({ page, context }) => {
     const quiz = new QuizPage(page)
-    await quiz.goto()
+    await quiz.goto({ subject: 'math-a' })
     await quiz.useTool('pen')
     const scratch = await quiz.openScratch('115-mathA-1')
     await scratch.scrollIntoViewIfNeeded()

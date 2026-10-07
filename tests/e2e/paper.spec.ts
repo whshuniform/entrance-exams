@@ -39,8 +39,7 @@ test.describe('題型標示跟試題 PDF 一樣', () => {
 
   test('數學A第一頁_部分與題型標題和說明_應在題目前', async ({ page }) => {
     const quiz = new QuizPage(page)
-    await quiz.goto()
-    await quiz.showQuestion('115-mathA-1')
+    await quiz.goto({ subject: 'math-a' })
 
     const order = [
       page.getByRole('heading', { name: '第壹部分、選擇（填）題（占85分）' }),
@@ -73,7 +72,7 @@ test.describe('題號與選項排法跟試題 PDF 一樣', () => {
   for (const id of ['115-chinese-1', '115-chinese-25', '115-mathA-1']) {
     test(`${id}_題目接在題號後面同一行_電腦選項對齊題目_手機選項靠左`, async ({ page }) => {
       const quiz = new QuizPage(page)
-      await quiz.goto()
+      await quiz.goto({ subject: id.includes('mathA') ? 'math-a' : 'chinese' })
       await quiz.showQuestion(id)
 
       const number = await boxOf(quiz.question(id).getByTestId('number'))

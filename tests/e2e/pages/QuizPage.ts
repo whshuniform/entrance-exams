@@ -1,5 +1,21 @@
 import { expect, type Locator, type Page } from '@playwright/test'
 
+/** 首頁選好的試卷：預設 115 學測國綜整份考卷、不計時 */
+export interface QuizOptions {
+  subject?: 'chinese' | 'math-a'
+  mode?: 'full' | 'random'
+  count?: number
+  minutes?: number
+}
+
+/** 作答頁網址，跟首頁按「開始測驗」帶的參數一樣 */
+export function quizUrl({ subject = 'chinese', mode = 'full', count, minutes }: QuizOptions = {}) {
+  const query = new URLSearchParams({ exam: 'gsat', year: '115', subject, mode })
+  if (count) query.set('count', String(count))
+  if (minutes) query.set('minutes', String(minutes))
+  return `/quiz?${query}`
+}
+
 export class QuizPage {
   readonly submitButton: Locator
   readonly resetButton: Locator
@@ -8,6 +24,7 @@ export class QuizPage {
   readonly prevButton: Locator
   readonly resultSheet: Locator
   readonly startButton: Locator
+  readonly timer: Locator
 
   constructor(private readonly page: Page) {
     this.submitButton = page.getByRole('button', { name: '交卷批改' })
@@ -17,6 +34,7 @@ export class QuizPage {
     this.prevButton = page.getByTestId('prev-page')
     this.resultSheet = page.getByTestId('result-sheet')
     this.startButton = page.getByRole('button', { name: '開始作答' })
+    this.timer = page.getByTestId('quiz-timer')
   }
 
   /** 目前這一頁的題目 id；成績頁為 result */
@@ -62,14 +80,27 @@ export class QuizPage {
   }
 
   /** 打開試卷，停在第一頁的作答注意事項 */
-  async openCover() {
-    await this.page.goto('/')
+  async openCover(options: QuizOptions = {}) {
+    await this.page.goto(quizUrl(options))
+    await expect(this.pager).toHaveAttribute('data-question', 'guide')
   }
 
   /** 打開試卷並按「開始作答」，停在第 1 題 */
-  async goto() {
-    await this.openCover()
+  async goto(options: QuizOptions = {}) {
+    await this.openCover(options)
     await this.flip(this.startButton)
+  }
+
+  /** 從目前這頁往後翻到最後一題，依頁序列出翻過的題目 id */
+  async questionIds() {
+    const ids: string[] = []
+    while (true) {
+      const id = await this.currentPage()
+      if (id && id !== 'guide' && id !== 'result') ids.push(id)
+      if (!(await this.nextButton.isVisible())) break
+      await this.next()
+    }
+    return ids
   }
 
   question(id: string) {
