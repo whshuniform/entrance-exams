@@ -71,7 +71,7 @@ async function boxOf(locator: Locator) {
 
 test.describe('題號與選項排法跟試題 PDF 一樣', () => {
   for (const id of ['115-chinese-1', '115-chinese-25', '115-mathA-1']) {
-    test(`${id}_題目接在題號後面同一行_選項和題目第一個字對齊`, async ({ page }) => {
+    test(`${id}_題目接在題號後面同一行_電腦選項對齊題目_手機選項靠左`, async ({ page }) => {
       const quiz = new QuizPage(page)
       await quiz.goto()
       await quiz.showQuestion(id)
@@ -83,9 +83,11 @@ test.describe('題號與選項排法跟試題 PDF 一樣', () => {
       expect(number.y + number.height / 2).toBeLessThan(stem.y + 40)
       expect(stem.x).toBeGreaterThanOrEqual(number.x + number.width - 1)
 
-      // 選項（含框框）從題目第一個字的位置開始，像原卷的縮排
+      // 電腦：選項（含框框）從題目第一個字的位置開始，像原卷的縮排
+      // 手機：選項靠左，和題號切齊，不留左邊空白
       const option = await boxOf(quiz.option(id, quiz.firstOptionKey(id)).getByTestId('option'))
-      expect(Math.abs(option.x - stem.x)).toBeLessThan(2)
+      const isPhone = page.viewportSize()!.width < 768
+      expect(Math.abs(option.x - (isPhone ? number.x : stem.x))).toBeLessThan(2)
     })
   }
 

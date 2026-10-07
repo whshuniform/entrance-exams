@@ -10,7 +10,8 @@ test.describe('像真實試卷一樣翻頁', () => {
     await expect(quiz.question('115-chinese-1')).toBeVisible()
     await expect(page.getByTestId('running-header')).toContainText('國語文綜合能力測驗')
     await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 5 頁')
-    await expect(quiz.prevButton).toBeDisabled()
+    // 上一頁回到試卷最前面的作答注意事項
+    await expect(quiz.prevButton).toBeEnabled()
   })
 
   test('下一頁和上一頁_應翻到相鄰題目且答案保留', async ({ page }) => {

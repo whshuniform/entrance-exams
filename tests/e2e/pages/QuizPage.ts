@@ -7,6 +7,7 @@ export class QuizPage {
   readonly nextButton: Locator
   readonly prevButton: Locator
   readonly resultSheet: Locator
+  readonly startButton: Locator
 
   constructor(private readonly page: Page) {
     this.submitButton = page.getByRole('button', { name: '交卷批改' })
@@ -15,6 +16,7 @@ export class QuizPage {
     this.nextButton = page.getByTestId('next-page')
     this.prevButton = page.getByTestId('prev-page')
     this.resultSheet = page.getByTestId('result-sheet')
+    this.startButton = page.getByRole('button', { name: '開始作答' })
   }
 
   /** 目前這一頁的題目 id；成績頁為 result */
@@ -59,8 +61,15 @@ export class QuizPage {
     return this.page.getByTestId(`report-${subject}`)
   }
 
-  async goto() {
+  /** 打開試卷，停在第一頁的作答注意事項 */
+  async openCover() {
     await this.page.goto('/')
+  }
+
+  /** 打開試卷並按「開始作答」，停在第 1 題 */
+  async goto() {
+    await this.openCover()
+    await this.flip(this.startButton)
   }
 
   question(id: string) {
