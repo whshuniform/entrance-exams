@@ -9,8 +9,12 @@ import { stats115 } from './stats-115'
  */
 export const sample115Papers: QuizPaper[] = [
   {
+    id: 'chinese',
+    exam: '學測',
     subject: '國語文綜合能力測驗',
     year: 115,
+    // 原卷卷頭「考試時間：90 分鐘」
+    minutes: 90,
     // 國綜整卷 100 分（第壹部分 76 分＋第貳部分 24 分），級分表為「國文」
     fullMarks: 100,
     stats: stats115.國文,
@@ -33,8 +37,11 @@ export const sample115Papers: QuizPaper[] = [
     ],
   },
   {
+    id: 'math-a',
+    exam: '學測',
     subject: '數學A',
     year: 115,
+    minutes: 100,
     fullMarks: 100,
     stats: stats115['數學A'],
     parts: [

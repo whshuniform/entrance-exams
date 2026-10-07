@@ -21,3 +21,27 @@ export function buildPages(papers: QuizPaper[]): QuizSheet[] {
     return pages.map((page, index) => ({ ...page, pageNumber: index + 1, pageCount: pages.length }))
   })
 }
+
+/**
+ * 隨機抽題：從試卷抽 count 題，照原卷順序排；沒抽到題目的題型段落、部分整段拿掉，
+ * 分段標題才不會印在空段落上。不會改到原本的試卷。
+ */
+export function pickQuestions(paper: QuizPaper, count: number, random: () => number = Math.random): QuizPaper {
+  const ids = paperQuestions([paper]).map(question => question.id)
+  // Fisher–Yates 洗牌後取前 count 題
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1))
+    ;[ids[i], ids[j]] = [ids[j]!, ids[i]!]
+  }
+  const picked = new Set(ids.slice(0, count))
+
+  const parts = paper.parts
+    .map(part => ({
+      ...part,
+      groups: part.groups
+        .map(group => ({ ...group, questions: group.questions.filter(question => picked.has(question.id)) }))
+        .filter(group => group.questions.length > 0),
+    }))
+    .filter(part => part.groups.length > 0)
+  return { ...paper, parts }
+}

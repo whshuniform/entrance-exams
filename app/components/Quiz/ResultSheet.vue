@@ -1,6 +1,7 @@
 <template>
   <div :class="$style['result-sheet']">
     <h2 :class="$style['result-sheet__title']">成績單</h2>
+    <p v-if="props.timeUp" data-test="time-up" :class="$style['result-sheet__time-up']">時間到，已自動交卷批改</p>
     <ul :class="$style['result-sheet__list']">
       <li
         v-for="report in props.reports"
@@ -36,9 +37,11 @@ import type { NumberRange, SubjectReport } from '~/types/quiz'
 
 interface Props {
   reports: SubjectReport[]
+  /** 計時作答時間到、自動交卷 */
+  timeUp?: boolean
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), { timeUp: false })
 
 function formatNumber(value: number) {
   return String(Number(value.toFixed(2)))
@@ -73,6 +76,18 @@ function formatCount(value: number) {
     margin: 0 0 0.75rem;
     font-size: 1.6rem;
     text-align: center;
+  }
+
+  // 紅筆蓋的章
+  &__time-up {
+    width: fit-content;
+    margin: 0 auto 0.75rem;
+    padding: 0.1rem 0.75rem;
+    border: 2px solid var(--color-pen-red);
+    border-radius: var(--radius-sketch-alt);
+    font-weight: 700;
+    color: var(--color-pen-red);
+    transform: rotate(-2deg);
   }
 
   &__list {

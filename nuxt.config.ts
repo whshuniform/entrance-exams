@@ -6,11 +6,18 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@primevue/nuxt-module'],
   css: ['~/assets/css/index.scss'],
+  // 作答頁依網址參數出題、隨機抽題，只在瀏覽器畫；靜態輸出時仍產生 /quiz 頁
+  routeRules: {
+    '/quiz': { ssr: false },
+  },
+  nitro: {
+    prerender: { routes: ['/', '/quiz'] },
+  },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
       htmlAttrs: { lang: 'zh-Hant-TW' },
-      title: '學測練習｜手繪風試作',
+      title: '考古題練習本',
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

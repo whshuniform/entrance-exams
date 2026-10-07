@@ -90,8 +90,14 @@ export interface RankRange {
 
 /** 一科試卷，依原試題 PDF 的部分、題型分段 */
 export interface QuizPaper {
+  /** 網址用的科目代號，例如 chinese、math-a */
+  id: string
+  /** 卷頭的考試簡稱，例如「學測」 */
+  exam: string
   subject: string
   year: number
+  /** 原試題卷頭的考試時間（分鐘） */
+  minutes: number
   /** 整卷滿分（換算級分用） */
   fullMarks: number
   stats: LevelStats
@@ -130,3 +136,39 @@ export interface SubjectReport {
   /** 最好名次取最高級分、最差名次取最低級分 */
   rank: RankRange
 }
+
+/** 考試項目：學測、分科、會考；還沒有題目的先顯示「即將推出」 */
+export interface ExamKind {
+  /** 網址用的代號，例如 gsat */
+  id: string
+  name: string
+  /** 正式名稱，例如「學科能力測驗」 */
+  fullName: string
+  papers: QuizPaper[]
+}
+
+/** full：整份考卷；random：從這份考卷隨機抽幾題 */
+export type QuizMode = 'full' | 'random'
+
+/** 首頁選好、帶到作答頁網址的設定 */
+export interface QuizConfig {
+  exam: string
+  year: number
+  /** 試卷的科目代號（QuizPaper.id） */
+  subject: string
+  mode: QuizMode
+  /** 隨機抽題的題數；整份考卷時為全部題數 */
+  count: number
+  /** 限時幾分鐘；0 為不計時 */
+  minutes: number
+}
+
+/** 從網址找到的考試項目與試卷 */
+export interface ResolvedQuiz {
+  config: QuizConfig
+  exam: ExamKind
+  paper: QuizPaper
+}
+
+/** 倒數計時：waiting 還沒開始、stopped 提早交卷停下、expired 時間到 */
+export type CountdownStatus = 'waiting' | 'running' | 'stopped' | 'expired'
