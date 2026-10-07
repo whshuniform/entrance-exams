@@ -6,7 +6,15 @@
       <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
     </section>
   </main>
-  <main v-else :class="['container', $style['quiz-page'], !toolsVisible && $style['quiz-page--full']]">
+  <main
+    v-else
+    :class="[
+      'container',
+      $style['quiz-page'],
+      !toolsVisible && $style['quiz-page--full'],
+      totalSeconds > 0 && $style['quiz-page--timed'],
+    ]"
+  >
     <header :class="$style['quiz-page__header']">
       <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
       <h1 :class="$style['quiz-page__title']">
@@ -19,7 +27,7 @@
       </p>
     </header>
 
-    <!-- 計時作答：倒數貼在畫面上方，往下捲也看得到 -->
+    <!-- 計時作答：倒數是固定在畫面最上方的細長條，往下捲也看得到 -->
     <div v-if="totalSeconds > 0" :class="$style['quiz-page__timer']">
       <QuizTimer
         data-test="quiz-timer"
@@ -153,11 +161,13 @@ watch(isGuide, (guide) => {
 
 const sheetTop = ref<HTMLElement | null>(null)
 
-/** 翻頁後若題目頂端已捲出畫面，捲回這一頁的開頭 */
+/** 翻頁後若題目頂端已捲出畫面（或被最上方的倒數長條蓋住），捲回這一頁的開頭 */
 function flip(action: () => void) {
   action()
-  const top = sheetTop.value?.getBoundingClientRect().top ?? 0
-  if (top < 0) sheetTop.value?.scrollIntoView({ block: 'start' })
+  const desk = sheetTop.value
+  if (!desk) return
+  const margin = Number.parseFloat(getComputedStyle(desk).scrollMarginTop) || 0
+  if (desk.getBoundingClientRect().top < margin) desk.scrollIntoView({ block: 'start' })
 }
 
 function setScratchOpen(id: string, open: boolean) {
@@ -196,17 +206,19 @@ function onReset() {
 @use '@/assets/css/mixins' as *;
 
 // 右側留給固定在右下角的繪畫工具列，整頁往左移；工具隱藏時左右對稱變滿版
-// 全域 .container 的 overflow: auto 會讓倒數的 sticky 失效，改成只裁掉左右超出的部分
 .quiz-page {
   max-width: 51rem;
   margin: 0 auto;
   padding: 2rem 6rem 3rem 3.5rem;
-  overflow-x: clip;
-  overflow-y: visible;
   transition: padding-right 0.3s ease;
 
   &--full {
     padding-right: 3.5rem;
+  }
+
+  // 計時作答：上方留出倒數長條的高度
+  &--timed {
+    padding-top: calc(var(--timer-bar-height) + 2rem);
   }
 
   &__header {
@@ -223,22 +235,13 @@ function onReset() {
     text-underline-offset: 0.25em;
   }
 
-  // 倒數貼在畫面上方：捲動時停在頂端
+  // 倒數長條固定在畫面最上方，整排橫跨畫面
   &__timer {
-    position: sticky;
-    top: 0.5rem;
-    z-index: 5;
-
-    margin-bottom: 1rem;
-
-    display: flex;
-    justify-content: flex-end;
-
-    pointer-events: none;
-
-    > * {
-      pointer-events: auto;
-    }
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
   }
 
   &__missing {
@@ -271,6 +274,11 @@ function onReset() {
   &__desk {
     // 翻頁時以左邊為書背
     perspective: 1600px;
+  }
+
+  // 翻頁捲回頁首時，停在倒數長條下面
+  &--timed &__desk {
+    scroll-margin-top: calc(var(--timer-bar-height) + 0.5rem);
   }
 
   // 試卷頁首：像原卷每頁上方的「115年學測　科目　第 n 頁 共 m 頁」
@@ -332,6 +340,10 @@ function onReset() {
 
     &--full {
       padding-right: 0.75rem;
+    }
+
+    &--timed {
+      padding-top: calc(var(--timer-bar-height) + 1.25rem);
     }
 
     &__title {

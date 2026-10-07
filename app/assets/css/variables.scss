@@ -20,6 +20,9 @@ $spacing-base: 8px;
   --radius-sketch-alt: 15px 255px 15px 225px / 225px 15px 255px 15px;
   --shadow-sketch: 3px 4px 0 var(--color-ink);
 
+  // 計時作答時固定在畫面最上方的倒數長條高度
+  --timer-bar-height: 2rem;
+
   --font-family-base: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", "PingFang TC",
     "Microsoft JhengHei", serif;
   --font-size-base: 18px;

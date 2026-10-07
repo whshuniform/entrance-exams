@@ -40,27 +40,34 @@ const state = computed(() =>
 </script>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
-
-// 倒數計時：像貼在考卷角落的便條
+// 倒數計時：橫跨畫面最上方的細長條，像貼在考卷頂端的紙膠帶
 .quiz-timer {
-  padding: 0.3rem 0.8rem;
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 0.4rem;
+  width: 100%;
+  height: var(--timer-bar-height);
 
-  @include sketch-border(2px, true);
+  padding: 0 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  overflow: hidden;
 
   background: var(--color-card);
-  box-shadow: 2px 3px 0 var(--color-ink);
-  font-size: 1rem;
+  border-bottom: 2px solid var(--color-ink);
+  box-shadow: 0 2px 0 var(--color-paper-line);
+
+  font-size: 0.9rem;
   font-weight: 700;
+  line-height: 1;
   color: var(--color-ink);
+  white-space: nowrap;
 
   &__icon {
-    width: 1.4rem;
-    height: 1.4rem;
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
     fill: none;
     stroke: currentcolor;
     stroke-width: 2;
@@ -69,25 +76,27 @@ const state = computed(() =>
   }
 
   &__clock {
-    font-size: 1.25rem;
+    display: inline-block;
+    font-size: 1.05rem;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.05em;
   }
 
   &__note {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 400;
     color: var(--color-pencil);
   }
 
+  // 最後一分鐘和時間到：紅色螢光筆底
   &--warning,
   &--expired {
-    border-color: var(--color-pen-red);
-    box-shadow: 2px 3px 0 var(--color-pen-red);
+    background: var(--color-marker-answer);
+    border-bottom-color: var(--color-pen-red);
     color: var(--color-pen-red);
   }
 
-  &--warning {
+  &--warning &__clock {
     animation: quiz-timer-pulse 1s ease-in-out infinite;
   }
 
@@ -96,13 +105,15 @@ const state = computed(() =>
   }
 
   @media (prefers-reduced-motion: reduce) {
-    animation: none;
+    &--warning &__clock {
+      animation: none;
+    }
   }
 }
 
 @keyframes quiz-timer-pulse {
   50% {
-    transform: scale(1.06);
+    transform: scale(1.12);
   }
 }
 </style>
