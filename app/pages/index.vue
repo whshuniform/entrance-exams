@@ -20,12 +20,11 @@
         :leave-active-class="$style['flip-leave-active']"
         :leave-to-class="$style[`flip-${direction}-leave-to`]"
       >
-        <section
-          v-if="currentSheet"
-          :key="currentSheet.question.id"
-          data-test="sheet"
-         
-        >
+        <!-- 像原卷封面：第一頁是作答注意事項 -->
+        <section v-if="isGuide" key="guide" data-test="guide-sheet">
+          <QuizGuide />
+        </section>
+        <section v-else-if="currentSheet" :key="currentSheet.question.id" data-test="sheet">
           <header data-test="running-header" :class="$style['quiz-page__running']">
             <span>{{ currentSheet.paper.year }}年學測　{{ currentSheet.paper.subject }}</span>
             <span>第 {{ currentSheet.pageNumber }} 頁 共 {{ currentSheet.pageCount }} 頁</span>
@@ -59,7 +58,7 @@
 
     <nav
       data-test="pager"
-      :data-question="currentSheet ? currentSheet.question.id : 'result'"
+      :data-question="isGuide ? 'guide' : currentSheet ? currentSheet.question.id : 'result'"
       aria-label="翻頁"
       :class="$style['quiz-page__pager']"
     >
@@ -67,7 +66,7 @@
       <Button
         v-if="!isLast"
         data-test="next-page"
-        :label="submitted && index === sheets.length - 1 ? '看成績' : '下一頁'"
+        :label="nextLabel"
         @click="flip(next)"
       />
       <Button v-else-if="!submitted" label="交卷批改" @click="onSubmit" />
@@ -95,10 +94,17 @@ const tool = ref<DrawTool>('off')
 /** 每題計算紙開著與否，翻頁回來仍記得 */
 const scratchOpen = ref<Record<string, boolean>>({})
 
-// 交卷後多一頁成績單
-const pageCount = computed(() => sheets.length + (submitted.value ? 1 : 0))
+// 第 0 頁是作答注意事項，接著一頁一題，交卷後多一頁成績單
+const GUIDE_PAGES = 1
+const resultPage = GUIDE_PAGES + sheets.length
+const pageCount = computed(() => resultPage + (submitted.value ? 1 : 0))
 const { index, direction, isFirst, isLast, goTo, next, prev } = usePaging(() => pageCount.value)
-const currentSheet = computed(() => sheets[index.value])
+const isGuide = computed(() => index.value < GUIDE_PAGES)
+const currentSheet = computed(() => (isGuide.value ? undefined : sheets[index.value - GUIDE_PAGES]))
+const nextLabel = computed(() => {
+  if (isGuide.value) return '開始作答'
+  return submitted.value && index.value === resultPage - 1 ? '看成績' : '下一頁'
+})
 const reports = computed(() => papers.map(paper => buildReport(paper, results.value)))
 
 const sheetTop = ref<HTMLElement | null>(null)
@@ -116,7 +122,7 @@ function setScratchOpen(id: string, open: boolean) {
 
 function onSubmit() {
   submit()
-  flip(() => goTo(sheets.length))
+  flip(() => goTo(resultPage))
 }
 
 function onReset() {
@@ -124,7 +130,8 @@ function onReset() {
   clearAll()
   scratchOpen.value = {}
   tool.value = 'off'
-  goTo(0)
+  // 重新作答直接回到第 1 題
+  goTo(GUIDE_PAGES)
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>

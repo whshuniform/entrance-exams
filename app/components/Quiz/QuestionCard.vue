@@ -14,7 +14,7 @@
     @pointercancel="drawing.onPointerCancel"
     @click.capture="drawing.onClickCapture"
   >
-    <!-- 跟原卷一樣：題目接在題號後面，換行和選項都對齊題目第一個字 -->
+    <!-- 跟原卷一樣：題目接在題號後面，換行對齊題目第一個字 -->
     <div :class="$style['question-card__body']">
       <span data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
       <div :class="$style['question-card__content']">
@@ -35,73 +35,74 @@
             <QuizMarkupText :text="line" :ranges="rangesOf(`passage:${index}`)" />
           </li>
         </ol>
+      </div>
 
-        <ul :class="$style['question-card__options']">
-          <li
-            v-for="option in props.question.options"
-            :key="option.key"
-            :data-test="`option-${option.key}`"
-            :data-state="optionState(option.key)"
-            :class="[
-              $style['question-card__option'],
-              optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
-            ]"
-          >
-            <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
-              <RadioButton
-                v-if="props.question.type === 'single'"
-                :input-id="inputId(option.key)"
-                :name="props.question.id"
-                :value="option.key"
-                :model-value="props.modelValue"
-                :disabled="props.submitted"
-                @update:model-value="pickSingle"
-              />
-              <Checkbox
-                v-else
-                :input-id="inputId(option.key)"
-                :name="props.question.id"
-                :value="option.key"
-                :model-value="selectedKeys"
-                :disabled="props.submitted"
-                @update:model-value="pickMulti"
-              />
-              <span :class="$style['question-card__key']">
-                ({{ option.key }})
-                <svg
-                  v-if="optionState(option.key) === 'answer' || optionState(option.key) === 'hit'"
-                  :class="$style['question-card__circle']"
-                  viewBox="0 0 44 34"
-                  aria-hidden="true"
-                >
-                  <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
-                </svg>
-              </span>
-              <span
-                data-test="option-text"
-                :data-field="fieldId(`option:${option.key}`)"
-                :class="$style['question-card__text']"
+      <!-- 電腦：選項對齊題目第一個字；手機：選項靠左和題號切齊 -->
+      <ul :class="$style['question-card__options']">
+        <li
+          v-for="option in props.question.options"
+          :key="option.key"
+          :data-test="`option-${option.key}`"
+          :data-state="optionState(option.key)"
+          :class="[
+            $style['question-card__option'],
+            optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
+          ]"
+        >
+          <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
+            <RadioButton
+              v-if="props.question.type === 'single'"
+              :input-id="inputId(option.key)"
+              :name="props.question.id"
+              :value="option.key"
+              :model-value="props.modelValue"
+              :disabled="props.submitted"
+              @update:model-value="pickSingle"
+            />
+            <Checkbox
+              v-else
+              :input-id="inputId(option.key)"
+              :name="props.question.id"
+              :value="option.key"
+              :model-value="selectedKeys"
+              :disabled="props.submitted"
+              @update:model-value="pickMulti"
+            />
+            <span :class="$style['question-card__key']">
+              ({{ option.key }})
+              <svg
+                v-if="optionState(option.key) === 'answer' || optionState(option.key) === 'hit'"
+                :class="$style['question-card__circle']"
+                viewBox="0 0 44 34"
+                aria-hidden="true"
               >
-                <span :class="$style['question-card__mark']">
-                  <QuizMarkupText :text="option.text" :ranges="rangesOf(`option:${option.key}`)" />
-                </span>
+                <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
+              </svg>
+            </span>
+            <span
+              data-test="option-text"
+              :data-field="fieldId(`option:${option.key}`)"
+              :class="$style['question-card__text']"
+            >
+              <span :class="$style['question-card__mark']">
+                <QuizMarkupText :text="option.text" :ranges="rangesOf(`option:${option.key}`)" />
               </span>
-            </label>
-          </li>
-        </ul>
+            </span>
+          </label>
+        </li>
+      </ul>
 
-        <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
-        <div :class="$style['question-card__scratch-bar']">
-          <Button
-            data-test="scratch-toggle"
-            :label="showScratch ? '收起計算紙' : '計算紙'"
-            size="small"
-            severity="secondary"
-            text
-            :aria-expanded="showScratch ? 'true' : 'false'"
-            @click="showScratch = !showScratch"
-          />
-        </div>
+      <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
+      <div :class="$style['question-card__scratch-bar']">
+        <Button
+          data-test="scratch-toggle"
+          :label="showScratch ? '收起計算紙' : '計算紙'"
+          size="small"
+          severity="secondary"
+          text
+          :aria-expanded="showScratch ? 'true' : 'false'"
+          @click="showScratch = !showScratch"
+        />
       </div>
     </div>
 
@@ -279,6 +280,12 @@ function pickMulti(values: string[]) {
     margin: 0 0 0.5rem;
   }
 
+  // 選項和計算紙按鈕排在題目那一欄
+  &__options,
+  &__scratch-bar {
+    grid-column: 2;
+  }
+
   &__passage {
     margin: 0 0 0.75rem;
     padding: 0.5rem 1rem 0.5rem 2rem;
@@ -387,6 +394,12 @@ function pickMulti(values: string[]) {
 
   @include respond-to('xs') {
     padding: 1rem 1rem 0.75rem;
+
+    // 手機：選項和計算紙按鈕靠左，跟題號切齊，選項文字多一點寬度
+    &__options,
+    &__scratch-bar {
+      grid-column: 1 / -1;
+    }
   }
 }
 </style>
