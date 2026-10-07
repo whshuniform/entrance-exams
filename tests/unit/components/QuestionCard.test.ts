@@ -71,6 +71,25 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
 
+  it('QuestionCard_AccuracyScoring_ShouldSayRightOrWrongInsteadOfPoints', async () => {
+    // 隨機抽題只看答對率：每題標答對或答錯，多選題部分給分也算答錯
+    const right = await mountSuspended(QuestionCard, {
+      props: {
+        question: single, modelValue: 'C', submitted: true, scoring: 'accuracy',
+        result: { score: 2, isCorrect: true, wrongCount: 0 },
+      },
+    })
+    const partly = await mountSuspended(QuestionCard, {
+      props: {
+        question: multi, modelValue: 'B', submitted: true, scoring: 'accuracy',
+        result: { score: 2.4, isCorrect: false, wrongCount: 1 },
+      },
+    })
+
+    expect(right.find('[data-test="question-score"]').text()).toBe('答對')
+    expect(partly.find('[data-test="question-score"]').text()).toBe('答錯')
+  })
+
   it('QuestionCard_Render_ShouldNotHaveEliminateButtons', async () => {
     // 刪去法改用原子筆在選項上劃掉
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })

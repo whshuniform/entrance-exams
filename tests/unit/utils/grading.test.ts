@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { gradeQuestion } from '~/utils/grading'
+import { buildAccuracy, gradeQuestion } from '~/utils/grading'
 import type { QuizQuestion } from '~/types/quiz'
 
 const options = ['A', 'B', 'C', 'D', 'E'].map(key => ({ key, text: `選項${key}` }))
@@ -87,5 +87,35 @@ describe('gradeQuestion — 數字選項（數學）', () => {
 
   it('gradeQuestion_NumericKeyWrong_ShouldGetZero', () => {
     expect(gradeQuestion(mathQuestion, '3').score).toBe(0)
+  })
+})
+
+describe('buildAccuracy — 隨機抽題看答對率和答對題數', () => {
+  const second: QuizQuestion = { ...singleQuestion, id: 's2' }
+
+  it('buildAccuracy_ShouldCountCorrectQuestionsAndRoundRateToPercent', () => {
+    const results = {
+      s1: gradeQuestion(singleQuestion, 'C'),
+      s2: gradeQuestion(second, 'A'),
+      m1: gradeQuestion(multiQuestion, 'BE'),
+    }
+
+    // 3 題對 2 題：66.7% → 67%
+    expect(buildAccuracy([singleQuestion, second, multiQuestion], results)).toEqual({ correct: 2, total: 3, rate: 67 })
+  })
+
+  it('buildAccuracy_MultiPartlyRight_ShouldNotCountAsCorrect', () => {
+    // 多選題少選一個雖然有部分分數，但不算答對
+    const results = { m1: gradeQuestion(multiQuestion, 'B') }
+
+    expect(buildAccuracy([multiQuestion], results)).toEqual({ correct: 0, total: 1, rate: 0 })
+  })
+
+  it('buildAccuracy_Unanswered_ShouldCountAsWrong', () => {
+    expect(buildAccuracy([singleQuestion, second], {})).toEqual({ correct: 0, total: 2, rate: 0 })
+  })
+
+  it('buildAccuracy_NoQuestions_ShouldBeZeroInsteadOfNaN', () => {
+    expect(buildAccuracy([], {})).toEqual({ correct: 0, total: 0, rate: 0 })
   })
 })

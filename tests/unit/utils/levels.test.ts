@@ -68,6 +68,7 @@ describe('buildReport', () => {
     // 整卷 14～100 分 → 3～15 級分 → 全國第 1～117,401 名（與 gsat/scripts/score.py 相同）
     expect(buildReport(paper, results)).toEqual({
       subject: '國語文綜合能力測驗',
+      year: 115,
       earned: 14,
       sampleMax: 14,
       fullMarks: 100,

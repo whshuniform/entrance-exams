@@ -5,6 +5,7 @@ import type { SubjectReport } from '~/types/quiz'
 
 const report: SubjectReport = {
   subject: '國語文綜合能力測驗',
+  year: 115,
   earned: 8.4,
   sampleMax: 14,
   fullMarks: 100,
@@ -51,5 +52,30 @@ describe('ResultSheet', () => {
     const wrapper = await mountSuspended(ResultSheet, { props: { reports: [report] } })
 
     expect(wrapper.find('[data-test="time-up"]').exists()).toBe(false)
+  })
+
+  it('ResultSheet_Note_ShouldNameYearOfLevelTable', async () => {
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [{ ...report, year: 113 }] } })
+
+    expect(wrapper.text()).toContain('113 年大考中心級分表')
+  })
+})
+
+describe('ResultSheet — 隨機抽題', () => {
+  const accuracy = { correct: 3, total: 5, rate: 60 }
+
+  it('ResultSheet_Accuracy_ShouldShowRateAndCorrectCountWithoutLevels', async () => {
+    const wrapper = await mountSuspended(ResultSheet, { props: { accuracy } })
+
+    expect(wrapper.find('[data-test="accuracy-rate"]').text()).toBe('60%')
+    expect(wrapper.find('[data-test="accuracy-count"]').text()).toBe('答對 3 / 5 題')
+    expect(wrapper.find('[data-test="report-level"]').exists()).toBe(false)
+    expect(wrapper.text()).not.toContain('級分')
+  })
+
+  it('ResultSheet_AccuracyTimeUp_ShouldStillSayHandedInAutomatically', async () => {
+    const wrapper = await mountSuspended(ResultSheet, { props: { accuracy, timeUp: true } })
+
+    expect(wrapper.find('[data-test="time-up"]').exists()).toBe(true)
   })
 })

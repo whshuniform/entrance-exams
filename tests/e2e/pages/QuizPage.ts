@@ -4,13 +4,19 @@ import { expect, type Locator, type Page } from '@playwright/test'
 export interface QuizOptions {
   subject?: 'chinese' | 'math-a'
   mode?: 'full' | 'random'
+  /** 整份考卷取第一個年度；隨機抽題可以多選 */
+  years?: number[]
+  /** 隨機抽題依課綱選範圍，例如「108課綱」 */
+  curriculum?: string
   count?: number
   minutes?: number
 }
 
 /** 作答頁網址，跟首頁按「開始測驗」帶的參數一樣 */
-export function quizUrl({ subject = 'chinese', mode = 'full', count, minutes }: QuizOptions = {}) {
-  const query = new URLSearchParams({ exam: 'gsat', year: '115', subject, mode })
+export function quizUrl({ subject = 'chinese', mode = 'full', years = [115], curriculum, count, minutes }: QuizOptions = {}) {
+  const query = new URLSearchParams({ exam: 'gsat', subject, mode })
+  if (curriculum) query.set('curriculum', curriculum)
+  else query.set('years', years.join(','))
   if (count) query.set('count', String(count))
   if (minutes) query.set('minutes', String(minutes))
   return `/quiz?${query}`
