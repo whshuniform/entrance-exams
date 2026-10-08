@@ -1,0 +1,195 @@
+<template>
+  <div :class="$style['result-sheet']">
+    <h2 :class="$style['result-sheet__title']">成績單</h2>
+    <p v-if="props.timeUp" data-test="time-up" :class="$style['result-sheet__time-up']">時間到，已自動交卷批改</p>
+    <!-- 隨機抽題：看答對率和答對題數 -->
+    <div v-if="props.accuracy" data-test="accuracy" :class="$style['result-sheet__accuracy']">
+      <span :class="$style['result-sheet__label']">答對率</span>
+      <span data-test="accuracy-rate" :class="$style['result-sheet__level']">{{ props.accuracy.rate }}%</span>
+      <span data-test="accuracy-count" :class="$style['result-sheet__count']">答對 {{ props.accuracy.correct }} / {{ props.accuracy.total }} 題</span>
+    </div>
+    <ul v-else :class="$style['result-sheet__list']">
+      <li
+        v-for="report in props.reports"
+        :key="report.subject"
+        :data-test="`report-${report.subject}`"
+        :data-subject="report.subject"
+        :class="$style['result-sheet__row']"
+      >
+        <div :class="$style['result-sheet__subject']">{{ report.subject }}</div>
+        <div data-test="report-score" :class="$style['result-sheet__score']">
+          <span>試作得分 {{ formatNumber(report.earned) }} / {{ report.sampleMax }} 分，</span>
+          <span>整卷 {{ formatRange(report.scoreRange) }} / {{ report.fullMarks }} 分</span>
+        </div>
+        <div :class="$style['result-sheet__grade']">
+          <span data-test="report-level" :class="$style['result-sheet__level']">
+            {{ formatRange(report.levelRange) }} 級分
+          </span>
+          <span data-test="report-rank" :class="$style['result-sheet__rank']">
+            全國第 {{ formatCount(report.rank.best) }}～{{ formatCount(report.rank.worst) }} 名
+            <small>到考 {{ formatCount(report.rank.total) }} 人</small>
+          </span>
+        </div>
+      </li>
+    </ul>
+    <p v-if="props.accuracy" :class="$style['result-sheet__note']">
+      隨機抽題只看答對幾題：整題答對才算對，多選題要全部選對，沒作答算錯。
+    </p>
+    <p v-else :class="$style['result-sheet__note']">
+      試作每科只有幾題，沒考到的題目以全錯（0 分）到全對（滿分）估計，再查 {{ props.reports[0]?.year }} 年大考中心級分表與各級分人數，所以整卷分數、級分和名次都是範圍。
+    </p>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { Accuracy, NumberRange, SubjectReport } from '~/types/quiz'
+
+interface Props {
+  /** 整份考卷：每科的分數、級分、名次範圍 */
+  reports?: SubjectReport[]
+  /** 隨機抽題：答對率和答對題數（有給就只顯示這個） */
+  accuracy?: Accuracy
+  /** 計時作答時間到、自動交卷 */
+  timeUp?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), { reports: () => [], accuracy: undefined, timeUp: false })
+
+function formatNumber(value: number) {
+  return String(Number(value.toFixed(2)))
+}
+
+/** 兩端相同時只寫一個數 */
+function formatRange({ min, max }: NumberRange) {
+  return min === max ? formatNumber(min) : `${formatNumber(min)}～${formatNumber(max)}`
+}
+
+function formatCount(value: number) {
+  return value.toLocaleString('en-US')
+}
+</script>
+
+<style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
+.result-sheet {
+  position: relative;
+
+  padding: 1.5rem 1.5rem 1rem;
+
+  @include sketch-border(2px);
+
+  background: var(--color-card);
+  box-shadow: var(--shadow-sketch);
+
+  transform: rotate(-0.3deg);
+
+  &__title {
+    margin: 0 0 0.75rem;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  // 紅筆蓋的章
+  &__time-up {
+    width: fit-content;
+    margin: 0 auto 0.75rem;
+    padding: 0.1rem 0.75rem;
+    border: 2px solid var(--color-pen-red);
+    border-radius: var(--radius-sketch-alt);
+    font-weight: 700;
+    color: var(--color-pen-red);
+    transform: rotate(-2deg);
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__row {
+    padding: 0.75rem 0;
+    border-top: 1.5px dashed var(--color-pencil);
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+
+  &__subject {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  &__score {
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+
+    // 兩段各自不斷行，窄螢幕時整段換到下一行
+    span {
+      display: inline-block;
+    }
+  }
+
+  &__grade {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  // 紅筆寫上去的級分
+  &__level {
+    padding: 0 0.3em;
+    border-bottom: 3px double var(--color-pen-red);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-pen-red);
+    transform: rotate(-4deg);
+  }
+
+  // 答對率：跟級分一樣用紅筆寫，旁邊寫答對題數
+  &__accuracy {
+    padding: 0.5rem 0 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem 1rem;
+  }
+
+  &__label {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  &__count {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-pen-red);
+  }
+
+  &__rank {
+    color: var(--color-pen-red);
+
+    small {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-pencil);
+    }
+  }
+
+  &__note {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--color-pencil);
+  }
+
+  @include respond-to('xs') {
+    padding: 1.25rem 1rem 0.75rem;
+  }
+}
+</style>
