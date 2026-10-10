@@ -10,6 +10,8 @@ interface ExamProgress {
 
 interface SavedState {
   examId: VocabExamId
+  /** 遮住中文意思，點了才看得到 */
+  hideMeaning: boolean
   progress: Partial<Record<VocabExamId, ExamProgress>>
 }
 
@@ -43,6 +45,7 @@ export function useVocabPlan(exams: VocabExam[], options: { today?: () => string
     typeof value?.examDate === 'string' && Array.isArray(value.levels) && typeof value.learned === 'object'
   const state = reactive<SavedState>({
     examId: exams.some(exam => exam.id === saved?.examId) ? saved!.examId : exams[0]!.id,
+    hideMeaning: saved?.hideMeaning === true,
     progress: Object.fromEntries(exams.map(exam => {
       const item = saved?.progress?.[exam.id]
       return [exam.id, isProgress(item) ? item : fresh(exam)]
@@ -55,6 +58,10 @@ export function useVocabPlan(exams: VocabExam[], options: { today?: () => string
   const examId = computed({
     get: () => state.examId,
     set: (id: VocabExamId) => { if (exams.some(item => item.id === id)) state.examId = id },
+  })
+  const hideMeaning = computed({
+    get: () => state.hideMeaning,
+    set: (value: boolean) => { state.hideMeaning = value },
   })
   const examDate = computed({
     get: () => progress.value.examDate,
@@ -91,5 +98,5 @@ export function useVocabPlan(exams: VocabExam[], options: { today?: () => string
 
   watch(state, value => save(value), { deep: true, flush: 'sync' })
 
-  return { exams, exam, examId, examDate, levels, learned, total, learnedCount, plan, schedule, isLearned, toggle, resetProgress }
+  return { exams, exam, examId, examDate, hideMeaning, levels, learned, total, learnedCount, plan, schedule, isLearned, toggle, resetProgress }
 }

@@ -7,6 +7,8 @@ export interface VocabWord {
   pos?: string
   /** 大考中心詞彙表級別 1–6；會考字表沒有級別 */
   level?: number
+  /** 中文意思，有詞性時以「v. 放棄；n. 放縱」分段 */
+  zh?: string
 }
 
 export interface VocabExam {

@@ -41,8 +41,14 @@
         今天要背的字
         <small :class="$style['vocab-page__count']">{{ plan.doneToday }} / {{ plan.words.length }}</small>
       </h2>
-      <p :class="$style['vocab-page__hint']">背好了就打勾，會用紅筆劃掉；點「查字典」看中文意思和發音。</p>
-      <VocabTodayWords :words="plan.words" :learned="learned" @toggle="toggle" />
+      <div :class="$style['vocab-page__tools']">
+        <p :class="$style['vocab-page__hint']">背好了就打勾，會用紅筆劃掉；點「查字典」聽發音、看例句。</p>
+        <label data-test="vocab-hide-meaning" :for="hideId" :class="$style['vocab-page__switch']">
+          <ToggleSwitch v-model="hideMeaning" :input-id="hideId" />
+          <span>遮住中文</span>
+        </label>
+      </div>
+      <VocabTodayWords :words="plan.words" :learned="learned" :hide-meaning="hideMeaning" @toggle="toggle" />
     </section>
 
     <section v-if="schedule.length" :class="$style['vocab-page__section']">
@@ -60,7 +66,7 @@
         @click="onReset"
       />
       <p :class="$style['vocab-page__note']">進度只存在這台裝置的瀏覽器裡，換手機或清除瀏覽資料就會不見。</p>
-      <p data-test="vocab-source" :class="$style['vocab-page__source']">單字表來源：{{ exam.source }}</p>
+      <p data-test="vocab-source" :class="$style['vocab-page__source']">單字表來源：{{ exam.source }}。中文意思為本站整理，僅供參考。</p>
     </div>
   </main>
 </template>
@@ -70,9 +76,10 @@ import { vocabExams } from '~/data/vocab'
 
 useHead({ title: '必背單字・考古題練習本' })
 
-const { exam, examId, examDate, levels, total, learnedCount, plan, schedule, toggle, resetProgress, learned } =
+const { exam, examId, examDate, hideMeaning, levels, total, learnedCount, plan, schedule, toggle, resetProgress, learned } =
   useVocabPlan(vocabExams)
 
+const hideId = useId()
 const percent = computed(() => (total.value ? (learnedCount.value / total.value) * 100 : 0))
 
 /** 畫面可以操作了（E2E 等這個再點選） */
@@ -193,6 +200,23 @@ function onReset() {
     margin: 0.25rem 0 0.5rem;
     font-size: 0.85rem;
     color: var(--color-pencil);
+  }
+
+  &__tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+  }
+
+  &__switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
   }
 
   &__footer {
