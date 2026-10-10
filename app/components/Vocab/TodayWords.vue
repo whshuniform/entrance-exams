@@ -17,9 +17,11 @@
             binary
             @update:model-value="emit('toggle', item.word)"
           />
-          <span :class="$style['today-words__word']">{{ item.word }}</span>
-          <small v-if="item.pos" :class="$style['today-words__pos']">{{ item.pos }}</small>
-          <small v-if="item.level" :class="$style['today-words__level']">第 {{ item.level }} 級</small>
+          <span :class="$style['today-words__text']">
+            <span :class="$style['today-words__word']">{{ item.word }}</span>
+            <small v-if="item.pos" :class="$style['today-words__pos']">{{ item.pos }}</small>
+            <small v-if="item.level" :class="$style['today-words__level']">第 {{ item.level }} 級</small>
+          </span>
         </label>
         <a
           :href="dictionaryUrl(item.word)"
@@ -63,9 +65,9 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
   &__list {
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-    gap: 0 1.5rem;
+    // 由上往下排完一欄再排下一欄，照字表順序讀
+    columns: 2 17rem;
+    column-gap: 1.5rem;
     list-style: none;
   }
 
@@ -77,6 +79,7 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
     justify-content: space-between;
     gap: 0.5rem;
     border-bottom: 1px dashed var(--color-paper-line);
+    break-inside: avoid;
 
     &--learned {
       color: var(--color-pencil);
@@ -86,10 +89,17 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
   &__label {
     min-width: 0;
     display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+  }
+
+  &__text {
+    min-width: 0;
+    display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0 0.5rem;
-    cursor: pointer;
   }
 
   &__word {
@@ -120,7 +130,7 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
 
   @include respond-to('xs') {
     &__list {
-      grid-template-columns: 1fr;
+      columns: 1;
     }
   }
 }

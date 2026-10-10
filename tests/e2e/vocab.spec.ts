@@ -42,6 +42,18 @@ test.describe('必背單字每日規劃', () => {
     await expect(vocab.words).toHaveCount(58)
   })
 
+  test('在日曆改考試日期_天數和每天字數跟著變', async ({ page }) => {
+    const vocab = new VocabPage(page)
+    await vocab.goto()
+
+    await vocab.dateInput.click()
+    await page.locator('.p-datepicker-panel').getByText('15', { exact: true }).first().click()
+
+    await expect(vocab.dateInput).toHaveValue('2027/01/15')
+    await expect(vocab.summary).toContainText('還有 97 天')
+    await expect(vocab.summary).toContainText('每天背 62 個字')
+  })
+
   test('只背第1到4級_每天的字變少', async ({ page }) => {
     const vocab = new VocabPage(page)
     await vocab.goto()

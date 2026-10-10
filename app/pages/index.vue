@@ -9,6 +9,11 @@
       </p>
     </header>
 
+    <NuxtLink to="/vocab" :class="$style['home-page__vocab']">
+      <strong :class="$style['home-page__vocab-title']">必背單字</strong>
+      <span :class="$style['home-page__vocab-hint']">設定考試日期，排好每天要背幾個英文單字 →</span>
+    </NuxtLink>
+
     <HomeQuizSetup @start="onStart" />
 
     <p :class="$style['home-page__source']">試題與答案來源：大學入學考試中心</p>
@@ -51,6 +56,32 @@ function onStart(config: QuizConfig) {
   &__subtitle {
     margin: 0.5rem 0 0;
     line-height: 1.6;
+    color: var(--color-ink-soft);
+  }
+
+  // 像貼在筆記本上的一張便利貼
+  &__vocab {
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    background: var(--color-marker);
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sketch-alt);
+    box-shadow: 2px 3px 0 var(--color-ink);
+    color: var(--color-ink);
+    text-decoration: none;
+    transform: rotate(-0.6deg);
+  }
+
+  &__vocab-title {
+    font-size: 1.15rem;
+  }
+
+  &__vocab-hint {
+    font-size: 0.9rem;
     color: var(--color-ink-soft);
   }
 

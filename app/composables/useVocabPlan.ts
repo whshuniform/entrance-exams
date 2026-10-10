@@ -65,6 +65,7 @@ export function useVocabPlan(exams: VocabExam[], options: { today?: () => string
     set: (list: number[]) => { progress.value.levels = [...list].sort((a, b) => a - b) },
   })
 
+  const learned = computed(() => progress.value.learned)
   const words = computed(() => orderWords(exam.value.words, exam.value.levels.length ? levels.value : undefined))
   const total = computed(() => words.value.length)
   const learnedCount = computed(() => words.value.filter(item => progress.value.learned[item.word]).length)
@@ -90,5 +91,5 @@ export function useVocabPlan(exams: VocabExam[], options: { today?: () => string
 
   watch(state, value => save(value), { deep: true, flush: 'sync' })
 
-  return { exams, exam, examId, examDate, levels, total, learnedCount, plan, schedule, isLearned, toggle, resetProgress }
+  return { exams, exam, examId, examDate, levels, learned, total, learnedCount, plan, schedule, isLearned, toggle, resetProgress }
 }
