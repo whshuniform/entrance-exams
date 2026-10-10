@@ -93,6 +93,16 @@ describe('useVocabPlan', () => {
     expect(again.isLearned('zoo')).toBe(true)
   })
 
+  it('useVocabPlan_HideMeaning_ShouldDefaultOffAndBeRemembered', async () => {
+    const first = useVocabPlan(exams, { today })
+    expect(first.hideMeaning.value).toBe(false)
+
+    first.hideMeaning.value = true
+    await nextTick()
+
+    expect(useVocabPlan(exams, { today }).hideMeaning.value).toBe(true)
+  })
+
   it('useVocabPlan_BrokenSavedData_ShouldStartFresh', () => {
     localStorage.setItem(VOCAB_STORAGE_KEY, '{not json')
 
