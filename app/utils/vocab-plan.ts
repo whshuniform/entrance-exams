@@ -77,3 +77,32 @@ export function planSchedule(input: PlanInput): DayPlan[] {
   }
   return days
 }
+
+/** 查字典用的字：去掉括號裡的衍生字和斜線後的其他寫法，例如 "accomplish(ment)" → "accomplish" */
+export function lookupWord(word: string) {
+  return word.split(/[/(]/)[0]!.trim()
+}
+
+/** 劍橋英漢（繁體）字典 */
+export function dictionaryUrl(word: string) {
+  const slug = lookupWord(word).toLowerCase().replace(/\s+/g, '-')
+  return `https://dictionary.cambridge.org/zht/詞典/英語-漢語-繁體/${encodeURIComponent(slug)}`
+}
+
+const WEEKDAYS = '日一二三四五六'
+
+/** 2027-01-10 → 1/10（日） */
+export function formatDay(key: string) {
+  const [year, month, day] = key.split('-').map(Number)
+  const weekday = new Date(Date.UTC(year!, month! - 1, day!)).getUTCDay()
+  return `${month}/${day}（${WEEKDAYS[weekday]}）`
+}
+
+/** 一組字的級別範圍：「第 1 級」「第 1–2 級」；不分級回傳空字串 */
+export function levelRange(words: VocabWord[]) {
+  const levels = words.map(item => item.level).filter((level): level is number => level !== undefined)
+  if (!levels.length) return ''
+  const low = Math.min(...levels)
+  const high = Math.max(...levels)
+  return low === high ? `第 ${low} 級` : `第 ${low}–${high} 級`
+}

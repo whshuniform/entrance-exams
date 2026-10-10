@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import { addDays, daysBetween, orderWords, planSchedule, planToday, studyDaysLeft, toDateKey } from '~/utils/vocab-plan'
+import {
+  addDays, daysBetween, dictionaryUrl, formatDay, levelRange, lookupWord, orderWords, planSchedule, planToday, studyDaysLeft, toDateKey,
+} from '~/utils/vocab-plan'
 import type { VocabWord } from '~/types/vocab'
 
 const word = (text: string, level?: number): VocabWord => ({ word: text, level })
@@ -125,5 +127,28 @@ describe('planSchedule', () => {
     const days = planSchedule({ words: tenWords.slice(0, 2), learned: {}, today: '2027-01-18', examDate: '2027-01-22' })
 
     expect(days.map(day => day.words.length)).toEqual([1, 1])
+  })
+})
+
+describe('vocab-plan 顯示', () => {
+  it('lookupWord_DerivedOrAlternateForms_ShouldKeepHeadWord', () => {
+    expect(lookupWord('accomplish(ment)')).toBe('accomplish')
+    expect(lookupWord('a/an')).toBe('a')
+    expect(lookupWord('she (her, hers, herself)')).toBe('she')
+    expect(lookupWord('a few')).toBe('a few')
+  })
+
+  it('dictionaryUrl_Phrase_ShouldUseHyphenatedSlug', () => {
+    expect(dictionaryUrl('A few')).toMatch(/\/a-few$/)
+  })
+
+  it('formatDay_Key_ShouldShowMonthDayAndWeekday', () => {
+    expect(formatDay('2027-01-22')).toBe('1/22（五）')
+  })
+
+  it('levelRange_Words_ShouldShowSingleOrSpanOrNothing', () => {
+    expect(levelRange([word('a', 2), word('b', 2)])).toBe('第 2 級')
+    expect(levelRange([word('a', 1), word('b', 3)])).toBe('第 1–3 級')
+    expect(levelRange([word('a')])).toBe('')
   })
 })
