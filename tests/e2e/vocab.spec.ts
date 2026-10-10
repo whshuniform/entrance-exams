@@ -54,6 +54,20 @@ test.describe('必背單字每日規劃', () => {
     await expect(vocab.summary).toContainText('每天背 62 個字')
   })
 
+  test('每個字有中文意思_打開遮住中文_點了才看得到', async ({ page }) => {
+    const vocab = new VocabPage(page)
+    await vocab.goto()
+    const first = vocab.words.first()
+
+    await expect(first.getByTestId('vocab-meaning')).not.toBeEmpty()
+    await page.getByTestId('vocab-hide-meaning').click()
+
+    await expect(first.getByTestId('vocab-meaning')).toHaveCount(0)
+    await first.getByTestId('vocab-reveal').click()
+    await expect(first.getByTestId('vocab-meaning')).toBeVisible()
+    await expect(vocab.words.nth(1).getByTestId('vocab-reveal')).toBeVisible()
+  })
+
   test('只背第1到4級_每天的字變少', async ({ page }) => {
     const vocab = new VocabPage(page)
     await vocab.goto()
