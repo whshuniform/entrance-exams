@@ -14,9 +14,9 @@ export class VocabPage {
   }
 
   /** 固定「今天」是哪一天，再打開單字頁 */
-  async goto(today = '2026-10-10T09:00:00') {
+  async goto(today = '2026-10-10T09:00:00', query = '') {
     await this.page.clock.setFixedTime(new Date(today))
-    await this.page.goto('/vocab')
+    await this.page.goto(`/vocab${query}`)
     await expect(this.page.getByTestId('vocab-page')).toHaveAttribute('data-ready', 'true')
   }
 

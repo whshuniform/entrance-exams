@@ -92,6 +92,14 @@ test.describe('必背單字每日規劃', () => {
     await expect(page.getByTestId('vocab-source')).toContainText('附錄五')
   })
 
+  test('從考試頁帶會考進來_直接選好會考', async ({ page }) => {
+    const vocab = new VocabPage(page)
+    await vocab.goto(undefined, '?exam=cap')
+
+    await expect(vocab.exam('cap').locator('input')).toBeChecked()
+    await expect(vocab.summary).toContainText('每天背 6 個字')
+  })
+
   test('考試日已過_提醒改日期且沒有今天的字', async ({ page }) => {
     const vocab = new VocabPage(page)
     await vocab.goto('2027-01-23T09:00:00')
