@@ -1,0 +1,326 @@
+{
+ "year": 112,
+ "subject": "數學A",
+ "id": "math-a",
+ "parts": [
+  {
+   "title": "第壹部分、選擇（填）題（占85分）",
+   "groups": [
+    {
+     "title": "一、單選題（占30分）",
+     "note": "說明：第1題至第6題，每題5分。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2,
+       "images": [
+        {
+         "src": "papers/112/math-a/1-1.webp",
+         "width": 1210,
+         "height": 148
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "5",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2,
+       "images": [
+        {
+         "src": "papers/112/math-a/2-1.webp",
+         "width": 1210,
+         "height": 441
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2,
+       "images": [
+        {
+         "src": "papers/112/math-a/3-1.webp",
+         "width": 1210,
+         "height": 451
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2,
+       "images": [
+        {
+         "src": "papers/112/math-a/4-1.webp",
+         "width": 1210,
+         "height": 161
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/112/math-a/5-1.webp",
+         "width": 1210,
+         "height": 411
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/112/math-a/6-1.webp",
+         "width": 1210,
+         "height": 249
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占30分）",
+     "note": "說明：第7題至第12題，每題5分。",
+     "questions": [
+      {
+       "number": 7,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "35",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/112/math-a/7-1.webp",
+         "width": 1210,
+         "height": 634
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 8,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "14",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/112/math-a/8-1.webp",
+         "width": 1210,
+         "height": 338
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "35",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/112/math-a/9-1.webp",
+         "width": 1210,
+         "height": 236
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 10,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "135",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/112/math-a/10-1.webp",
+         "width": 1210,
+         "height": 462
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 11,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "25",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/112/math-a/11-1.webp",
+         "width": 1210,
+         "height": 341
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 12,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "15",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/112/math-a/12-1.webp",
+         "width": 1210,
+         "height": 366
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "第貳部分、混合題或非選擇題（占15分）",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明︰本部分共有1題組，單選題每題3分，非選擇題配分標於題末。限在標示題號作答區內作答。選擇題與「非選擇題作圖部分」使用2B鉛筆作答，更正時以橡皮擦擦拭，切勿使用修正帶（液）。非選擇題請由左而右橫式書寫，作答時必須寫出計算過程或理由，否則將酌予扣分。",
+     "questions": [
+      {
+       "number": 18,
+       "type": "single",
+       "points": 3,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/112/math-a/18-1.webp",
+         "width": 1210,
+         "height": 504
+        },
+        {
+         "src": "papers/112/math-a/18-2.webp",
+         "width": 1210,
+         "height": 92
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

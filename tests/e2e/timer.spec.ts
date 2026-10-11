@@ -2,6 +2,15 @@ import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
 test.describe('計時作答', () => {
+  test('倒數長條_藍底白字', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ minutes: 10 })
+
+    // 藍色原子筆色 #2457c5
+    await expect(quiz.timer).toHaveCSS('background-color', 'rgb(36, 87, 197)')
+    await expect(quiz.timer).toHaveCSS('color', 'rgb(255, 255, 255)')
+  })
+
   test('計時1分鐘_按開始作答才倒數_時間到自動交卷翻到成績單且不能再作答', async ({ page }) => {
     await page.clock.install()
     const quiz = new QuizPage(page)

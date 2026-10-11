@@ -2,10 +2,13 @@ import type { ExamKind } from '~/types/quiz'
 import { sample115Papers } from './sample-115-papers'
 import { sampleChinese109To114 } from './sample-chinese-109-114'
 import { sampleEnglish109To115 } from './sample-english-109-115'
+import { withFullPapers } from './full-papers'
+import { mathA111To114 } from './math-a-111-114'
 
 /** 學測科目照國、英、數的順序排，同一科年度由舊到新 */
 const GSAT_SUBJECTS = ['chinese', 'english', 'math-a']
-const gsatPapers = [...sampleChinese109To114, ...sampleEnglish109To115, ...sample115Papers]
+// 有整份考卷資料的年度科目換成整份（原卷截圖＋已轉成文字的題目）
+const gsatPapers = withFullPapers([...sampleChinese109To114, ...sampleEnglish109To115, ...mathA111To114, ...sample115Papers])
 
 /** 首頁可選的考試項目；分科、會考之後補上試卷。分科 111 年起沒有英文，不背單字 */
 export const examCatalog: ExamKind[] = [

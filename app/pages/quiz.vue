@@ -55,7 +55,7 @@
           <template v-for="item in currentSheet.items" :key="item.question.id">
             <h3 v-if="item.startsPart && item.part.title" :class="$style['quiz-page__part']">{{ item.part.title }}</h3>
             <template v-if="item.startsGroup">
-              <h4 :class="$style['quiz-page__group']">{{ item.group.title }}</h4>
+              <h4 v-if="item.group.title" :class="$style['quiz-page__group']">{{ item.group.title }}</h4>
               <p :class="$style['quiz-page__note']">{{ item.group.note }}</p>
             </template>
             <QuizQuestionCard
@@ -123,7 +123,7 @@ const subtitle = computed(() => {
   if (!quiz || !first) return ''
   const { config } = quiz
   const range = config.curriculum ? `${config.curriculum}（${formatYears(config.years)} 年）` : `${formatYears(config.years)} 學年度`
-  const mode = isRandom ? `隨機抽 ${questions.length} 題` : `整份考卷・試作 ${questions.length} 題`
+  const mode = isRandom ? `隨機抽 ${questions.length} 題` : `整份考卷・選擇題 ${questions.length} 題`
   const limit = config.minutes > 0 ? `・限時 ${config.minutes} 分鐘` : ''
   return `${range}・${first.subject}・${mode}${limit}`
 })

@@ -87,6 +87,12 @@ export class QuizPage {
     await expect(this.resultSheet).toBeVisible()
   }
 
+  /** 交卷後往後翻到成績單 */
+  async toResult() {
+    while ((await this.currentPage()) !== 'result') await this.next()
+    await expect(this.resultSheet).toBeVisible()
+  }
+
   report(subject: string) {
     return this.page.getByTestId(`report-${subject}`)
   }

@@ -20,7 +20,7 @@ describe('QuizSetup', () => {
     expect(legends(wrapper)).toEqual(['1作答方式', '2選科目', '3選年度', '4計時'])
     expect(wrapper.find('[data-test="subject-chinese"]').text()).toContain('國語文綜合能力測驗')
     expect(wrapper.find('[data-test="subject-chinese"]').text()).toContain('109–115 年')
-    expect(wrapper.find('[data-test="subject-chinese"]').text()).toContain('題庫 47 題')
+    expect(wrapper.find('[data-test="subject-chinese"]').text()).toContain('題庫 251 題')
     expect(wrapper.find('[data-test="subject-english"]').text()).toContain('英文')
     expect(wrapper.find('[data-test="subject-english"]').text()).toContain('109–115 年')
     expect(wrapper.find('[data-test="subject-math-a"]').text()).toContain('數學A')
@@ -43,7 +43,7 @@ describe('QuizSetup', () => {
     expect(years.every(year => year.attributes('type') === 'checkbox')).toBe(true)
     expect(years.every(year => (year.element as HTMLInputElement).checked)).toBe(true)
     expect(wrapper.find('[data-test="random-count"] input').element).toHaveProperty('value', '5')
-    expect(wrapper.find('[data-test="random-count"]').text()).toContain('47 題')
+    expect(wrapper.find('[data-test="random-count"]').text()).toContain('251 題')
   })
 
   it('QuizSetup_RandomUncheckEveryYear_ShouldNotLetStart', async () => {
@@ -91,7 +91,7 @@ describe('QuizSetup', () => {
     await wrapper.find('form').trigger('submit')
 
     expect(wrapper.emitted('start')?.at(-1)).toEqual([
-      { exam: 'gsat', subject: 'math-a', mode: 'full', years: [115], count: 1, minutes: 100 },
+      { exam: 'gsat', subject: 'math-a', mode: 'full', years: [115], count: 13, minutes: 100 },
     ])
   })
 

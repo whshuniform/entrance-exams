@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test'
 import { HomePage } from './pages/HomePage'
 import { QuizPage } from './pages/QuizPage'
 
-const CHINESE = ['115-chinese-1', '115-chinese-2', '115-chinese-5', '115-chinese-25', '115-chinese-26']
+// 115 國綜選擇題：第 1–31 題和混合題的第 35、36 題
+const CHINESE = [...Array.from({ length: 31 }, (_, i) => `115-chinese-${i + 1}`), '115-chinese-35', '115-chinese-36']
 const ALL_YEARS = [115, 114, 113, 112, 111, 110, 109]
 const yearOf = (id: string) => Number(id.split('-')[0])
 
@@ -47,7 +48,9 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await quiz.startButton.click()
 
     await expect(page.getByTestId('running-header')).toContainText('114年學測')
-    expect(await quiz.questionIds()).toEqual(['114-chinese-1', '114-chinese-2', '114-chinese-3', '114-chinese-4'])
+    const ids = await quiz.questionIds()
+    expect(ids).toHaveLength(33)
+    expect(ids.every(id => id.startsWith('114-chinese-'))).toBe(true)
   })
 
   test('隨機抽題_先選科目再複選年度_預設5題_只出所選年度的題目', async ({ page }) => {
@@ -134,7 +137,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await expect(page.getByTestId('running-header')).toContainText('109年學測')
     await expect(sheet.getByRole('heading', { level: 3 })).toHaveCount(0)
     await expect(sheet.getByRole('heading', { level: 4 })).toHaveText('一、單選題（占68分）')
-    expect(await quiz.questionIds()).toHaveLength(12)
+    expect(await quiz.questionIds()).toHaveLength(42)
   })
 
   test('隨機抽題_題數不設上限_超過題庫就全部作答', async ({ page }) => {
@@ -144,21 +147,22 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
 
     await home.choose(home.mode('random'))
     await home.choose(home.scope('curriculum'))
-    await home.countInput.fill('30')
+    await home.countInput.fill('200')
     await home.countInput.press('Tab')
-    await expect(home.countInput).toHaveValue('30')
-    // 108課綱國文 111–115 年共 22 題
-    await expect(page.getByTestId('random-count')).toContainText('22 題')
+    await expect(home.countInput).toHaveValue('200')
+    // 108課綱國文 111–115 年選擇題共 167 題
+    await expect(page.getByTestId('random-count')).toContainText('167 題')
     await home.startButton.click()
 
-    await expect(page).toHaveURL(/count=30/)
+    await expect(page).toHaveURL(/count=200/)
     await quiz.startButton.click()
-    expect(await quiz.questionIds()).toHaveLength(22)
+    expect(await quiz.questionIds()).toHaveLength(167)
   })
 
   test('隨機抽題交卷_成績單看答對率和答對題數_每題標答對答錯', async ({ page }) => {
     const quiz = new QuizPage(page)
-    await quiz.goto({ mode: 'random', years: [115], count: 5 })
+    // 抽 115 年全部 33 題，題目固定才能指定作答
+    await quiz.goto({ mode: 'random', years: [115], count: 33 })
 
     await quiz.pick('115-chinese-1', 'C')
     await quiz.pick('115-chinese-2', 'A')
@@ -166,8 +170,8 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await quiz.pick('115-chinese-25', 'B')
     await quiz.submit()
 
-    await expect(page.getByTestId('accuracy-rate')).toHaveText('40%')
-    await expect(page.getByTestId('accuracy-count')).toHaveText('答對 2 / 5 題')
+    await expect(page.getByTestId('accuracy-rate')).toHaveText('6%')
+    await expect(page.getByTestId('accuracy-count')).toHaveText('答對 2 / 33 題')
     await expect(page.getByTestId('report-level')).toHaveCount(0)
     await quiz.showQuestion('115-chinese-1')
     await expect(quiz.question('115-chinese-1').getByTestId('question-score')).toHaveText('答對')

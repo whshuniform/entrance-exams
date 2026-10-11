@@ -18,7 +18,7 @@
       >
         <div :class="$style['result-sheet__subject']">{{ report.subject }}</div>
         <div data-test="report-score" :class="$style['result-sheet__score']">
-          <span>試作得分 {{ formatNumber(report.earned) }} / {{ report.sampleMax }} 分，</span>
+          <span>選擇題得分 {{ formatNumber(report.earned) }} / {{ report.sampleMax }} 分，</span>
           <span>整卷 {{ formatRange(report.scoreRange) }} / {{ report.fullMarks }} 分</span>
         </div>
         <div :class="$style['result-sheet__grade']">
@@ -36,7 +36,7 @@
       隨機抽題只看答對幾題：整題答對才算對，多選題要全部選對，沒作答算錯。
     </p>
     <p v-else :class="$style['result-sheet__note']">
-      試作每科只有幾題，沒考到的題目以全錯（0 分）到全對（滿分）估計，再查 {{ props.reports[0]?.year }} 年大考中心級分表與各級分人數，所以整卷分數、級分和名次都是範圍。
+      網站只有選擇題，非選擇題（數學還有選填題）沒作答，以全錯（0 分）到全對（滿分）估計，再查 {{ props.reports[0]?.year }} 年大考中心級分表與各級分人數，所以整卷分數、級分和名次都是範圍。
     </p>
   </div>
 </template>

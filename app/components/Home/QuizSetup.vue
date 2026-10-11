@@ -58,7 +58,7 @@
           <RadioButton v-model="year" :input-id="`${uid}-year-${item}`" name="year" :value="item" />
           <span :class="$style['quiz-setup__text']">
             <strong>{{ item }} 學年度</strong>
-            <small :class="$style['quiz-setup__sub']">試作 {{ questionsIn(item) }} 題・考試時間 {{ minutesOf(item) }} 分鐘</small>
+            <small :class="$style['quiz-setup__sub']">選擇題 {{ questionsIn(item) }} 題・考試時間 {{ minutesOf(item) }} 分鐘</small>
           </span>
         </label>
       </div>
