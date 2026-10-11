@@ -219,4 +219,71 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="option-B"] [data-test="option-text"]').attributes('data-field'))
       .toBe('q1:option:B')
   })
+  describe('轉成文字的整份考卷', () => {
+    const lead = {
+      id: '115-english-16-20',
+      blocks: ['The history of *dim sum* ... to [[16]] the weary travelers.', 'Dim sum is more than ...'],
+    }
+    const cloze: QuizQuestion = {
+      id: '115-english-16', number: 16, type: 'single', stem: '',
+      options: ['accommodate', 'compensate', 'anticipate', 'reinforce'].map((text, i) => ({ key: 'ABCD'[i]!, text })),
+      answer: 'A', points: 1, lead,
+    }
+
+    it('QuestionCard_ShowLead_ShouldPrintPassageParagraphsBeforeQuestion', async () => {
+      const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', showLead: true } })
+
+      const paragraphs = wrapper.findAll('[data-test="lead"] p')
+      expect(paragraphs.map(p => p.attributes('data-field'))).toEqual(['115-english-16:lead:0', '115-english-16:lead:1'])
+      expect(wrapper.find('[data-test="lead"] [data-test="slot"]').text()).toBe('16')
+    })
+
+    it('QuestionCard_LeadAlreadyShown_ShouldNotRepeatPassage', async () => {
+      const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '' } })
+
+      expect(wrapper.find('[data-test="lead"]').exists()).toBe(false)
+    })
+
+    it('QuestionCard_BlankWithWordOptions_ShouldShowNumberAndOptionTextWithoutStem', async () => {
+      // 綜合測驗：題目就是文章裡的空格，沒有題幹，但選項有文字
+      const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '' } })
+
+      expect(wrapper.find('[data-test="number"]').text()).toBe('16.')
+      expect(wrapper.find('[data-test="stem"]').exists()).toBe(false)
+      expect(wrapper.findAll('[data-test="option-text"]').map(option => option.text())).toEqual(['accommodate', 'compensate', 'anticipate', 'reinforce'])
+    })
+
+    it('QuestionCard_BodyBlocks_ShouldPrintParagraphTableAndFigureAfterStem', async () => {
+      const question: QuizQuestion = {
+        ...single,
+        id: '114-mathA-1',
+        stem: '袋中有藍、綠色球，其顆數如下表。',
+        body: [
+          { table: [['', '藍', '綠'], ['$1$號', '$2$', '$4$']] },
+          { figure: { src: 'papers/114/math-a/text/1-1.webp', width: 600, height: 300 } },
+          '試問 $k$ 值為何？',
+        ],
+      }
+      const wrapper = await mountSuspended(QuestionCard, { props: { question, modelValue: '' } })
+
+      const rows = wrapper.findAll('[data-test="table"] tr')
+      expect(rows.map(row => row.findAll('th, td').length)).toEqual([3, 3])
+      expect(rows[0]!.findAll('th').map(cell => cell.text())).toEqual(['', '藍', '綠'])
+      expect(wrapper.find('[data-test="figure"]').attributes('src')).toMatch(/papers\/114\/math-a\/text\/1-1\.webp$/)
+      expect(wrapper.find('[data-test="body"] p').attributes('data-field')).toBe('114-mathA-1:body:2')
+    })
+
+    it('QuestionCard_FigureOption_ShouldShowImageInsteadOfText', async () => {
+      const question: QuizQuestion = {
+        ...single,
+        options: [
+          { key: 'A', text: '', figure: { src: 'papers/x/a.webp', width: 200, height: 100 } },
+          { key: 'B', text: '乙' }, { key: 'C', text: '丙' }, { key: 'D', text: '丁' },
+        ],
+      }
+      const wrapper = await mountSuspended(QuestionCard, { props: { question, modelValue: '' } })
+
+      expect(wrapper.find('[data-test="option-A"] img').attributes('src')).toMatch(/papers\/x\/a\.webp$/)
+    })
+  })
 })

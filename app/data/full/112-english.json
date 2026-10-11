@@ -107,20 +107,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/11-1.webp",
-         "width": 1210,
-         "height": 654
-        },
-        {
-         "src": "papers/112/english/11-2.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 12,
@@ -133,15 +120,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/12-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 13,
@@ -154,15 +133,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/13-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 14,
@@ -175,15 +146,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/14-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 15,
@@ -196,15 +159,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/15-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 16,
@@ -217,20 +172,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/16-1.webp",
-         "width": 1210,
-         "height": 569
-        },
-        {
-         "src": "papers/112/english/16-2.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 17,
@@ -243,15 +185,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/17-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 18,
@@ -264,15 +198,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/18-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 19,
@@ -285,15 +211,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/19-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 20,
@@ -306,15 +224,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/112/english/20-1.webp",
-         "width": 1210,
-         "height": 37
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       }
      ]
     },
@@ -339,15 +249,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/112/english/21-1.webp",
-         "width": 1210,
-         "height": 957
-        }
-       ],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 22,
@@ -366,9 +268,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 23,
@@ -387,9 +287,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 24,
@@ -408,9 +306,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 25,
@@ -429,9 +325,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 26,
@@ -450,9 +344,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 27,
@@ -471,9 +363,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 28,
@@ -492,9 +382,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 29,
@@ -513,9 +401,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       },
       {
        "number": 30,
@@ -534,9 +420,7 @@
         "I",
         "J"
        ],
-       "pdfPage": 4,
-       "images": [],
-       "numbered": false
+       "pdfPage": 4
       }
      ]
     },
@@ -555,15 +439,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [
-        {
-         "src": "papers/112/english/31-1.webp",
-         "width": 1210,
-         "height": 1208
-        }
-       ],
-       "numbered": false
+       "pdfPage": 5
       },
       {
        "number": 32,
@@ -576,9 +452,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [],
-       "numbered": false
+       "pdfPage": 5
       },
       {
        "number": 33,
@@ -591,9 +465,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [],
-       "numbered": false
+       "pdfPage": 5
       },
       {
        "number": 34,
@@ -606,9 +478,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [],
-       "numbered": false
+       "pdfPage": 5
       }
      ]
     },
@@ -627,20 +497,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/112/english/35-1.webp",
-         "width": 1210,
-         "height": 867
-        },
-        {
-         "src": "papers/112/english/35-2.webp",
-         "width": 1210,
-         "height": 217
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 36,
@@ -653,15 +510,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/112/english/36-1.webp",
-         "width": 1210,
-         "height": 217
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 37,
@@ -674,15 +523,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/112/english/37-1.webp",
-         "width": 1210,
-         "height": 82
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 38,
@@ -695,15 +536,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/112/english/38-1.webp",
-         "width": 1210,
-         "height": 127
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 39,
@@ -716,20 +549,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/112/english/39-1.webp",
-         "width": 1210,
-         "height": 895
-        },
-        {
-         "src": "papers/112/english/39-2.webp",
-         "width": 1210,
-         "height": 127
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 40,
@@ -742,15 +562,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/112/english/40-1.webp",
-         "width": 1210,
-         "height": 217
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 41,
@@ -763,15 +575,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/112/english/41-1.webp",
-         "width": 1210,
-         "height": 217
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 42,
@@ -784,15 +588,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/112/english/42-1.webp",
-         "width": 1210,
-         "height": 211
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 43,
@@ -805,20 +601,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 8,
-       "images": [
-        {
-         "src": "papers/112/english/43-1.webp",
-         "width": 1210,
-         "height": 1037
-        },
-        {
-         "src": "papers/112/english/43-3.webp",
-         "width": 1210,
-         "height": 218
-        }
-       ],
-       "numbered": true
+       "pdfPage": 8
       },
       {
        "number": 44,
@@ -831,15 +614,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 9,
-       "images": [
-        {
-         "src": "papers/112/english/44-1.webp",
-         "width": 1210,
-         "height": 676
-        }
-       ],
-       "numbered": true
+       "pdfPage": 9
       },
       {
        "number": 45,
@@ -852,15 +627,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 9,
-       "images": [
-        {
-         "src": "papers/112/english/45-1.webp",
-         "width": 1210,
-         "height": 218
-        }
-       ],
-       "numbered": true
+       "pdfPage": 9
       },
       {
        "number": 46,
@@ -873,15 +640,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 9,
-       "images": [
-        {
-         "src": "papers/112/english/46-1.webp",
-         "width": 1210,
-         "height": 218
-        }
-       ],
-       "numbered": true
+       "pdfPage": 9
       }
      ]
     }
@@ -909,15 +668,7 @@
         "G",
         "H"
        ],
-       "pdfPage": 11,
-       "images": [
-        {
-         "src": "papers/112/english/49-1.webp",
-         "width": 1210,
-         "height": 76
-        }
-       ],
-       "numbered": true
+       "pdfPage": 11
       }
      ]
     }

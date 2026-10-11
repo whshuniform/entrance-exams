@@ -22,15 +22,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 2,
-       "images": [
-        {
-         "src": "papers/111/math-a/1-1.webp",
-         "width": 1210,
-         "height": 193
-        }
-       ],
-       "numbered": true
+       "pdfPage": 2
       },
       {
        "number": 2,
@@ -44,15 +36,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 2,
-       "images": [
-        {
-         "src": "papers/111/math-a/2-1.webp",
-         "width": 1210,
-         "height": 179
-        }
-       ],
-       "numbered": true
+       "pdfPage": 2
       },
       {
        "number": 3,
@@ -66,15 +50,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 2,
-       "images": [
-        {
-         "src": "papers/111/math-a/3-1.webp",
-         "width": 1210,
-         "height": 518
-        }
-       ],
-       "numbered": true
+       "pdfPage": 2
       },
       {
        "number": 4,
@@ -88,15 +64,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 2,
-       "images": [
-        {
-         "src": "papers/111/math-a/4-1.webp",
-         "width": 1210,
-         "height": 170
-        }
-       ],
-       "numbered": true
+       "pdfPage": 2
       },
       {
        "number": 5,
@@ -110,15 +78,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/111/math-a/5-1.webp",
-         "width": 1210,
-         "height": 316
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 6,
@@ -132,15 +92,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/111/math-a/6-1.webp",
-         "width": 1210,
-         "height": 281
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       }
      ]
     },
@@ -160,15 +112,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/111/math-a/7-1.webp",
-         "width": 1210,
-         "height": 171
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 8,
@@ -182,15 +126,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/111/math-a/8-1.webp",
-         "width": 1210,
-         "height": 319
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 9,
@@ -204,15 +140,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/111/math-a/9-1.webp",
-         "width": 1210,
-         "height": 384
-        }
-       ],
-       "numbered": true
+       "pdfPage": 4
       },
       {
        "number": 10,
@@ -226,15 +154,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/111/math-a/10-1.webp",
-         "width": 1210,
-         "height": 345
-        }
-       ],
-       "numbered": true
+       "pdfPage": 4
       },
       {
        "number": 11,
@@ -248,15 +168,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/111/math-a/11-1.webp",
-         "width": 1210,
-         "height": 346
-        }
-       ],
-       "numbered": true
+       "pdfPage": 4
       },
       {
        "number": 12,
@@ -270,15 +182,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 5,
-       "images": [
-        {
-         "src": "papers/111/math-a/12-1.webp",
-         "width": 1210,
-         "height": 222
-        }
-       ],
-       "numbered": true
+       "pdfPage": 5
       }
      ]
     }
@@ -303,20 +207,7 @@
         "4",
         "5"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/111/math-a/18-1.webp",
-         "width": 1210,
-         "height": 444
-        },
-        {
-         "src": "papers/111/math-a/18-2.webp",
-         "width": 1210,
-         "height": 106
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       }
      ]
     }
