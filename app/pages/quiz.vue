@@ -1,9 +1,9 @@
 <template>
+  <AppHeader :title="quiz ? quiz.papers[0]?.subject ?? '' : '找不到考卷'" :back="back" />
   <main v-if="!quiz" :class="['container', $style['quiz-page']]">
     <section data-test="quiz-not-found" :class="$style['quiz-page__missing']">
-      <h1 :class="$style['quiz-page__title']">找不到這份考卷</h1>
-      <p>網址裡的考試、年度或科目不在題庫裡，請回首頁重新選。</p>
-      <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
+      <p :class="$style['quiz-page__missing-title']">找不到這份考卷</p>
+      <p>網址裡的考試、年度或科目不在題庫裡，請按左上角返回重新選。</p>
     </section>
   </main>
   <main
@@ -16,10 +16,6 @@
     ]"
   >
     <header :class="$style['quiz-page__header']">
-      <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
-      <h1 :class="$style['quiz-page__title']">
-        <span :class="$style['quiz-page__highlight']">{{ quiz.papers[0]?.exam }}練習本</span>
-      </h1>
       <p :class="$style['quiz-page__subtitle']">{{ subtitle }}</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
       <p :class="$style['quiz-page__tip']">
@@ -67,6 +63,7 @@
             :result="results[currentSheet.question.id]"
             :highlights="highlights"
             :tool="tool"
+            :pen-color="penColor"
             :ink="ink[currentSheet.question.id]"
             :scratch-open="scratchOpen[currentSheet.question.id] ?? false"
             :scoring="isRandom ? 'accuracy' : 'points'"
@@ -102,13 +99,13 @@
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
 
-    <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
+    <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" v-model:pen-color="penColor" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { examCatalog } from '~/data/catalog'
-import type { DrawTool } from '~/types/quiz'
+import { examCatalog, findExam } from '~/data/catalog'
+import type { DrawTool, PenColor } from '~/types/quiz'
 
 // 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時從所選年度或課綱一起抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
 const route = useRoute()
@@ -129,20 +126,27 @@ const subtitle = computed(() => {
   return `${range}・${first.subject}・${mode}${limit}`
 })
 
+// 學測裡的頁面一律返回大學學測頁；網址的考試不存在才回首頁
+const exam = findExam(String(route.query.exam ?? ''))
+const back = exam ? { to: `/${exam.id}`, label: exam.name } : { to: '/', label: '首頁' }
+
 useHead({ title: pageTitle() })
 
+/** 網頁標題用考試全名，例如「115 學年度大學學科能力測驗 國語文綜合能力測驗」 */
 function pageTitle() {
   const first = quiz?.papers[0]
-  if (!first) return '找不到考卷｜考古題練習本'
+  if (!first || !exam) return '找不到考卷｜考古題'
   return isRandom
-    ? `${first.exam} ${first.subject} 隨機抽題｜考古題練習本`
-    : `${first.year}${first.exam} ${first.subject}｜考古題練習本`
+    ? `${exam.fullName} ${first.subject} 隨機抽題`
+    : `${first.year} 學年度${exam.fullName} ${first.subject}`
 }
 
 const { answers, submitted, answeredCount, results, setAnswer, submit, reset } = useQuiz(questions)
 const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 /** 右下角工具列，預設關閉繪畫 */
 const tool = ref<DrawTool>('off')
+/** 原子筆顏色，預設藍色 */
+const penColor = ref<PenColor>('blue')
 /** 工具列隱藏時，題目往右延伸變滿版 */
 const toolsVisible = ref(true)
 /** 每題計算紙開著與否，翻頁回來仍記得 */
@@ -223,7 +227,7 @@ function onReset() {
 .quiz-page {
   max-width: 51rem;
   margin: 0 auto;
-  padding: 2rem 6rem 3rem 3.5rem;
+  padding: 1.5rem 6rem 3rem 3.5rem;
   transition: padding-right 0.3s ease;
 
   &--full {
@@ -232,27 +236,17 @@ function onReset() {
 
   // 計時作答：上方留出倒數長條的高度
   &--timed {
-    padding-top: calc(var(--timer-bar-height) + 2rem);
+    padding-top: calc(var(--timer-bar-height) + 1.5rem);
   }
 
   &__header {
     margin-bottom: 2rem;
   }
 
-  // 像鉛筆寫的連結
-  &__home {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-    color: var(--color-ink-soft);
-    text-decoration: underline wavy var(--color-pencil);
-    text-underline-offset: 0.25em;
-  }
-
-  // 倒數長條固定在畫面最上方，整排橫跨畫面
+  // 倒數長條固定在 header 正下方，整排橫跨畫面
   &__timer {
     position: fixed;
-    top: 0;
+    top: var(--app-header-height);
     right: 0;
     left: 0;
     z-index: 20;
@@ -263,19 +257,14 @@ function onReset() {
     text-align: center;
   }
 
-  &__title {
+  &__missing-title {
     margin: 0;
-    font-size: 2.5rem;
-    line-height: 1.3;
-  }
-
-  &__highlight {
-    padding: 0 0.2em;
-    background: linear-gradient(transparent 50%, var(--color-marker) 50%, var(--color-marker) 92%, transparent 92%);
+    font-size: 1.6rem;
+    font-weight: 700;
   }
 
   &__subtitle {
-    margin: 0.25rem 0 0;
+    margin: 0;
     color: var(--color-ink-soft);
   }
 
@@ -288,11 +277,13 @@ function onReset() {
   &__desk {
     // 翻頁時以左邊為書背
     perspective: 1600px;
+    // 翻頁捲回頁首時，停在固定的 header 下面
+    scroll-margin-top: calc(var(--app-header-height) + 0.5rem);
   }
 
-  // 翻頁捲回頁首時，停在倒數長條下面
+  // 計時作答：再讓出倒數長條的高度
   &--timed &__desk {
-    scroll-margin-top: calc(var(--timer-bar-height) + 0.5rem);
+    scroll-margin-top: calc(var(--app-header-height) + var(--timer-bar-height) + 0.5rem);
   }
 
   // 試卷頁首：像原卷每頁上方的「115年學測　科目　第 n 頁 共 m 頁」
@@ -350,7 +341,7 @@ function onReset() {
 
   @include respond-to('xs') {
     width: 100%;
-    padding: 1.25rem 4.4rem 2rem 0.75rem;
+    padding: 1rem 4.4rem 2rem 0.75rem;
 
     &--full {
       padding-right: 0.75rem;
@@ -358,10 +349,6 @@ function onReset() {
 
     &--timed {
       padding-top: calc(var(--timer-bar-height) + 1.25rem);
-    }
-
-    &__title {
-      font-size: 2rem;
     }
   }
 

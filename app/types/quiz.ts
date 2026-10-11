@@ -53,9 +53,14 @@ export type DrawTool = 'off' | 'highlighter' | 'pen' | 'eraser'
 
 export type InkTool = Exclude<DrawTool, 'off'>
 
+/** 原子筆的顏色 */
+export type PenColor = 'blue' | 'red' | 'black' | 'green'
+
 /** 題目卡片上的一筆手寫筆跡 */
 export interface InkStroke {
   tool: InkTool
+  /** 原子筆的顏色；舊筆跡沒有時當藍色 */
+  color?: PenColor
   /** x 為卡片寬度比例（0–1），y 為距卡片上緣的 px */
   points: [number, number][]
 }
