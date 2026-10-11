@@ -68,6 +68,7 @@
               :ink="ink[item.question.id]"
               :scratch-open="scratchOpen[item.question.id] ?? false"
               :scoring="isRandom ? 'accuracy' : 'points'"
+              :show-lead="item.startsLead"
               @update:model-value="setAnswer(item.question.id, $event)"
               @mark="markText"
               @erase="eraseText"

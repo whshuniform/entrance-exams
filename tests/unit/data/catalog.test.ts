@@ -69,15 +69,13 @@ describe('examCatalog', () => {
     }
   })
 
-  it('Catalog_EveryQuestion_ShouldHaveStemOptionsAndPoints', () => {
-    // 文字題要有題目和選項文字；截圖題（或文章裡的空格）只有作答圈，答案要在選項裡
+  it('Catalog_EveryQuestion_ShouldHaveOptionsAnswerAndPoints', () => {
+    // 選項要嘛都有文字（或圖），要嘛都空著（文意選填、選項印在表格裡的題目只留作答圈）
     for (const question of paperQuestions(gsat.papers)) {
-      if (question.stem) {
-        expect(question.options.every(option => option.text.trim() !== ''), question.id).toBe(true)
-      }
-      else {
-        expect(question.options.length, question.id).toBeGreaterThanOrEqual(4)
-      }
+      const filled = question.options.filter(option => option.text.trim() !== '' || option.figure)
+      expect([0, question.options.length], question.id).toContain(filled.length)
+      expect(question.options.length, question.id).toBeGreaterThanOrEqual(4)
+      expect(question.stem !== '' || question.lead !== undefined || Boolean(question.images?.length), question.id).toBe(true)
       const keys = question.options.map(option => option.key)
       expect([...question.answer].every(key => keys.includes(key)), question.id).toBe(true)
       expect(question.points, question.id).toBeGreaterThan(0)

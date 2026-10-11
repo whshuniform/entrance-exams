@@ -16,6 +16,7 @@
   "dependencies": {
     "@primeuix/themes": "^2.0.3",
     "@primevue/nuxt-module": "^4.5.5",
+    "katex": "^0.16.22",
     "nuxt": "^4.5.2",
     "primevue": "^4.5.5"
   },

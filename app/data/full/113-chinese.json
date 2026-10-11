@@ -45,15 +45,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 2,
-       "images": [
-        {
-         "src": "papers/113/chinese/4-1.webp",
-         "width": 1210,
-         "height": 338
-        }
-       ],
-       "numbered": true
+       "pdfPage": 2
       },
       {
        "number": 5,
@@ -66,15 +58,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 2,
-       "images": [
-        {
-         "src": "papers/113/chinese/5-1.webp",
-         "width": 1210,
-         "height": 337
-        }
-       ],
-       "numbered": true
+       "pdfPage": 2
       },
       {
        "number": 6,
@@ -87,20 +71,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/113/chinese/6-1.webp",
-         "width": 1210,
-         "height": 938
-        },
-        {
-         "src": "papers/113/chinese/6-2.webp",
-         "width": 1210,
-         "height": 271
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 7,
@@ -113,15 +84,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/113/chinese/7-1.webp",
-         "width": 1210,
-         "height": 210
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 8,
@@ -134,15 +97,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 3,
-       "images": [
-        {
-         "src": "papers/113/chinese/8-1.webp",
-         "width": 1210,
-         "height": 210
-        }
-       ],
-       "numbered": true
+       "pdfPage": 3
       },
       {
        "number": 9,
@@ -155,20 +110,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/113/chinese/9-1.webp",
-         "width": 1210,
-         "height": 533
-        },
-        {
-         "src": "papers/113/chinese/9-2.webp",
-         "width": 1210,
-         "height": 121
-        }
-       ],
-       "numbered": true
+       "pdfPage": 4
       },
       {
        "number": 10,
@@ -181,15 +123,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/113/chinese/10-1.webp",
-         "width": 1210,
-         "height": 203
-        }
-       ],
-       "numbered": true
+       "pdfPage": 4
       },
       {
        "number": 11,
@@ -202,20 +136,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 4,
-       "images": [
-        {
-         "src": "papers/113/chinese/11-1.webp",
-         "width": 1210,
-         "height": 615
-        },
-        {
-         "src": "papers/113/chinese/11-2.webp",
-         "width": 1210,
-         "height": 202
-        }
-       ],
-       "numbered": true
+       "pdfPage": 4
       },
       {
        "number": 12,
@@ -228,15 +149,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [
-        {
-         "src": "papers/113/chinese/12-1.webp",
-         "width": 1210,
-         "height": 207
-        }
-       ],
-       "numbered": true
+       "pdfPage": 5
       },
       {
        "number": 13,
@@ -249,20 +162,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [
-        {
-         "src": "papers/113/chinese/13-1.webp",
-         "width": 1210,
-         "height": 589
-        },
-        {
-         "src": "papers/113/chinese/13-2.webp",
-         "width": 1210,
-         "height": 123
-        }
-       ],
-       "numbered": true
+       "pdfPage": 5
       },
       {
        "number": 14,
@@ -275,15 +175,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [
-        {
-         "src": "papers/113/chinese/14-1.webp",
-         "width": 1210,
-         "height": 207
-        }
-       ],
-       "numbered": true
+       "pdfPage": 5
       },
       {
        "number": 15,
@@ -296,15 +188,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 5,
-       "images": [
-        {
-         "src": "papers/113/chinese/15-1.webp",
-         "width": 1210,
-         "height": 551
-        }
-       ],
-       "numbered": true
+       "pdfPage": 5
       },
       {
        "number": 16,
@@ -317,20 +201,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/113/chinese/16-1.webp",
-         "width": 1210,
-         "height": 705
-        },
-        {
-         "src": "papers/113/chinese/16-2.webp",
-         "width": 1210,
-         "height": 205
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 17,
@@ -343,15 +214,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/113/chinese/17-1.webp",
-         "width": 1210,
-         "height": 205
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 18,
@@ -364,20 +227,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 6,
-       "images": [
-        {
-         "src": "papers/113/chinese/18-1.webp",
-         "width": 1210,
-         "height": 581
-        },
-        {
-         "src": "papers/113/chinese/18-3.webp",
-         "width": 1210,
-         "height": 199
-        }
-       ],
-       "numbered": true
+       "pdfPage": 6
       },
       {
        "number": 19,
@@ -390,15 +240,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/113/chinese/19-1.webp",
-         "width": 1210,
-         "height": 440
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 20,
@@ -411,15 +253,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/113/chinese/20-1.webp",
-         "width": 1210,
-         "height": 200
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 21,
@@ -432,20 +266,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/113/chinese/21-1.webp",
-         "width": 1210,
-         "height": 385
-        },
-        {
-         "src": "papers/113/chinese/21-2.webp",
-         "width": 1210,
-         "height": 240
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 22,
@@ -458,15 +279,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 7,
-       "images": [
-        {
-         "src": "papers/113/chinese/22-1.webp",
-         "width": 1210,
-         "height": 204
-        }
-       ],
-       "numbered": true
+       "pdfPage": 7
       },
       {
        "number": 23,
@@ -479,20 +292,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 8,
-       "images": [
-        {
-         "src": "papers/113/chinese/23-1.webp",
-         "width": 1210,
-         "height": 598
-        },
-        {
-         "src": "papers/113/chinese/23-2.webp",
-         "width": 1210,
-         "height": 209
-        }
-       ],
-       "numbered": true
+       "pdfPage": 8
       },
       {
        "number": 24,
@@ -505,15 +305,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 8,
-       "images": [
-        {
-         "src": "papers/113/chinese/24-1.webp",
-         "width": 1210,
-         "height": 124
-        }
-       ],
-       "numbered": true
+       "pdfPage": 8
       }
      ]
     },
@@ -533,15 +325,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 8,
-       "images": [
-        {
-         "src": "papers/113/chinese/25-1.webp",
-         "width": 1210,
-         "height": 254
-        }
-       ],
-       "numbered": true
+       "pdfPage": 8
       },
       {
        "number": 26,
@@ -555,15 +339,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 8,
-       "images": [
-        {
-         "src": "papers/113/chinese/26-1.webp",
-         "width": 1210,
-         "height": 296
-        }
-       ],
-       "numbered": true
+       "pdfPage": 8
       },
       {
        "number": 27,
@@ -577,15 +353,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 9,
-       "images": [
-        {
-         "src": "papers/113/chinese/27-1.webp",
-         "width": 1210,
-         "height": 247
-        }
-       ],
-       "numbered": true
+       "pdfPage": 9
       },
       {
        "number": 28,
@@ -599,15 +367,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 9,
-       "images": [
-        {
-         "src": "papers/113/chinese/28-1.webp",
-         "width": 1210,
-         "height": 742
-        }
-       ],
-       "numbered": true
+       "pdfPage": 9
       },
       {
        "number": 29,
@@ -621,15 +381,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 9,
-       "images": [
-        {
-         "src": "papers/113/chinese/29-1.webp",
-         "width": 1210,
-         "height": 730
-        }
-       ],
-       "numbered": true
+       "pdfPage": 9
       },
       {
        "number": 30,
@@ -643,20 +395,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 10,
-       "images": [
-        {
-         "src": "papers/113/chinese/30-1.webp",
-         "width": 1210,
-         "height": 842
-        },
-        {
-         "src": "papers/113/chinese/30-2.webp",
-         "width": 1210,
-         "height": 251
-        }
-       ],
-       "numbered": true
+       "pdfPage": 10
       },
       {
        "number": 31,
@@ -670,15 +409,7 @@
         "D",
         "E"
        ],
-       "pdfPage": 10,
-       "images": [
-        {
-         "src": "papers/113/chinese/31-1.webp",
-         "width": 1210,
-         "height": 253
-        }
-       ],
-       "numbered": true
+       "pdfPage": 10
       }
      ]
     }
@@ -702,30 +433,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 12,
-       "images": [
-        {
-         "src": "papers/113/chinese/34-1.webp",
-         "width": 1210,
-         "height": 640
-        },
-        {
-         "src": "papers/113/chinese/34-2.webp",
-         "width": 1210,
-         "height": 973
-        },
-        {
-         "src": "papers/113/chinese/34-4.webp",
-         "width": 1210,
-         "height": 949
-        },
-        {
-         "src": "papers/113/chinese/34-5.webp",
-         "width": 1210,
-         "height": 210
-        }
-       ],
-       "numbered": true
+       "pdfPage": 12
       },
       {
        "number": 35,
@@ -738,15 +446,7 @@
         "C",
         "D"
        ],
-       "pdfPage": 12,
-       "images": [
-        {
-         "src": "papers/113/chinese/35-1.webp",
-         "width": 1210,
-         "height": 253
-        }
-       ],
-       "numbered": true
+       "pdfPage": 12
       }
      ]
     }

@@ -3,6 +3,18 @@ export type QuestionType = 'single' | 'multi'
 export interface QuizOption {
   key: string
   text: string
+  /** 選項本身是圖（例如四張圖選一張）；這時 text 為空 */
+  figure?: QuizImage
+}
+
+/** 題組文章、題目裡的一段：文字段落、表格（第一列是表頭）或圖 */
+export type QuizBlock = string | { table: string[][] } | { figure: QuizImage }
+
+/** 題組共用的文章：同一題組的題目共用同一個物件 */
+export interface QuizLead {
+  /** 例如 115-english-16-20 */
+  id: string
+  blocks: QuizBlock[]
 }
 
 export interface QuizQuestion {
@@ -13,6 +25,10 @@ export interface QuizQuestion {
   stem: string
   /** 題幹下方的引文或待排序句子，每行一段 */
   passage?: string[]
+  /** 題幹後面、選項前面的其他段落、表格、圖 */
+  body?: QuizBlock[]
+  /** 所屬題組的文章；印在題組第一題（或隨機抽到的第一題）前面 */
+  lead?: QuizLead
   options: QuizOption[]
   /** 正確答案，例如 "C"、"BE" */
   answer: string
@@ -44,6 +60,12 @@ export interface MarkupSegment {
   underline: boolean
   /** 原卷的填空線「＿＿＿＿」，整條不換行 */
   blank?: boolean
+  bold?: boolean
+  italic?: boolean
+  /** 文章裡有編號的空格，text 是題號，例如綜合測驗的 [[16]] */
+  slot?: boolean
+  /** 數學式，text 是 KaTeX 原始碼 */
+  math?: boolean
 }
 
 /** 純文字（去掉 __ 標記後）的字元區間，end 不含 */
@@ -59,6 +81,10 @@ export interface HighlightSegment {
   underline: boolean
   highlight: boolean
   blank?: boolean
+  bold?: boolean
+  italic?: boolean
+  slot?: boolean
+  math?: boolean
 }
 
 /** 右下角工具列：off 為關閉繪畫（可作答、正常捲動） */
@@ -131,6 +157,8 @@ export interface QuizSheetItem {
   /** 部分、題型段落從這題開始，要在這題前面印標題 */
   startsPart: boolean
   startsGroup: boolean
+  /** 題組文章要印在這題前面（題組的第一題，或隨機抽題抽到的第一題） */
+  startsLead: boolean
 }
 
 /** 試卷的一頁：跟原試題 PDF 同一頁的題目排在一起 */

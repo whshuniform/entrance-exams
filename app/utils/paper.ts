@@ -18,8 +18,14 @@ export function buildPages(papers: QuizPaper[], { continuous = false } = {}): Qu
         question,
         startsPart: index === 0 && part.groups[0] === group,
         startsGroup: index === 0,
+        startsLead: false,
       })),
     ))
+    // 題組文章印在題組（在這份卷裡）出現的第一題前面；跨頁的後半段不再重印，跟原卷一樣
+    items.forEach((item, index) => {
+      const lead = item.question.lead
+      item.startsLead = Boolean(lead) && items[index - 1]?.question.lead?.id !== lead!.id
+    })
     const sheets: Pick<QuizSheet, 'paper' | 'pdfPage' | 'items'>[] = []
     for (const item of items) {
       const pdfPage = item.question.pdfPage

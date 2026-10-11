@@ -14,6 +14,11 @@
     @pointercancel="drawing.onPointerCancel"
     @click.capture="drawing.onClickCapture"
   >
+    <!-- 題組文章：印在題組第一題前面 -->
+    <div v-if="props.showLead && props.question.lead" data-test="lead" :class="$style['question-card__lead']">
+      <QuizBlocks :blocks="props.question.lead.blocks" name="lead" :field-id="fieldId" :ranges-of="rangesOf" />
+    </div>
+
     <!-- 原卷截圖：題組文章、圖表、題目和選項都在圖裡 -->
     <div v-if="props.question.images?.length" :class="$style['question-card__figure']">
       <img
@@ -30,7 +35,7 @@
     </div>
 
     <!-- 跟原卷一樣：題目接在題號後面，換行對齊題目第一個字 -->
-    <div :class="[$style['question-card__body'], !hasText && $style['question-card__body--circles']]">
+    <div :class="[$style['question-card__body'], !hasOptionText && $style['question-card__body--circles']]">
       <span v-if="!props.question.numberInImage" data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
       <div :class="$style['question-card__content']">
         <span
@@ -41,7 +46,7 @@
           {{ scoreText }}
         </span>
 
-        <p v-if="hasText" data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
+        <p v-if="hasStem" data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
           <QuizMarkupText :text="props.question.stem" :ranges="rangesOf('stem')" />
         </p>
 
@@ -50,10 +55,19 @@
             <QuizMarkupText :text="line" :ranges="rangesOf(`passage:${index}`)" />
           </li>
         </ol>
+
+        <QuizBlocks
+          v-if="props.question.body?.length"
+          data-test="body"
+          :blocks="props.question.body"
+          name="body"
+          :field-id="fieldId"
+          :ranges-of="rangesOf"
+        />
       </div>
 
       <!-- 電腦：選項對齊題目第一個字；手機：選項靠左和題號切齊 -->
-      <ul :class="[$style['question-card__options'], !hasText && $style['question-card__options--circles']]">
+      <ul :class="[$style['question-card__options'], !hasOptionText && $style['question-card__options--circles']]">
         <li
           v-for="option in props.question.options"
           :key="option.key"
@@ -94,8 +108,17 @@
                 <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
               </svg>
             </span>
+            <img
+              v-if="option.figure"
+              :src="`${baseURL}${option.figure.src}`"
+              :width="option.figure.width"
+              :height="option.figure.height"
+              :alt="`選項 ${option.key} 的圖`"
+              loading="lazy"
+              :class="$style['question-card__option-figure']"
+            >
             <span
-              v-if="hasText"
+              v-else-if="hasOptionText"
               data-test="option-text"
               :data-field="fieldId(`option:${option.key}`)"
               :class="$style['question-card__text']"
@@ -148,6 +171,8 @@ interface Props {
   ink?: InkStroke[]
   /** points：交卷後標得分；accuracy：隨機抽題只標答對或答錯 */
   scoring?: 'points' | 'accuracy'
+  /** 題組文章印在這題前面 */
+  showLead?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -157,6 +182,7 @@ const props = withDefaults(defineProps<Props>(), {
   tool: 'off',
   ink: () => [],
   scoring: 'points',
+  showLead: false,
 })
 
 const emit = defineEmits<{
@@ -171,8 +197,10 @@ const inkCanvas = ref<HTMLCanvasElement | null>(null)
 /** 計算紙開關；外層有綁 v-model 時由外層記住（翻頁後回來仍開著） */
 const showScratch = defineModel<boolean>('scratchOpen', { default: false })
 const isDrawing = computed(() => props.tool !== 'off')
-/** 文字題；截圖題和文章裡的空格（題目、選項都在原卷截圖裡）只留作答圈 */
-const hasText = computed(() => props.question.stem !== '')
+/** 文章裡的空格題（綜合測驗、文意選填）沒有題幹 */
+const hasStem = computed(() => props.question.stem !== '')
+/** 截圖題、文意選填（選項在題組文章裡）的選項沒有文字，只留一排作答圈 */
+const hasOptionText = computed(() => props.question.options.some(option => option.text !== '' || option.figure))
 /** 截圖放在 public/，網址要接上網站的 baseURL（試用網址在 /entrance-exams/ 底下） */
 const baseURL = useRuntimeConfig().app.baseURL
 
@@ -334,6 +362,20 @@ function pickMulti(values: string[]) {
   // 截圖題：題號（文章空格題才有）和作答圈排一列
   &__body--circles {
     align-items: center;
+  }
+
+  // 題組文章和題目之間留一條虛線
+  &__lead {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--color-pencil);
+  }
+
+  &__option-figure {
+    max-width: 10rem;
+    height: auto;
+    vertical-align: middle;
+    mix-blend-mode: multiply;
   }
 
   // 原卷截圖：跟卡片一樣寬；白底用 multiply 融進紙色

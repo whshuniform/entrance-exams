@@ -20,4 +20,24 @@ describe('MarkupText', () => {
     expect(wrapper.findAll('[data-test="blank"]').map(blank => blank.text())).toEqual(['＿＿＿＿'])
     expect(wrapper.text()).toBe('reached the ＿＿＿＿ that we would go')
   })
+  it('MarkupText_BoldItalic_ShouldRenderStrongAndEm', async () => {
+    const wrapper = await mountSuspended(MarkupText, { props: { text: 'the **phrase** in *dim sum*' } })
+
+    expect(wrapper.find('strong').text()).toBe('phrase')
+    expect(wrapper.find('em').text()).toBe('dim sum')
+  })
+
+  it('MarkupText_NumberedSlot_ShouldShowNumberOnBlankLine', async () => {
+    const wrapper = await mountSuspended(MarkupText, { props: { text: 'sprang up to [[16]] the weary' } })
+
+    expect(wrapper.find('[data-test="slot"]').text()).toBe('16')
+  })
+
+  it('MarkupText_Math_ShouldRenderWithKatex', async () => {
+    const wrapper = await mountSuspended(MarkupText, { props: { text: '機率為 $\\frac{1}{3}$' } })
+
+    const math = wrapper.find('[data-test="math"]')
+    expect(math.find('.katex').exists()).toBe(true)
+    expect(math.attributes('data-start')).toBe('4')
+  })
 })

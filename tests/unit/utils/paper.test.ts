@@ -156,3 +156,32 @@ describe('pickQuestions', () => {
     expect(paperQuestions([paper])).toHaveLength(5)
   })
 })
+
+describe('buildPages 題組文章', () => {
+  const lead = { id: '115-english-11-15', blocks: ['From the campfire to the café, [[11]] ...'] }
+  const inSet = (id: string, pdfPage: number): QuizQuestion => ({ ...question(id, pdfPage), lead })
+  const paperWith = (questions: QuizQuestion[]): QuizPaper => ({
+    subject: '英文', year: 115, fullMarks: 100, stats: { levels: [], counts: {}, total: 0 },
+    parts: [{ title: 'p', groups: [{ title: 'g', note: '', questions }] }],
+  } as QuizPaper)
+
+  it('buildPages_SetOnOnePage_ShouldShowPassageBeforeFirstQuestionOnly', () => {
+    const pages = buildPages([paperWith([question('10', 2), inSet('11', 3), inSet('12', 3)])])
+
+    expect(pages.flatMap(page => page.items.map(item => item.startsLead))).toEqual([false, true, false])
+  })
+
+  it('buildPages_SetAcrossPages_ShouldNotRepeatPassage', () => {
+    // 跟原卷一樣：題組跨頁時文章只在第一頁
+    const pages = buildPages([paperWith([inSet('11', 3), inSet('12', 4)])])
+
+    expect(pages.map(page => page.items[0]!.startsLead)).toEqual([true, false])
+  })
+
+  it('buildPages_RandomPickFromMiddleOfSet_ShouldShowPassage', () => {
+    // 隨機抽題只抽到題組的第 12 題：文章要跟著出現
+    const picked = pickQuestions([paperWith([inSet('11', 3), inSet('12', 3)])], 1, () => 0)
+
+    expect(buildPages(picked).map(page => [page.items[0]!.question.id, page.items[0]!.startsLead])).toEqual([['12', true]])
+  })
+})

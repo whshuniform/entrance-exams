@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: false },
   modules: ['@primevue/nuxt-module'],
-  css: ['~/assets/css/index.scss'],
+  css: ['katex/dist/katex.min.css', '~/assets/css/index.scss'],
   // 作答頁依網址參數出題、隨機抽題，只在瀏覽器畫；靜態輸出時仍產生 /quiz 頁
   routeRules: {
     '/quiz': { ssr: false },

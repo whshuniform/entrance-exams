@@ -25,5 +25,7 @@ export function textOffsetAt(root: Element, x: number, y: number): number | null
   const isText = node.nodeType === Node.TEXT_NODE
   const holder = (isText ? node.parentElement : (node as Element))?.closest('[data-start]')
   if (!holder || !root.contains(holder)) return null
+  // 數學式、空格編號整段算一個位置（KaTeX 裡的文字不是原始碼）
+  if (holder.hasAttribute('data-atomic')) return Number(holder.getAttribute('data-start'))
   return Number(holder.getAttribute('data-start')) + (isText ? offset : 0)
 }
