@@ -28,7 +28,8 @@ test.describe('題型標示跟試題 PDF 一樣', () => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    await quiz.showQuestion('115-chinese-2')
+    // 第 26 題自己一頁（原卷第 9 頁），前面第 25 題那頁已印過多選題標題
+    await quiz.showQuestion('115-chinese-26')
     await expect(page.getByRole('heading', { name: /單選題|多選題|部分/ })).toHaveCount(0)
 
     await quiz.showQuestion('115-chinese-25')

@@ -2,6 +2,7 @@ import type { QuizPaper } from '~/types/quiz'
 import { sample115Chinese } from './sample-115-chinese'
 import { sample115MathA } from './sample-115-math'
 import { stats115 } from './stats-115'
+import { withPdfPages } from './pdf-pages'
 
 /**
  * 試作用試卷：部分、題型標題與說明照抄 115 學年度學測試題（gsat/115/國綜、數學A 的 question.docx）。
@@ -26,12 +27,12 @@ export const sample115Papers: QuizPaper[] = [
           {
             title: '一、單選題（占48分）',
             note: '說明：第1題至第24題，每題2分。',
-            questions: sample115Chinese.filter(question => question.type === 'single'),
+            questions: withPdfPages(115, 'chinese', sample115Chinese.filter(question => question.type === 'single')),
           },
           {
             title: '二、多選題（占28分）',
             note: '說明：第25題至第31題，每題4分。',
-            questions: sample115Chinese.filter(question => question.type === 'multi'),
+            questions: withPdfPages(115, 'chinese', sample115Chinese.filter(question => question.type === 'multi')),
           },
         ],
       },
@@ -53,7 +54,7 @@ export const sample115Papers: QuizPaper[] = [
           {
             title: '一、單選題（占30分）',
             note: '說明：第1題至第6題，每題5分。',
-            questions: sample115MathA,
+            questions: withPdfPages(115, 'math-a', sample115MathA),
           },
         ],
       },

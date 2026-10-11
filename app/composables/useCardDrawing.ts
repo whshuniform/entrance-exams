@@ -1,11 +1,9 @@
-import type { DrawTool, InkStroke, InkTool, PenColor, TextRange } from '~/types/quiz'
+import type { DrawTool, InkStroke, InkTool, TextRange } from '~/types/quiz'
 
 interface Options {
   card: Ref<HTMLElement | null>
   canvas: Ref<HTMLCanvasElement | null>
   tool: () => DrawTool
-  /** 原子筆目前的顏色；沒給時用藍色 */
-  penColor?: () => PenColor
   strokes: () => InkStroke[]
   hasHighlights: (fieldId: string) => boolean
   onStrokes: (strokes: InkStroke[]) => void
@@ -154,7 +152,6 @@ export function useCardDrawing(options: Options) {
       }
     }
     current = { tool, points: [toLocal(event.clientX, event.clientY)] }
-    if (tool === 'pen') current.color = options.penColor?.() ?? 'blue'
     if (tool === 'eraser') {
       lastErase = null
       eraseTextAt(event.clientX, event.clientY)

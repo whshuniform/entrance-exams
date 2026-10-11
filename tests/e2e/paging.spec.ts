@@ -76,13 +76,14 @@ test.describe('像真實試卷一樣翻頁', () => {
     await expect(quiz.question('115-chinese-26').getByTestId('question-score')).toBeVisible()
   })
 
-  test('英文詞彙題_原卷第2頁的十題排在同一頁', async ({ page }) => {
+  test('英文詞彙題_原卷第2頁的十五題排在同一頁', async ({ page }) => {
     const quiz = new QuizPage(page)
-    await quiz.goto({ subject: 'english' })
+    await quiz.goto({ subject: 'english', years: [109] })
 
-    expect(await quiz.currentIds()).toEqual(Array.from({ length: 10 }, (_, i) => `115-english-${i + 1}`))
-    await quiz.next()
-    expect(await quiz.currentIds()).toEqual(Array.from({ length: 5 }, (_, i) => `115-english-${i + 11}`))
+    // 109 英文詞彙題第 1–15 題都在原卷第 2 頁
+    expect(await quiz.currentIds()).toEqual(Array.from({ length: 15 }, (_, i) => `109-english-${i + 1}`))
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 1 頁')
+    await expect(quiz.submitButton).toBeVisible()
   })
 
   test('翻頁_新一頁的頁首不被固定的header蓋住', async ({ page }) => {
@@ -96,6 +97,7 @@ test.describe('像真實試卷一樣翻頁', () => {
     const running = (await page.getByTestId('running-header').boundingBox())!
     expect(running.y).toBeGreaterThanOrEqual(header.y + header.height - 1)
   })
+})
 
 test.describe('作答頁上方', () => {
   test('header標題_顯示年份和科目', async ({ page }) => {

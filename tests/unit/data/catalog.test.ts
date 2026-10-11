@@ -90,11 +90,11 @@ describe('examCatalog', () => {
 
   it('Catalog_PdfPages_ShouldMatchOriginalPdf', () => {
     // gsat/<年度>/<科目>/question.pdf：115 國綜第 1–5 題在第 2 頁、第 25 題第 8 頁、第 26 題第 9 頁；
-    // 115 英文第 1–10 題在第 2 頁、第 11 題起第 3 頁；109 英文 15 題都在第 2 頁
+    // 英文詞彙題（109 年 15 題、114 年 10 題）都在第 2 頁
     const page = (id: string) => paperQuestions(gsat.papers).find(question => question.id === id)?.pdfPage
 
     expect(['115-chinese-1', '115-chinese-5', '115-chinese-25', '115-chinese-26'].map(page)).toEqual([2, 2, 8, 9])
-    expect(['115-english-10', '115-english-11', '109-english-15', '115-mathA-1'].map(page)).toEqual([2, 3, 2, 2])
+    expect(['114-english-10', '109-english-15', '115-mathA-1'].map(page)).toEqual([2, 2, 2])
     expect(['109-chinese-7', '111-chinese-8', '114-chinese-4'].map(page)).toEqual([3, 3, 2])
   })
 })
