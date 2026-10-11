@@ -190,22 +190,25 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await expect(quiz.question('115-mathA-1')).toBeVisible()
   })
 
-  test('作答頁_按回首頁_回到選考試的首頁', async ({ page }) => {
-    const home = new HomePage(page)
+  test('作答頁_按返回_回到大學學測頁_header標題是科目_網頁標題用全名', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    await page.getByRole('link', { name: '回首頁' }).click()
+    await expect(page.getByTestId('app-header').getByRole('heading', { level: 1 })).toHaveText('國語文綜合能力測驗')
+    await expect(page).toHaveTitle('115 學年度大學學科能力測驗 國語文綜合能力測驗')
+    await expect(page.getByText('練習本')).toHaveCount(0)
+    await expect(page.getByTestId('app-back')).toHaveAccessibleName('返回大學學測')
+    await page.getByTestId('app-back').click()
 
-    await expect(page).toHaveURL(/\/$/)
-    await expect(page.getByTestId('menu-gsat')).toBeVisible()
+    await expect(page).toHaveURL(/\/gsat$/)
+    await expect(page.getByTestId('menu-quiz')).toBeVisible()
   })
 
-  test('網址的考卷不存在_顯示找不到考卷並可回首頁', async ({ page }) => {
+  test('網址的考卷不存在_顯示找不到考卷並可返回大學學測', async ({ page }) => {
     await page.goto('/quiz?exam=gsat&subject=chinese&mode=full&years=99')
 
     await expect(page.getByText('找不到這份考卷')).toBeVisible()
-    await expect(page.getByRole('link', { name: '回首頁' })).toBeVisible()
+    await expect(page.getByTestId('app-back')).toHaveAccessibleName('返回大學學測')
   })
 
   test('作試題設定表_手機寬度不應出現水平捲動', async ({ page }) => {

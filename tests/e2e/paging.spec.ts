@@ -72,4 +72,17 @@ test.describe('像真實試卷一樣翻頁', () => {
     await quiz.prev()
     await expect(quiz.question('115-chinese-26').getByTestId('question-score')).toBeVisible()
   })
+
+  test('翻頁_新一頁的頁首不被固定的header蓋住', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+
+    await quiz.next()
+
+    const header = (await page.getByTestId('app-header').boundingBox())!
+    const running = (await page.getByTestId('running-header').boundingBox())!
+    expect(running.y).toBeGreaterThanOrEqual(header.y + header.height - 1)
+  })
 })
+

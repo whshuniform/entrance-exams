@@ -36,7 +36,7 @@ describe('exam-menu', () => {
 
   it('examMenu_WithoutVocabPage_ShouldLinkOnlyExamsThatHaveSomethingToDo', () => {
     expect(examMenu(examCatalog, { hasVocabPage: false })).toEqual([
-      { id: 'gsat', title: '大學學測', hint: '學科能力測驗', to: '/gsat' },
+      { id: 'gsat', title: '大學學測', hint: '大學學科能力測驗', to: '/gsat' },
       { id: 'ast', title: '分科測驗', hint: '準備中' },
       { id: 'cap', title: '國中會考', hint: '準備中' },
     ])

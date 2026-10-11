@@ -237,4 +237,25 @@ test.describe('手機觸控', () => {
 
     expect(await quiz.inkPixels('115-mathA-1', scratch)).toBeGreaterThan(0)
   })
+
+  test('原子筆選紅色_畫出來的筆跡是紅色', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('pen')
+
+    await expect(page.getByTestId('pen-colors')).toBeVisible()
+    await page.getByTestId('pen-color-red').click()
+    await expect(page.getByTestId('pen-color-red')).toHaveAttribute('aria-pressed', 'true')
+    await quiz.scribble(quiz.option('115-chinese-1', 'A'), [0.1, 0.3], [0.5, 0.8])
+
+    // 找筆跡最濃的像素，紅色要明顯多過藍色
+    const [r, , b] = await quiz.inkLayer('115-chinese-1').evaluate((el: HTMLCanvasElement) => {
+      const data = el.getContext('2d')!.getImageData(0, 0, el.width, el.height).data
+      let best = 3
+      for (let i = 3; i < data.length; i += 4) if (data[i]! > data[best]!) best = i
+      return [data[best - 3]!, data[best - 2]!, data[best - 1]!]
+    })
+    expect(r).toBeGreaterThan(b + 60)
+  })
 })
+
