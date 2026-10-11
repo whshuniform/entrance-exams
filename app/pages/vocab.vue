@@ -1,6 +1,6 @@
 <template>
   <main data-test="vocab-page" :data-ready="ready" :class="['container', $style['vocab-page']]">
-    <NuxtLink to="/" :class="$style['vocab-page__back']">← 回考古題練習</NuxtLink>
+    <NuxtLink :to="backTo" :class="$style['vocab-page__back']">← 回上一頁</NuxtLink>
     <header :class="$style['vocab-page__header']">
       <h1 :class="$style['vocab-page__title']">
         <span :class="$style['vocab-page__highlight']">必背單字</span>
@@ -78,6 +78,17 @@ useHead({ title: '必背單字・考古題練習本' })
 
 const { exam, examId, examDate, hideMeaning, levels, total, learnedCount, plan, schedule, toggle, resetProgress, learned } =
   useVocabPlan(vocabExams)
+
+// 從考試頁進來時網址帶 ?exam=gsat|cap，直接選好那個考試
+const route = useRoute()
+const router = useRouter()
+const queryExam = vocabExams.find(item => item.id === route.query.exam)
+if (queryExam) examId.value = queryExam.id
+/** 有考試頁（/gsat、/cap）就回考試頁，沒有就回首頁 */
+const backTo = computed(() => {
+  const examPage = `/${examId.value}`
+  return router.resolve(examPage).matched.length ? examPage : '/'
+})
 
 const hideId = useId()
 const percent = computed(() => (total.value ? (learnedCount.value / total.value) * 100 : 0))
