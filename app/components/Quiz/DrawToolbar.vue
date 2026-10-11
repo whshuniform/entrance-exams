@@ -8,45 +8,67 @@
       :leave-to-class="$style['draw-toolbar__tools--collapsed']"
     >
       <div v-if="visible" :id="toolsId" :class="$style['draw-toolbar__tools']">
-        <Button
-          v-for="item in TOOLS"
-          :key="item.value"
-          :data-test="`tool-${item.value}`"
-          :data-tool="item.value"
-          :label="item.label"
-          icon-pos="top"
-          :aria-pressed="props.modelValue === item.value ? 'true' : 'false'"
-          :class="[$style['draw-toolbar__button'], props.modelValue === item.value && $style['draw-toolbar__button--on']]"
-          @click="emit('update:modelValue', item.value)"
-        >
-          <template #icon>
-            <svg :class="$style['draw-toolbar__icon']" viewBox="0 0 32 32" aria-hidden="true">
-              <!-- 關閉繪畫：被劃掉的筆 -->
-              <template v-if="item.value === 'off'">
-                <path d="M8 24 L21 9 L24.5 12 L11.5 27 L7 28 Z" />
-                <path d="M5 5 L27 27" :class="$style['draw-toolbar__slash']" />
-              </template>
-              <!-- 螢光筆：斜切筆頭 -->
-              <template v-else-if="item.value === 'highlighter'">
-                <path d="M6 27 L26 27" :class="$style['draw-toolbar__swatch']" />
-                <path d="M10 21 L20 6 L26 10 L16 25 Z" />
-                <path d="M10 21 L8 25 L13 25.5" />
-              </template>
-              <!-- 原子筆 -->
-              <template v-else-if="item.value === 'pen'">
-                <path d="M7 25 L22 7 C23.5 5.5 26.5 7.5 25 9.5 L10 27 Z" />
-                <path d="M7 25 L5.5 28.5 L10 27" />
-                <path d="M5 29 C9 27.5 12 30 16 28.5" :class="$style['draw-toolbar__ink']" />
-              </template>
-              <!-- 橡皮擦 -->
-              <template v-else>
-                <path d="M5 20 L16 8 L27 18 L18 28 L11 28 Z" />
-                <path d="M10.5 14.5 L21.5 24" />
-                <path d="M18 28 L28 28" />
-              </template>
-            </svg>
-          </template>
-        </Button>
+        <div v-for="item in TOOLS" :key="item.value" :class="$style['draw-toolbar__slot']">
+          <Button
+            :data-test="`tool-${item.value}`"
+            :data-tool="item.value"
+            :label="item.label"
+            icon-pos="top"
+            :aria-pressed="props.modelValue === item.value ? 'true' : 'false'"
+            :class="[$style['draw-toolbar__button'], props.modelValue === item.value && $style['draw-toolbar__button--on']]"
+            :style="item.value === 'pen' ? { '--pen-ink': `var(${penInkVar})` } : undefined"
+            @click="emit('update:modelValue', item.value)"
+          >
+            <template #icon>
+              <svg :class="$style['draw-toolbar__icon']" viewBox="0 0 32 32" aria-hidden="true">
+                <!-- 關閉繪畫：被劃掉的筆 -->
+                <template v-if="item.value === 'off'">
+                  <path d="M8 24 L21 9 L24.5 12 L11.5 27 L7 28 Z" />
+                  <path d="M5 5 L27 27" :class="$style['draw-toolbar__slash']" />
+                </template>
+                <!-- 螢光筆：斜切筆頭 -->
+                <template v-else-if="item.value === 'highlighter'">
+                  <path d="M6 27 L26 27" :class="$style['draw-toolbar__swatch']" />
+                  <path d="M10 21 L20 6 L26 10 L16 25 Z" />
+                  <path d="M10 21 L8 25 L13 25.5" />
+                </template>
+                <!-- 原子筆 -->
+                <template v-else-if="item.value === 'pen'">
+                  <path d="M7 25 L22 7 C23.5 5.5 26.5 7.5 25 9.5 L10 27 Z" />
+                  <path d="M7 25 L5.5 28.5 L10 27" />
+                  <path d="M5 29 C9 27.5 12 30 16 28.5" :class="$style['draw-toolbar__ink']" />
+                </template>
+                <!-- 橡皮擦 -->
+                <template v-else>
+                  <path d="M5 20 L16 8 L27 18 L18 28 L11 28 Z" />
+                  <path d="M10.5 14.5 L21.5 24" />
+                  <path d="M18 28 L28 28" />
+                </template>
+              </svg>
+            </template>
+          </Button>
+
+          <!-- 用原子筆時，左邊展開顏色 -->
+          <div
+            v-if="item.value === 'pen' && props.modelValue === 'pen'"
+            data-test="pen-colors"
+            role="group"
+            aria-label="原子筆顏色"
+            :class="$style['draw-toolbar__colors']"
+          >
+            <button
+              v-for="color in PEN_COLORS"
+              :key="color.value"
+              type="button"
+              :data-test="`pen-color-${color.value}`"
+              :aria-label="`${color.label}色原子筆`"
+              :aria-pressed="penColor === color.value ? 'true' : 'false'"
+              :style="{ '--swatch': `var(${color.colorVar})` }"
+              :class="[$style['draw-toolbar__color'], penColor === color.value && $style['draw-toolbar__color--on']]"
+              @click="penColor = color.value"
+            />
+          </div>
+        </div>
       </div>
     </Transition>
 
@@ -71,7 +93,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DrawTool } from '~/types/quiz'
+import type { DrawTool, PenColor } from '~/types/quiz'
 
 interface Props {
   modelValue: DrawTool
@@ -85,6 +107,9 @@ const emit = defineEmits<{
 
 /** 工具列顯示與否；外層綁 v-model:visible 讓題目在隱藏時變滿版 */
 const visible = defineModel<boolean>('visible', { default: true })
+/** 原子筆顏色；外層綁 v-model:pen-color */
+const penColor = defineModel<PenColor>('penColor', { default: 'blue' })
+const penInkVar = computed(() => PEN_COLORS.find(color => color.value === penColor.value)?.colorVar ?? '--color-ballpoint')
 const toolsId = useId()
 
 function toggle() {
@@ -158,8 +183,45 @@ const TOOLS: { value: DrawTool, label: string }[] = [
     stroke-width: 5;
   }
 
+  // 原子筆圖示下面的墨水線跟著目前的顏色
   &__ink {
-    stroke: var(--color-ballpoint);
+    stroke: var(--pen-ink, var(--color-ballpoint));
+  }
+
+  &__slot {
+    position: relative;
+  }
+
+  // 顏色選單：在原子筆按鈕左邊橫排，像四支不同顏色的筆
+  &__colors {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 0.5rem);
+    padding: 0.35rem 0.45rem;
+    display: flex;
+    gap: 0.4rem;
+
+    @include sketch-border(2px, true);
+
+    background: var(--color-card);
+    box-shadow: var(--shadow-sketch);
+    transform: translateY(-50%);
+  }
+
+  &__color {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 2px solid var(--color-card);
+    border-radius: 50%;
+    background: var(--swatch);
+    box-shadow: 0 0 0 1.5px var(--color-ink);
+    cursor: pointer;
+
+    &--on {
+      box-shadow: 0 0 0 3px var(--color-ink);
+      transform: scale(1.1);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

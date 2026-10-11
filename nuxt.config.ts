@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     head: {
       // 網站本來就是中文：用瀏覽器認得的 zh-TW，並關掉 Google 翻譯提示
       htmlAttrs: { lang: 'zh-TW', translate: 'no' },
-      title: '考古題練習本',
+      title: '考古題',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'google', content: 'notranslate' },

@@ -12,7 +12,7 @@ export const examCatalog: ExamKind[] = [
   {
     id: 'gsat',
     name: '大學學測',
-    fullName: '學科能力測驗',
+    fullName: '大學學科能力測驗',
     papers: GSAT_SUBJECTS.flatMap(id => gsatPapers.filter(paper => paper.id === id)),
     vocabHint: '大考中心參考詞彙表，排每天要背的字',
   },

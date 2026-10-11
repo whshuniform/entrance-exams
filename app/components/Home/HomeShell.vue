@@ -1,12 +1,7 @@
 <template>
+  <AppHeader :title="title" :back="back" />
   <main :class="['container', $style['home-shell']]">
-    <header :class="$style['home-shell__header']">
-      <NuxtLink v-if="back" :to="back.to" :class="$style['home-shell__back']">← 回{{ back.label }}</NuxtLink>
-      <h1 :class="$style['home-shell__title']">
-        <span :class="$style['home-shell__highlight']">{{ title }}</span>
-      </h1>
-      <p v-if="subtitle" :class="$style['home-shell__subtitle']">{{ subtitle }}</p>
-    </header>
+    <p v-if="subtitle" :class="$style['home-shell__subtitle']">{{ subtitle }}</p>
 
     <slot />
 
@@ -16,9 +11,10 @@
 
 <script setup lang="ts">
 defineProps<{
+  /** 顯示在固定 header 中間的標題 */
   title: string
   subtitle?: string
-  /** 回上一層的連結，例如回首頁 */
+  /** header 左邊的返回鍵，例如返回首頁 */
   back?: { to: string, label: string }
 }>()
 </script>
@@ -26,40 +22,14 @@ defineProps<{
 <style module lang="scss">
 @use '@/assets/css/mixins' as *;
 
-// 首頁、考試頁、作試題設定頁共用的版面：大標題像螢光筆畫過
+// 首頁、考試頁、作試題設定頁共用的版面
 .home-shell {
   max-width: 51rem;
   margin: 0 auto;
-  padding: 2rem 3.5rem 3rem;
-
-  &__header {
-    margin-bottom: 1.75rem;
-  }
-
-  &__back {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    color: var(--color-ink-soft);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  &__title {
-    margin: 0;
-    font-size: 2.5rem;
-    line-height: 1.3;
-  }
-
-  &__highlight {
-    padding: 0 0.2em;
-    background: linear-gradient(transparent 50%, var(--color-marker) 50%, var(--color-marker) 92%, transparent 92%);
-  }
+  padding: 1.5rem 3.5rem 3rem;
 
   &__subtitle {
-    margin: 0.5rem 0 0;
+    margin: 0 0 1.5rem;
     line-height: 1.6;
     color: var(--color-ink-soft);
   }
@@ -73,11 +43,7 @@ defineProps<{
 
   @include respond-to('xs') {
     width: 100%;
-    padding: 1.25rem 0.75rem 2rem;
-
-    &__title {
-      font-size: 2rem;
-    }
+    padding: 1rem 0.75rem 2rem;
   }
 }
 </style>
