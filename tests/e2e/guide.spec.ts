@@ -6,7 +6,7 @@ test.describe('試卷第一頁的作答注意事項', () => {
     const quiz = new QuizPage(page)
     await quiz.openCover()
 
-    await expect(quiz.pager).toHaveAttribute('data-question', 'guide')
+    await expect(quiz.pager).toHaveAttribute('data-sheet', 'guide')
     await expect(page.getByRole('heading', { name: /作答注意事項/ })).toBeVisible()
     await expect(page.getByRole('img', { name: /作答範例/ })).toBeVisible()
     await expect(page.getByRole('img', { name: /繪畫範例/ })).toBeVisible()
@@ -22,7 +22,7 @@ test.describe('試卷第一頁的作答注意事項', () => {
     await expect(quiz.question('115-chinese-1')).toBeVisible()
 
     await quiz.prev()
-    await expect(quiz.pager).toHaveAttribute('data-question', 'guide')
+    await expect(quiz.pager).toHaveAttribute('data-sheet', 'guide')
   })
 
   test('作答注意事項_手機寬度範例圖不超出畫面', async ({ page }) => {

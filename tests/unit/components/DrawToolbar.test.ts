@@ -59,26 +59,11 @@ describe('DrawToolbar', () => {
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['highlighter'])
   })
 
-  it('DrawToolbar_PenOff_ShouldNotShowPenColors', async () => {
-    const wrapper = await mountSuspended(DrawToolbar, { props: { modelValue: 'highlighter' } })
+  it('DrawToolbar_PenOn_ShouldNotOfferPenColors', async () => {
+    // 原子筆固定灰色，不用選顏色
+    const wrapper = await mountSuspended(DrawToolbar, { props: { modelValue: 'pen' } })
 
     expect(wrapper.find('[data-test="pen-colors"]').exists()).toBe(false)
-  })
-
-  it('DrawToolbar_PenOn_ShouldShowFourColorsWithCurrentPressed', async () => {
-    const wrapper = await mountSuspended(DrawToolbar, { props: { modelValue: 'pen', penColor: 'red' } })
-
-    const colors = wrapper.findAll('[data-test^="pen-color-"]')
-    expect(colors.map(color => color.attributes('aria-label'))).toEqual(['藍色原子筆', '紅色原子筆', '黑色原子筆', '綠色原子筆'])
-    expect(wrapper.find('[data-test="pen-color-red"]').attributes('aria-pressed')).toBe('true')
-    expect(wrapper.find('[data-test="pen-color-blue"]').attributes('aria-pressed')).toBe('false')
-  })
-
-  it('DrawToolbar_PickPenColor_ShouldEmitColor', async () => {
-    const wrapper = await mountSuspended(DrawToolbar, { props: { modelValue: 'pen', penColor: 'blue' } })
-
-    await wrapper.find('[data-test="pen-color-green"]').trigger('click')
-
-    expect(wrapper.emitted('update:penColor')?.at(-1)).toEqual(['green'])
+    expect(wrapper.findAll('[data-test^="pen-color-"]')).toHaveLength(0)
   })
 })

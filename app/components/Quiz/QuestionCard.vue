@@ -116,7 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DrawTool, GradeResult, InkStroke, PenColor, QuizQuestion, TextRange } from '~/types/quiz'
+import type { DrawTool, GradeResult, InkStroke, QuizQuestion, TextRange } from '~/types/quiz'
 
 type OptionState = 'hit' | 'answer' | 'wrong' | undefined
 
@@ -129,8 +129,6 @@ interface Props {
   highlights?: Record<string, TextRange[]>
   /** 右下角工具列目前的工具；off 時可作答 */
   tool?: DrawTool
-  /** 原子筆目前的顏色 */
-  penColor?: PenColor
   ink?: InkStroke[]
   /** points：交卷後標得分；accuracy：隨機抽題只標答對或答錯 */
   scoring?: 'points' | 'accuracy'
@@ -141,7 +139,6 @@ const props = withDefaults(defineProps<Props>(), {
   result: undefined,
   highlights: () => ({}),
   tool: 'off',
-  penColor: 'blue',
   ink: () => [],
   scoring: 'points',
 })
@@ -163,7 +160,6 @@ const drawing = useCardDrawing({
   card,
   canvas: inkCanvas,
   tool: () => props.tool,
-  penColor: () => props.penColor,
   strokes: () => props.ink,
   hasHighlights: id => Boolean(props.highlights[id]?.length),
   onStrokes: strokes => emit('update:ink', strokes),

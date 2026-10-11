@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { buildPages, paperQuestions, pickQuestions } from '~/utils/paper'
 import type { QuizPaper, QuizQuestion } from '~/types/quiz'
 
-const question = (id: string): QuizQuestion => ({
-  id, number: 1, type: 'single', stem: '', options: [], answer: 'A', points: 1,
+const question = (id: string, pdfPage?: number): QuizQuestion => ({
+  id, number: 1, type: 'single', stem: '', options: [], answer: 'A', points: 1, ...(pdfPage ? { pdfPage } : {}),
 })
 
 describe('paperQuestions', () => {
@@ -23,26 +23,49 @@ describe('paperQuestions', () => {
 })
 
 describe('buildPages', () => {
+  // 甲卷：a、b 在原卷第 2 頁，c 在第 3 頁；乙卷：d 在第 2 頁
   const papers: QuizPaper[] = [
     { subject: '甲', year: 115, fullMarks: 100, stats: { levels: [], counts: {}, total: 0 }, parts: [
       { title: 'p1', groups: [
-        { title: 'g1', note: 'n1', questions: [question('a'), question('b')] },
-        { title: 'g2', note: 'n2', questions: [question('c')] },
+        { title: 'g1', note: 'n1', questions: [question('a', 2), question('b', 2)] },
+        { title: 'g2', note: 'n2', questions: [question('c', 3)] },
       ] },
     ] },
     { subject: '乙', year: 115, fullMarks: 100, stats: { levels: [], counts: {}, total: 0 }, parts: [
-      { title: 'p2', groups: [{ title: 'g3', note: 'n3', questions: [question('d')] }] },
+      { title: 'p2', groups: [{ title: 'g3', note: 'n3', questions: [question('d', 2)] }] },
     ] },
   ]
+  const ids = (pages: ReturnType<typeof buildPages>) => pages.map(page => page.items.map(item => item.question.id))
 
-  it('buildPages_ShouldPutOneQuestionPerPageInOrder', () => {
-    expect(buildPages(papers).map(page => page.question.id)).toEqual(['a', 'b', 'c', 'd'])
+  it('buildPages_ShouldPutQuestionsOfTheSamePdfPageOnOneSheet', () => {
+    expect(ids(buildPages(papers))).toEqual([['a', 'b'], ['c'], ['d']])
+  })
+
+  it('buildPages_SamePdfPageAcrossGroups_ShouldStayOnOneSheet', () => {
+    const paper: QuizPaper = { ...papers[0]!, parts: [{ title: 'p1', groups: [
+      { title: 'g1', note: 'n1', questions: [question('a', 2)] },
+      { title: 'g2', note: 'n2', questions: [question('b', 2)] },
+    ] }] }
+
+    expect(ids(buildPages([paper]))).toEqual([['a', 'b']])
+  })
+
+  it('buildPages_NoPdfPage_ShouldPutOneQuestionPerSheet', () => {
+    const paper: QuizPaper = { ...papers[0]!, parts: [{ title: 'p1', groups: [
+      { title: 'g1', note: 'n1', questions: [question('a'), question('b')] },
+    ] }] }
+
+    expect(ids(buildPages([paper]))).toEqual([['a'], ['b']])
+  })
+
+  it('buildPages_ShouldKeepPdfPageOfEachSheet', () => {
+    expect(buildPages(papers).map(page => page.pdfPage)).toEqual([2, 3, 2])
   })
 
   it('buildPages_ShouldMarkWherePartsAndGroupsStart', () => {
-    const pages = buildPages(papers)
+    const items = buildPages(papers).flatMap(page => page.items)
 
-    expect(pages.map(page => [page.startsPart, page.startsGroup])).toEqual([
+    expect(items.map(item => [item.startsPart, item.startsGroup])).toEqual([
       [true, true], [false, false], [false, true], [true, true],
     ])
   })
@@ -51,7 +74,7 @@ describe('buildPages', () => {
     const pages = buildPages(papers)
 
     expect(pages.map(page => [page.paper.subject, page.pageNumber, page.pageCount])).toEqual([
-      ['甲', 1, 3], ['甲', 2, 3], ['甲', 3, 3], ['乙', 1, 1],
+      ['甲', 1, 2], ['甲', 2, 2], ['乙', 1, 1],
     ])
   })
 
@@ -60,7 +83,7 @@ describe('buildPages', () => {
     const pages = buildPages(papers, { continuous: true })
 
     expect(pages.map(page => [page.paper.subject, page.pageNumber, page.pageCount])).toEqual([
-      ['甲', 1, 4], ['甲', 2, 4], ['甲', 3, 4], ['乙', 4, 4],
+      ['甲', 1, 3], ['甲', 2, 3], ['乙', 3, 3],
     ])
   })
 })
@@ -121,7 +144,7 @@ describe('pickQuestions', () => {
     expect(picked.map(item => [item.year, item.parts.map(part => [part.title, part.groups.map(group => group.title)])])).toEqual([
       [114, [['p1', ['g1']]]],
     ])
-    expect(buildPages(picked).map(page => [page.startsPart, page.startsGroup, page.pageNumber, page.pageCount])).toEqual([
+    expect(buildPages(picked).map(page => [page.items[0]!.startsPart, page.items[0]!.startsGroup, page.pageNumber, page.pageCount])).toEqual([
       [true, true, 1, 2], [false, false, 2, 2],
     ])
   })

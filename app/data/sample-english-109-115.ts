@@ -1,5 +1,6 @@
 import type { QuizPaper, QuizQuestion } from '~/types/quiz'
 import { englishStats109To115 } from './stats-english-109-115'
+import { withPdfPages } from './pdf-pages'
 
 const single = (year: number, number: number, stem: string, options: string[], answer: string): QuizQuestion => ({
   id: `${year}-english-${number}`,
@@ -29,7 +30,7 @@ const paper = (year: number, heading: Heading, questions: QuizQuestion[]): QuizP
   minutes: 100,
   fullMarks: 100,
   stats: englishStats109To115[year]!,
-  parts: [{ title: heading.part, groups: [{ title: heading.group, note: heading.note, questions }] }],
+  parts: [{ title: heading.part, groups: [{ title: heading.group, note: heading.note, questions: withPdfPages(year, 'english', questions) }] }],
 })
 
 /**

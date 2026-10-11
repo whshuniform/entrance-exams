@@ -17,6 +17,8 @@ export interface QuizQuestion {
   /** 正確答案，例如 "C"、"BE" */
   answer: string
   points: number
+  /** 在原試題 PDF 的第幾頁；同一頁的題目在網站上也排在同一頁 */
+  pdfPage?: number
 }
 
 export interface GradeResult {
@@ -53,14 +55,9 @@ export type DrawTool = 'off' | 'highlighter' | 'pen' | 'eraser'
 
 export type InkTool = Exclude<DrawTool, 'off'>
 
-/** 原子筆的顏色 */
-export type PenColor = 'blue' | 'red' | 'black' | 'green'
-
 /** 題目卡片上的一筆手寫筆跡 */
 export interface InkStroke {
   tool: InkTool
-  /** 原子筆的顏色；舊筆跡沒有時當藍色 */
-  color?: PenColor
   /** x 為卡片寬度比例（0–1），y 為距卡片上緣的 px */
   points: [number, number][]
 }
@@ -115,15 +112,22 @@ export interface QuizPaper {
   parts: QuizPart[]
 }
 
-/** 試卷的一頁：一頁一題 */
-export interface QuizSheet {
-  paper: QuizPaper
+/** 試卷頁上的一題，帶著它所在的部分、題型段落 */
+export interface QuizSheetItem {
   part: QuizPart
   group: QuizGroup
   question: QuizQuestion
-  /** 部分、題型段落從這頁開始，要印標題 */
+  /** 部分、題型段落從這題開始，要在這題前面印標題 */
   startsPart: boolean
   startsGroup: boolean
+}
+
+/** 試卷的一頁：跟原試題 PDF 同一頁的題目排在一起 */
+export interface QuizSheet {
+  paper: QuizPaper
+  /** 原試題 PDF 的頁碼；題目沒有頁碼資料時為 undefined（一頁一題） */
+  pdfPage?: number
+  items: QuizSheetItem[]
   /** 在該科試卷中的第幾頁、共幾頁 */
   pageNumber: number
   pageCount: number

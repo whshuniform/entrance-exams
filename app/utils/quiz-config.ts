@@ -31,6 +31,11 @@ export function formatYears(years: number[]) {
   return runs.map(run => (run.length > 1 ? `${run[0]}–${run.at(-1)}` : String(run[0]))).join('、')
 }
 
+/** 作答頁 header 的標題：年度＋科目，例如「115年 國語文綜合能力測驗」「109–111年 英文」 */
+export function quizHeading(config: QuizConfig, subject: string) {
+  return `${formatYears(config.years)}年 ${subject}`
+}
+
 /** 設定轉成作答頁網址的 query；依課綱時只帶課綱，整份考卷不帶題數，不計時不帶分鐘 */
 export function toQuizQuery(config: QuizConfig): Record<string, string> {
   const query: Record<string, string> = { exam: config.exam, subject: config.subject, mode: config.mode }

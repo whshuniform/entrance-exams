@@ -55,7 +55,7 @@ test.describe('試作作答頁', () => {
     await quiz.next()
     await quiz.resetButton.click()
     await expect(quiz.resultSheet).toBeHidden()
-    await expect(quiz.pager).toHaveAttribute('data-question', '115-chinese-1')
+    await expect(quiz.pager).toHaveAttribute('data-sheet', /\b115-chinese-1\b/)
     await expect(quiz.option('115-chinese-1', 'A').locator('input')).not.toBeChecked()
   })
 

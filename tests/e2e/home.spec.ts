@@ -31,7 +31,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await home.startButton.click()
 
     await expect(page).toHaveURL(/\/quiz\?/)
-    await expect(quiz.pager).toHaveAttribute('data-question', 'guide')
+    await expect(quiz.pager).toHaveAttribute('data-sheet', 'guide')
     await expect(quiz.timer).toHaveCount(0)
     await quiz.startButton.click()
     expect(await quiz.questionIds()).toEqual(CHINESE)
@@ -65,7 +65,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await home.startButton.click()
     await quiz.startButton.click()
 
-    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 5 頁')
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共')
     const ids = await quiz.questionIds()
     expect(ids).toHaveLength(5)
     expect(ids.every(id => [111, 115].includes(yearOf(id)))).toBe(true)
@@ -153,7 +153,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
 
     await expect(page).toHaveURL(/count=30/)
     await quiz.startButton.click()
-    await expect(page.getByTestId('running-header')).toContainText('共 22 頁')
+    expect(await quiz.questionIds()).toHaveLength(22)
   })
 
   test('隨機抽題交卷_成績單看答對率和答對題數_每題標答對答錯', async ({ page }) => {
@@ -190,11 +190,11 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await expect(quiz.question('115-mathA-1')).toBeVisible()
   })
 
-  test('作答頁_按返回_回到大學學測頁_header標題是科目_網頁標題用全名', async ({ page }) => {
+  test('作答頁_按返回_回到大學學測頁_header標題是年度和科目_網頁標題用全名', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    await expect(page.getByTestId('app-header').getByRole('heading', { level: 1 })).toHaveText('國語文綜合能力測驗')
+    await expect(page.getByTestId('app-header').getByRole('heading', { level: 1 })).toHaveText('115年 國語文綜合能力測驗')
     await expect(page).toHaveTitle('115 學年度大學學科能力測驗 國語文綜合能力測驗')
     await expect(page.getByText('練習本')).toHaveCount(0)
     await expect(page.getByTestId('app-back')).toHaveAccessibleName('返回大學學測')

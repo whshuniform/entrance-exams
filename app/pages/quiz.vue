@@ -1,5 +1,5 @@
 <template>
-  <AppHeader :title="quiz ? quiz.papers[0]?.subject ?? '' : '找不到考卷'" :back="back" />
+  <AppHeader :title="heading" :back="back" />
   <main v-if="!quiz" :class="['container', $style['quiz-page']]">
     <section data-test="quiz-not-found" :class="$style['quiz-page__missing']">
       <p :class="$style['quiz-page__missing-title']">找不到這份考卷</p>
@@ -15,7 +15,8 @@
       totalSeconds > 0 && $style['quiz-page--timed'],
     ]"
   >
-    <header :class="$style['quiz-page__header']">
+    <!-- 說明和小技巧只在第一頁（作答注意事項）顯示 -->
+    <header v-if="isGuide" data-test="quiz-intro" :class="$style['quiz-page__header']">
       <p :class="$style['quiz-page__subtitle']">{{ subtitle }}</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
       <p :class="$style['quiz-page__tip']">
@@ -33,7 +34,7 @@
       />
     </div>
 
-    <!-- 像真實試卷：一頁一題，翻頁做下一題；標題跟原試題 PDF 一樣只印在段落開頭 -->
+    <!-- 像真實試卷：每頁的題目跟原試題 PDF 同一頁，翻頁做下一頁；標題跟原卷一樣只印在段落開頭 -->
     <div ref="sheetTop" :class="$style['quiz-page__desk']">
       <Transition
         mode="out-in"
@@ -46,33 +47,34 @@
         <section v-if="isGuide" key="guide" data-test="guide-sheet">
           <QuizGuide />
         </section>
-        <section v-else-if="currentSheet" :key="currentSheet.question.id" data-test="sheet">
+        <section v-else-if="currentSheet" :key="sheetKey" data-test="sheet">
           <header data-test="running-header" :class="$style['quiz-page__running']">
             <span>{{ currentSheet.paper.year }}年{{ currentSheet.paper.exam }}　{{ currentSheet.paper.subject }}</span>
             <span>第 {{ currentSheet.pageNumber }} 頁 共 {{ currentSheet.pageCount }} 頁</span>
           </header>
-          <h3 v-if="currentSheet.startsPart && currentSheet.part.title" :class="$style['quiz-page__part']">{{ currentSheet.part.title }}</h3>
-          <template v-if="currentSheet.startsGroup">
-            <h4 :class="$style['quiz-page__group']">{{ currentSheet.group.title }}</h4>
-            <p :class="$style['quiz-page__note']">{{ currentSheet.group.note }}</p>
+          <template v-for="item in currentSheet.items" :key="item.question.id">
+            <h3 v-if="item.startsPart && item.part.title" :class="$style['quiz-page__part']">{{ item.part.title }}</h3>
+            <template v-if="item.startsGroup">
+              <h4 :class="$style['quiz-page__group']">{{ item.group.title }}</h4>
+              <p :class="$style['quiz-page__note']">{{ item.group.note }}</p>
+            </template>
+            <QuizQuestionCard
+              :question="item.question"
+              :model-value="answers[item.question.id] ?? ''"
+              :submitted="submitted"
+              :result="results[item.question.id]"
+              :highlights="highlights"
+              :tool="tool"
+              :ink="ink[item.question.id]"
+              :scratch-open="scratchOpen[item.question.id] ?? false"
+              :scoring="isRandom ? 'accuracy' : 'points'"
+              @update:model-value="setAnswer(item.question.id, $event)"
+              @mark="markText"
+              @erase="eraseText"
+              @update:ink="setInk(item.question.id, $event)"
+              @update:scratch-open="setScratchOpen(item.question.id, $event)"
+            />
           </template>
-          <QuizQuestionCard
-            :question="currentSheet.question"
-            :model-value="answers[currentSheet.question.id] ?? ''"
-            :submitted="submitted"
-            :result="results[currentSheet.question.id]"
-            :highlights="highlights"
-            :tool="tool"
-            :pen-color="penColor"
-            :ink="ink[currentSheet.question.id]"
-            :scratch-open="scratchOpen[currentSheet.question.id] ?? false"
-            :scoring="isRandom ? 'accuracy' : 'points'"
-            @update:model-value="setAnswer(currentSheet.question.id, $event)"
-            @mark="markText"
-            @erase="eraseText"
-            @update:ink="setInk(currentSheet.question.id, $event)"
-            @update:scratch-open="setScratchOpen(currentSheet.question.id, $event)"
-          />
         </section>
         <section v-else key="result" data-test="result-sheet">
           <QuizResultSheet :reports="reports" :accuracy="accuracy" :time-up="timeUp" />
@@ -82,7 +84,7 @@
 
     <nav
       data-test="pager"
-      :data-question="isGuide ? 'guide' : currentSheet ? currentSheet.question.id : 'result'"
+      :data-sheet="isGuide ? 'guide' : currentSheet ? sheetKey : 'result'"
       aria-label="翻頁"
       :class="$style['quiz-page__pager']"
     >
@@ -99,13 +101,13 @@
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
 
-    <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" v-model:pen-color="penColor" />
+    <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { examCatalog, findExam } from '~/data/catalog'
-import type { DrawTool, PenColor } from '~/types/quiz'
+import type { DrawTool } from '~/types/quiz'
 
 // 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時從所選年度或課綱一起抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
 const route = useRoute()
@@ -126,6 +128,9 @@ const subtitle = computed(() => {
   return `${range}・${first.subject}・${mode}${limit}`
 })
 
+/** header 標題：年度＋科目 */
+const heading = !quiz ? '找不到考卷' : quizHeading(quiz.config, quiz.papers[0]?.subject ?? '')
+
 // 學測裡的頁面一律返回大學學測頁；網址的考試不存在才回首頁
 const exam = findExam(String(route.query.exam ?? ''))
 const back = exam ? { to: `/${exam.id}`, label: exam.name } : { to: '/', label: '首頁' }
@@ -145,20 +150,20 @@ const { answers, submitted, answeredCount, results, setAnswer, submit, reset } =
 const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 /** 右下角工具列，預設關閉繪畫 */
 const tool = ref<DrawTool>('off')
-/** 原子筆顏色，預設藍色 */
-const penColor = ref<PenColor>('blue')
 /** 工具列隱藏時，題目往右延伸變滿版 */
 const toolsVisible = ref(true)
 /** 每題計算紙開著與否，翻頁回來仍記得 */
 const scratchOpen = ref<Record<string, boolean>>({})
 
-// 第 0 頁是作答注意事項，接著一頁一題，交卷後多一頁成績單
+// 第 0 頁是作答注意事項，接著是試題頁（跟原卷同一頁的題目排在一起），交卷後多一頁成績單
 const GUIDE_PAGES = 1
 const resultPage = GUIDE_PAGES + sheets.length
 const pageCount = computed(() => resultPage + (submitted.value ? 1 : 0))
 const { index, direction, isFirst, isLast, goTo, next, prev } = usePaging(() => pageCount.value)
 const isGuide = computed(() => index.value < GUIDE_PAGES)
 const currentSheet = computed(() => (isGuide.value ? undefined : sheets[index.value - GUIDE_PAGES]))
+/** 這一頁的題目 id，以空白隔開 */
+const sheetKey = computed(() => currentSheet.value?.items.map(item => item.question.id).join(' ') ?? '')
 const nextLabel = computed(() => {
   if (isGuide.value) return '開始作答'
   return submitted.value && index.value === resultPage - 1 ? '看成績' : '下一頁'
@@ -185,7 +190,9 @@ function flip(action: () => void) {
   const desk = sheetTop.value
   if (!desk) return
   const margin = Number.parseFloat(getComputedStyle(desk).scrollMarginTop) || 0
-  if (desk.getBoundingClientRect().top < margin) desk.scrollIntoView({ block: 'start' })
+  const top = desk.getBoundingClientRect().top
+  // 直接捲動視窗：scrollIntoView 在頁首附近會多捲過頭，把頁首藏到 header 後面
+  if (top < margin) window.scrollBy(0, top - margin)
 }
 
 function setScratchOpen(id: string, open: boolean) {
