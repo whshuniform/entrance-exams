@@ -16,9 +16,13 @@ export default defineNuxtConfig({
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
-      htmlAttrs: { lang: 'zh-Hant-TW' },
+      // 網站本來就是中文：用瀏覽器認得的 zh-TW，並關掉 Google 翻譯提示
+      htmlAttrs: { lang: 'zh-TW', translate: 'no' },
       title: '考古題練習本',
-      meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'google', content: 'notranslate' },
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
