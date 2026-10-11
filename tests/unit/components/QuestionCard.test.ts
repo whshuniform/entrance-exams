@@ -17,7 +17,37 @@ const multi: QuizQuestion = {
   answer: 'BE', points: 4,
 }
 
+const pictured: QuizQuestion = {
+  id: '115-chinese-3', number: 3, type: 'single', stem: '',
+  options: ['A', 'B', 'C', 'D'].map(key => ({ key, text: '' })),
+  answer: 'D', points: 2,
+  images: [{ src: 'papers/115/chinese/3-1.webp', width: 1200, height: 380 }],
+  numberInImage: true,
+}
+
 describe('QuestionCard', () => {
+  it('QuestionCard_Pictured_ShouldShowOriginalPaperImageAndAnswerCircles', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: pictured, modelValue: '' } })
+
+    const image = wrapper.find('[data-test="question-image"]')
+    expect(image.attributes('src')).toMatch(/papers\/115\/chinese\/3-1\.webp$/)
+    expect(image.attributes('alt')).toBe('第 3 題（原卷）')
+    // 題號已經在圖裡，不再印一次；選項文字也在圖裡，只留作答圈
+    expect(wrapper.find('[data-test="number"]').exists()).toBe(false)
+    expect(wrapper.find('[data-test="stem"]').exists()).toBe(false)
+    expect(wrapper.findAll('[data-test="option"]').map(option => option.text())).toEqual(['(A)', '(B)', '(C)', '(D)'])
+  })
+
+  it('QuestionCard_BlankInPassage_ShouldShowNumberAndCirclesOnly', async () => {
+    // 英文文意選填的空格：題目在前一題的文章裡，這題只有題號和作答圈
+    const blank: QuizQuestion = { ...pictured, id: '115-english-22', number: 22, images: undefined, numberInImage: false }
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: blank, modelValue: '' } })
+
+    expect(wrapper.find('[data-test="number"]').text()).toBe('22.')
+    expect(wrapper.find('[data-test="question-image"]').exists()).toBe(false)
+    expect(wrapper.find('[data-test="stem"]').exists()).toBe(false)
+  })
+
   it('QuestionCard_Render_ShouldShowNumberStemAndOptions', async () => {
     const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
 
