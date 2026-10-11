@@ -54,14 +54,15 @@ const state = computed(() =>
 
   overflow: hidden;
 
-  background: var(--color-card);
+  // 藍底白字（YZ 2026-10-11）
+  background: var(--color-ballpoint);
   border-bottom: 2px solid var(--color-ink);
   box-shadow: 0 2px 0 var(--color-paper-line);
 
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--color-ink);
+  color: #fff;
   white-space: nowrap;
 
   &__icon {
@@ -85,23 +86,22 @@ const state = computed(() =>
   &__note {
     font-size: 0.75rem;
     font-weight: 400;
-    color: var(--color-pencil);
+    opacity: 0.85;
   }
 
-  // 最後一分鐘和時間到：紅色螢光筆底
+  // 最後一分鐘和時間到：紅底白字
   &--warning,
   &--expired {
-    background: var(--color-marker-answer);
-    border-bottom-color: var(--color-pen-red);
-    color: var(--color-pen-red);
+    background: var(--color-pen-red);
   }
 
   &--warning &__clock {
     animation: quiz-timer-pulse 1s ease-in-out infinite;
   }
 
+  // 已交卷：灰底
   &--stopped {
-    color: var(--color-pencil);
+    background: var(--color-pencil);
   }
 
   @media (prefers-reduced-motion: reduce) {
