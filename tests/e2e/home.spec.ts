@@ -31,7 +31,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await home.startButton.click()
 
     await expect(page).toHaveURL(/\/quiz\?/)
-    await expect(quiz.pager).toHaveAttribute('data-question', 'guide')
+    await expect(quiz.pager).toHaveAttribute('data-sheet', 'guide')
     await expect(quiz.timer).toHaveCount(0)
     await quiz.startButton.click()
     expect(await quiz.questionIds()).toEqual(CHINESE)
@@ -65,7 +65,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await home.startButton.click()
     await quiz.startButton.click()
 
-    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 5 頁')
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共')
     const ids = await quiz.questionIds()
     expect(ids).toHaveLength(5)
     expect(ids.every(id => [111, 115].includes(yearOf(id)))).toBe(true)

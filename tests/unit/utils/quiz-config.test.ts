@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { examCatalog } from '~/data/catalog'
-import { DEFAULT_RANDOM_COUNT, defaultMinutes, formatYears, parseQuizQuery, toQuizQuery } from '~/utils/quiz-config'
+import { DEFAULT_RANDOM_COUNT, defaultMinutes, formatYears, parseQuizQuery, quizHeading, toQuizQuery } from '~/utils/quiz-config'
 import type { QuizConfig } from '~/types/quiz'
 
 const gsat = examCatalog[0]!
@@ -53,6 +53,20 @@ describe('formatYears', () => {
 
   it('formatYears_ShouldSortFirst', () => {
     expect(formatYears([115, 111, 112])).toBe('111–112、115')
+  })
+})
+
+describe('quizHeading', () => {
+  it('quizHeading_FullPaper_ShouldShowYearAndSubject', () => {
+    const config: QuizConfig = { exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 5, minutes: 0 }
+
+    expect(quizHeading(config, '國語文綜合能力測驗')).toBe('115年 國語文綜合能力測驗')
+  })
+
+  it('quizHeading_RandomOverYears_ShouldShowYearRange', () => {
+    const config: QuizConfig = { exam: 'gsat', subject: 'english', mode: 'random', years: [109, 110, 111, 115], count: 10, minutes: 0 }
+
+    expect(quizHeading(config, '英文')).toBe('109–111、115年 英文')
   })
 })
 

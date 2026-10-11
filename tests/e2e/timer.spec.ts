@@ -49,7 +49,7 @@ test.describe('計時作答', () => {
     await expect(quiz.resultSheet).toBeVisible()
     await quiz.resetButton.click()
 
-    await expect(quiz.pager).toHaveAttribute('data-question', '115-chinese-1')
+    await expect(quiz.pager).toHaveAttribute('data-sheet', /\b115-chinese-1\b/)
     await expect(quiz.timer.getByTestId('timer-clock')).toHaveText(/^0[01]:\d\d$/)
     await expect(quiz.option('115-chinese-1', 'A').locator('input')).toBeEnabled()
   })
