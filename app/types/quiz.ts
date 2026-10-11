@@ -145,7 +145,7 @@ export interface SubjectReport {
   rank: RankRange
 }
 
-/** 考試項目：學測、分科、會考；還沒有題目的先顯示「即將推出」 */
+/** 考試項目：學測、分科、會考；還沒有題目的先顯示「準備中」 */
 export interface ExamKind {
   /** 網址用的代號，例如 gsat */
   id: string
@@ -153,6 +153,8 @@ export interface ExamKind {
   /** 正式名稱，例如「學科能力測驗」 */
   fullName: string
   papers: QuizPaper[]
+  /** 有必背單字時，考試頁「背單字」卡片的說明；沒有就不出現背單字 */
+  vocabHint?: string
 }
 
 /** full：整份考卷；random：從選定科目的幾個年度或一個課綱隨機抽題 */

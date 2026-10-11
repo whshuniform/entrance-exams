@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test'
 
+/** 作試題的設定表（考試已在前一頁選好，預設學測） */
 export class HomePage {
   readonly heading: Locator
   readonly startButton: Locator
@@ -15,13 +16,9 @@ export class HomePage {
     this.minutesInput = page.getByTestId('timer-minutes').locator('input')
   }
 
-  async goto() {
-    await this.page.goto('/')
+  async goto(exam = 'gsat') {
+    await this.page.goto(`/${exam}/practice`)
     await expect(this.page.getByTestId('quiz-setup')).toHaveAttribute('data-ready', 'true')
-  }
-
-  exam(id: string) {
-    return this.page.getByTestId(`exam-${id}`)
   }
 
   subject(id: string) {

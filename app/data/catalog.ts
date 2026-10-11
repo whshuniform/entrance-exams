@@ -7,14 +7,20 @@ import { sampleEnglish109To115 } from './sample-english-109-115'
 const GSAT_SUBJECTS = ['chinese', 'english', 'math-a']
 const gsatPapers = [...sampleChinese109To114, ...sampleEnglish109To115, ...sample115Papers]
 
-/** 首頁可選的考試項目；分科、會考之後補上試卷 */
+/** 首頁可選的考試項目；分科、會考之後補上試卷。分科 111 年起沒有英文，不背單字 */
 export const examCatalog: ExamKind[] = [
   {
     id: 'gsat',
     name: '大學學測',
     fullName: '學科能力測驗',
     papers: GSAT_SUBJECTS.flatMap(id => gsatPapers.filter(paper => paper.id === id)),
+    vocabHint: '大考中心參考詞彙表，排每天要背的字',
   },
   { id: 'ast', name: '分科測驗', fullName: '大學分科測驗', papers: [] },
-  { id: 'cap', name: '國中會考', fullName: '國中教育會考', papers: [] },
+  { id: 'cap', name: '國中會考', fullName: '國中教育會考', papers: [], vocabHint: '課綱基本 1,200 字，排每天要背的字' },
 ]
+
+/** 網址上的考試代號找考試；找不到回傳 undefined */
+export function findExam(id: string) {
+  return examCatalog.find(exam => exam.id === id)
+}

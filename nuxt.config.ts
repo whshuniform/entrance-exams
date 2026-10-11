@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '/quiz': { ssr: false },
   },
   nitro: {
-    prerender: { routes: ['/', '/quiz'] },
+    prerender: { routes: ['/', '/gsat', '/gsat/practice', '/quiz'] },
   },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',

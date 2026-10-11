@@ -9,17 +9,12 @@ const yearOf = (id: string) => Number(id.split('-')[0])
 /** 題庫裡的順序：年度由舊到新，同一年照原卷題號 */
 const poolOrder = (id: string) => yearOf(id) * 100 + Number(id.split('-').at(-1))
 
-test.describe('首頁選考試項目和模式', () => {
-  test('首頁_列出學測分科會考_分科和會考即將推出不能選', async ({ page }) => {
+test.describe('作試題設定表選模式、科目、年度和計時', () => {
+  test('作試題設定表_不再問考試_科目照國英數排', async ({ page }) => {
     const home = new HomePage(page)
     await home.goto()
 
-    await expect(home.exam('gsat')).toContainText('大學學測')
-    await expect(home.exam('gsat').locator('input')).toBeChecked()
-    for (const id of ['ast', 'cap']) {
-      await expect(home.exam(id)).toContainText('即將推出')
-      await expect(home.exam(id).locator('input')).toBeDisabled()
-    }
+    await expect(page.getByTestId('exam-gsat')).toHaveCount(0)
     await expect(home.subject('chinese')).toContainText('國語文綜合能力測驗')
     await expect(home.subject('english')).toContainText('英文')
     await expect(home.subject('math-a')).toContainText('數學A')
@@ -203,7 +198,7 @@ test.describe('首頁選考試項目和模式', () => {
     await page.getByRole('link', { name: '回首頁' }).click()
 
     await expect(page).toHaveURL(/\/$/)
-    await expect(home.exam('gsat')).toBeVisible()
+    await expect(page.getByTestId('menu-gsat')).toBeVisible()
   })
 
   test('網址的考卷不存在_顯示找不到考卷並可回首頁', async ({ page }) => {
@@ -213,7 +208,7 @@ test.describe('首頁選考試項目和模式', () => {
     await expect(page.getByRole('link', { name: '回首頁' })).toBeVisible()
   })
 
-  test('首頁_手機寬度不應出現水平捲動', async ({ page }) => {
+  test('作試題設定表_手機寬度不應出現水平捲動', async ({ page }) => {
     const home = new HomePage(page)
     await home.goto()
     await home.choose(home.mode('random'))
