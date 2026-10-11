@@ -11,7 +11,7 @@ describe('useQuizSetup', () => {
     const setup = useQuizSetup(examCatalog)
 
     expect(setup.config.value).toEqual({
-      exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 5, minutes: 0,
+      exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 33, minutes: 0,
     })
     expect(setup.minutes.value).toBe(90)
   })
@@ -36,9 +36,9 @@ describe('useQuizSetup', () => {
     const setup = useQuizSetup(examCatalog)
 
     expect(setup.subjects.value).toEqual([
-      { id: 'chinese', name: '國語文綜合能力測驗', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 47 },
-      { id: 'english', name: '英文', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 80 },
-      { id: 'math-a', name: '數學A', years: [115], questionCount: 1 },
+      { id: 'chinese', name: '國語文綜合能力測驗', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 251 },
+      { id: 'english', name: '英文', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 347 },
+      { id: 'math-a', name: '數學A', years: [115, 114, 113, 112, 111], questionCount: 65 },
     ])
   })
 
@@ -59,7 +59,7 @@ describe('useQuizSetup', () => {
     await nextTick()
 
     expect(setup.pickedYears.value).toEqual([115, 114, 113, 112, 111, 110, 109])
-    expect(setup.poolSize.value).toBe(80)
+    expect(setup.poolSize.value).toBe(347)
     expect(setup.curricula.value).toEqual([
       { name: '108課綱', years: [115, 114, 113, 112, 111] },
       { name: '99課綱', years: [110, 109] },
@@ -74,8 +74,8 @@ describe('useQuizSetup', () => {
     await nextTick()
 
     expect(setup.papers.value.map(paper => paper.year)).toEqual([114])
-    expect(setup.poolSize.value).toBe(4)
-    expect(setup.config.value).toMatchObject({ mode: 'full', years: [114], count: 4 })
+    expect(setup.poolSize.value).toBe(33)
+    expect(setup.config.value).toMatchObject({ mode: 'full', years: [114], count: 33 })
   })
 
   it('useQuizSetup_RandomMode_ShouldDefaultToAllYearsAndFiveQuestions', async () => {
@@ -85,12 +85,12 @@ describe('useQuizSetup', () => {
     await nextTick()
 
     expect(setup.scope.value).toBe('years')
-    expect(setup.poolSize.value).toBe(47)
+    expect(setup.poolSize.value).toBe(251)
     expect(setup.config.value).toEqual({
       exam: 'gsat', subject: 'chinese', mode: 'random', years: ALL_YEARS, count: 5, minutes: 0,
     })
-    // 109–115 共 47 題合計 83.2 分鐘，平均每題約 1.8 分鐘，抽 5 題約 9 分鐘
-    expect(setup.minutes.value).toBe(9)
+    // 109–115 共 251 題合計 523.6 分鐘，平均每題約 2.1 分鐘，抽 5 題約 10 分鐘
+    expect(setup.minutes.value).toBe(10)
   })
 
   it('useQuizSetup_RandomPickSomeYears_ShouldOnlyUseThoseYearsOldestFirst', async () => {
@@ -102,7 +102,7 @@ describe('useQuizSetup', () => {
     await nextTick()
 
     expect(setup.papers.value.map(paper => paper.year)).toEqual([111, 115])
-    expect(setup.poolSize.value).toBe(11)
+    expect(setup.poolSize.value).toBe(67)
     expect(setup.config.value.years).toEqual([111, 115])
     expect(setup.minutes.value).toBe(11)
   })
@@ -121,13 +121,13 @@ describe('useQuizSetup', () => {
       { name: '101課綱', years: [110, 109] },
     ])
     expect(setup.config.value).toMatchObject({ curriculum: '108課綱', years: NEW_CURRICULUM_YEARS })
-    expect(setup.poolSize.value).toBe(22)
+    expect(setup.poolSize.value).toBe(167)
 
     setup.curriculum.value = '101課綱'
     await nextTick()
 
     expect(setup.config.value).toMatchObject({ curriculum: '101課綱', years: [109, 110] })
-    expect(setup.poolSize.value).toBe(25)
+    expect(setup.poolSize.value).toBe(84)
   })
 
   it('useQuizSetup_RandomCount_ShouldNotBeCappedByPool', async () => {
@@ -135,12 +135,12 @@ describe('useQuizSetup', () => {
     setup.mode.value = 'random'
     await nextTick()
 
-    setup.count.value = 60
+    setup.count.value = 300
     await nextTick()
 
-    expect(setup.config.value.count).toBe(60)
-    // 題庫只有 47 題，時間照 47 題算
-    expect(setup.minutes.value).toBe(83)
+    expect(setup.config.value.count).toBe(300)
+    // 題庫只有 251 題，時間照 251 題算（524 分鐘，超過計時上限 300 分鐘前的預設值）
+    expect(setup.minutes.value).toBe(524)
   })
 
   it('useQuizSetup_RandomWithoutAnyYear_ShouldNotBeReadyToStart', async () => {
@@ -166,11 +166,11 @@ describe('useQuizSetup', () => {
     setup.subject.value = 'math-a'
     await nextTick()
 
-    expect(setup.years.value).toEqual([115])
-    expect(setup.pickedYears.value).toEqual([115])
+    expect(setup.years.value).toEqual([115, 114, 113, 112, 111])
+    expect(setup.pickedYears.value).toEqual([115, 114, 113, 112, 111])
     expect(setup.year.value).toBe(115)
     expect(setup.count.value).toBe(8)
-    expect(setup.poolSize.value).toBe(1)
+    expect(setup.poolSize.value).toBe(65)
   })
 
   it('useQuizSetup_Timed_ShouldPutChosenMinutesIntoConfig', async () => {

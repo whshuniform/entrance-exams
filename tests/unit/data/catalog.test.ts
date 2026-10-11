@@ -37,6 +37,10 @@ describe('examCatalog', () => {
       ['english', 113, '學測', '英文', '108課綱', 100],
       ['english', 114, '學測', '英文', '108課綱', 100],
       ['english', 115, '學測', '英文', '108課綱', 100],
+      ['math-a', 111, '學測', '數學A', '108課綱', 100],
+      ['math-a', 112, '學測', '數學A', '108課綱', 100],
+      ['math-a', 113, '學測', '數學A', '108課綱', 100],
+      ['math-a', 114, '學測', '數學A', '108課綱', 100],
       ['math-a', 115, '學測', '數學A', '108課綱', 100],
     ])
   })
@@ -66,9 +70,16 @@ describe('examCatalog', () => {
   })
 
   it('Catalog_EveryQuestion_ShouldHaveStemOptionsAndPoints', () => {
+    // 文字題要有題目和選項文字；截圖題（或文章裡的空格）只有作答圈，答案要在選項裡
     for (const question of paperQuestions(gsat.papers)) {
-      expect(question.stem.trim(), question.id).not.toBe('')
-      expect(question.options.every(option => option.text.trim() !== ''), question.id).toBe(true)
+      if (question.stem) {
+        expect(question.options.every(option => option.text.trim() !== ''), question.id).toBe(true)
+      }
+      else {
+        expect(question.options.length, question.id).toBeGreaterThanOrEqual(4)
+      }
+      const keys = question.options.map(option => option.key)
+      expect([...question.answer].every(key => keys.includes(key)), question.id).toBe(true)
       expect(question.points, question.id).toBeGreaterThan(0)
     }
   })

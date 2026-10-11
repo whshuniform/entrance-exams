@@ -14,9 +14,24 @@
     @pointercancel="drawing.onPointerCancel"
     @click.capture="drawing.onClickCapture"
   >
+    <!-- 原卷截圖：題組文章、圖表、題目和選項都在圖裡 -->
+    <div v-if="props.question.images?.length" :class="$style['question-card__figure']">
+      <img
+        v-for="(image, index) in props.question.images"
+        :key="image.src"
+        data-test="question-image"
+        :src="`${baseURL}${image.src}`"
+        :width="image.width"
+        :height="image.height"
+        :alt="index === 0 ? `第 ${props.question.number} 題（原卷）` : ''"
+        :loading="index === 0 ? 'eager' : 'lazy'"
+        :class="$style['question-card__image']"
+      >
+    </div>
+
     <!-- 跟原卷一樣：題目接在題號後面，換行對齊題目第一個字 -->
-    <div :class="$style['question-card__body']">
-      <span data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
+    <div :class="[$style['question-card__body'], !hasText && $style['question-card__body--circles']]">
+      <span v-if="!props.question.numberInImage" data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
       <div :class="$style['question-card__content']">
         <span
           v-if="props.submitted && props.result"
@@ -26,7 +41,7 @@
           {{ scoreText }}
         </span>
 
-        <p data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
+        <p v-if="hasText" data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
           <QuizMarkupText :text="props.question.stem" :ranges="rangesOf('stem')" />
         </p>
 
@@ -38,7 +53,7 @@
       </div>
 
       <!-- 電腦：選項對齊題目第一個字；手機：選項靠左和題號切齊 -->
-      <ul :class="$style['question-card__options']">
+      <ul :class="[$style['question-card__options'], !hasText && $style['question-card__options--circles']]">
         <li
           v-for="option in props.question.options"
           :key="option.key"
@@ -80,6 +95,7 @@
               </svg>
             </span>
             <span
+              v-if="hasText"
               data-test="option-text"
               :data-field="fieldId(`option:${option.key}`)"
               :class="$style['question-card__text']"
@@ -155,6 +171,10 @@ const inkCanvas = ref<HTMLCanvasElement | null>(null)
 /** 計算紙開關；外層有綁 v-model 時由外層記住（翻頁後回來仍開著） */
 const showScratch = defineModel<boolean>('scratchOpen', { default: false })
 const isDrawing = computed(() => props.tool !== 'off')
+/** 文字題；截圖題和文章裡的空格（題目、選項都在原卷截圖裡）只留作答圈 */
+const hasText = computed(() => props.question.stem !== '')
+/** 截圖放在 public/，網址要接上網站的 baseURL（試用網址在 /entrance-exams/ 底下） */
+const baseURL = useRuntimeConfig().app.baseURL
 
 const drawing = useCardDrawing({
   card,
@@ -302,6 +322,30 @@ function pickMulti(values: string[]) {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    // 截圖題：作答圈橫排，像答案卡
+    &--circles {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 1rem;
+    }
+  }
+
+  // 截圖題：題號（文章空格題才有）和作答圈排一列
+  &__body--circles {
+    align-items: center;
+  }
+
+  // 原卷截圖：跟卡片一樣寬；白底用 multiply 融進紙色
+  &__figure {
+    margin: 0 0 0.75rem;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
   }
 
   // 選項和題目第一個字對齊，上下只留一點間距

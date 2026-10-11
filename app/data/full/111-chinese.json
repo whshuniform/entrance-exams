@@ -1,0 +1,733 @@
+{
+ "year": 111,
+ "subject": "國綜",
+ "id": "chinese",
+ "parts": [
+  {
+   "title": "第壹部分、選擇題（占78分）",
+   "groups": [
+    {
+     "title": "一、單選題（占50分）",
+     "note": "說明：第1題至第25題，每題2分。",
+     "questions": [
+      {
+       "number": 1,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A"
+      },
+      {
+       "number": 2,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B"
+      },
+      {
+       "number": 3,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A"
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2,
+       "images": [
+        {
+         "src": "papers/111/chinese/4-1.webp",
+         "width": 1210,
+         "height": 443
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 5,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A"
+      },
+      {
+       "number": 6,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B"
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/111/chinese/7-1.webp",
+         "width": 1210,
+         "height": 248
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 8,
+       "text": true,
+       "pdfPage": 3,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B"
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/111/chinese/9-1.webp",
+         "width": 1210,
+         "height": 758
+        },
+        {
+         "src": "papers/111/chinese/9-2.webp",
+         "width": 1210,
+         "height": 121
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/111/chinese/10-1.webp",
+         "width": 1210,
+         "height": 201
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 11,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/111/chinese/11-1.webp",
+         "width": 1210,
+         "height": 299
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/111/chinese/12-1.webp",
+         "width": 1210,
+         "height": 335
+        },
+        {
+         "src": "papers/111/chinese/12-2.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/111/chinese/13-1.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/111/chinese/14-1.webp",
+         "width": 1210,
+         "height": 558
+        },
+        {
+         "src": "papers/111/chinese/14-3.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/111/chinese/15-1.webp",
+         "width": 1210,
+         "height": 209
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/111/chinese/16-1.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/111/chinese/17-1.webp",
+         "width": 1210,
+         "height": 210
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/111/chinese/18-1.webp",
+         "width": 1210,
+         "height": 250
+        },
+        {
+         "src": "papers/111/chinese/18-2.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 19,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/111/chinese/19-1.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 20,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/111/chinese/20-1.webp",
+         "width": 1210,
+         "height": 1061
+        },
+        {
+         "src": "papers/111/chinese/20-2.webp",
+         "width": 1210,
+         "height": 200
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 21,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/111/chinese/21-1.webp",
+         "width": 1210,
+         "height": 200
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 22,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/111/chinese/22-1.webp",
+         "width": 1210,
+         "height": 241
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 23,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/111/chinese/23-1.webp",
+         "width": 1210,
+         "height": 599
+        },
+        {
+         "src": "papers/111/chinese/23-2.webp",
+         "width": 1210,
+         "height": 210
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 24,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/111/chinese/24-1.webp",
+         "width": 1210,
+         "height": 264
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 25,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/111/chinese/25-1.webp",
+         "width": 1210,
+         "height": 207
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占28分）",
+     "note": "說明：第26題至第32題，每題4分。",
+     "questions": [
+      {
+       "number": 26,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "BD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/111/chinese/26-1.webp",
+         "width": 1210,
+         "height": 250
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 27,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "ADE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8,
+       "images": [
+        {
+         "src": "papers/111/chinese/27-1.webp",
+         "width": 1210,
+         "height": 422
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 28,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8,
+       "images": [
+        {
+         "src": "papers/111/chinese/28-1.webp",
+         "width": 1210,
+         "height": 594
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 29,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "ABC",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8,
+       "images": [
+        {
+         "src": "papers/111/chinese/29-1.webp",
+         "width": 1210,
+         "height": 507
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 30,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "ABD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 9,
+       "images": [
+        {
+         "src": "papers/111/chinese/30-1.webp",
+         "width": 1210,
+         "height": 762
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 31,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 9,
+       "images": [
+        {
+         "src": "papers/111/chinese/31-1.webp",
+         "width": 1210,
+         "height": 421
+        },
+        {
+         "src": "papers/111/chinese/31-2.webp",
+         "width": 1210,
+         "height": 253
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 32,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "AB",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 9,
+       "images": [
+        {
+         "src": "papers/111/chinese/32-1.webp",
+         "width": 1210,
+         "height": 211
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "第貳部分、混合題或非選擇題（占22分）",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明：本部分共有2題組，每一題子題配分標於題末。限在答題卷標示題號的作答區內作答。選擇題使用2B鉛筆作答，更正時，應以橡皮擦擦拭，切勿使用修正液（帶）。非選擇題請由左而右橫式書寫。第一題（占8分）",
+     "questions": [
+      {
+       "number": 33,
+       "type": "single",
+       "points": 2,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 10,
+       "images": [
+        {
+         "src": "papers/111/chinese/33-1.webp",
+         "width": 1210,
+         "height": 846
+        },
+        {
+         "src": "papers/111/chinese/33-2.webp",
+         "width": 1210,
+         "height": 421
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 37,
+       "type": "single",
+       "points": 2,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 12,
+       "images": [
+        {
+         "src": "papers/111/chinese/37-1.webp",
+         "width": 1210,
+         "height": 1065
+        },
+        {
+         "src": "papers/111/chinese/37-3.webp",
+         "width": 1210,
+         "height": 209
+        },
+        {
+         "src": "papers/111/chinese/37-4.webp",
+         "width": 1210,
+         "height": 208
+        },
+        {
+         "src": "papers/111/chinese/37-5.webp",
+         "width": 1210,
+         "height": 423
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

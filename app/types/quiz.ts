@@ -19,6 +19,17 @@ export interface QuizQuestion {
   points: number
   /** 在原試題 PDF 的第幾頁；同一頁的題目在網站上也排在同一頁 */
   pdfPage?: number
+  /** 原卷截圖（題組文章在前）；有截圖時 stem、選項文字為空，只留作答圈 */
+  images?: QuizImage[]
+  /** 截圖裡已經有題號，卡片不再印一次 */
+  numberInImage?: boolean
+}
+
+/** 原卷截圖：src 為 public/ 下的路徑（不含網站 baseURL），寬高為像素 */
+export interface QuizImage {
+  src: string
+  width: number
+  height: number
 }
 
 export interface GradeResult {

@@ -2,15 +2,14 @@ import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
 test.describe('像真實試卷一樣翻頁', () => {
-  test('每頁題數跟原卷PDF一樣_原卷第2頁的第1、2、5題排在同一頁', async ({ page }) => {
+  test('每頁題數跟原卷PDF一樣_原卷第2頁的第1到5題排在同一頁', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    // 115 國綜原卷第 2 頁是第 1–5 題（網站收第 1、2、5 題），第 25 題在第 8 頁、第 26 題在第 9 頁
-    await expect(page.locator('article[data-test^="question-"]')).toHaveCount(3)
-    for (const id of ['115-chinese-1', '115-chinese-2', '115-chinese-5']) await expect(quiz.question(id)).toBeVisible()
+    // 115 國綜原卷第 2 頁是第 1–5 題；有選擇題的原卷頁共 10 頁
+    await expect(page.locator('article[data-test^="question-"]')).toHaveCount(5)
     await expect(page.getByTestId('running-header')).toContainText('國語文綜合能力測驗')
-    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 3 頁')
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 10 頁')
     // 段落標題只印在段落開頭那題前面
     await expect(page.getByRole('heading', { name: '一、單選題（占48分）' })).toHaveCount(1)
     // 上一頁回到試卷最前面的作答注意事項
@@ -23,9 +22,9 @@ test.describe('像真實試卷一樣翻頁', () => {
     await quiz.pick('115-chinese-1', 'C')
 
     await quiz.next()
-    await expect(quiz.question('115-chinese-25')).toBeVisible()
+    await expect(quiz.question('115-chinese-6')).toBeVisible()
     await expect(quiz.question('115-chinese-1')).toHaveCount(0)
-    await expect(page.getByTestId('running-header')).toContainText('第 2 頁 共 3 頁')
+    await expect(page.getByTestId('running-header')).toContainText('第 2 頁 共 10 頁')
 
     await quiz.prev()
     await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
@@ -35,9 +34,9 @@ test.describe('像真實試卷一樣翻頁', () => {
     const quiz = new QuizPage(page)
     await quiz.goto()
 
-    await quiz.showQuestion('115-chinese-26')
+    await quiz.showQuestion('115-chinese-36')
 
-    await expect(page.getByTestId('running-header')).toContainText('第 3 頁 共 3 頁')
+    await expect(page.getByTestId('running-header')).toContainText('第 10 頁 共 10 頁')
     await expect(quiz.nextButton).toBeHidden()
     await expect(quiz.submitButton).toBeVisible()
   })
@@ -47,8 +46,7 @@ test.describe('像真實試卷一樣翻頁', () => {
     await quiz.goto({ subject: 'math-a' })
 
     await expect(page.getByTestId('running-header')).toContainText('115年學測　數學A')
-    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 1 頁')
-    await expect(quiz.submitButton).toBeVisible()
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 5 頁')
   })
 
   test('翻頁後再翻回來_計算紙與筆跡應保留', async ({ page }) => {
@@ -73,7 +71,7 @@ test.describe('像真實試卷一樣翻頁', () => {
     await expect(quiz.pager).toHaveAttribute('data-sheet', 'result')
 
     await quiz.prev()
-    await expect(quiz.question('115-chinese-26').getByTestId('question-score')).toBeVisible()
+    await expect(quiz.question('115-chinese-36').getByTestId('question-score')).toBeVisible()
   })
 
   test('英文詞彙題_原卷第2頁的十五題排在同一頁', async ({ page }) => {
@@ -82,8 +80,7 @@ test.describe('像真實試卷一樣翻頁', () => {
 
     // 109 英文詞彙題第 1–15 題都在原卷第 2 頁
     expect(await quiz.currentIds()).toEqual(Array.from({ length: 15 }, (_, i) => `109-english-${i + 1}`))
-    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 1 頁')
-    await expect(quiz.submitButton).toBeVisible()
+    await expect(page.getByTestId('running-header')).toContainText('第 1 頁 共 7 頁')
   })
 
   test('翻頁_新一頁的頁首不被固定的header蓋住', async ({ page }) => {

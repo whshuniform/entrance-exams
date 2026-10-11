@@ -1,0 +1,1068 @@
+{
+ "year": 110,
+ "subject": "英文",
+ "id": "english",
+ "parts": [
+  {
+   "title": "第壹部分：單選題（占72分）",
+   "groups": [
+    {
+     "title": "一、詞彙題（占15分）",
+     "note": "說明︰第1題至第15題，每題有4個選項，其中只有一個是正確或最適當的選項，請劃記在答案卡之「選擇題答案區」。各題答對者，得1分；答錯、未作答或劃記多於一個選項者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 1,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C"
+      },
+      {
+       "number": 2,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C"
+      },
+      {
+       "number": 3,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 4,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 5,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D"
+      },
+      {
+       "number": 6,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D"
+      },
+      {
+       "number": 7,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B"
+      },
+      {
+       "number": 8,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D"
+      },
+      {
+       "number": 9,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 10,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C"
+      },
+      {
+       "number": 11,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B"
+      },
+      {
+       "number": 12,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 13,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 14,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C"
+      },
+      {
+       "number": 15,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B"
+      }
+     ]
+    },
+    {
+     "title": "二、綜合測驗（占15分）",
+     "note": "說明︰第16題至第30題，每題一個空格，請依文意選出最適當的一個選項，請劃記在答案卡之「選擇題答案區」。各題答對者，得1分；答錯、未作答或劃記多於一個選項者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 16,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/16-1.webp",
+         "width": 1210,
+         "height": 552
+        },
+        {
+         "src": "papers/110/english/16-2.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/17-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/18-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 19,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/19-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 20,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/20-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 21,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/21-1.webp",
+         "width": 1210,
+         "height": 509
+        },
+        {
+         "src": "papers/110/english/21-2.webp",
+         "width": 1210,
+         "height": 38
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 22,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/22-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 23,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/23-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 24,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/24-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 25,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3,
+       "images": [
+        {
+         "src": "papers/110/english/25-1.webp",
+         "width": 1210,
+         "height": 36
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 26,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/110/english/26-1.webp",
+         "width": 1210,
+         "height": 590
+        },
+        {
+         "src": "papers/110/english/26-2.webp",
+         "width": 1210,
+         "height": 44
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 27,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/110/english/27-1.webp",
+         "width": 1210,
+         "height": 36
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 28,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/110/english/28-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 29,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/110/english/29-1.webp",
+         "width": 1210,
+         "height": 36
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 30,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/110/english/30-1.webp",
+         "width": 1210,
+         "height": 37
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    },
+    {
+     "title": "三、文意選填（占10分）",
+     "note": "說明：第31題至第40題，每題一個空格，請依文意在文章後所提供的(A)到(J)選項中分別選出最適當者，並將其英文字母代號劃記在答案卡之「選擇題答案區」。各題答對者，得1分；答錯、未作答或劃記多於一個選項者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 31,
+       "type": "single",
+       "points": 1.0,
+       "answer": "J",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [
+        {
+         "src": "papers/110/english/31-1.webp",
+         "width": 1210,
+         "height": 799
+        }
+       ],
+       "numbered": false
+      },
+      {
+       "number": 32,
+       "type": "single",
+       "points": 1.0,
+       "answer": "G",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 33,
+       "type": "single",
+       "points": 1.0,
+       "answer": "F",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 34,
+       "type": "single",
+       "points": 1.0,
+       "answer": "H",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 35,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 36,
+       "type": "single",
+       "points": 1.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 37,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 38,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 39,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      },
+      {
+       "number": 40,
+       "type": "single",
+       "points": 1.0,
+       "answer": "I",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4,
+       "images": [],
+       "numbered": false
+      }
+     ]
+    },
+    {
+     "title": "四、閱讀測驗（占32分）",
+     "note": "說明︰第41題至第56題，每題請分別根據各篇文章之文意選出最適當的一個選項，請劃記在答案卡之「選擇題答案區」。各題答對者，得2分；答錯、未作答或劃記多於一個選項者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 41,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/110/english/41-1.webp",
+         "width": 1210,
+         "height": 811
+        },
+        {
+         "src": "papers/110/english/41-2.webp",
+         "width": 1210,
+         "height": 195
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 42,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/110/english/42-1.webp",
+         "width": 1210,
+         "height": 188
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 43,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/110/english/43-1.webp",
+         "width": 1210,
+         "height": 188
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 44,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5,
+       "images": [
+        {
+         "src": "papers/110/english/44-1.webp",
+         "width": 1210,
+         "height": 189
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 45,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/110/english/45-1.webp",
+         "width": 1210,
+         "height": 677
+        },
+        {
+         "src": "papers/110/english/45-2.webp",
+         "width": 1210,
+         "height": 117
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 46,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/110/english/46-1.webp",
+         "width": 1210,
+         "height": 185
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 47,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/110/english/47-1.webp",
+         "width": 1210,
+         "height": 109
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 48,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/110/english/48-1.webp",
+         "width": 1210,
+         "height": 83
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 49,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6,
+       "images": [
+        {
+         "src": "papers/110/english/49-1.webp",
+         "width": 1210,
+         "height": 562
+        },
+        {
+         "src": "papers/110/english/49-2.webp",
+         "width": 1210,
+         "height": 178
+        },
+        {
+         "src": "papers/110/english/49-3.webp",
+         "width": 1210,
+         "height": 374
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 50,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/110/english/50-1.webp",
+         "width": 1210,
+         "height": 186
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 51,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/110/english/51-1.webp",
+         "width": 1210,
+         "height": 187
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 52,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/110/english/52-1.webp",
+         "width": 1210,
+         "height": 80
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 53,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7,
+       "images": [
+        {
+         "src": "papers/110/english/53-1.webp",
+         "width": 1210,
+         "height": 759
+        },
+        {
+         "src": "papers/110/english/53-2.webp",
+         "width": 1210,
+         "height": 75
+        },
+        {
+         "src": "papers/110/english/53-3.webp",
+         "width": 1210,
+         "height": 191
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 54,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 8,
+       "images": [
+        {
+         "src": "papers/110/english/54-1.webp",
+         "width": 1210,
+         "height": 191
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 55,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 8,
+       "images": [
+        {
+         "src": "papers/110/english/55-1.webp",
+         "width": 1210,
+         "height": 76
+        }
+       ],
+       "numbered": true
+      },
+      {
+       "number": 56,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 8,
+       "images": [
+        {
+         "src": "papers/110/english/56-1.webp",
+         "width": 1210,
+         "height": 192
+        }
+       ],
+       "numbered": true
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
