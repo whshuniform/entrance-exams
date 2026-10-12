@@ -70,3 +70,22 @@ test.describe('作答頁成績單', () => {
     expect(overflow).toBeLessThanOrEqual(0)
   })
 })
+
+test.describe('批改後的選答比例', () => {
+  test('交卷後回到題目_應看到全體考生選各選項的比例', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+
+    await quiz.pick('115-chinese-1', 'A')
+    await expect(quiz.question('115-chinese-1').getByTestId('option-stats')).toHaveCount(0)
+    await quiz.submit()
+
+    await quiz.showQuestion('115-chinese-1')
+    const stats = quiz.question('115-chinese-1').getByTestId('option-stats')
+    // 大考中心 115 國文第 1 題：答對 14%，選 A 的人最多（49%）
+    await expect(stats.getByTestId('stats-summary')).toHaveText('全體考生 14% 答對')
+    await expect(stats.getByTestId('stats-option-A')).toContainText('49%')
+    await expect(stats.getByTestId('stats-option-A')).toContainText('你選的')
+    await expect(stats.getByTestId('stats-option-C')).toContainText('正解')
+  })
+})

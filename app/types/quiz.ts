@@ -48,6 +48,30 @@ export interface QuizImage {
   height: number
 }
 
+/** 大考中心「選擇題選項分析」的一題：全體到考考生的百分比（整數） */
+export interface ItemStats {
+  /** 答對率；多選題是得分率 */
+  p: number
+  /** 官方表上打 * 的選項（多選題照字母排） */
+  key: string
+  /** 畫記各選項的 %；多選題各選項分開算，加總會超過 100 */
+  options: Record<string, number>
+  /** 未作答 % */
+  blank: number
+  multi?: boolean
+  /** 多選題全對 % */
+  full?: number | null
+}
+
+export interface OptionStatRow {
+  key: string
+  percent: number
+  isAnswer: boolean
+  isPicked: boolean
+  /** 選的人最多 */
+  isTop: boolean
+}
+
 export interface GradeResult {
   score: number
   isCorrect: boolean
