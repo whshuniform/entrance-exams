@@ -184,15 +184,59 @@ describe('QuestionCard', () => {
     expect(wrapper.attributes('data-drawing')).toBe('pen')
   })
 
-  it('QuestionCard_ClickOptionWhileDrawing_ShouldCancelTheClick', async () => {
+  it('QuestionCard_ClickOptionTextWhileDrawing_ShouldCancelTheClick', async () => {
+    // 開啟繪畫時在選項文字上畫線（刪去法）不會作答
     const wrapper = await mountSuspended(QuestionCard, {
       props: { question: single, modelValue: '', tool: 'highlighter' },
     })
     const click = new MouseEvent('click', { bubbles: true, cancelable: true })
 
-    wrapper.find('[data-test="option-C"] input').element.dispatchEvent(click)
+    wrapper.find('[data-test="option-C"] [data-test="option-text"]').element.dispatchEvent(click)
 
     expect(click.defaultPrevented).toBe(true)
+  })
+
+  it('QuestionCard_ClickRadioWhileDrawing_ShouldStillAnswer', async () => {
+    // YZ：繪畫時作答圈（radio、checkbox）也要能點
+    const wrapper = await mountSuspended(QuestionCard, {
+      props: { question: single, modelValue: '', tool: 'pen' },
+    })
+    const click = new MouseEvent('click', { bubbles: true, cancelable: true })
+
+    wrapper.find('[data-test="option-C"] input').element.dispatchEvent(click)
+
+    expect(click.defaultPrevented).toBe(false)
+  })
+
+  it('QuestionCard_ClickCheckboxWhileDrawing_ShouldStillAnswer', async () => {
+    const wrapper = await mountSuspended(QuestionCard, {
+      props: { question: multi, modelValue: '', tool: 'highlighter' },
+    })
+
+    const click = new MouseEvent('click', { bubbles: true, cancelable: true })
+
+    wrapper.find('[data-test="option-B"] input').element.dispatchEvent(click)
+
+    expect(click.defaultPrevented).toBe(false)
+  })
+
+  it('QuestionCard_TouchMoveWhileDrawing_ShouldNotScrollThePage', async () => {
+    // YZ：畫筆上下移動不要讓頁面跟著滑（iOS 不一定照 touch-action 擋捲動）
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'pen' } })
+    const move = new Event('touchmove', { bubbles: true, cancelable: true })
+
+    wrapper.find('[data-test="stem"]').element.dispatchEvent(move)
+
+    expect(move.defaultPrevented).toBe(true)
+  })
+
+  it('QuestionCard_TouchMoveWithDrawingOff_ShouldScrollAsUsual', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '' } })
+    const move = new Event('touchmove', { bubbles: true, cancelable: true })
+
+    wrapper.find('[data-test="stem"]').element.dispatchEvent(move)
+
+    expect(move.defaultPrevented).toBe(false)
   })
 
   it('QuestionCard_ClickOptionWithDrawingOff_ShouldLetTheClickThrough', async () => {

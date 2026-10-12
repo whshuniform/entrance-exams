@@ -80,7 +80,7 @@ test.describe('右下角繪畫工具列', () => {
     await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
   })
 
-  test('螢光筆_在題幹拖曳應畫線_點選項不會作答', async ({ page }) => {
+  test('螢光筆_在題幹拖曳應畫線_點選項文字不會作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
     await quiz.useTool('highlighter')
@@ -90,8 +90,25 @@ test.describe('右下角繪畫工具列', () => {
     await quiz.dragAcross(quiz.stem('115-chinese-1'))
     await expect(quiz.stem('115-chinese-1').locator('mark').first()).toBeVisible()
 
-    await quiz.option('115-chinese-1', 'C').locator('label').click()
+    await quiz.optionText('115-chinese-1', 'C').click()
     await expect(quiz.option('115-chinese-1', 'C').locator('input')).not.toBeChecked()
+  })
+
+  test('繪畫時_點作答圈照常作答', async ({ page }) => {
+    // YZ：繪畫時 checkbox 或 radio 也要能點
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('pen')
+
+    await quiz.option('115-chinese-1', 'C').locator('input').click({ force: true })
+    await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
+
+    await quiz.useTool('highlighter')
+    await quiz.showQuestion('115-chinese-25')
+    await quiz.option('115-chinese-25', 'B').locator('input').click({ force: true })
+    await quiz.option('115-chinese-25', 'D').locator('input').click({ force: true })
+    await expect(quiz.option('115-chinese-25', 'B').locator('input')).toBeChecked()
+    await expect(quiz.option('115-chinese-25', 'D').locator('input')).toBeChecked()
   })
 
   test('螢光筆_在選項文字上拖曳_應畫線', async ({ page }) => {
@@ -111,7 +128,8 @@ test.describe('右下角繪畫工具列', () => {
     await quiz.goto()
     await quiz.useTool('pen')
 
-    await quiz.scribble(quiz.option('115-chinese-1', 'A'), [0.1, 0.3], [0.5, 0.8])
+    // 從選項文字開始寫（作答圈本身點了會作答）
+    await quiz.scribble(quiz.optionText('115-chinese-1', 'A'), [0.1, 0.3], [0.5, 0.8])
 
     expect(await quiz.inkPixels('115-chinese-1')).toBeGreaterThan(0)
     await expect(quiz.option('115-chinese-1', 'A').locator('input')).not.toBeChecked()
@@ -197,6 +215,29 @@ test.describe('右下角繪畫工具列', () => {
 
 test.describe('手機觸控', () => {
   test.skip(({ isMobile }) => !isMobile, '只有手機需要觸控手勢')
+
+  test('原子筆_一指上下畫線_頁面不跟著滑', async ({ page, context }) => {
+    // YZ：繪畫時畫筆上下移動會跟頁面上下滑動有衝突
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('pen')
+    const stem = quiz.stem('115-chinese-2')
+    await stem.scrollIntoViewIfNeeded()
+    const box = await stem.boundingBox()
+    if (!box) throw new Error('stem not visible')
+    const cdp = await context.newCDPSession(page)
+    const touch = (type: string, points: { x: number, y: number }[]) =>
+      cdp.send('Input.dispatchTouchEvent', { type, touchPoints: points })
+
+    const scrollBefore = await page.evaluate(() => window.scrollY)
+    const x = box.x + box.width / 2
+    await touch('touchStart', [{ x, y: box.y + 5 }])
+    for (let step = 1; step <= 10; step++) await touch('touchMove', [{ x, y: box.y + 5 + step * 12 }])
+    await touch('touchEnd', [])
+
+    expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore)
+    expect(await quiz.inkPixels('115-chinese-2')).toBeGreaterThan(0)
+  })
 
   test('開啟繪畫時_一指寫字_兩指上下滑動應捲動頁面且不留筆跡', async ({ page, context }) => {
     const quiz = new QuizPage(page)
