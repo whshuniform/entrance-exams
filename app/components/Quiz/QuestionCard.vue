@@ -132,6 +132,15 @@
         </li>
       </ul>
 
+      <!-- 批改後：全體考生選各選項的比例（大考中心選擇題選項分析） -->
+      <QuizOptionStats
+        v-if="props.submitted && props.stats"
+        :stats="props.stats"
+        :keys="props.question.options.map(option => option.key)"
+        :picked="props.modelValue"
+        :class="$style['question-card__stats']"
+      />
+
       <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
       <div :class="$style['question-card__scratch-bar']">
         <Button
@@ -170,7 +179,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DrawTool, GradeResult, InkStroke, QuizQuestion, TextRange } from '~/types/quiz'
+import type { DrawTool, GradeResult, InkStroke, ItemStats, QuizQuestion, TextRange } from '~/types/quiz'
 
 type OptionState = 'hit' | 'answer' | 'wrong' | undefined
 
@@ -188,6 +197,8 @@ interface Props {
   scoring?: 'points' | 'accuracy'
   /** 題組文章印在這題前面 */
   showLead?: boolean
+  /** 官方選項比例，交卷後顯示 */
+  stats?: ItemStats
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -198,6 +209,7 @@ const props = withDefaults(defineProps<Props>(), {
   ink: () => [],
   scoring: 'points',
   showLead: false,
+  stats: undefined,
 })
 
 const emit = defineEmits<{
@@ -350,8 +362,9 @@ function pickMulti(values: string[]) {
     margin: 0 0 0.5rem;
   }
 
-  // 選項和計算紙按鈕排在題目那一欄
+  // 選項、選答比例和計算紙按鈕排在題目那一欄
   &__options,
+  &__stats,
   &__scratch-bar {
     grid-column: 2;
   }
@@ -517,6 +530,7 @@ function pickMulti(values: string[]) {
 
     // 手機：選項和計算紙按鈕靠左，跟題號切齊，選項文字多一點寬度
     &__options,
+    &__stats,
     &__scratch-bar {
       grid-column: 1 / -1;
     }

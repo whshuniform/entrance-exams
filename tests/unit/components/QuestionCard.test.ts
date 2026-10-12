@@ -102,6 +102,19 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
 
+  it('QuestionCard_SubmittedWithStats_ShouldShowHowOthersAnswered', async () => {
+    // 批改完成後，在選項下面列出全體考生選各選項的比例（大考中心選項分析）
+    const stats = { p: 64, key: 'C', options: { A: 3, B: 14, C: 64, D: 19 }, blank: 0 }
+    const before = await mountSuspended(QuestionCard, { props: { question: single, modelValue: 'A', stats } })
+    const after = await mountSuspended(QuestionCard, {
+      props: { question: single, modelValue: 'A', submitted: true, result: { score: 0, isCorrect: false, wrongCount: 1 }, stats },
+    })
+
+    expect(before.find('[data-test="option-stats"]').exists()).toBe(false)
+    expect(after.find('[data-test="option-stats"]').exists()).toBe(true)
+    expect(after.find('[data-test="stats-option-A"]').attributes('data-picked')).toBe('true')
+  })
+
   it('QuestionCard_AccuracyScoring_ShouldSayRightOrWrongInsteadOfPoints', async () => {
     // 隨機抽題只看答對率：每題標答對或答錯，多選題部分給分也算答錯
     const right = await mountSuspended(QuestionCard, {
