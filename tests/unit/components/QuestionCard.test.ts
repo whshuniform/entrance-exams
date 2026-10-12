@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import QuestionCard from '~/components/Quiz/QuestionCard.vue'
 import type { QuizQuestion } from '~/types/quiz'
+import { inkStyle } from '~/utils/ink'
 
 const single: QuizQuestion = {
   id: 'q1', number: 1, type: 'single', stem: '下列讀音前後相同的是：',
@@ -228,6 +229,35 @@ describe('QuestionCard', () => {
     wrapper.find('[data-test="stem"]').element.dispatchEvent(move)
 
     expect(move.defaultPrevented).toBe(true)
+  })
+
+  it('QuestionCard_MouseMoveWithEraser_ShouldShowEraserSizeAtPointer', async () => {
+    // YZ：橡皮擦要跟著滑鼠顯示出大小
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'eraser' } })
+
+    await wrapper.trigger('pointermove', { pointerType: 'mouse', clientX: 40, clientY: 30 })
+
+    const cursor = wrapper.find('[data-test="eraser-cursor"]')
+    expect(cursor.exists()).toBe(true)
+    expect(cursor.attributes('style')).toContain(`width: ${inkStyle('eraser').width}px`)
+    expect(cursor.attributes('style')).toContain(`height: ${inkStyle('eraser').width}px`)
+  })
+
+  it('QuestionCard_MouseLeavesWithEraser_ShouldHideEraserCursor', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'eraser' } })
+
+    await wrapper.trigger('pointermove', { pointerType: 'mouse', clientX: 40, clientY: 30 })
+    await wrapper.trigger('pointerleave', { pointerType: 'mouse' })
+
+    expect(wrapper.find('[data-test="eraser-cursor"]').exists()).toBe(false)
+  })
+
+  it('QuestionCard_MouseMoveWithPen_ShouldNotShowEraserCursor', async () => {
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', tool: 'pen' } })
+
+    await wrapper.trigger('pointermove', { pointerType: 'mouse', clientX: 40, clientY: 30 })
+
+    expect(wrapper.find('[data-test="eraser-cursor"]').exists()).toBe(false)
   })
 
   it('QuestionCard_TouchMoveWithDrawingOff_ShouldScrollAsUsual', async () => {

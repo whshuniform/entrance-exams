@@ -54,8 +54,8 @@ const state = computed(() =>
 
   overflow: hidden;
 
-  // 藍底白字（YZ 2026-10-11）
-  background: var(--color-ballpoint);
+  // 深藍底白字（YZ 2026-10-12）
+  background: var(--color-ink);
   border-bottom: 2px solid var(--color-ink);
   box-shadow: 0 2px 0 var(--color-paper-line);
 
