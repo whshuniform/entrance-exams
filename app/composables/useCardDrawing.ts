@@ -11,6 +11,12 @@ interface Options {
   onErase: (fieldId: string, range: TextRange) => void
 }
 
+/** 橡皮擦游標：卡片內座標（px），畫出橡皮擦的大小 */
+export interface EraserCursor {
+  x: number
+  y: number
+}
+
 export interface TextPreview {
   fieldId: string
   range: TextRange
@@ -35,6 +41,7 @@ function isPassThrough(target: EventTarget | null) {
  */
 export function useCardDrawing(options: Options) {
   const preview = ref<TextPreview | null>(null)
+  const eraserCursor = ref<EraserCursor | null>(null)
   let current: InkStroke | null = null
   let textDrag: { fieldId: string, el: Element, start: number } | null = null
   let lastErase: { fieldId: string, offset: number, y: number } | null = null
@@ -122,10 +129,25 @@ export function useCardDrawing(options: Options) {
     if (start !== end) options.onErase(fieldId, { start, end })
   }
 
+  /** 橡皮擦跟著滑鼠（或手指）顯示擦的範圍；在按鈕、作答圈上不顯示 */
+  function moveEraserCursor(event: PointerEvent) {
+    if (options.tool() !== 'eraser' || scrolling || isPassThrough(event.target)) {
+      eraserCursor.value = null
+      return
+    }
+    const [ratio, y] = toLocal(event.clientX, event.clientY)
+    eraserCursor.value = { x: ratio * options.card.value!.clientWidth, y }
+  }
+
+  function onPointerLeave() {
+    eraserCursor.value = null
+  }
+
   function startScroll() {
     current = null
     textDrag = null
     preview.value = null
+    eraserCursor.value = null
     scrolling = true
     lastAverageY = averageY()
     scheduleRedraw()
@@ -148,6 +170,7 @@ export function useCardDrawing(options: Options) {
     }
     if (scrolling) return
     event.preventDefault()
+    moveEraserCursor(event)
     options.card.value?.setPointerCapture?.(event.pointerId)
 
     const tool = options.tool() as InkTool
@@ -169,6 +192,8 @@ export function useCardDrawing(options: Options) {
 
   function onPointerMove(event: PointerEvent) {
     if (touches.has(event.pointerId)) touches.set(event.pointerId, event.clientY)
+    // 滑鼠沒按下也顯示；手指只在按著時才有 pointermove
+    if (isDrawing()) moveEraserCursor(event)
     if (scrolling) {
       const y = averageY()
       window.scrollBy(0, lastAverageY - y)
@@ -188,6 +213,8 @@ export function useCardDrawing(options: Options) {
 
   function onPointerUp(event: PointerEvent) {
     touches.delete(event.pointerId)
+    // 手指放開就沒有位置了；滑鼠放開後游標還在原處
+    if (event.pointerType !== 'mouse') eraserCursor.value = null
     if (scrolling) {
       if (touches.size === 0) scrolling = false
       else lastAverageY = averageY()
@@ -211,6 +238,7 @@ export function useCardDrawing(options: Options) {
   function onPointerCancel(event: PointerEvent) {
     touches.delete(event.pointerId)
     if (touches.size === 0) scrolling = false
+    eraserCursor.value = null
     current = null
     textDrag = null
     preview.value = null
@@ -234,6 +262,9 @@ export function useCardDrawing(options: Options) {
   }
 
   watch(options.strokes, scheduleRedraw)
+  watch(options.tool, (tool) => {
+    if (tool !== 'eraser') eraserCursor.value = null
+  })
 
   onMounted(() => {
     redraw()
@@ -250,5 +281,5 @@ export function useCardDrawing(options: Options) {
     if (frame) cancelAnimationFrame(frame)
   })
 
-  return { preview, onPointerDown, onPointerMove, onPointerUp, onPointerCancel, onClickCapture }
+  return { preview, eraserCursor, onPointerDown, onPointerMove, onPointerUp, onPointerCancel, onPointerLeave, onClickCapture }
 }

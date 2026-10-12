@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
 test.describe('計時作答', () => {
-  test('倒數長條_藍底白字', async ({ page }) => {
+  test('倒數長條_深藍底白字', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto({ minutes: 10 })
 
-    // 藍色原子筆色 #2457c5
-    await expect(quiz.timer).toHaveCSS('background-color', 'rgb(36, 87, 197)')
+    // 深藍（墨水色 #22365c，YZ 2026-10-12）
+    await expect(quiz.timer).toHaveCSS('background-color', 'rgb(34, 54, 92)')
     await expect(quiz.timer).toHaveCSS('color', 'rgb(255, 255, 255)')
   })
 

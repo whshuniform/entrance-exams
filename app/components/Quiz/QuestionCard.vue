@@ -12,6 +12,7 @@
     @pointermove="drawing.onPointerMove"
     @pointerup="drawing.onPointerUp"
     @pointercancel="drawing.onPointerCancel"
+    @pointerleave="drawing.onPointerLeave"
     @click.capture="drawing.onClickCapture"
   >
     <!-- 題組文章：印在題組第一題前面 -->
@@ -151,6 +152,20 @@
 
     <!-- 手寫筆跡層：蓋在整張卡片上，不擋點擊 -->
     <canvas ref="inkCanvas" data-test="ink-layer" aria-hidden="true" :class="$style['question-card__ink']" />
+
+    <!-- 橡皮擦跟著滑鼠顯示擦的範圍 -->
+    <span
+      v-if="drawing.eraserCursor.value"
+      data-test="eraser-cursor"
+      aria-hidden="true"
+      :class="$style['question-card__eraser']"
+      :style="{
+        left: `${drawing.eraserCursor.value.x}px`,
+        top: `${drawing.eraserCursor.value.y}px`,
+        width: `${eraserSize}px`,
+        height: `${eraserSize}px`,
+      }"
+    />
   </article>
 </template>
 
@@ -203,6 +218,9 @@ const hasStem = computed(() => props.question.stem !== '')
 const hasOptionText = computed(() => props.question.options.some(option => option.text !== '' || option.figure))
 /** 截圖放在 public/，網址要接上網站的 baseURL（試用網址在 /entrance-exams/ 底下） */
 const baseURL = useRuntimeConfig().app.baseURL
+
+/** 橡皮擦圓圈大小 = 橡皮擦筆寬 */
+const eraserSize = inkStyle('eraser').width
 
 const drawing = useCardDrawing({
   card,
@@ -472,6 +490,18 @@ function pickMulti(values: string[]) {
     // 螢光筆疊在字上，字仍清楚
     mix-blend-mode: multiply;
     pointer-events: none;
+  }
+
+  &__eraser {
+    position: absolute;
+    z-index: 2;
+
+    border: 1.5px solid var(--color-ink);
+    border-radius: 50%;
+
+    background: rgb(255 255 255 / 45%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
   }
 
   // 批改後正解用紅色螢光筆逐行畫底（和考生自己的黃色螢光筆區分）

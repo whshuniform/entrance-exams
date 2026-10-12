@@ -199,6 +199,29 @@ test.describe('右下角繪畫工具列', () => {
     expect(await quiz.inkPixels('115-chinese-1')).toBe(0)
   })
 
+  test('橡皮擦_滑鼠移到題目上_顯示跟著滑鼠的橡皮擦大小', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.useTool('eraser')
+
+    const box = (await quiz.stem('115-chinese-1').boundingBox())!
+    const x = box.x + box.width / 2
+    const y = box.y + box.height / 2
+    await page.mouse.move(x, y)
+
+    const cursor = page.getByTestId('eraser-cursor')
+    await expect(cursor).toBeVisible()
+    const circle = (await cursor.boundingBox())!
+    // 跟橡皮擦筆寬一樣大（24px），圓心在滑鼠位置
+    expect(Math.round(circle.width)).toBe(24)
+    expect(Math.abs(circle.x + circle.width / 2 - x)).toBeLessThan(2)
+    expect(Math.abs(circle.y + circle.height / 2 - y)).toBeLessThan(2)
+
+    await page.mouse.move(x + 30, y + 10)
+    const moved = (await cursor.boundingBox())!
+    expect(Math.abs(moved.x + moved.width / 2 - (x + 30))).toBeLessThan(2)
+  })
+
   test('關閉繪畫_畫過的線保留_點選項恢復作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
