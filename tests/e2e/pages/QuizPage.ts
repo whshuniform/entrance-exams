@@ -31,7 +31,6 @@ export class QuizPage {
   readonly resultSheet: Locator
   readonly startButton: Locator
   readonly timer: Locator
-  readonly revealButton: Locator
   /** 點文章裡的題號跳出的選項視窗 */
   readonly slotDialog: Locator
 
@@ -44,7 +43,6 @@ export class QuizPage {
     this.resultSheet = page.getByTestId('result-sheet')
     this.startButton = page.getByRole('button', { name: '開始作答' })
     this.timer = page.getByTestId('quiz-timer')
-    this.revealButton = page.getByTestId('reveal-toggle')
     this.slotDialog = page.getByTestId('slot-dialog')
   }
 

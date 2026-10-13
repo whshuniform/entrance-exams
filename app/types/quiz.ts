@@ -249,6 +249,8 @@ export interface QuizConfig {
   count: number
   /** 限時幾分鐘；0 為不計時 */
   minutes: number
+  /** 首頁按「直接看答案」：每題直接顯示正解和大家怎麼選，不作答、不計時 */
+  reveal?: boolean
 }
 
 /** 從網址找到的考試項目與試卷（年度由舊到新） */

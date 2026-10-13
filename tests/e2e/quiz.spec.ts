@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { HomePage } from './pages/HomePage'
 import { QuizPage } from './pages/QuizPage'
 
 test.describe('作答頁成績單', () => {
@@ -91,19 +92,21 @@ test.describe('批改後的選答比例', () => {
 })
 
 test.describe('直接看答案', () => {
-  test('不用交卷按看答案_每題圈出正解和大家怎麼選_收起後可以繼續作答', async ({ page }) => {
+  test('作試題設定表按開始測驗下面的直接看答案_每題圈出正解和大家怎麼選_不用作答也不能交卷', async ({ page }) => {
+    const home = new HomePage(page)
     const quiz = new QuizPage(page)
-    await quiz.goto()
+    await home.goto()
 
-    await quiz.revealButton.click()
+    await home.revealButton.click()
+
+    await expect(page).toHaveURL(/reveal=1/)
+    await expect(quiz.timer).toHaveCount(0)
+    await quiz.next()
     await expect(quiz.option('115-chinese-1', 'C')).toHaveAttribute('data-state', 'answer')
     await expect(quiz.question('115-chinese-1').getByTestId('stats-summary')).toHaveText('全體考生 14% 答對')
     await expect(quiz.question('115-chinese-1').getByTestId('question-score')).toHaveCount(0)
-    await expect(quiz.revealButton).toHaveText('收起答案')
-
-    await quiz.revealButton.click()
-    await expect(quiz.question('115-chinese-1').getByTestId('option-stats')).toHaveCount(0)
-    await quiz.pick('115-chinese-1', 'C')
-    await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
+    await expect(quiz.option('115-chinese-1', 'A').locator('input')).toBeDisabled()
+    await quiz.questionIds()
+    await expect(quiz.submitButton).toHaveCount(0)
   })
 })

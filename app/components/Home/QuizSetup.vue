@@ -166,6 +166,15 @@
       :disabled="!canStart"
       :class="$style['quiz-setup__start']"
     />
+    <!-- 不作答，直接看每題的正解和大家怎麼選 -->
+    <Button
+      data-test="start-reveal"
+      label="直接看答案"
+      severity="secondary"
+      :disabled="!canStart"
+      :class="$style['quiz-setup__reveal']"
+      @click="onReveal"
+    />
   </form>
 </template>
 
@@ -220,6 +229,10 @@ function minutesOf(year: number) {
 
 function onSubmit() {
   if (canStart.value) emit('start', config.value)
+}
+
+function onReveal() {
+  if (canStart.value) emit('start', { ...config.value, minutes: 0, reveal: true })
 }
 </script>
 
@@ -375,6 +388,11 @@ function onSubmit() {
     width: 100%;
     margin-top: 0.5rem;
     font-size: 1.3rem;
+  }
+
+  &__reveal {
+    width: 100%;
+    margin-top: 0.75rem;
   }
 
   @include respond-to('xs') {
