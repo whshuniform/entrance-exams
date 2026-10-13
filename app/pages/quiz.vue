@@ -71,6 +71,7 @@
               :show-lead="item.startsLead"
               :stats="itemStatsFor(item.question.id)"
               :slot-answers="item.startsLead ? slotAnswersFor(item.question) : undefined"
+              :taken-keys="takenKeys(item.question, questions, answers)"
               @update:model-value="setAnswer(item.question.id, $event)"
               @mark="markText"
               @erase="eraseText"
@@ -123,6 +124,7 @@
           :highlights="highlights"
           :scoring="isRandom ? 'accuracy' : 'points'"
           :stats="itemStatsFor(slotQuestion.id)"
+          :taken-keys="slotTarget ? takenKeys(slotTarget, questions, answers) : []"
           compact
           @update:model-value="pickInSlot(slotQuestion, $event)"
         />
@@ -223,8 +225,10 @@ function flip(action: () => void) {
   if (top < margin) window.scrollBy(0, top - margin)
 }
 
-/** 跳出視窗作答的那一題（選項文字在題組裡的，補上選項文字） */
-const slotQuestion = ref<QuizQuestion | null>(null)
+/** 跳出視窗作答的那一題 */
+const slotTarget = ref<QuizQuestion | null>(null)
+/** 視窗裡顯示的題目：選項文字在題組裡的（文意選填、篇章結構）補上選項文字 */
+const slotQuestion = computed(() => (slotTarget.value ? withLeadOptions(slotTarget.value) : null))
 
 /** 題組文章裡每個空格目前的作答：只列這份練習卷有的題目（隨機抽題可能沒抽到） */
 function slotAnswersFor(question: QuizQuestion) {
@@ -237,11 +241,11 @@ function slotAnswersFor(question: QuizQuestion) {
 
 function openSlot(question: QuizQuestion, number: number) {
   const target = questions.find(item => item.lead?.id === question.lead?.id && item.number === number)
-  if (target) slotQuestion.value = withLeadOptions(target)
+  if (target) slotTarget.value = target
 }
 
 function closeSlot() {
-  slotQuestion.value = null
+  slotTarget.value = null
 }
 
 /** 單選題選了就關閉視窗 */

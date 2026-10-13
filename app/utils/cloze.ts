@@ -17,3 +17,18 @@ export function withLeadOptions(question: QuizQuestion): QuizQuestion {
   if (!texts.size) return question
   return { ...question, options: question.options.map(option => ({ ...option, text: texts.get(option.key) ?? '' })) }
 }
+
+/** 選項文字在題組裡（文意選填、篇章結構）：同一組題目共用一份選項，每個選項只能用一次 */
+function isPooled(question: QuizQuestion) {
+  return withLeadOptions(question) !== question
+}
+
+/** 同一題組裡別題已經選走的選項（只有共用選項的題組才算） */
+export function takenKeys(question: QuizQuestion, questions: QuizQuestion[], answers: Record<string, string>): string[] {
+  const lead = question.lead
+  if (!lead || !isPooled(question)) return []
+  const keys = questions
+    .filter(item => item.id !== question.id && item.lead?.id === lead.id)
+    .flatMap(item => (answers[item.id] ?? '').split('').filter(Boolean))
+  return [...new Set(keys)]
+}

@@ -44,4 +44,38 @@ test.describe('點文章裡的題號作答', () => {
 
     await expect(quiz.slotDialog).toBeVisible()
   })
+
+  test('空格上的答案_顏色和粗細跟題號不同', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ subject: 'english' })
+    await quiz.showQuestion('115-english-11')
+    const slot = quiz.question('115-english-11').getByTestId('lead').locator('[data-slot="12"]')
+    await slot.click()
+    await quiz.slotDialog.getByTestId('option-B').locator('label').click()
+
+    const style = (el: Element) => ({ color: getComputedStyle(el).color, weight: getComputedStyle(el).fontWeight })
+    const number = await slot.evaluate(style)
+    const answer = await slot.getByTestId('slot-answer').evaluate(style)
+    expect(answer.color).not.toBe(number.color)
+    expect(answer.weight).not.toBe(number.weight)
+  })
+
+  test('文意選填_別題選走的選項_加刪除線提醒', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ subject: 'english' })
+    await quiz.showQuestion('115-english-21')
+    const lead = quiz.question('115-english-21').getByTestId('lead')
+
+    await lead.locator('[data-slot="21"]').click()
+    await quiz.slotDialog.getByTestId('option-C').locator('label').click()
+    await lead.locator('[data-slot="22"]').click()
+
+    const taken = quiz.slotDialog.getByTestId('option-C').getByTestId('option-text')
+    await expect(taken).toHaveCSS('text-decoration-line', 'line-through')
+    await expect(quiz.slotDialog.getByTestId('option-D').getByTestId('option-text')).not.toHaveCSS('text-decoration-line', 'line-through')
+    // 下面的作答圈也提醒
+    await page.keyboard.press('Escape')
+    await expect(quiz.slotDialog).toBeHidden()
+    await expect(quiz.option('115-english-22', 'C')).toHaveAttribute('data-taken', 'true')
+  })
 })
