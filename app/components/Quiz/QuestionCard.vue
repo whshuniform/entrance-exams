@@ -488,11 +488,11 @@ function pickMulti(values: string[]) {
     flex: 1;
   }
 
-  // 文意選填：別題已經選走的選項，刪除線提醒
+  // 文意選填：別題已經選走的選項，鉛筆色刪除線提醒（紅色刪除線是批改後的答錯）
   &__option--taken &__key,
   &__option--taken &__text {
     text-decoration: line-through;
-    text-decoration-color: var(--color-pen-red);
+    text-decoration-color: var(--color-pencil);
     text-decoration-thickness: 2px;
     color: var(--color-ink-soft);
   }
