@@ -83,7 +83,7 @@
             <RadioButton
               v-if="props.question.type === 'single'"
               :input-id="inputId(option.key)"
-              :name="props.question.id"
+              :name="inputName"
               :value="option.key"
               :model-value="props.modelValue"
               :disabled="props.submitted"
@@ -92,7 +92,7 @@
             <Checkbox
               v-else
               :input-id="inputId(option.key)"
-              :name="props.question.id"
+              :name="inputName"
               :value="option.key"
               :model-value="selectedKeys"
               :disabled="props.submitted"
@@ -142,7 +142,7 @@
       />
 
       <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
-      <div :class="$style['question-card__scratch-bar']">
+      <div v-if="!props.compact" :class="$style['question-card__scratch-bar']">
         <Button
           data-test="scratch-toggle"
           :label="showScratch ? '收起計算紙' : '計算紙'"
@@ -199,6 +199,10 @@ interface Props {
   showLead?: boolean
   /** 官方選項比例，交卷後顯示 */
   stats?: ItemStats
+  /** 題組文章裡每個空格（題號）目前的作答；有給才能點題號跳出選項 */
+  slotAnswers?: Record<number, string>
+  /** 跳出視窗裡的精簡版：不顯示計算紙 */
+  compact?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -210,6 +214,8 @@ const props = withDefaults(defineProps<Props>(), {
   scoring: 'points',
   showLead: false,
   stats: undefined,
+  slotAnswers: undefined,
+  compact: false,
 })
 
 const emit = defineEmits<{
@@ -217,7 +223,13 @@ const emit = defineEmits<{
   (e: 'mark', fieldId: string, range: TextRange): void
   (e: 'erase', fieldId: string, range: TextRange): void
   (e: 'update:ink', value: InkStroke[]): void
+  (e: 'open-slot', number: number): void
 }>()
+
+provideQuizSlots({
+  answerOf: number => props.slotAnswers?.[number],
+  open: number => emit('open-slot', number),
+})
 
 const card = ref<HTMLElement | null>(null)
 const inkCanvas = ref<HTMLCanvasElement | null>(null)
@@ -264,8 +276,11 @@ function rangesOf(part: string) {
   return preview?.fieldId === id ? addRange(ranges, preview.range) : ranges
 }
 
+/** 跳出視窗和題目卡片同時在頁面上，id、name 要分開，label 才不會選到另一邊 */
+const inputName = computed(() => (props.compact ? `popup-${props.question.id}` : props.question.id))
+
 function inputId(key: string) {
-  return `${props.question.id}-${key}`
+  return `${inputName.value}-${key}`
 }
 
 function optionState(key: string): OptionState {

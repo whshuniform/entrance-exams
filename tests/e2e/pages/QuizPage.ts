@@ -31,6 +31,8 @@ export class QuizPage {
   readonly resultSheet: Locator
   readonly startButton: Locator
   readonly timer: Locator
+  /** 點文章裡的題號跳出的選項視窗 */
+  readonly slotDialog: Locator
 
   constructor(private readonly page: Page) {
     this.submitButton = page.getByRole('button', { name: '交卷批改' })
@@ -41,6 +43,7 @@ export class QuizPage {
     this.resultSheet = page.getByTestId('result-sheet')
     this.startButton = page.getByRole('button', { name: '開始作答' })
     this.timer = page.getByTestId('quiz-timer')
+    this.slotDialog = page.getByTestId('slot-dialog')
   }
 
   /** 目前這一頁：題目 id 以空白隔開（跟原卷同一頁的題目排在一起）；注意事項為 guide、成績頁為 result */

@@ -325,6 +325,65 @@ describe('QuestionCard', () => {
       expect(wrapper.find('[data-test="lead"] [data-test="slot"]').text()).toBe('16')
     })
 
+    it('QuestionCard_ClickSlotInLead_ShouldAskToOpenThatQuestion', async () => {
+      // YZ：綜合測驗的選項太下面，點文章裡的題號直接跳出選項作答
+      const wrapper = await mountSuspended(QuestionCard, {
+        props: { question: cloze, modelValue: '', showLead: true, slotAnswers: { 16: '' } },
+      })
+
+      await wrapper.find('[data-test="lead"] [data-test="slot"]').trigger('click')
+
+      expect(wrapper.emitted('open-slot')).toEqual([[16]])
+    })
+
+    it('QuestionCard_SlotAnswered_ShouldShowPickedKeyOnTheBlank', async () => {
+      const wrapper = await mountSuspended(QuestionCard, {
+        props: { question: cloze, modelValue: '', showLead: true, slotAnswers: { 16: 'B' } },
+      })
+
+      expect(wrapper.find('[data-test="slot-answer"]').text()).toBe('B')
+    })
+
+    it('QuestionCard_ClickSlotWhileDrawing_ShouldStillOpen', async () => {
+      const wrapper = await mountSuspended(QuestionCard, {
+        props: { question: cloze, modelValue: '', showLead: true, slotAnswers: { 16: '' }, tool: 'pen' },
+      })
+      const slot = wrapper.find('[data-test="lead"] [data-test="slot"]')
+
+      await slot.trigger('pointerdown', { pointerType: 'mouse', button: 0 })
+      await slot.trigger('click')
+
+      expect(wrapper.emitted('open-slot')).toEqual([[16]])
+    })
+
+    it('QuestionCard_SlotWithoutQuestionHere_ShouldNotBeClickable', async () => {
+      // 隨機抽題沒抽到那一題：題號只是印著
+      const wrapper = await mountSuspended(QuestionCard, {
+        props: { question: cloze, modelValue: '', showLead: true, slotAnswers: {} },
+      })
+
+      const slot = wrapper.find('[data-test="lead"] [data-test="slot"]')
+      expect(slot.element.tagName).not.toBe('BUTTON')
+    })
+
+    it('QuestionCard_Compact_ShouldHideScratchPaper', async () => {
+      const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', compact: true } })
+
+      expect(wrapper.find('[data-test="scratch-toggle"]').exists()).toBe(false)
+      expect(wrapper.findAll('[data-test="option"]')).toHaveLength(4)
+    })
+
+    it('QuestionCard_Compact_ShouldUseOwnInputIdsSoLabelsPickInsideThePopup', async () => {
+      // 跳出視窗和題目卡片同時在頁面上：id 重複時點視窗裡的選項會選到卡片那邊
+      const card = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '' } })
+      const popup = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', compact: true } })
+
+      const cardId = card.find('[data-test="option-B"] input').attributes('id')
+      const popupInput = popup.find('[data-test="option-B"] input')
+      expect(popupInput.attributes('id')).not.toBe(cardId)
+      expect(popup.find('[data-test="option-B"] label').attributes('for')).toBe(popupInput.attributes('id'))
+    })
+
     it('QuestionCard_LeadAlreadyShown_ShouldNotRepeatPassage', async () => {
       const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '' } })
 
