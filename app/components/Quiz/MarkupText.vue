@@ -10,9 +10,28 @@
         :class="[$style['markup-text__math'], segment.highlight && $style['markup-text__mark']]"
         v-html="renderMath(segment.text)"
       />
+      <!-- 這份練習卷有這一題：點題號跳出選項作答，空格上顯示選了什麼 -->
+      <button
+        v-else-if="segment.slot && slots?.answerOf(Number(segment.text)) !== undefined"
+        type="button"
+        data-test="slot"
+        :data-slot="segment.text"
+        :data-start="segment.start"
+        data-atomic
+        :aria-label="`第 ${segment.text} 題，點一下作答`"
+        :class="[$style['markup-text__slot'], $style['markup-text__slot--button'], segment.highlight && $style['markup-text__mark']]"
+        @click="slots?.open(Number(segment.text))"
+      >
+        {{ segment.text }}<span
+          v-if="slots?.answerOf(Number(segment.text))"
+          data-test="slot-answer"
+          :class="$style['markup-text__slot-answer']"
+        >{{ slots?.answerOf(Number(segment.text)) }}</span>
+      </button>
       <span
         v-else-if="segment.slot"
         data-test="slot"
+        :data-slot="segment.text"
         :data-start="segment.start"
         data-atomic
         :class="[$style['markup-text__slot'], segment.highlight && $style['markup-text__mark']]"
@@ -49,6 +68,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 // data-start 讓外層由螢幕座標換算字元位置（見 utils/caret.ts）
+const slots = useQuizSlots()
+
 const segments = computed(() => buildSegments(props.text, props.ranges))
 
 function tagOf(segment: HighlightSegment) {
@@ -92,6 +113,34 @@ function renderMath(tex: string) {
     line-height: 1.2;
     text-align: center;
     white-space: nowrap;
+  }
+
+  // 可以點的題號：像原卷的空格，滑過去提示可以點
+  &__slot--button {
+    margin: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+
+    background: transparent;
+    cursor: pointer;
+
+    font: inherit;
+    font-weight: 700;
+    color: var(--color-ballpoint);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--color-marker);
+    }
+  }
+
+  // 選好的答案：題號旁邊的小字
+  &__slot-answer {
+    margin-left: 0.3em;
+    font-size: 0.85em;
+    color: var(--color-ink);
   }
 
   &__math {

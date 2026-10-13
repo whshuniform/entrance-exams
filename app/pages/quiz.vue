@@ -70,11 +70,13 @@
               :scoring="isRandom ? 'accuracy' : 'points'"
               :show-lead="item.startsLead"
               :stats="itemStatsFor(item.question.id)"
+              :slot-answers="item.startsLead ? slotAnswersFor(item.question) : undefined"
               @update:model-value="setAnswer(item.question.id, $event)"
               @mark="markText"
               @erase="eraseText"
               @update:ink="setInk(item.question.id, $event)"
               @update:scratch-open="setScratchOpen(item.question.id, $event)"
+              @open-slot="openSlot(item.question, $event)"
             />
           </template>
         </section>
@@ -103,13 +105,37 @@
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
 
+    <!-- 點文章裡的題號：跳出那一題的選項，不用捲到文章下面作答 -->
+    <Dialog
+      :visible="slotQuestion !== null"
+      modal
+      dismissable-mask
+      :header="slotQuestion ? `第 ${slotQuestion.number} 題` : ''"
+      :class="$style['quiz-page__slot-dialog']"
+      @update:visible="!$event && closeSlot()"
+    >
+      <div v-if="slotQuestion" data-test="slot-dialog">
+        <QuizQuestionCard
+          :question="slotQuestion"
+          :model-value="answers[slotQuestion.id] ?? ''"
+          :submitted="submitted"
+          :result="results[slotQuestion.id]"
+          :highlights="highlights"
+          :scoring="isRandom ? 'accuracy' : 'points'"
+          :stats="itemStatsFor(slotQuestion.id)"
+          compact
+          @update:model-value="pickInSlot(slotQuestion, $event)"
+        />
+      </div>
+    </Dialog>
+
     <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { examCatalog, findExam } from '~/data/catalog'
-import type { DrawTool } from '~/types/quiz'
+import type { DrawTool, QuizQuestion } from '~/types/quiz'
 
 // 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時從所選年度或課綱一起抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
 const route = useRoute()
@@ -197,6 +223,33 @@ function flip(action: () => void) {
   if (top < margin) window.scrollBy(0, top - margin)
 }
 
+/** 跳出視窗作答的那一題（選項文字在題組裡的，補上選項文字） */
+const slotQuestion = ref<QuizQuestion | null>(null)
+
+/** 題組文章裡每個空格目前的作答：只列這份練習卷有的題目（隨機抽題可能沒抽到） */
+function slotAnswersFor(question: QuizQuestion) {
+  const lead = question.lead
+  if (!lead) return undefined
+  return Object.fromEntries(
+    questions.filter(item => item.lead?.id === lead.id).map(item => [item.number, answers.value[item.id] ?? '']),
+  )
+}
+
+function openSlot(question: QuizQuestion, number: number) {
+  const target = questions.find(item => item.lead?.id === question.lead?.id && item.number === number)
+  if (target) slotQuestion.value = withLeadOptions(target)
+}
+
+function closeSlot() {
+  slotQuestion.value = null
+}
+
+/** 單選題選了就關閉視窗 */
+function pickInSlot(question: QuizQuestion, value: string) {
+  setAnswer(question.id, value)
+  if (question.type === 'single') closeSlot()
+}
+
 function setScratchOpen(id: string, open: boolean) {
   scratchOpen.value = { ...scratchOpen.value, [id]: open }
 }
@@ -250,6 +303,11 @@ function onReset() {
 
   &__header {
     margin-bottom: 2rem;
+  }
+
+  // 題號跳出的選項視窗：手機上幾乎滿版
+  &__slot-dialog {
+    width: min(36rem, calc(100vw - 2rem));
   }
 
   // 倒數長條固定在 header 正下方，整排橫跨畫面
