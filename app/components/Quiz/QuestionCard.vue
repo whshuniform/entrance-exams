@@ -86,7 +86,7 @@
               :name="inputName"
               :value="option.key"
               :model-value="props.modelValue"
-              :disabled="props.submitted"
+              :disabled="showAnswer"
               @update:model-value="pickSingle"
             />
             <Checkbox
@@ -95,7 +95,7 @@
               :name="inputName"
               :value="option.key"
               :model-value="selectedKeys"
-              :disabled="props.submitted"
+              :disabled="showAnswer"
               @update:model-value="pickMulti"
             />
             <span :class="$style['question-card__key']">
@@ -134,7 +134,7 @@
 
       <!-- 批改後：全體考生選各選項的比例（大考中心選擇題選項分析） -->
       <QuizOptionStats
-        v-if="props.submitted && props.stats"
+        v-if="showAnswer && props.stats"
         :stats="props.stats"
         :keys="props.question.options.map(option => option.key)"
         :picked="props.modelValue"
@@ -187,6 +187,8 @@ interface Props {
   question: QuizQuestion
   modelValue: string
   submitted?: boolean
+  /** 「看答案」：不用交卷就圈出正解、列出大家怎麼選，不打分數 */
+  revealed?: boolean
   result?: GradeResult
   /** key 為 `${題目 id}:stem`、`${題目 id}:option:A` 等 */
   highlights?: Record<string, TextRange[]>
@@ -207,6 +209,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   submitted: false,
+  revealed: false,
   result: undefined,
   highlights: () => ({}),
   tool: 'off',
@@ -258,10 +261,12 @@ const drawing = useCardDrawing({
 })
 
 const selectedKeys = computed(() => props.modelValue.split('').filter(Boolean))
+/** 交卷後或按了看答案：圈出正解、顯示選答比例、不能再作答 */
+const showAnswer = computed(() => props.submitted || props.revealed)
 const scoreText = computed(() => {
   if (props.scoring === 'accuracy') return props.result?.isCorrect ? '答對' : '答錯'
   const score = Number((props.result?.score ?? 0).toFixed(2))
-  return score > 0 ? `+${score}` : '0'
+  return `+${score}`
 })
 
 function fieldId(part: string) {
@@ -284,7 +289,7 @@ function inputId(key: string) {
 }
 
 function optionState(key: string): OptionState {
-  if (!props.submitted) return undefined
+  if (!showAnswer.value) return undefined
   const isAnswer = props.question.answer.includes(key)
   const isPicked = props.modelValue.includes(key)
   if (isAnswer) return isPicked ? 'hit' : 'answer'

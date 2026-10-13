@@ -62,6 +62,7 @@
               :question="item.question"
               :model-value="answers[item.question.id] ?? ''"
               :submitted="submitted"
+              :revealed="revealed"
               :result="results[item.question.id]"
               :highlights="highlights"
               :tool="tool"
@@ -93,6 +94,16 @@
       :class="$style['quiz-page__pager']"
     >
       <Button data-test="prev-page" label="上一頁" severity="secondary" :disabled="isFirst" @click="flip(prev)" />
+      <!-- 不用交卷就看正解和大家怎麼選；收起後可以繼續作答 -->
+      <Button
+        v-if="currentSheet && !submitted"
+        data-test="reveal-toggle"
+        :label="revealed ? '收起答案' : '看答案'"
+        severity="secondary"
+        text
+        :aria-pressed="revealed ? 'true' : 'false'"
+        @click="revealed = !revealed"
+      />
       <Button
         v-if="!isLast"
         data-test="next-page"
@@ -119,6 +130,7 @@
           :question="slotQuestion"
           :model-value="answers[slotQuestion.id] ?? ''"
           :submitted="submitted"
+          :revealed="revealed"
           :result="results[slotQuestion.id]"
           :highlights="highlights"
           :scoring="isRandom ? 'accuracy' : 'points'"
@@ -180,6 +192,8 @@ const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 const tool = ref<DrawTool>('off')
 /** 工具列隱藏時，題目往右延伸變滿版 */
 const toolsVisible = ref(true)
+/** 按了「看答案」：每題圈出正解、列出大家怎麼選，不打分數 */
+const revealed = ref(false)
 /** 每題計算紙開著與否，翻頁回來仍記得 */
 const scratchOpen = ref<Record<string, boolean>>({})
 
@@ -256,6 +270,7 @@ function setScratchOpen(id: string, open: boolean) {
 
 function onSubmit() {
   countdown.stop()
+  revealed.value = false
   submit()
   flip(() => goTo(resultPage))
 }
@@ -271,6 +286,7 @@ function onTimeUp() {
 
 function onReset() {
   reset()
+  revealed.value = false
   clearAll()
   scratchOpen.value = {}
   tool.value = 'off'
@@ -370,7 +386,12 @@ function onReset() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
+
+    // 手機上三顆按鈕排一列，字不折行
+    > * {
+      white-space: nowrap;
+    }
   }
 
   &__part {

@@ -98,7 +98,8 @@ describe('QuestionCard', () => {
 
     expect(wrapper.find('[data-test="option-C"]').attributes('data-state')).toBe('answer')
     expect(wrapper.find('[data-test="option-A"]').attributes('data-state')).toBe('wrong')
-    expect(wrapper.find('[data-test="question-score"]').text()).toContain('0')
+    // 答錯也照得分格式寫 +0
+    expect(wrapper.find('[data-test="question-score"]').text()).toBe('+0')
     expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
 
@@ -113,6 +114,17 @@ describe('QuestionCard', () => {
     expect(before.find('[data-test="option-stats"]').exists()).toBe(false)
     expect(after.find('[data-test="option-stats"]').exists()).toBe(true)
     expect(after.find('[data-test="stats-option-A"]').attributes('data-picked')).toBe('true')
+  })
+
+  it('QuestionCard_Revealed_ShouldShowAnswerAndStatsWithoutScore', async () => {
+    // 「看答案」：不用交卷就圈出正解、列出大家怎麼選，但不打分數、不能作答
+    const stats = { p: 64, key: 'C', options: { A: 3, B: 14, C: 64, D: 19 }, blank: 0 }
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: single, modelValue: '', revealed: true, stats } })
+
+    expect(wrapper.find('[data-test="option-C"]').attributes('data-state')).toBe('answer')
+    expect(wrapper.find('[data-test="option-stats"]').exists()).toBe(true)
+    expect(wrapper.find('[data-test="question-score"]').exists()).toBe(false)
+    expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
 
   it('QuestionCard_AccuracyScoring_ShouldSayRightOrWrongInsteadOfPoints', async () => {

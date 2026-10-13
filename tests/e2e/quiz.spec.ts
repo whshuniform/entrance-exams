@@ -89,3 +89,21 @@ test.describe('批改後的選答比例', () => {
     await expect(stats.getByTestId('stats-option-C')).toContainText('正解')
   })
 })
+
+test.describe('直接看答案', () => {
+  test('不用交卷按看答案_每題圈出正解和大家怎麼選_收起後可以繼續作答', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+
+    await quiz.revealButton.click()
+    await expect(quiz.option('115-chinese-1', 'C')).toHaveAttribute('data-state', 'answer')
+    await expect(quiz.question('115-chinese-1').getByTestId('stats-summary')).toHaveText('全體考生 14% 答對')
+    await expect(quiz.question('115-chinese-1').getByTestId('question-score')).toHaveCount(0)
+    await expect(quiz.revealButton).toHaveText('收起答案')
+
+    await quiz.revealButton.click()
+    await expect(quiz.question('115-chinese-1').getByTestId('option-stats')).toHaveCount(0)
+    await quiz.pick('115-chinese-1', 'C')
+    await expect(quiz.option('115-chinese-1', 'C').locator('input')).toBeChecked()
+  })
+})
