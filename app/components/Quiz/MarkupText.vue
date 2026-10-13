@@ -137,13 +137,13 @@ function renderMath(tex: string) {
   }
 
   // 選好的答案：題號旁邊的小字
-  // 選好的答案：紅筆粗體，和藍色細的題號分開
+  // 選好的答案：紫色粗體，和藍色細的題號分開（紅色留給批改，YZ 2026-10-13）
   &__slot-answer {
     margin-left: 0.3em;
     font-weight: 800;
     // 手寫字型只有一種粗細，用描邊加粗
     -webkit-text-stroke: 0.7px currentcolor;
-    color: var(--color-pen-red);
+    color: var(--color-pen-purple);
   }
 
   &__math {

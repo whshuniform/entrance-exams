@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
+/** 批改用的紅筆 --color-pen-red */
+const RED = 'rgb(209, 55, 46)'
+
 // YZ：英文綜合測驗的選項離文章太遠，點文章裡的題號就跳出視窗直接看選項作答
 test.describe('點文章裡的題號作答', () => {
   test('綜合測驗_點題號_跳出選項_選了就關閉並作答', async ({ page }) => {
@@ -58,6 +61,8 @@ test.describe('點文章裡的題號作答', () => {
     const answer = await slot.getByTestId('slot-answer').evaluate(style)
     expect(answer.color).not.toBe(number.color)
     expect(answer.weight).not.toBe(number.weight)
+    // 紅色是批改用的顏色（YZ 2026-10-13），作答時不用紅色
+    expect(answer.color).not.toBe(RED)
   })
 
   test('文意選填_別題選走的選項_加刪除線提醒', async ({ page }) => {
@@ -72,6 +77,7 @@ test.describe('點文章裡的題號作答', () => {
 
     const taken = quiz.slotDialog.getByTestId('option-C').getByTestId('option-text')
     await expect(taken).toHaveCSS('text-decoration-line', 'line-through')
+    expect(await taken.evaluate(el => getComputedStyle(el).textDecorationColor)).not.toBe(RED)
     await expect(quiz.slotDialog.getByTestId('option-D').getByTestId('option-text')).not.toHaveCSS('text-decoration-line', 'line-through')
     // 下面的作答圈也提醒
     await page.keyboard.press('Escape')
