@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { withLeadOptions } from '~/utils/cloze'
+import { takenKeys, withLeadOptions } from '~/utils/cloze'
 import type { QuizQuestion } from '~/types/quiz'
 
 const lead = {
@@ -27,5 +27,31 @@ describe('withLeadOptions', () => {
     }
 
     expect(withLeadOptions(question)).toBe(question)
+  })
+})
+
+describe('takenKeys', () => {
+  const pool = (number: number): QuizQuestion => ({
+    id: `115-english-${number}`, number, type: 'single', stem: '', lead,
+    options: ['A', 'B', 'C'].map(key => ({ key, text: '' })),
+    answer: 'A', points: 1,
+  })
+
+  it('TakenKeys_PooledOptions_ShouldListKeysPickedByOtherQuestionsInTheSet', () => {
+    // 文意選填：每個選項只能用一次，別題選走的要提醒
+    const questions = [pool(21), pool(22), pool(23)]
+    const answers = { '115-english-21': 'B', '115-english-22': 'C', '115-english-23': '' }
+
+    expect(takenKeys(questions[1]!, questions, answers)).toEqual(['B'])
+  })
+
+  it('TakenKeys_OwnOptions_ShouldBeEmpty', () => {
+    // 綜合測驗：每題有自己的選項，不會被別題選走
+    const own = (number: number): QuizQuestion => ({
+      ...pool(number), options: [{ key: 'A', text: 'accommodate' }, { key: 'B', text: 'compensate' }],
+    })
+    const questions = [own(16), own(17)]
+
+    expect(takenKeys(questions[1]!, questions, { '115-english-16': 'A' })).toEqual([])
   })
 })
