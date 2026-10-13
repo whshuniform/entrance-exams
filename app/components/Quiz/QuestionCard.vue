@@ -74,9 +74,11 @@
           :key="option.key"
           :data-test="`option-${option.key}`"
           :data-state="optionState(option.key)"
+          :data-taken="props.takenKeys.includes(option.key) ? 'true' : undefined"
           :class="[
             $style['question-card__option'],
             optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
+            props.takenKeys.includes(option.key) && $style['question-card__option--taken'],
           ]"
         >
           <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
@@ -205,6 +207,8 @@ interface Props {
   slotAnswers?: Record<number, string>
   /** 跳出視窗裡的精簡版：不顯示計算紙 */
   compact?: boolean
+  /** 文意選填：同組別題已經選走的選項，加刪除線提醒（仍可選） */
+  takenKeys?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -219,6 +223,7 @@ const props = withDefaults(defineProps<Props>(), {
   stats: undefined,
   slotAnswers: undefined,
   compact: false,
+  takenKeys: () => [],
 })
 
 const emit = defineEmits<{
@@ -486,6 +491,15 @@ function pickMulti(values: string[]) {
 
   &__text {
     flex: 1;
+  }
+
+  // 文意選填：別題已經選走的選項，鉛筆色刪除線提醒（紅色刪除線是批改後的答錯）
+  &__option--taken &__key,
+  &__option--taken &__text {
+    text-decoration: line-through;
+    text-decoration-color: var(--color-pencil);
+    text-decoration-thickness: 2px;
+    color: var(--color-ink-soft);
   }
 
   &__scratch-bar {

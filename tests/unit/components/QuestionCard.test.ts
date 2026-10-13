@@ -378,6 +378,15 @@ describe('QuestionCard', () => {
       expect(slot.element.tagName).not.toBe('BUTTON')
     })
 
+    it('QuestionCard_TakenKeys_ShouldMarkThoseOptionsAsTaken', async () => {
+      const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', takenKeys: ['B'] } })
+
+      expect(wrapper.find('[data-test="option-B"]').attributes('data-taken')).toBe('true')
+      expect(wrapper.find('[data-test="option-A"]').attributes('data-taken')).toBeUndefined()
+      // 只是提醒，還是可以選
+      expect(wrapper.find('[data-test="option-B"] input').attributes('disabled')).toBeUndefined()
+    })
+
     it('QuestionCard_Compact_ShouldHideScratchPaper', async () => {
       const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', compact: true } })
 
