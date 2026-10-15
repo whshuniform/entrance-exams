@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { examCatalog } from '~/data/catalog'
-import { DEFAULT_RANDOM_COUNT, defaultMinutes, formatYears, parseQuizQuery, toQuizQuery } from '~/utils/quiz-config'
+import { DEFAULT_RANDOM_COUNT, defaultMinutes, formatYears, parseQuizQuery, quizHeading, toQuizQuery } from '~/utils/quiz-config'
 import type { QuizConfig } from '~/types/quiz'
 
 const gsat = examCatalog[0]!
@@ -20,21 +20,21 @@ describe('defaultMinutes', () => {
   })
 
   it('defaultMinutes_Random_ShouldScaleExamTimeByPoints', () => {
-    // 115 國綜試作 5 題：3 題 2 分、2 題 4 分，每分 0.9 分鐘（90 分鐘 ÷ 100 分），平均每題 2.52 分鐘
-    expect(defaultMinutes(chinese(115), 'random', 3)).toBe(8)
-    expect(defaultMinutes(chinese(115), 'random', 5)).toBe(13)
+    // 115 國綜選擇題 33 題共 80 分，每分 0.9 分鐘（90 分鐘 ÷ 100 分），平均每題約 2.18 分鐘
+    expect(defaultMinutes(chinese(115), 'random', 3)).toBe(7)
+    expect(defaultMinutes(chinese(115), 'random', 5)).toBe(11)
   })
 
   it('defaultMinutes_RandomAcrossYears_ShouldAverageWholePool', () => {
-    // 111–115 共 22 題，合計 43.2 分鐘，平均每題約 2 分鐘
-    expect(defaultMinutes(chinese(111, 112, 113, 114, 115), 'random', 5)).toBe(10)
-    // 109–110 國文考科 80 分鐘、每題 2 分，每題 1.6 分鐘
-    expect(defaultMinutes(chinese(109, 110), 'random', 5)).toBe(8)
+    // 111–115 共 167 題，合計 363.6 分鐘，平均每題約 2.2 分鐘
+    expect(defaultMinutes(chinese(111, 112, 113, 114, 115), 'random', 5)).toBe(11)
+    // 109–110 國文考科 80 分鐘、84 題共 200 分，平均每題約 1.9 分鐘
+    expect(defaultMinutes(chinese(109, 110), 'random', 5)).toBe(10)
   })
 
   it('defaultMinutes_RandomMoreThanPool_ShouldOnlyCountQuestionsThatExist', () => {
-    expect(defaultMinutes(chinese(115), 'random', 50)).toBe(13)
-    expect(defaultMinutes(math, 'random', 5)).toBe(5)
+    expect(defaultMinutes(chinese(115), 'random', 50)).toBe(72)
+    expect(defaultMinutes(math.filter(paper => paper.year === 115), 'random', 5)).toBe(24)
   })
 
   it('defaultMinutes_Random_ShouldBeAtLeastOneMinute', () => {
@@ -53,6 +53,20 @@ describe('formatYears', () => {
 
   it('formatYears_ShouldSortFirst', () => {
     expect(formatYears([115, 111, 112])).toBe('111–112、115')
+  })
+})
+
+describe('quizHeading', () => {
+  it('quizHeading_FullPaper_ShouldShowYearAndSubject', () => {
+    const config: QuizConfig = { exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 5, minutes: 0 }
+
+    expect(quizHeading(config, '國語文綜合能力測驗')).toBe('115年 國語文綜合能力測驗')
+  })
+
+  it('quizHeading_RandomOverYears_ShouldShowYearRange', () => {
+    const config: QuizConfig = { exam: 'gsat', subject: 'english', mode: 'random', years: [109, 110, 111, 115], count: 10, minutes: 0 }
+
+    expect(quizHeading(config, '英文')).toBe('109–111、115年 英文')
   })
 })
 
@@ -82,9 +96,30 @@ describe('toQuizQuery', () => {
       exam: 'gsat', subject: 'chinese', mode: 'random', curriculum: '108課綱', count: '5',
     })
   })
+
+  it('toQuizQuery_Reveal_ShouldAddRevealAndDropMinutes', () => {
+    const config: QuizConfig = { exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 33, minutes: 90, reveal: true }
+
+    expect(toQuizQuery(config)).toEqual({ exam: 'gsat', subject: 'chinese', mode: 'full', years: '115', reveal: '1' })
+  })
 })
 
 describe('parseQuizQuery', () => {
+  it('parseQuizQuery_Reveal_RoundTrip_ShouldKeepRevealAndNeverTime', () => {
+    const query = { ...toQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 33, minutes: 0, reveal: true }), minutes: '30' }
+
+    const quiz = parseQuizQuery(query, examCatalog)
+
+    expect(quiz?.config.reveal).toBe(true)
+    expect(quiz?.config.minutes).toBe(0)
+  })
+
+  it('parseQuizQuery_NoReveal_ShouldLeaveRevealOut', () => {
+    const quiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'full', years: '115' }, examCatalog)
+
+    expect(quiz?.config).not.toHaveProperty('reveal')
+  })
+
   it('parseQuizQuery_RandomByYears_RoundTrip_ShouldFindThosePapersOldestFirst', () => {
     const config: QuizConfig = {
       exam: 'gsat', subject: 'chinese', mode: 'random', years: [111, 112, 115], count: 5, minutes: 10,
@@ -120,7 +155,7 @@ describe('parseQuizQuery', () => {
   it('parseQuizQuery_FullPaper_ShouldTakeOneYearAndCountEveryQuestion', () => {
     const quiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'full', years: '114' }, examCatalog)
 
-    expect(quiz?.config).toEqual({ exam: 'gsat', subject: 'chinese', mode: 'full', years: [114], count: 4, minutes: 0 })
+    expect(quiz?.config).toEqual({ exam: 'gsat', subject: 'chinese', mode: 'full', years: [114], count: 33, minutes: 0 })
     expect(quiz?.papers.map(paper => paper.year)).toEqual([114])
   })
 
@@ -143,8 +178,8 @@ describe('parseQuizQuery', () => {
     expect(parseQuizQuery({ ...base, exam: 'cap' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '99' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '' }, examCatalog)).toBeNull()
-    expect(parseQuizQuery({ ...base, subject: 'social' }, examCatalog)).toBeNull()
-    expect(parseQuizQuery({ ...base, subject: 'math-a', years: '114' }, examCatalog)).toBeNull()
+    expect(parseQuizQuery({ ...base, subject: 'physics' }, examCatalog)).toBeNull()
+    expect(parseQuizQuery({ ...base, subject: 'math-a', years: '110' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, mode: 'random', years: undefined, curriculum: '99課綱' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({}, examCatalog)).toBeNull()
   })

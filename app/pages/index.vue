@@ -1,104 +1,13 @@
 <template>
-  <main :class="['container', $style['home-page']]">
-    <header :class="$style['home-page__header']">
-      <h1 :class="$style['home-page__title']">
-        <span :class="$style['home-page__highlight']">考古題練習本</span>
-      </h1>
-      <p :class="$style['home-page__subtitle']">
-        選好考試、作答方式和科目，像真的考試一樣一頁一題作答。交卷馬上批改：整份考卷看級分和全國名次，隨機抽題看答對率。
-      </p>
-    </header>
-
-    <NuxtLink to="/vocab" :class="$style['home-page__vocab']">
-      <strong :class="$style['home-page__vocab-title']">必背單字</strong>
-      <span :class="$style['home-page__vocab-hint']">設定考試日期，排好每天要背幾個英文單字 →</span>
-    </NuxtLink>
-
-    <HomeQuizSetup @start="onStart" />
-
-    <p :class="$style['home-page__source']">試題與答案來源：大學入學考試中心</p>
-  </main>
+  <HomeShell title="考古題" subtitle="先選考試，再選要作試題還是背單字。">
+    <HomeMenuLinks :items="items" />
+  </HomeShell>
 </template>
 
 <script setup lang="ts">
-import type { QuizConfig } from '~/types/quiz'
+import { examCatalog } from '~/data/catalog'
 
-useHead({ title: '考古題練習本' })
+useHead({ title: '考古題' })
 
-function onStart(config: QuizConfig) {
-  navigateTo({ path: '/quiz', query: toQuizQuery(config) })
-}
+const items = examMenu(examCatalog, { hasVocabPage: useRouter().hasRoute('vocab') })
 </script>
-
-<style module lang="scss">
-@use '@/assets/css/mixins' as *;
-
-.home-page {
-  max-width: 51rem;
-  margin: 0 auto;
-  padding: 2rem 3.5rem 3rem;
-
-  &__header {
-    margin-bottom: 1.75rem;
-  }
-
-  &__title {
-    margin: 0;
-    font-size: 2.5rem;
-    line-height: 1.3;
-  }
-
-  &__highlight {
-    padding: 0 0.2em;
-    background: linear-gradient(transparent 50%, var(--color-marker) 50%, var(--color-marker) 92%, transparent 92%);
-  }
-
-  &__subtitle {
-    margin: 0.5rem 0 0;
-    line-height: 1.6;
-    color: var(--color-ink-soft);
-  }
-
-  // 像貼在筆記本上的一張便利貼
-  &__vocab {
-    margin-bottom: 1.5rem;
-    padding: 0.6rem 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.25rem 0.75rem;
-    background: var(--color-marker);
-    border: 1.5px solid var(--color-ink);
-    border-radius: var(--radius-sketch-alt);
-    box-shadow: 2px 3px 0 var(--color-ink);
-    color: var(--color-ink);
-    text-decoration: none;
-    transform: rotate(-0.6deg);
-  }
-
-  &__vocab-title {
-    font-size: 1.15rem;
-  }
-
-  &__vocab-hint {
-    font-size: 0.9rem;
-    color: var(--color-ink-soft);
-  }
-
-  &__source {
-    margin-top: 2.5rem;
-    font-size: 0.8rem;
-    color: var(--color-pencil);
-    text-align: center;
-  }
-
-  @include respond-to('xs') {
-    width: 100%;
-    padding: 1.25rem 0.75rem 2rem;
-
-    &__title {
-      font-size: 2rem;
-    }
-  }
-}
-</style>

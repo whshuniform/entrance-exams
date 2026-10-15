@@ -2,7 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test'
 
 /** 首頁選好的試卷：預設 115 學測國綜整份考卷、不計時 */
 export interface QuizOptions {
-  subject?: 'chinese' | 'english' | 'math-a'
+  subject?: 'chinese' | 'english' | 'math-a' | 'math-b' | 'social' | 'science'
   mode?: 'full' | 'random'
   /** 整份考卷取第一個年度；隨機抽題可以多選 */
   years?: number[]
@@ -31,6 +31,10 @@ export class QuizPage {
   readonly resultSheet: Locator
   readonly startButton: Locator
   readonly timer: Locator
+  /** 點文章裡的題號跳出的選項視窗 */
+  readonly slotDialog: Locator
+  /** 題目上按「看題組文章」跳出的文章視窗 */
+  readonly leadDialog: Locator
 
   constructor(private readonly page: Page) {
     this.submitButton = page.getByRole('button', { name: '交卷批改' })
@@ -41,17 +45,25 @@ export class QuizPage {
     this.resultSheet = page.getByTestId('result-sheet')
     this.startButton = page.getByRole('button', { name: '開始作答' })
     this.timer = page.getByTestId('quiz-timer')
+    this.slotDialog = page.getByTestId('slot-dialog')
+    this.leadDialog = page.getByTestId('lead-dialog')
   }
 
-  /** 目前這一頁的題目 id；成績頁為 result */
+  /** 目前這一頁：題目 id 以空白隔開（跟原卷同一頁的題目排在一起）；注意事項為 guide、成績頁為 result */
   async currentPage() {
-    return this.pager.getAttribute('data-question')
+    return this.pager.getAttribute('data-sheet')
+  }
+
+  /** 目前這一頁有哪些題目 */
+  async currentIds() {
+    const sheet = await this.currentPage()
+    return !sheet || sheet === 'guide' || sheet === 'result' ? [] : sheet.split(' ')
   }
 
   private async flip(button: Locator) {
     const before = await this.currentPage()
     await button.click()
-    await expect(this.pager).not.toHaveAttribute('data-question', before ?? '')
+    await expect(this.pager).not.toHaveAttribute('data-sheet', before ?? '')
   }
 
   async next() {
@@ -62,13 +74,13 @@ export class QuizPage {
     await this.flip(this.prevButton)
   }
 
-  /** 一頁一題：往後或往前翻到該題 */
+  /** 往後或往前翻到該題所在的那一頁 */
   async showQuestion(id: string) {
-    for (let i = 0; i < 20 && (await this.currentPage()) !== id; i++) {
+    for (let i = 0; i < 20 && !(await this.currentIds()).includes(id); i++) {
       if (!(await this.nextButton.isVisible())) break
       await this.next()
     }
-    for (let i = 0; i < 20 && (await this.currentPage()) !== id; i++) {
+    for (let i = 0; i < 20 && !(await this.currentIds()).includes(id); i++) {
       await this.prev()
     }
     await expect(this.question(id)).toBeVisible()
@@ -81,6 +93,12 @@ export class QuizPage {
     await expect(this.resultSheet).toBeVisible()
   }
 
+  /** 交卷後往後翻到成績單 */
+  async toResult() {
+    while ((await this.currentPage()) !== 'result') await this.next()
+    await expect(this.resultSheet).toBeVisible()
+  }
+
   report(subject: string) {
     return this.page.getByTestId(`report-${subject}`)
   }
@@ -88,10 +106,10 @@ export class QuizPage {
   /** 打開試卷，停在第一頁的作答注意事項 */
   async openCover(options: QuizOptions = {}) {
     await this.page.goto(quizUrl(options))
-    await expect(this.pager).toHaveAttribute('data-question', 'guide')
+    await expect(this.pager).toHaveAttribute('data-sheet', 'guide')
   }
 
-  /** 打開試卷並按「開始作答」，停在第 1 題 */
+  /** 打開試卷並按「開始作答」，停在第 1 頁 */
   async goto(options: QuizOptions = {}) {
     await this.openCover(options)
     await this.flip(this.startButton)
@@ -101,8 +119,7 @@ export class QuizPage {
   async questionIds() {
     const ids: string[] = []
     while (true) {
-      const id = await this.currentPage()
-      if (id && id !== 'guide' && id !== 'result') ids.push(id)
+      ids.push(...(await this.currentIds()))
       if (!(await this.nextButton.isVisible())) break
       await this.next()
     }

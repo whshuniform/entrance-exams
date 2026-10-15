@@ -11,6 +11,12 @@ interface Options {
   onErase: (fieldId: string, range: TextRange) => void
 }
 
+/** 橡皮擦游標：卡片內座標（px），畫出橡皮擦的大小 */
+export interface EraserCursor {
+  x: number
+  y: number
+}
+
 export interface TextPreview {
   fieldId: string
   range: TextRange
@@ -21,12 +27,21 @@ const ERASE_REACH = 10
 /** 兩次取樣在同一行內（垂直差距小於此 px）才把中間經過的字一起擦掉 */
 const SAME_LINE = 8
 
+/** 作答圈（PrimeVue 的 RadioButton、Checkbox）：開啟繪畫時也照常可以點 */
+const ANSWER_CONTROL = '[data-pc-name="radiobutton"], [data-pc-name="checkbox"], input[type="radio"], input[type="checkbox"]'
+
+/** 開啟繪畫時照常作用、不當成畫布的東西：計算紙按鈕和作答圈 */
+function isPassThrough(target: EventTarget | null) {
+  return target instanceof Element && Boolean(target.closest(`button, ${ANSWER_CONTROL}`))
+}
+
 /**
  * 題目卡片上的手寫：螢光筆在字上會對齊文字畫線，其他地方和原子筆、橡皮擦一樣是手寫筆跡。
- * 開啟繪畫時一指寫字，兩指上下滑動捲動頁面。
+ * 開啟繪畫時一指寫字，兩指上下滑動捲動頁面；作答圈照常可以點。
  */
 export function useCardDrawing(options: Options) {
   const preview = ref<TextPreview | null>(null)
+  const eraserCursor = ref<EraserCursor | null>(null)
   let current: InkStroke | null = null
   let textDrag: { fieldId: string, el: Element, start: number } | null = null
   let lastErase: { fieldId: string, offset: number, y: number } | null = null
@@ -114,10 +129,25 @@ export function useCardDrawing(options: Options) {
     if (start !== end) options.onErase(fieldId, { start, end })
   }
 
+  /** 橡皮擦跟著滑鼠（或手指）顯示擦的範圍；在按鈕、作答圈上不顯示 */
+  function moveEraserCursor(event: PointerEvent) {
+    if (options.tool() !== 'eraser' || scrolling || isPassThrough(event.target)) {
+      eraserCursor.value = null
+      return
+    }
+    const [ratio, y] = toLocal(event.clientX, event.clientY)
+    eraserCursor.value = { x: ratio * options.card.value!.clientWidth, y }
+  }
+
+  function onPointerLeave() {
+    eraserCursor.value = null
+  }
+
   function startScroll() {
     current = null
     textDrag = null
     preview.value = null
+    eraserCursor.value = null
     scrolling = true
     lastAverageY = averageY()
     scheduleRedraw()
@@ -127,8 +157,8 @@ export function useCardDrawing(options: Options) {
     if (!isDrawing()) return
     if (event.pointerType === 'mouse' && event.button !== 0) return
     const target = event.target as Element
-    // 計算紙按鈕照常可以按
-    if (target.closest('button')) return
+    // 計算紙按鈕、作答圈照常可以按
+    if (isPassThrough(target)) return
 
     if (event.pointerType === 'touch') {
       touches.set(event.pointerId, event.clientY)
@@ -140,6 +170,7 @@ export function useCardDrawing(options: Options) {
     }
     if (scrolling) return
     event.preventDefault()
+    moveEraserCursor(event)
     options.card.value?.setPointerCapture?.(event.pointerId)
 
     const tool = options.tool() as InkTool
@@ -161,6 +192,8 @@ export function useCardDrawing(options: Options) {
 
   function onPointerMove(event: PointerEvent) {
     if (touches.has(event.pointerId)) touches.set(event.pointerId, event.clientY)
+    // 滑鼠沒按下也顯示；手指只在按著時才有 pointermove
+    if (isDrawing()) moveEraserCursor(event)
     if (scrolling) {
       const y = averageY()
       window.scrollBy(0, lastAverageY - y)
@@ -180,6 +213,8 @@ export function useCardDrawing(options: Options) {
 
   function onPointerUp(event: PointerEvent) {
     touches.delete(event.pointerId)
+    // 手指放開就沒有位置了；滑鼠放開後游標還在原處
+    if (event.pointerType !== 'mouse') eraserCursor.value = null
     if (scrolling) {
       if (touches.size === 0) scrolling = false
       else lastAverageY = averageY()
@@ -203,24 +238,37 @@ export function useCardDrawing(options: Options) {
   function onPointerCancel(event: PointerEvent) {
     touches.delete(event.pointerId)
     if (touches.size === 0) scrolling = false
+    eraserCursor.value = null
     current = null
     textDrag = null
     preview.value = null
     scheduleRedraw()
   }
 
-  /** 開啟繪畫時點到選項不作答（瀏覽器在拖曳後仍會送出 click） */
+  /** 開啟繪畫時點到選項文字不作答（瀏覽器在拖曳後仍會送出 click）；點作答圈照常作答 */
   function onClickCapture(event: MouseEvent) {
     if (!isDrawing()) return
-    if ((event.target as Element).closest('button')) return
+    if (isPassThrough(event.target)) return
     event.preventDefault()
     event.stopPropagation()
   }
 
+  /**
+   * 開啟繪畫時畫筆上下移動，頁面不要跟著滑：iOS Safari 不一定照 touch-action 擋捲動，
+   * 要在非 passive 的 touchmove 裡 preventDefault（兩指捲動由 onPointerMove 自己捲）。
+   */
+  function onTouchMove(event: TouchEvent) {
+    if (isDrawing() && event.cancelable) event.preventDefault()
+  }
+
   watch(options.strokes, scheduleRedraw)
+  watch(options.tool, (tool) => {
+    if (tool !== 'eraser') eraserCursor.value = null
+  })
 
   onMounted(() => {
     redraw()
+    options.card.value?.addEventListener('touchmove', onTouchMove, { passive: false })
     if (typeof ResizeObserver !== 'undefined' && options.card.value) {
       resizeObserver = new ResizeObserver(() => redraw())
       resizeObserver.observe(options.card.value)
@@ -228,9 +276,10 @@ export function useCardDrawing(options: Options) {
   })
 
   onBeforeUnmount(() => {
+    options.card.value?.removeEventListener('touchmove', onTouchMove)
     resizeObserver?.disconnect()
     if (frame) cancelAnimationFrame(frame)
   })
 
-  return { preview, onPointerDown, onPointerMove, onPointerUp, onPointerCancel, onClickCapture }
+  return { preview, eraserCursor, onPointerDown, onPointerMove, onPointerUp, onPointerCancel, onPointerLeave, onClickCapture }
 }

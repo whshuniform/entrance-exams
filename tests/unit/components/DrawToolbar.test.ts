@@ -58,4 +58,12 @@ describe('DrawToolbar', () => {
 
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['highlighter'])
   })
+
+  it('DrawToolbar_PenOn_ShouldNotOfferPenColors', async () => {
+    // 原子筆固定灰色，不用選顏色
+    const wrapper = await mountSuspended(DrawToolbar, { props: { modelValue: 'pen' } })
+
+    expect(wrapper.find('[data-test="pen-colors"]').exists()).toBe(false)
+    expect(wrapper.findAll('[data-test^="pen-color-"]')).toHaveLength(0)
+  })
 })

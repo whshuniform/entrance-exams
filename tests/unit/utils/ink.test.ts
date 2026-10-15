@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest'
 import { inkStyle } from '~/utils/ink'
 
 describe('inkStyle', () => {
-  it('inkStyle_Pen_ShouldBeThinBallpointInk', () => {
+  it('inkStyle_Pen_ShouldBeThinGrayInk', () => {
     const style = inkStyle('pen')
 
     expect(style.width).toBeLessThan(4)
-    expect(style.colorVar).toBe('--color-ballpoint')
+    expect(style.colorVar).toBe('--color-pen-gray')
     expect(style.composite).toBe('source-over')
   })
 

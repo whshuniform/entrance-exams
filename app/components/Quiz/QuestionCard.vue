@@ -12,11 +12,44 @@
     @pointermove="drawing.onPointerMove"
     @pointerup="drawing.onPointerUp"
     @pointercancel="drawing.onPointerCancel"
+    @pointerleave="drawing.onPointerLeave"
     @click.capture="drawing.onClickCapture"
   >
+    <!-- 題組文章：印在題組第一題前面 -->
+    <div v-if="props.showLead && props.question.lead" data-test="lead" :class="$style['question-card__lead']">
+      <QuizBlocks :blocks="props.question.lead.blocks" name="lead" :field-id="fieldId" :ranges-of="rangesOf" />
+    </div>
+
+    <!-- 題組文章印在前一頁：不用翻回去，點了跳出文章 -->
+    <div v-if="props.leadElsewhere && props.question.lead" :class="$style['question-card__lead-bar']">
+      <Button
+        data-test="open-lead"
+        label="看題組文章"
+        size="small"
+        severity="secondary"
+        text
+        @click="emit('open-lead')"
+      />
+    </div>
+
+    <!-- 原卷截圖：題組文章、圖表、題目和選項都在圖裡 -->
+    <div v-if="props.question.images?.length" :class="$style['question-card__figure']">
+      <img
+        v-for="(image, index) in props.question.images"
+        :key="image.src"
+        data-test="question-image"
+        :src="`${baseURL}${image.src}`"
+        :width="image.width"
+        :height="image.height"
+        :alt="index === 0 ? `第 ${props.question.number} 題（原卷）` : ''"
+        :loading="index === 0 ? 'eager' : 'lazy'"
+        :class="$style['question-card__image']"
+      >
+    </div>
+
     <!-- 跟原卷一樣：題目接在題號後面，換行對齊題目第一個字 -->
-    <div :class="$style['question-card__body']">
-      <span data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
+    <div :class="[$style['question-card__body'], !hasOptionText && $style['question-card__body--circles']]">
+      <span v-if="!props.question.numberInImage" data-test="number" :class="$style['question-card__number']">{{ props.question.number }}.</span>
       <div :class="$style['question-card__content']">
         <span
           v-if="props.submitted && props.result"
@@ -26,7 +59,7 @@
           {{ scoreText }}
         </span>
 
-        <p data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
+        <p v-if="hasStem" data-test="stem" :data-field="fieldId('stem')" :class="$style['question-card__stem']">
           <QuizMarkupText :text="props.question.stem" :ranges="rangesOf('stem')" />
         </p>
 
@@ -35,37 +68,48 @@
             <QuizMarkupText :text="line" :ranges="rangesOf(`passage:${index}`)" />
           </li>
         </ol>
+
+        <QuizBlocks
+          v-if="props.question.body?.length"
+          data-test="body"
+          :blocks="props.question.body"
+          name="body"
+          :field-id="fieldId"
+          :ranges-of="rangesOf"
+        />
       </div>
 
       <!-- 電腦：選項對齊題目第一個字；手機：選項靠左和題號切齊 -->
-      <ul :class="$style['question-card__options']">
+      <ul :class="[$style['question-card__options'], !hasOptionText && $style['question-card__options--circles']]">
         <li
           v-for="option in props.question.options"
           :key="option.key"
           :data-test="`option-${option.key}`"
           :data-state="optionState(option.key)"
+          :data-taken="props.takenKeys.includes(option.key) ? 'true' : undefined"
           :class="[
             $style['question-card__option'],
             optionState(option.key) && $style[`question-card__option--${optionState(option.key)}`],
+            props.takenKeys.includes(option.key) && $style['question-card__option--taken'],
           ]"
         >
           <label data-test="option" :for="inputId(option.key)" :class="$style['question-card__label']">
             <RadioButton
               v-if="props.question.type === 'single'"
               :input-id="inputId(option.key)"
-              :name="props.question.id"
+              :name="inputName"
               :value="option.key"
               :model-value="props.modelValue"
-              :disabled="props.submitted"
+              :disabled="showAnswer"
               @update:model-value="pickSingle"
             />
             <Checkbox
               v-else
               :input-id="inputId(option.key)"
-              :name="props.question.id"
+              :name="inputName"
               :value="option.key"
               :model-value="selectedKeys"
-              :disabled="props.submitted"
+              :disabled="showAnswer"
               @update:model-value="pickMulti"
             />
             <span :class="$style['question-card__key']">
@@ -79,7 +123,17 @@
                 <path d="M22 3C35 2 42 10 40 19C38 28 24 32 13 29C4 27 1 17 6 10C10 4 20 2 30 5" />
               </svg>
             </span>
+            <img
+              v-if="option.figure"
+              :src="`${baseURL}${option.figure.src}`"
+              :width="option.figure.width"
+              :height="option.figure.height"
+              :alt="`選項 ${option.key} 的圖`"
+              loading="lazy"
+              :class="$style['question-card__option-figure']"
+            >
             <span
+              v-else-if="hasOptionText"
               data-test="option-text"
               :data-field="fieldId(`option:${option.key}`)"
               :class="$style['question-card__text']"
@@ -92,8 +146,17 @@
         </li>
       </ul>
 
+      <!-- 批改後：全體考生選各選項的比例（大考中心選擇題選項分析） -->
+      <QuizOptionStats
+        v-if="showAnswer && props.stats"
+        :stats="props.stats"
+        :keys="props.question.options.map(option => option.key)"
+        :picked="props.modelValue"
+        :class="$style['question-card__stats']"
+      />
+
       <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
-      <div :class="$style['question-card__scratch-bar']">
+      <div v-if="!props.compact" :class="$style['question-card__scratch-bar']">
         <Button
           data-test="scratch-toggle"
           :label="showScratch ? '收起計算紙' : '計算紙'"
@@ -112,11 +175,25 @@
 
     <!-- 手寫筆跡層：蓋在整張卡片上，不擋點擊 -->
     <canvas ref="inkCanvas" data-test="ink-layer" aria-hidden="true" :class="$style['question-card__ink']" />
+
+    <!-- 橡皮擦跟著滑鼠顯示擦的範圍 -->
+    <span
+      v-if="drawing.eraserCursor.value"
+      data-test="eraser-cursor"
+      aria-hidden="true"
+      :class="$style['question-card__eraser']"
+      :style="{
+        left: `${drawing.eraserCursor.value.x}px`,
+        top: `${drawing.eraserCursor.value.y}px`,
+        width: `${eraserSize}px`,
+        height: `${eraserSize}px`,
+      }"
+    />
   </article>
 </template>
 
 <script setup lang="ts">
-import type { DrawTool, GradeResult, InkStroke, QuizQuestion, TextRange } from '~/types/quiz'
+import type { DrawTool, GradeResult, InkStroke, ItemStats, QuizQuestion, TextRange } from '~/types/quiz'
 
 type OptionState = 'hit' | 'answer' | 'wrong' | undefined
 
@@ -124,6 +201,8 @@ interface Props {
   question: QuizQuestion
   modelValue: string
   submitted?: boolean
+  /** 「看答案」：不用交卷就圈出正解、列出大家怎麼選，不打分數 */
+  revealed?: boolean
   result?: GradeResult
   /** key 為 `${題目 id}:stem`、`${題目 id}:option:A` 等 */
   highlights?: Record<string, TextRange[]>
@@ -132,15 +211,34 @@ interface Props {
   ink?: InkStroke[]
   /** points：交卷後標得分；accuracy：隨機抽題只標答對或答錯 */
   scoring?: 'points' | 'accuracy'
+  /** 題組文章印在這題前面 */
+  showLead?: boolean
+  /** 題組文章印在別頁：顯示「看題組文章」按鈕 */
+  leadElsewhere?: boolean
+  /** 官方選項比例，交卷後顯示 */
+  stats?: ItemStats
+  /** 題組文章裡每個空格（題號）目前的作答；有給才能點題號跳出選項 */
+  slotAnswers?: Record<number, string>
+  /** 跳出視窗裡的精簡版：不顯示計算紙 */
+  compact?: boolean
+  /** 文意選填：同組別題已經選走的選項，加刪除線提醒（仍可選） */
+  takenKeys?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   submitted: false,
+  revealed: false,
   result: undefined,
   highlights: () => ({}),
   tool: 'off',
   ink: () => [],
   scoring: 'points',
+  showLead: false,
+  leadElsewhere: false,
+  stats: undefined,
+  slotAnswers: undefined,
+  compact: false,
+  takenKeys: () => [],
 })
 
 const emit = defineEmits<{
@@ -148,13 +246,29 @@ const emit = defineEmits<{
   (e: 'mark', fieldId: string, range: TextRange): void
   (e: 'erase', fieldId: string, range: TextRange): void
   (e: 'update:ink', value: InkStroke[]): void
+  (e: 'open-slot', number: number): void
+  (e: 'open-lead'): void
 }>()
+
+provideQuizSlots({
+  answerOf: number => props.slotAnswers?.[number],
+  open: number => emit('open-slot', number),
+})
 
 const card = ref<HTMLElement | null>(null)
 const inkCanvas = ref<HTMLCanvasElement | null>(null)
 /** 計算紙開關；外層有綁 v-model 時由外層記住（翻頁後回來仍開著） */
 const showScratch = defineModel<boolean>('scratchOpen', { default: false })
 const isDrawing = computed(() => props.tool !== 'off')
+/** 文章裡的空格題（綜合測驗、文意選填）沒有題幹 */
+const hasStem = computed(() => props.question.stem !== '')
+/** 截圖題、文意選填（選項在題組文章裡）的選項沒有文字，只留一排作答圈 */
+const hasOptionText = computed(() => props.question.options.some(option => option.text !== '' || option.figure))
+/** 截圖放在 public/，網址要接上網站的 baseURL（試用網址在 /entrance-exams/ 底下） */
+const baseURL = useRuntimeConfig().app.baseURL
+
+/** 橡皮擦圓圈大小 = 橡皮擦筆寬 */
+const eraserSize = inkStyle('eraser').width
 
 const drawing = useCardDrawing({
   card,
@@ -168,10 +282,12 @@ const drawing = useCardDrawing({
 })
 
 const selectedKeys = computed(() => props.modelValue.split('').filter(Boolean))
+/** 交卷後或按了看答案：圈出正解、顯示選答比例、不能再作答 */
+const showAnswer = computed(() => props.submitted || props.revealed)
 const scoreText = computed(() => {
   if (props.scoring === 'accuracy') return props.result?.isCorrect ? '答對' : '答錯'
   const score = Number((props.result?.score ?? 0).toFixed(2))
-  return score > 0 ? `+${score}` : '0'
+  return `+${score}`
 })
 
 function fieldId(part: string) {
@@ -186,12 +302,15 @@ function rangesOf(part: string) {
   return preview?.fieldId === id ? addRange(ranges, preview.range) : ranges
 }
 
+/** 跳出視窗和題目卡片同時在頁面上，id、name 要分開，label 才不會選到另一邊 */
+const inputName = computed(() => (props.compact ? `popup-${props.question.id}` : props.question.id))
+
 function inputId(key: string) {
-  return `${props.question.id}-${key}`
+  return `${inputName.value}-${key}`
 }
 
 function optionState(key: string): OptionState {
-  if (!props.submitted) return undefined
+  if (!showAnswer.value) return undefined
   const isAnswer = props.question.answer.includes(key)
   const isPicked = props.modelValue.includes(key)
   if (isAnswer) return isPicked ? 'hit' : 'answer'
@@ -284,8 +403,9 @@ function pickMulti(values: string[]) {
     margin: 0 0 0.5rem;
   }
 
-  // 選項和計算紙按鈕排在題目那一欄
+  // 選項、選答比例和計算紙按鈕排在題目那一欄
   &__options,
+  &__stats,
   &__scratch-bar {
     grid-column: 2;
   }
@@ -302,6 +422,51 @@ function pickMulti(values: string[]) {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    // 截圖題：作答圈橫排，像答案卡
+    &--circles {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 1rem;
+    }
+  }
+
+  // 截圖題：題號（文章空格題才有）和作答圈排一列
+  &__body--circles {
+    align-items: center;
+  }
+
+  // 題組文章和題目之間留一條虛線
+  &__lead-bar {
+    margin: -0.5rem 0 0.25rem;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__lead {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--color-pencil);
+  }
+
+  &__option-figure {
+    max-width: 10rem;
+    height: auto;
+    vertical-align: middle;
+    mix-blend-mode: multiply;
+  }
+
+  // 原卷截圖：跟卡片一樣寬；白底用 multiply 融進紙色
+  &__figure {
+    margin: 0 0 0.75rem;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
   }
 
   // 選項和題目第一個字對齊，上下只留一點間距
@@ -351,6 +516,15 @@ function pickMulti(values: string[]) {
     flex: 1;
   }
 
+  // 文意選填：別題已經選走的選項，鉛筆色刪除線提醒（紅色刪除線是批改後的答錯）
+  &__option--taken &__key,
+  &__option--taken &__text {
+    text-decoration: line-through;
+    text-decoration-color: var(--color-pencil);
+    text-decoration-thickness: 2px;
+    color: var(--color-ink-soft);
+  }
+
   &__scratch-bar {
     margin-top: 0.25rem;
   }
@@ -388,6 +562,18 @@ function pickMulti(values: string[]) {
     pointer-events: none;
   }
 
+  &__eraser {
+    position: absolute;
+    z-index: 2;
+
+    border: 1.5px solid var(--color-ink);
+    border-radius: 50%;
+
+    background: rgb(255 255 255 / 45%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
   // 批改後正解用紅色螢光筆逐行畫底（和考生自己的黃色螢光筆區分）
   &__option--hit &__mark,
   &__option--answer &__mark {
@@ -401,6 +587,7 @@ function pickMulti(values: string[]) {
 
     // 手機：選項和計算紙按鈕靠左，跟題號切齊，選項文字多一點寬度
     &__options,
+    &__stats,
     &__scratch-bar {
       grid-column: 1 / -1;
     }

@@ -9,12 +9,14 @@ export interface InkStyle {
 }
 
 const STYLES: Record<InkTool, InkStyle> = {
-  pen: { width: 2.2, colorVar: '--color-ballpoint', composite: 'source-over' },
+  // 原子筆固定灰色
+  pen: { width: 2.2, colorVar: '--color-pen-gray', composite: 'source-over' },
   // multiply：畫在原子筆字跡上仍看得到字
   highlighter: { width: 16, colorVar: '--color-marker', composite: 'multiply' },
   eraser: { width: 24, colorVar: '--color-ink', composite: 'destination-out' },
 }
 
+/** 筆的樣式 */
 export function inkStyle(tool: InkTool): InkStyle {
   return STYLES[tool]
 }

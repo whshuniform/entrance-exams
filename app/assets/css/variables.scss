@@ -12,6 +12,10 @@ $spacing-base: 8px;
   --color-pencil: #6b614b;
   --color-pen-red: #d1372e;
   --color-ballpoint: #2457c5;
+  // 作答時的提示（空格上選的答案）；紅色留給批改
+  --color-pen-purple: #7a3fa8;
+  // 原子筆筆跡（固定灰色）
+  --color-pen-gray: #6e7076;
   --color-marker: #ffe58a;
   --color-marker-answer: #ffc9c4;
   --color-tape: rgb(240 216 140 / 70%);
@@ -20,7 +24,10 @@ $spacing-base: 8px;
   --radius-sketch-alt: 15px 255px 15px 225px / 225px 15px 255px 15px;
   --shadow-sketch: 3px 4px 0 var(--color-ink);
 
-  // 計時作答時固定在畫面最上方的倒數長條高度
+  // 固定在畫面最上方的 header（iOS 樣式返回鍵＋標題）
+  --app-header-height: 3.25rem;
+
+  // 計時作答時固定在 header 下面的倒數長條高度
   --timer-bar-height: 2rem;
 
   --font-family-base: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", "PingFang TC",

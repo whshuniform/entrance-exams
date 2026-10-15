@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: false },
   modules: ['@primevue/nuxt-module'],
-  css: ['~/assets/css/index.scss'],
+  css: ['katex/dist/katex.min.css', '~/assets/css/index.scss'],
   // 作答頁依網址參數出題、隨機抽題，只在瀏覽器畫；靜態輸出時仍產生 /quiz 頁
   // 單字頁的進度存在瀏覽器，也只在瀏覽器畫
   routeRules: {
@@ -14,14 +14,18 @@ export default defineNuxtConfig({
     '/vocab': { ssr: false },
   },
   nitro: {
-    prerender: { routes: ['/', '/quiz', '/vocab'] },
+    prerender: { routes: ['/', '/gsat', '/gsat/practice', '/quiz', '/vocab'] },
   },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
-      htmlAttrs: { lang: 'zh-Hant-TW' },
-      title: '考古題練習本',
-      meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      // 網站本來就是中文：用瀏覽器認得的 zh-TW，並關掉 Google 翻譯提示
+      htmlAttrs: { lang: 'zh-TW', translate: 'no' },
+      title: '考古題',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'google', content: 'notranslate' },
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },

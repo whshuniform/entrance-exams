@@ -1,9 +1,9 @@
 <template>
+  <AppHeader :title="heading" :back="back" />
   <main v-if="!quiz" :class="['container', $style['quiz-page']]">
     <section data-test="quiz-not-found" :class="$style['quiz-page__missing']">
-      <h1 :class="$style['quiz-page__title']">找不到這份考卷</h1>
-      <p>網址裡的考試、年度或科目不在題庫裡，請回首頁重新選。</p>
-      <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
+      <p :class="$style['quiz-page__missing-title']">找不到這份考卷</p>
+      <p>網址裡的考試、年度或科目不在題庫裡，請按左上角返回重新選。</p>
     </section>
   </main>
   <main
@@ -15,11 +15,8 @@
       totalSeconds > 0 && $style['quiz-page--timed'],
     ]"
   >
-    <header :class="$style['quiz-page__header']">
-      <NuxtLink to="/" :class="$style['quiz-page__home']">← 回首頁</NuxtLink>
-      <h1 :class="$style['quiz-page__title']">
-        <span :class="$style['quiz-page__highlight']">{{ quiz.papers[0]?.exam }}練習本</span>
-      </h1>
+    <!-- 說明和小技巧只在第一頁（作答注意事項）顯示 -->
+    <header v-if="isGuide" data-test="quiz-intro" :class="$style['quiz-page__header']">
       <p :class="$style['quiz-page__subtitle']">{{ subtitle }}</p>
       <p :class="$style['quiz-page__progress']">已作答 {{ answeredCount }} / {{ questions.length }}</p>
       <p :class="$style['quiz-page__tip']">
@@ -37,7 +34,7 @@
       />
     </div>
 
-    <!-- 像真實試卷：一頁一題，翻頁做下一題；標題跟原試題 PDF 一樣只印在段落開頭 -->
+    <!-- 像真實試卷：每頁的題目跟原試題 PDF 同一頁，翻頁做下一頁；標題跟原卷一樣只印在段落開頭 -->
     <div ref="sheetTop" :class="$style['quiz-page__desk']">
       <Transition
         mode="out-in"
@@ -50,32 +47,42 @@
         <section v-if="isGuide" key="guide" data-test="guide-sheet">
           <QuizGuide />
         </section>
-        <section v-else-if="currentSheet" :key="currentSheet.question.id" data-test="sheet">
+        <section v-else-if="currentSheet" :key="sheetKey" data-test="sheet">
           <header data-test="running-header" :class="$style['quiz-page__running']">
             <span>{{ currentSheet.paper.year }}年{{ currentSheet.paper.exam }}　{{ currentSheet.paper.subject }}</span>
             <span>第 {{ currentSheet.pageNumber }} 頁 共 {{ currentSheet.pageCount }} 頁</span>
           </header>
-          <h3 v-if="currentSheet.startsPart && currentSheet.part.title" :class="$style['quiz-page__part']">{{ currentSheet.part.title }}</h3>
-          <template v-if="currentSheet.startsGroup">
-            <h4 :class="$style['quiz-page__group']">{{ currentSheet.group.title }}</h4>
-            <p :class="$style['quiz-page__note']">{{ currentSheet.group.note }}</p>
+          <template v-for="item in currentSheet.items" :key="item.question.id">
+            <h3 v-if="item.startsPart && item.part.title" :class="$style['quiz-page__part']">{{ item.part.title }}</h3>
+            <template v-if="item.startsGroup">
+              <h4 v-if="item.group.title" :class="$style['quiz-page__group']">{{ item.group.title }}</h4>
+              <p :class="$style['quiz-page__note']">{{ item.group.note }}</p>
+            </template>
+            <QuizQuestionCard
+              :question="item.question"
+              :model-value="answers[item.question.id] ?? ''"
+              :submitted="submitted"
+              :revealed="revealed"
+              :result="results[item.question.id]"
+              :highlights="highlights"
+              :tool="tool"
+              :ink="ink[item.question.id]"
+              :scratch-open="scratchOpen[item.question.id] ?? false"
+              :scoring="isRandom ? 'accuracy' : 'points'"
+              :show-lead="item.startsLead"
+              :lead-elsewhere="Boolean(item.question.lead) && !leadsOnSheet.has(item.question.lead!.id)"
+              :stats="itemStatsFor(item.question.id)"
+              :slot-answers="item.startsLead ? slotAnswersFor(item.question) : undefined"
+              :taken-keys="takenKeys(item.question, questions, answers)"
+              @update:model-value="setAnswer(item.question.id, $event)"
+              @mark="markText"
+              @erase="eraseText"
+              @update:ink="setInk(item.question.id, $event)"
+              @update:scratch-open="setScratchOpen(item.question.id, $event)"
+              @open-slot="openSlot(item.question, $event)"
+              @open-lead="leadDialog = item.question.lead ?? null"
+            />
           </template>
-          <QuizQuestionCard
-            :question="currentSheet.question"
-            :model-value="answers[currentSheet.question.id] ?? ''"
-            :submitted="submitted"
-            :result="results[currentSheet.question.id]"
-            :highlights="highlights"
-            :tool="tool"
-            :ink="ink[currentSheet.question.id]"
-            :scratch-open="scratchOpen[currentSheet.question.id] ?? false"
-            :scoring="isRandom ? 'accuracy' : 'points'"
-            @update:model-value="setAnswer(currentSheet.question.id, $event)"
-            @mark="markText"
-            @erase="eraseText"
-            @update:ink="setInk(currentSheet.question.id, $event)"
-            @update:scratch-open="setScratchOpen(currentSheet.question.id, $event)"
-          />
         </section>
         <section v-else key="result" data-test="result-sheet">
           <QuizResultSheet :reports="reports" :accuracy="accuracy" :time-up="timeUp" />
@@ -85,7 +92,7 @@
 
     <nav
       data-test="pager"
-      :data-question="isGuide ? 'guide' : currentSheet ? currentSheet.question.id : 'result'"
+      :data-sheet="isGuide ? 'guide' : currentSheet ? sheetKey : 'result'"
       aria-label="翻頁"
       :class="$style['quiz-page__pager']"
     >
@@ -96,19 +103,60 @@
         :label="nextLabel"
         @click="flip(next)"
       />
-      <Button v-else-if="!submitted" label="交卷批改" @click="onSubmit" />
-      <Button v-else label="重新作答" severity="secondary" @click="onReset" />
+      <!-- 直接看答案不作答，沒有交卷 -->
+      <Button v-else-if="!submitted && !revealed" label="交卷批改" @click="onSubmit" />
+      <Button v-else-if="submitted" label="重新作答" severity="secondary" @click="onReset" />
     </nav>
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
+
+    <!-- 點文章裡的題號：跳出那一題的選項，不用捲到文章下面作答 -->
+    <Dialog
+      :visible="slotQuestion !== null"
+      modal
+      dismissable-mask
+      :header="slotQuestion ? `第 ${slotQuestion.number} 題` : ''"
+      :class="$style['quiz-page__slot-dialog']"
+      @update:visible="!$event && closeSlot()"
+    >
+      <div v-if="slotQuestion" data-test="slot-dialog">
+        <QuizQuestionCard
+          :question="slotQuestion"
+          :model-value="answers[slotQuestion.id] ?? ''"
+          :submitted="submitted"
+          :revealed="revealed"
+          :result="results[slotQuestion.id]"
+          :highlights="highlights"
+          :scoring="isRandom ? 'accuracy' : 'points'"
+          :stats="itemStatsFor(slotQuestion.id)"
+          :taken-keys="slotTarget ? takenKeys(slotTarget, questions, answers) : []"
+          compact
+          @update:model-value="pickInSlot(slotQuestion, $event)"
+        />
+      </div>
+    </Dialog>
+
+    <!-- 題組文章印在前一頁時，按「看題組文章」在這裡看，不用翻頁 -->
+    <Dialog
+      :visible="leadDialog !== null"
+      modal
+      dismissable-mask
+      header="題組文章"
+      :class="$style['quiz-page__lead-dialog']"
+      @update:visible="!$event && (leadDialog = null)"
+    >
+      <div v-if="leadDialog" data-test="lead-dialog">
+        <QuizBlocks :blocks="leadDialog.blocks" name="lead-dialog" :field-id="part => `lead-dialog:${part}`" :ranges-of="() => []" />
+      </div>
+    </Dialog>
 
     <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { examCatalog } from '~/data/catalog'
-import type { DrawTool } from '~/types/quiz'
+import { examCatalog, findExam } from '~/data/catalog'
+import type { DrawTool, QuizLead, QuizQuestion } from '~/types/quiz'
 
 // 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時從所選年度或課綱一起抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
 const route = useRoute()
@@ -124,19 +172,28 @@ const subtitle = computed(() => {
   if (!quiz || !first) return ''
   const { config } = quiz
   const range = config.curriculum ? `${config.curriculum}（${formatYears(config.years)} 年）` : `${formatYears(config.years)} 學年度`
-  const mode = isRandom ? `隨機抽 ${questions.length} 題` : `整份考卷・試作 ${questions.length} 題`
+  const mode = isRandom ? `隨機抽 ${questions.length} 題` : `整份考卷・選擇題 ${questions.length} 題`
   const limit = config.minutes > 0 ? `・限時 ${config.minutes} 分鐘` : ''
-  return `${range}・${first.subject}・${mode}${limit}`
+  const reveal = config.reveal ? '・直接看答案' : ''
+  return `${range}・${first.subject}・${mode}${limit}${reveal}`
 })
+
+/** header 標題：年度＋科目 */
+const heading = !quiz ? '找不到考卷' : quizHeading(quiz.config, quiz.papers[0]?.subject ?? '')
+
+// 學測裡的頁面一律返回大學學測頁；網址的考試不存在才回首頁
+const exam = findExam(String(route.query.exam ?? ''))
+const back = exam ? { to: `/${exam.id}`, label: exam.name } : { to: '/', label: '首頁' }
 
 useHead({ title: pageTitle() })
 
+/** 網頁標題用考試全名，例如「115 學年度大學學科能力測驗 國語文綜合能力測驗」 */
 function pageTitle() {
   const first = quiz?.papers[0]
-  if (!first) return '找不到考卷｜考古題練習本'
+  if (!first || !exam) return '找不到考卷｜考古題'
   return isRandom
-    ? `${first.exam} ${first.subject} 隨機抽題｜考古題練習本`
-    : `${first.year}${first.exam} ${first.subject}｜考古題練習本`
+    ? `${exam.fullName} ${first.subject} 隨機抽題`
+    : `${first.year} 學年度${exam.fullName} ${first.subject}`
 }
 
 const { answers, submitted, answeredCount, results, setAnswer, submit, reset } = useQuiz(questions)
@@ -145,18 +202,22 @@ const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 const tool = ref<DrawTool>('off')
 /** 工具列隱藏時，題目往右延伸變滿版 */
 const toolsVisible = ref(true)
+/** 首頁按「直接看答案」進來：每題圈出正解、列出大家怎麼選，不作答也不打分數 */
+const revealed = quiz?.config.reveal === true
 /** 每題計算紙開著與否，翻頁回來仍記得 */
 const scratchOpen = ref<Record<string, boolean>>({})
 
-// 第 0 頁是作答注意事項，接著一頁一題，交卷後多一頁成績單
+// 第 0 頁是作答注意事項，接著是試題頁（跟原卷同一頁的題目排在一起），交卷後多一頁成績單
 const GUIDE_PAGES = 1
 const resultPage = GUIDE_PAGES + sheets.length
 const pageCount = computed(() => resultPage + (submitted.value ? 1 : 0))
 const { index, direction, isFirst, isLast, goTo, next, prev } = usePaging(() => pageCount.value)
 const isGuide = computed(() => index.value < GUIDE_PAGES)
 const currentSheet = computed(() => (isGuide.value ? undefined : sheets[index.value - GUIDE_PAGES]))
+/** 這一頁的題目 id，以空白隔開 */
+const sheetKey = computed(() => currentSheet.value?.items.map(item => item.question.id).join(' ') ?? '')
 const nextLabel = computed(() => {
-  if (isGuide.value) return '開始作答'
+  if (isGuide.value) return revealed ? '開始看答案' : '開始作答'
   return submitted.value && index.value === resultPage - 1 ? '看成績' : '下一頁'
 })
 // 整份考卷看級分和名次；隨機抽題看答對率和答對題數
@@ -181,7 +242,43 @@ function flip(action: () => void) {
   const desk = sheetTop.value
   if (!desk) return
   const margin = Number.parseFloat(getComputedStyle(desk).scrollMarginTop) || 0
-  if (desk.getBoundingClientRect().top < margin) desk.scrollIntoView({ block: 'start' })
+  const top = desk.getBoundingClientRect().top
+  // 直接捲動視窗：scrollIntoView 在頁首附近會多捲過頭，把頁首藏到 header 後面
+  if (top < margin) window.scrollBy(0, top - margin)
+}
+
+/** 這一頁印出來的題組文章；題組文章在別頁的題目才需要「看題組文章」 */
+const leadsOnSheet = computed(() => new Set(currentSheet.value?.items.filter(item => item.startsLead).map(item => item.question.lead?.id) ?? []))
+/** 按「看題組文章」跳出的文章 */
+const leadDialog = ref<QuizLead | null>(null)
+
+/** 跳出視窗作答的那一題 */
+const slotTarget = ref<QuizQuestion | null>(null)
+/** 視窗裡顯示的題目：選項文字在題組裡的（文意選填、篇章結構）補上選項文字 */
+const slotQuestion = computed(() => (slotTarget.value ? withLeadOptions(slotTarget.value) : null))
+
+/** 題組文章裡每個空格目前的作答：只列這份練習卷有的題目（隨機抽題可能沒抽到） */
+function slotAnswersFor(question: QuizQuestion) {
+  const lead = question.lead
+  if (!lead) return undefined
+  return Object.fromEntries(
+    questions.filter(item => item.lead?.id === lead.id).map(item => [item.number, answers.value[item.id] ?? '']),
+  )
+}
+
+function openSlot(question: QuizQuestion, number: number) {
+  const target = questions.find(item => item.lead?.id === question.lead?.id && item.number === number)
+  if (target) slotTarget.value = target
+}
+
+function closeSlot() {
+  slotTarget.value = null
+}
+
+/** 單選題選了就關閉視窗 */
+function pickInSlot(question: QuizQuestion, value: string) {
+  setAnswer(question.id, value)
+  if (question.type === 'single') closeSlot()
 }
 
 function setScratchOpen(id: string, open: boolean) {
@@ -223,7 +320,7 @@ function onReset() {
 .quiz-page {
   max-width: 51rem;
   margin: 0 auto;
-  padding: 2rem 6rem 3rem 3.5rem;
+  padding: 1.5rem 6rem 3rem 3.5rem;
   transition: padding-right 0.3s ease;
 
   &--full {
@@ -232,27 +329,23 @@ function onReset() {
 
   // 計時作答：上方留出倒數長條的高度
   &--timed {
-    padding-top: calc(var(--timer-bar-height) + 2rem);
+    padding-top: calc(var(--timer-bar-height) + 1.5rem);
   }
 
   &__header {
     margin-bottom: 2rem;
   }
 
-  // 像鉛筆寫的連結
-  &__home {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-    color: var(--color-ink-soft);
-    text-decoration: underline wavy var(--color-pencil);
-    text-underline-offset: 0.25em;
+  // 題號跳出的選項視窗：手機上幾乎滿版
+  &__slot-dialog,
+  &__lead-dialog {
+    width: min(36rem, calc(100vw - 2rem));
   }
 
-  // 倒數長條固定在畫面最上方，整排橫跨畫面
+  // 倒數長條固定在 header 正下方，整排橫跨畫面
   &__timer {
     position: fixed;
-    top: 0;
+    top: var(--app-header-height);
     right: 0;
     left: 0;
     z-index: 20;
@@ -263,19 +356,14 @@ function onReset() {
     text-align: center;
   }
 
-  &__title {
+  &__missing-title {
     margin: 0;
-    font-size: 2.5rem;
-    line-height: 1.3;
-  }
-
-  &__highlight {
-    padding: 0 0.2em;
-    background: linear-gradient(transparent 50%, var(--color-marker) 50%, var(--color-marker) 92%, transparent 92%);
+    font-size: 1.6rem;
+    font-weight: 700;
   }
 
   &__subtitle {
-    margin: 0.25rem 0 0;
+    margin: 0;
     color: var(--color-ink-soft);
   }
 
@@ -288,11 +376,13 @@ function onReset() {
   &__desk {
     // 翻頁時以左邊為書背
     perspective: 1600px;
+    // 翻頁捲回頁首時，停在固定的 header 下面
+    scroll-margin-top: calc(var(--app-header-height) + 0.5rem);
   }
 
-  // 翻頁捲回頁首時，停在倒數長條下面
+  // 計時作答：再讓出倒數長條的高度
   &--timed &__desk {
-    scroll-margin-top: calc(var(--timer-bar-height) + 0.5rem);
+    scroll-margin-top: calc(var(--app-header-height) + var(--timer-bar-height) + 0.5rem);
   }
 
   // 試卷頁首：像原卷每頁上方的「115年學測　科目　第 n 頁 共 m 頁」
@@ -312,7 +402,12 @@ function onReset() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
+
+    // 手機上三顆按鈕排一列，字不折行
+    > * {
+      white-space: nowrap;
+    }
   }
 
   &__part {
@@ -350,7 +445,7 @@ function onReset() {
 
   @include respond-to('xs') {
     width: 100%;
-    padding: 1.25rem 4.4rem 2rem 0.75rem;
+    padding: 1rem 4.4rem 2rem 0.75rem;
 
     &--full {
       padding-right: 0.75rem;
@@ -358,10 +453,6 @@ function onReset() {
 
     &--timed {
       padding-top: calc(var(--timer-bar-height) + 1.25rem);
-    }
-
-    &__title {
-      font-size: 2rem;
     }
   }
 

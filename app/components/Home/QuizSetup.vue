@@ -2,36 +2,7 @@
   <form data-test="quiz-setup" :data-ready="ready" :class="$style['quiz-setup']" @submit.prevent="onSubmit">
     <fieldset :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">1</span>選考試
-      </legend>
-      <div :class="$style['quiz-setup__choices']">
-        <label
-          v-for="exam in exams"
-          :key="exam.id"
-          :data-test="`exam-${exam.id}`"
-          :for="`${uid}-exam-${exam.id}`"
-          :class="choiceClass(examId === exam.id, !exam.available)"
-        >
-          <RadioButton
-            v-model="examId"
-            :input-id="`${uid}-exam-${exam.id}`"
-            name="exam"
-            :value="exam.id"
-            :disabled="!exam.available"
-          />
-          <span :class="$style['quiz-setup__text']">
-            <strong>{{ exam.name }}</strong>
-            <small :class="[$style['quiz-setup__sub'], !exam.available && $style['quiz-setup__sub--soon']]">
-              {{ exam.available ? exam.fullName : '即將推出' }}
-            </small>
-          </span>
-        </label>
-      </div>
-    </fieldset>
-
-    <fieldset :class="$style['quiz-setup__step']">
-      <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">2</span>作答方式
+        <span :class="$style['quiz-setup__number']">1</span>作答方式
       </legend>
       <div :class="$style['quiz-setup__choices']">
         <label
@@ -52,7 +23,7 @@
 
     <fieldset :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">3</span>選科目
+        <span :class="$style['quiz-setup__number']">2</span>選科目
       </legend>
       <div :class="$style['quiz-setup__choices']">
         <label
@@ -74,7 +45,7 @@
     <!-- 整份考卷：選一個年度 -->
     <fieldset v-if="mode === 'full'" :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">4</span>選年度
+        <span :class="$style['quiz-setup__number']">3</span>選年度
       </legend>
       <div :class="$style['quiz-setup__choices']">
         <label
@@ -87,7 +58,7 @@
           <RadioButton v-model="year" :input-id="`${uid}-year-${item}`" name="year" :value="item" />
           <span :class="$style['quiz-setup__text']">
             <strong>{{ item }} 學年度</strong>
-            <small :class="$style['quiz-setup__sub']">試作 {{ questionsIn(item) }} 題・考試時間 {{ minutesOf(item) }} 分鐘</small>
+            <small :class="$style['quiz-setup__sub']">選擇題 {{ questionsIn(item) }} 題・考試時間 {{ minutesOf(item) }} 分鐘</small>
           </span>
         </label>
       </div>
@@ -96,7 +67,7 @@
     <!-- 隨機抽題：依年度（可複選）或依課綱選範圍 -->
     <fieldset v-else :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">4</span>選範圍
+        <span :class="$style['quiz-setup__number']">3</span>選範圍
       </legend>
       <div :class="$style['quiz-setup__scopes']">
         <label
@@ -145,7 +116,7 @@
 
     <fieldset v-if="mode === 'random'" :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">5</span>題數
+        <span :class="$style['quiz-setup__number']">4</span>題數
       </legend>
       <div data-test="random-count" :class="$style['quiz-setup__field']">
         <label :for="`${uid}-count`">抽</label>
@@ -165,7 +136,7 @@
 
     <fieldset :class="$style['quiz-setup__step']">
       <legend :class="$style['quiz-setup__legend']">
-        <span :class="$style['quiz-setup__number']">{{ mode === 'random' ? 6 : 5 }}</span>計時
+        <span :class="$style['quiz-setup__number']">{{ mode === 'random' ? 5 : 4 }}</span>計時
       </legend>
       <label data-test="timer-switch" :for="`${uid}-timed`" :class="$style['quiz-setup__switch']">
         <ToggleSwitch v-model="timed" :input-id="`${uid}-timed`" />
@@ -195,6 +166,15 @@
       :disabled="!canStart"
       :class="$style['quiz-setup__start']"
     />
+    <!-- 不作答，直接看每題的正解和大家怎麼選 -->
+    <Button
+      data-test="start-reveal"
+      label="直接看答案"
+      severity="secondary"
+      :disabled="!canStart"
+      :class="$style['quiz-setup__reveal']"
+      @click="onReveal"
+    />
   </form>
 </template>
 
@@ -202,6 +182,8 @@
 import { examCatalog } from '~/data/catalog'
 import type { QuizConfig, QuizMode, RandomScope } from '~/types/quiz'
 
+/** 考試在前一頁選好，這裡只出這個考試的科目和年度 */
+const props = defineProps<{ exam: string }>()
 const emit = defineEmits<{ start: [config: QuizConfig] }>()
 
 const MODES: { value: QuizMode, label: string, hint: string }[] = [
@@ -216,9 +198,9 @@ const SCOPES: { value: RandomScope, label: string }[] = [
 
 const uid = useId()
 const {
-  exams, examId, mode, subjects, subject, subjectPapers, years, year, scope, pickedYears, curricula, curriculum,
+  mode, subjects, subject, subjectPapers, years, year, scope, pickedYears, curricula, curriculum,
   poolSize, canStart, count, timed, minutes, config,
-} = useQuizSetup(examCatalog)
+} = useQuizSetup(examCatalog.filter(item => item.id === props.exam))
 
 /** 畫面可以操作了（E2E 等這個再點選） */
 const ready = ref(false)
@@ -228,12 +210,8 @@ onMounted(() => {
 
 const style = useCssModule()
 
-function choiceClass(checked: boolean, disabled = false) {
-  return [
-    style['quiz-setup__choice'],
-    checked && style['quiz-setup__choice--checked'],
-    disabled && style['quiz-setup__choice--disabled'],
-  ]
+function choiceClass(checked: boolean) {
+  return [style['quiz-setup__choice'], checked && style['quiz-setup__choice--checked']]
 }
 
 function paperOf(year: number) {
@@ -251,6 +229,10 @@ function minutesOf(year: number) {
 
 function onSubmit() {
   if (canStart.value) emit('start', config.value)
+}
+
+function onReveal() {
+  if (canStart.value) emit('start', { ...config.value, minutes: 0, reveal: true })
 }
 </script>
 
@@ -322,13 +304,6 @@ function onSubmit() {
       background: linear-gradient(transparent 55%, var(--color-marker) 55%, var(--color-marker) 90%, transparent 90%), var(--color-card);
       box-shadow: 2px 3px 0 var(--color-ink);
     }
-
-    &--disabled {
-      border-style: dashed;
-      border-color: var(--color-pencil);
-      color: var(--color-pencil);
-      cursor: not-allowed;
-    }
   }
 
   &__text {
@@ -340,17 +315,6 @@ function onSubmit() {
   &__sub {
     font-size: 0.85rem;
     color: var(--color-ink-soft);
-
-    // 「即將推出」像蓋上去的紅色小章
-    &--soon {
-      align-self: flex-start;
-      margin-top: 0.15rem;
-      padding: 0 0.4em;
-      border: 1.5px solid var(--color-pen-red);
-      border-radius: 4px;
-      color: var(--color-pen-red);
-      transform: rotate(-3deg);
-    }
   }
 
   // 隨機抽題的範圍：兩顆像手寫圈選的小標籤
@@ -424,6 +388,11 @@ function onSubmit() {
     width: 100%;
     margin-top: 0.5rem;
     font-size: 1.3rem;
+  }
+
+  &__reveal {
+    width: 100%;
+    margin-top: 0.75rem;
   }
 
   @include respond-to('xs') {

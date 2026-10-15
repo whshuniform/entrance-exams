@@ -158,8 +158,9 @@ const TOOLS: { value: DrawTool, label: string }[] = [
     stroke-width: 5;
   }
 
+  // 原子筆圖示下面的墨水線：跟筆跡一樣是灰色
   &__ink {
-    stroke: var(--color-ballpoint);
+    stroke: var(--color-pen-gray);
   }
 
   @media (prefers-reduced-motion: reduce) {
