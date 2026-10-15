@@ -27,6 +27,25 @@ test.describe('完整考卷', () => {
     await expect(quiz.question('115-mathA-3').locator('.katex').first()).toBeVisible()
   })
 
+  for (const [subject, id] of [['math-b', '115-mathB-1'], ['social', '115-social-1'], ['science', '115-science-1']] as const) {
+    test(`${subject}_115整份考卷第一題是文字_交卷後有級分`, async ({ page }) => {
+      const quiz = new QuizPage(page)
+      await quiz.goto({ subject })
+
+      await expect(quiz.stem(id)).toBeVisible()
+      await expect(page.getByTestId('question-image')).toHaveCount(0)
+      await quiz.submit()
+      await expect(quiz.resultSheet).toContainText('級分')
+    })
+  }
+
+  test('自然_化學式用 KaTeX 排版', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ subject: 'science' })
+
+    await expect(page.locator('[data-test^="question-115-science-"] .katex').first()).toBeVisible()
+  })
+
   test('整份考卷_作答_交卷後批改', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()

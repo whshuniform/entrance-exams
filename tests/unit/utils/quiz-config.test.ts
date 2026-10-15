@@ -178,7 +178,7 @@ describe('parseQuizQuery', () => {
     expect(parseQuizQuery({ ...base, exam: 'cap' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '99' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '' }, examCatalog)).toBeNull()
-    expect(parseQuizQuery({ ...base, subject: 'social' }, examCatalog)).toBeNull()
+    expect(parseQuizQuery({ ...base, subject: 'physics' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, subject: 'math-a', years: '110' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, mode: 'random', years: undefined, curriculum: '99課綱' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({}, examCatalog)).toBeNull()
