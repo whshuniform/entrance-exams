@@ -7,12 +7,12 @@ test.describe('首頁選考試 → 考試頁選作試題或背單字', () => {
     const menu = new MenuPage(page)
     await menu.goto()
 
-    await expect(page.getByTestId('menu').getByRole('link')).toHaveCount(1)
+    // 會考有背單字可以點；分科還沒有內容
+    await expect(page.getByTestId('menu').getByRole('link')).toHaveCount(2)
     await expect(menu.item('gsat')).toContainText('大學學測')
-    for (const id of ['ast', 'cap']) {
-      await expect(menu.item(id)).toContainText('準備中')
-      await expect(menu.item(id)).toHaveAttribute('aria-disabled', 'true')
-    }
+    await expect(menu.item('cap')).toContainText('國中會考')
+    await expect(menu.item('ast')).toContainText('準備中')
+    await expect(menu.item('ast')).toHaveAttribute('aria-disabled', 'true')
     await expect(page.getByTestId('quiz-setup')).toHaveCount(0)
   })
 

@@ -1,16 +1,29 @@
 import { test, expect } from '@playwright/test'
-import { HomePage } from './pages/HomePage'
+import { MenuPage } from './pages/MenuPage'
 import { VocabPage } from './pages/VocabPage'
 
 test.describe('必背單字每日規劃', () => {
-  test('首頁_點必背單字_打開單字規劃頁', async ({ page }) => {
-    const home = new HomePage(page)
-    await home.goto()
+  test('學測頁_點背單字_打開單字規劃頁_header標題背單字_網頁標題是全名', async ({ page }) => {
+    const menu = new MenuPage(page)
+    await menu.goto('/gsat')
 
-    await page.getByRole('link', { name: /必背單字/ }).click()
+    await menu.item('vocab').click()
 
-    await expect(page).toHaveURL(/\/vocab/)
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('必背單字')
+    await expect(page).toHaveURL(/\/vocab\?exam=gsat$/)
+    await expect(menu.header.getByRole('heading', { level: 1 })).toHaveText('背單字')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
+    await expect(page).toHaveTitle('大學學科能力測驗 背單字')
+  })
+
+  test('單字頁_按返回鍵_回到學測頁', async ({ page }) => {
+    const vocab = new VocabPage(page)
+    const menu = new MenuPage(page)
+    await vocab.goto(undefined, '?exam=gsat')
+
+    await expect(menu.backLink).toHaveAccessibleName('返回大學學測')
+    await menu.backLink.click()
+
+    await expect(page).toHaveURL(/\/gsat$/)
   })
 
   test('第一次打開_預設學測和考試日期_算出每天要背幾個字並列出今天的字', async ({ page }) => {
@@ -98,6 +111,8 @@ test.describe('必背單字每日規劃', () => {
 
     await expect(vocab.exam('cap').locator('input')).toBeChecked()
     await expect(vocab.summary).toContainText('每天背 6 個字')
+    await expect(page.getByTestId('app-back')).toHaveAccessibleName('返回國中會考')
+    await expect(page).toHaveTitle('國中教育會考 背單字')
   })
 
   test('考試日已過_提醒改日期且沒有今天的字', async ({ page }) => {
