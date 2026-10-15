@@ -70,6 +70,7 @@
               :scratch-open="scratchOpen[item.question.id] ?? false"
               :scoring="isRandom ? 'accuracy' : 'points'"
               :show-lead="item.startsLead"
+              :lead-elsewhere="Boolean(item.question.lead) && !leadsOnSheet.has(item.question.lead!.id)"
               :stats="itemStatsFor(item.question.id)"
               :slot-answers="item.startsLead ? slotAnswersFor(item.question) : undefined"
               :taken-keys="takenKeys(item.question, questions, answers)"
@@ -79,6 +80,7 @@
               @update:ink="setInk(item.question.id, $event)"
               @update:scratch-open="setScratchOpen(item.question.id, $event)"
               @open-slot="openSlot(item.question, $event)"
+              @open-lead="leadDialog = item.question.lead ?? null"
             />
           </template>
         </section>
@@ -134,13 +136,27 @@
       </div>
     </Dialog>
 
+    <!-- 題組文章印在前一頁時，按「看題組文章」在這裡看，不用翻頁 -->
+    <Dialog
+      :visible="leadDialog !== null"
+      modal
+      dismissable-mask
+      header="題組文章"
+      :class="$style['quiz-page__lead-dialog']"
+      @update:visible="!$event && (leadDialog = null)"
+    >
+      <div v-if="leadDialog" data-test="lead-dialog">
+        <QuizBlocks :blocks="leadDialog.blocks" name="lead-dialog" :field-id="part => `lead-dialog:${part}`" :ranges-of="() => []" />
+      </div>
+    </Dialog>
+
     <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { examCatalog, findExam } from '~/data/catalog'
-import type { DrawTool, QuizQuestion } from '~/types/quiz'
+import type { DrawTool, QuizLead, QuizQuestion } from '~/types/quiz'
 
 // 首頁選好的考卷帶在網址上；隨機抽題在進到這頁時從所選年度或課綱一起抽（這頁只在瀏覽器畫，見 nuxt.config routeRules）
 const route = useRoute()
@@ -231,6 +247,11 @@ function flip(action: () => void) {
   if (top < margin) window.scrollBy(0, top - margin)
 }
 
+/** 這一頁印出來的題組文章；題組文章在別頁的題目才需要「看題組文章」 */
+const leadsOnSheet = computed(() => new Set(currentSheet.value?.items.filter(item => item.startsLead).map(item => item.question.lead?.id) ?? []))
+/** 按「看題組文章」跳出的文章 */
+const leadDialog = ref<QuizLead | null>(null)
+
 /** 跳出視窗作答的那一題 */
 const slotTarget = ref<QuizQuestion | null>(null)
 /** 視窗裡顯示的題目：選項文字在題組裡的（文意選填、篇章結構）補上選項文字 */
@@ -316,7 +337,8 @@ function onReset() {
   }
 
   // 題號跳出的選項視窗：手機上幾乎滿版
-  &__slot-dialog {
+  &__slot-dialog,
+  &__lead-dialog {
     width: min(36rem, calc(100vw - 2rem));
   }
 

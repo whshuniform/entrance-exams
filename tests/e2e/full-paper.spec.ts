@@ -39,6 +39,21 @@ test.describe('完整考卷', () => {
     })
   }
 
+  test('題組文章在前一頁_後面的題目按看題組文章_跳出文章不用翻頁', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ subject: 'social' })
+
+    await quiz.showQuestion('115-social-32')
+    expect(await quiz.currentIds()).not.toContain('115-social-30')
+    await quiz.question('115-social-32').getByTestId('open-lead').click()
+
+    await expect(quiz.leadDialog).toContainText('在花東一帶，有些土地原本是臺灣原住民族祖先生活的傳統領域')
+    await page.keyboard.press('Escape')
+    await expect(quiz.leadDialog).toBeHidden()
+    await quiz.showQuestion('115-social-30')
+    await expect(quiz.question('115-social-30').getByTestId('open-lead')).toHaveCount(0)
+  })
+
   test('自然_化學式用 KaTeX 排版', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto({ subject: 'science' })

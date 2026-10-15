@@ -127,6 +127,24 @@ describe('QuestionCard', () => {
     expect(wrapper.find('[data-test="option-C"] input').attributes('disabled')).toBeDefined()
   })
 
+  it('QuestionCard_LeadOnAnotherPage_ShouldOfferButtonToOpenLead', async () => {
+    // 題組文章印在前一頁時，題目上有「看題組文章」，點了請外層跳出文章
+    const lead = { id: '115-social-30-33', blocks: ['花東一帶的傳統領域'] }
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: { ...single, lead }, modelValue: '', leadElsewhere: true } })
+
+    await wrapper.find('[data-test="open-lead"]').trigger('click')
+
+    expect(wrapper.find('[data-test="open-lead"]').text()).toBe('看題組文章')
+    expect(wrapper.emitted('open-lead')).toHaveLength(1)
+  })
+
+  it('QuestionCard_LeadOnSamePage_ShouldNotOfferLeadButton', async () => {
+    const lead = { id: '115-social-30-33', blocks: ['花東一帶的傳統領域'] }
+    const wrapper = await mountSuspended(QuestionCard, { props: { question: { ...single, lead }, modelValue: '' } })
+
+    expect(wrapper.find('[data-test="open-lead"]').exists()).toBe(false)
+  })
+
   it('QuestionCard_AccuracyScoring_ShouldSayRightOrWrongInsteadOfPoints', async () => {
     // 隨機抽題只看答對率：每題標答對或答錯，多選題部分給分也算答錯
     const right = await mountSuspended(QuestionCard, {
