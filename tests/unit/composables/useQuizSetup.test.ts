@@ -39,6 +39,9 @@ describe('useQuizSetup', () => {
       { id: 'chinese', name: '國語文綜合能力測驗', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 251 },
       { id: 'english', name: '英文', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 347 },
       { id: 'math-a', name: '數學A', years: [115, 114, 113, 112, 111], questionCount: 65 },
+      { id: 'math-b', name: '數學B', years: [115, 114, 113, 112, 111], questionCount: 64 },
+      { id: 'social', name: '社會', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 416 },
+      { id: 'science', name: '自然', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 383 },
     ])
   })
 

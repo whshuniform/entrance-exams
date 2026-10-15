@@ -35,8 +35,8 @@ export interface TextPaperData {
   }[]
 }
 
-/** 題目 id 的科目段：數學A 沿用試作的「mathA」 */
-const idPart = (id: string) => (id === 'math-a' ? 'mathA' : id)
+/** 題目 id 的科目段：數學A、數學B 沿用試作的「mathA」寫法 */
+const idPart = (id: string) => id.replace(/-(\w)/g, (_, letter: string) => letter.toUpperCase())
 
 /**
  * 整份考卷：部分、題型、說明和題目照原卷；base 是同年同科已轉成文字的試卷（提供科目名稱、課綱、考試時間、級分表，

@@ -19,7 +19,8 @@ describe('examCatalog', () => {
 
   it('Catalog_GsatPapers_ShouldCarryIdYearCurriculumAndExamTimeOfOriginalPaper', () => {
     // 國文 109–110 年是 101課綱「國文考科」80 分鐘，111 年起是 108課綱國綜 90 分鐘；
-    // 英文 109–110 年 99課綱、111 年起 108課綱，都是 100 分鐘（gsat/stats/curriculum_by_year.csv、各年試題卷頭）
+    // 英文 109–110 年 99課綱、111 年起 108課綱，都是 100 分鐘；數學B 111 年起 100 分鐘；
+    // 社會、自然 109–110 年 99課綱（自然是 99課綱微調）、111 年起 108課綱，都是 110 分鐘（gsat/stats/curriculum_by_year.csv、各年試題卷頭）
     const rows = gsat.papers.map(paper => [paper.id, paper.year, paper.exam, paper.subject, paper.curriculum, paper.minutes])
 
     expect(rows.sort()).toEqual([
@@ -42,11 +43,30 @@ describe('examCatalog', () => {
       ['math-a', 113, '學測', '數學A', '108課綱', 100],
       ['math-a', 114, '學測', '數學A', '108課綱', 100],
       ['math-a', 115, '學測', '數學A', '108課綱', 100],
+      ['math-b', 111, '學測', '數學B', '108課綱', 100],
+      ['math-b', 112, '學測', '數學B', '108課綱', 100],
+      ['math-b', 113, '學測', '數學B', '108課綱', 100],
+      ['math-b', 114, '學測', '數學B', '108課綱', 100],
+      ['math-b', 115, '學測', '數學B', '108課綱', 100],
+      ['science', 109, '學測', '自然', '99課綱微調', 110],
+      ['science', 110, '學測', '自然', '99課綱微調', 110],
+      ['science', 111, '學測', '自然', '108課綱', 110],
+      ['science', 112, '學測', '自然', '108課綱', 110],
+      ['science', 113, '學測', '自然', '108課綱', 110],
+      ['science', 114, '學測', '自然', '108課綱', 110],
+      ['science', 115, '學測', '自然', '108課綱', 110],
+      ['social', 109, '學測', '社會', '99課綱', 110],
+      ['social', 110, '學測', '社會', '99課綱', 110],
+      ['social', 111, '學測', '社會', '108課綱', 110],
+      ['social', 112, '學測', '社會', '108課綱', 110],
+      ['social', 113, '學測', '社會', '108課綱', 110],
+      ['social', 114, '學測', '社會', '108課綱', 110],
+      ['social', 115, '學測', '社會', '108課綱', 110],
     ])
   })
 
-  it('Catalog_GsatSubjects_ShouldFollowExamOrderChineseEnglishMath', () => {
-    expect([...new Set(gsat.papers.map(paper => paper.id))]).toEqual(['chinese', 'english', 'math-a'])
+  it('Catalog_GsatSubjects_ShouldFollowExamOrderChineseEnglishMathSocialScience', () => {
+    expect([...new Set(gsat.papers.map(paper => paper.id))]).toEqual(['chinese', 'english', 'math-a', 'math-b', 'social', 'science'])
   })
 
   it('Catalog_EachSubject_ShouldHaveOnePaperPerYear', () => {

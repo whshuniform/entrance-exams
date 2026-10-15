@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import katex from 'katex'
 import { examCatalog } from '~/data/catalog'
 import { paperQuestions } from '~/utils/paper'
 import { fullPaper } from '~/data/full-papers'
@@ -63,6 +64,43 @@ describe('完整考卷（原卷截圖＋已轉成文字的題目）', () => {
     const numbers = paperQuestions([paperOf('english', 115)]).map(q => q.number)
 
     expect(numbers).toEqual([...Array.from({ length: 46 }, (_, i) => i + 1), 49])
+  })
+
+  it('MathBSocialScience_EveryChoiceQuestion_ShouldBeText', () => {
+    // 數學B 111–115、社會和自然 109–115 全部轉成文字，沒有原卷截圖
+    const papers = gsat.papers.filter(paper => ['math-b', 'social', 'science'].includes(paper.id))
+    expect(papers.map(paper => `${paper.id}-${paper.year}`).sort()).toHaveLength(19)
+
+    for (const question of paperQuestions(papers)) {
+      expect(question.images, question.id).toBeUndefined()
+      expect(question.stem !== '' || question.lead !== undefined, question.id).toBe(true)
+    }
+  })
+
+  it('EveryMathFormula_ShouldRenderWithKatexWithoutError', () => {
+    const texts = (blocks: unknown[] = []): string[] => blocks.flatMap(block =>
+      typeof block === 'string' ? [block] : (block as { table?: string[][] }).table?.flat() ?? [])
+    const questions = paperQuestions(gsat.papers)
+    const strings = [
+      ...questions.flatMap(q => [q.stem, ...q.options.map(option => option.text), ...texts(q.body)]),
+      ...new Set(questions.flatMap(q => (q.lead ? texts(q.lead.blocks) : []))),
+    ]
+    const formulas = strings.flatMap(text => [...text.matchAll(/\$([^$]+)\$/g)].map(match => match[1]!))
+
+    for (const tex of formulas) {
+      expect(() => katex.renderToString(tex, { throwOnError: true }), tex).not.toThrow()
+    }
+  })
+
+  it('Full115_MathBSocialScience_ShouldUseSubjectInIdAndKeepEveryChoiceQuestion', () => {
+    const ids = (id: string) => paperQuestions([paperOf(id, 115)]).map(q => q.id)
+
+    expect(ids('math-b')).toHaveLength(13)
+    expect(ids('math-b')[0]).toBe('115-mathB-1')
+    expect(ids('social')).toHaveLength(54)
+    expect(ids('social')[0]).toBe('115-social-1')
+    expect(ids('science')).toHaveLength(48)
+    expect(ids('science')[0]).toBe('115-science-1')
   })
 })
 

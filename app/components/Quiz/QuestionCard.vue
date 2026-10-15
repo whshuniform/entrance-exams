@@ -20,6 +20,18 @@
       <QuizBlocks :blocks="props.question.lead.blocks" name="lead" :field-id="fieldId" :ranges-of="rangesOf" />
     </div>
 
+    <!-- 題組文章印在前一頁：不用翻回去，點了跳出文章 -->
+    <div v-if="props.leadElsewhere && props.question.lead" :class="$style['question-card__lead-bar']">
+      <Button
+        data-test="open-lead"
+        label="看題組文章"
+        size="small"
+        severity="secondary"
+        text
+        @click="emit('open-lead')"
+      />
+    </div>
+
     <!-- 原卷截圖：題組文章、圖表、題目和選項都在圖裡 -->
     <div v-if="props.question.images?.length" :class="$style['question-card__figure']">
       <img
@@ -201,6 +213,8 @@ interface Props {
   scoring?: 'points' | 'accuracy'
   /** 題組文章印在這題前面 */
   showLead?: boolean
+  /** 題組文章印在別頁：顯示「看題組文章」按鈕 */
+  leadElsewhere?: boolean
   /** 官方選項比例，交卷後顯示 */
   stats?: ItemStats
   /** 題組文章裡每個空格（題號）目前的作答；有給才能點題號跳出選項 */
@@ -220,6 +234,7 @@ const props = withDefaults(defineProps<Props>(), {
   ink: () => [],
   scoring: 'points',
   showLead: false,
+  leadElsewhere: false,
   stats: undefined,
   slotAnswers: undefined,
   compact: false,
@@ -232,6 +247,7 @@ const emit = defineEmits<{
   (e: 'erase', fieldId: string, range: TextRange): void
   (e: 'update:ink', value: InkStroke[]): void
   (e: 'open-slot', number: number): void
+  (e: 'open-lead'): void
 }>()
 
 provideQuizSlots({
@@ -421,6 +437,13 @@ function pickMulti(values: string[]) {
   }
 
   // 題組文章和題目之間留一條虛線
+  &__lead-bar {
+    margin: -0.5rem 0 0.25rem;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &__lead {
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
