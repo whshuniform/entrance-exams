@@ -405,6 +405,13 @@ describe('QuestionCard', () => {
       expect(wrapper.find('[data-test="option-B"] input').attributes('disabled')).toBeUndefined()
     })
 
+    it('QuestionCard_Revealed_ShouldHideScratchPaper', async () => {
+      // 直接看答案不用計算
+      const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', revealed: true } })
+
+      expect(wrapper.find('[data-test="scratch-toggle"]').exists()).toBe(false)
+    })
+
     it('QuestionCard_Compact_ShouldHideScratchPaper', async () => {
       const wrapper = await mountSuspended(QuestionCard, { props: { question: cloze, modelValue: '', compact: true } })
 
