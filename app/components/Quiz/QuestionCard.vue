@@ -156,7 +156,8 @@
       />
 
       <!-- 計算紙按鈕在所有選項下面；紙本身用整張卡片的寬度 -->
-      <div v-if="!props.compact" :class="$style['question-card__scratch-bar']">
+      <!-- 跳出視窗、直接看答案不用計算紙 -->
+      <div v-if="!props.compact && !props.revealed" :class="$style['question-card__scratch-bar']">
         <Button
           data-test="scratch-toggle"
           :label="showScratch ? '收起計算紙' : '計算紙'"

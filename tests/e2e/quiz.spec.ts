@@ -101,12 +101,26 @@ test.describe('直接看答案', () => {
 
     await expect(page).toHaveURL(/reveal=1/)
     await expect(quiz.timer).toHaveCount(0)
-    await quiz.next()
     await expect(quiz.option('115-chinese-1', 'C')).toHaveAttribute('data-state', 'answer')
     await expect(quiz.question('115-chinese-1').getByTestId('stats-summary')).toHaveText('全體考生 14% 答對')
     await expect(quiz.question('115-chinese-1').getByTestId('question-score')).toHaveCount(0)
     await expect(quiz.option('115-chinese-1', 'A').locator('input')).toBeDisabled()
     await quiz.questionIds()
     await expect(quiz.submitButton).toHaveCount(0)
+  })
+
+  test('直接看答案_不出現開頭說明_繪圖工具_計算紙', async ({ page }) => {
+    // YZ：只是看答案，不需要作答用的說明和工具
+    const quiz = new QuizPage(page)
+    await page.goto('/quiz?exam=gsat&subject=chinese&mode=full&years=115&reveal=1')
+
+    // 一進來就是第 1 頁的題目
+    await expect(quiz.question('115-chinese-1')).toBeVisible()
+    await expect(page.getByTestId('guide-sheet')).toHaveCount(0)
+    await expect(page.getByTestId('quiz-intro')).toHaveCount(0)
+    for (const name of ['off', 'highlighter', 'pen', 'eraser'] as const) await expect(quiz.tool(name)).toHaveCount(0)
+    await expect(quiz.toolbarToggle).toHaveCount(0)
+    await expect(page.getByTestId('scratch-toggle')).toHaveCount(0)
+    await expect(quiz.prevButton).toBeDisabled()
   })
 })

@@ -11,7 +11,7 @@
     :class="[
       'container',
       $style['quiz-page'],
-      !toolsVisible && $style['quiz-page--full'],
+      (revealed || !toolsVisible) && $style['quiz-page--full'],
       totalSeconds > 0 && $style['quiz-page--timed'],
     ]"
   >
@@ -150,7 +150,8 @@
       </div>
     </Dialog>
 
-    <QuizDrawToolbar v-model="tool" v-model:visible="toolsVisible" />
+    <!-- 直接看答案不作答，不出現繪圖工具 -->
+    <QuizDrawToolbar v-if="!revealed" v-model="tool" v-model:visible="toolsVisible" />
   </main>
 </template>
 
@@ -208,7 +209,8 @@ const revealed = quiz?.config.reveal === true
 const scratchOpen = ref<Record<string, boolean>>({})
 
 // 第 0 頁是作答注意事項，接著是試題頁（跟原卷同一頁的題目排在一起），交卷後多一頁成績單
-const GUIDE_PAGES = 1
+// 直接看答案不作答，不需要作答注意事項，一進來就是第 1 頁
+const GUIDE_PAGES = revealed ? 0 : 1
 const resultPage = GUIDE_PAGES + sheets.length
 const pageCount = computed(() => resultPage + (submitted.value ? 1 : 0))
 const { index, direction, isFirst, isLast, goTo, next, prev } = usePaging(() => pageCount.value)
