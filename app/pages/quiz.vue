@@ -62,6 +62,7 @@
               :question="item.question"
               :model-value="answers[item.question.id] ?? ''"
               :submitted="submitted"
+              :revealed="revealed"
               :result="results[item.question.id]"
               :highlights="highlights"
               :tool="tool"
@@ -100,8 +101,9 @@
         :label="nextLabel"
         @click="flip(next)"
       />
-      <Button v-else-if="!submitted" label="交卷批改" @click="onSubmit" />
-      <Button v-else label="重新作答" severity="secondary" @click="onReset" />
+      <!-- 直接看答案不作答，沒有交卷 -->
+      <Button v-else-if="!submitted && !revealed" label="交卷批改" @click="onSubmit" />
+      <Button v-else-if="submitted" label="重新作答" severity="secondary" @click="onReset" />
     </nav>
 
     <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
@@ -120,6 +122,7 @@
           :question="slotQuestion"
           :model-value="answers[slotQuestion.id] ?? ''"
           :submitted="submitted"
+          :revealed="revealed"
           :result="results[slotQuestion.id]"
           :highlights="highlights"
           :scoring="isRandom ? 'accuracy' : 'points'"
@@ -155,7 +158,8 @@ const subtitle = computed(() => {
   const range = config.curriculum ? `${config.curriculum}（${formatYears(config.years)} 年）` : `${formatYears(config.years)} 學年度`
   const mode = isRandom ? `隨機抽 ${questions.length} 題` : `整份考卷・選擇題 ${questions.length} 題`
   const limit = config.minutes > 0 ? `・限時 ${config.minutes} 分鐘` : ''
-  return `${range}・${first.subject}・${mode}${limit}`
+  const reveal = config.reveal ? '・直接看答案' : ''
+  return `${range}・${first.subject}・${mode}${limit}${reveal}`
 })
 
 /** header 標題：年度＋科目 */
@@ -182,6 +186,8 @@ const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 const tool = ref<DrawTool>('off')
 /** 工具列隱藏時，題目往右延伸變滿版 */
 const toolsVisible = ref(true)
+/** 首頁按「直接看答案」進來：每題圈出正解、列出大家怎麼選，不作答也不打分數 */
+const revealed = quiz?.config.reveal === true
 /** 每題計算紙開著與否，翻頁回來仍記得 */
 const scratchOpen = ref<Record<string, boolean>>({})
 
@@ -195,7 +201,7 @@ const currentSheet = computed(() => (isGuide.value ? undefined : sheets[index.va
 /** 這一頁的題目 id，以空白隔開 */
 const sheetKey = computed(() => currentSheet.value?.items.map(item => item.question.id).join(' ') ?? '')
 const nextLabel = computed(() => {
-  if (isGuide.value) return '開始作答'
+  if (isGuide.value) return revealed ? '開始看答案' : '開始作答'
   return submitted.value && index.value === resultPage - 1 ? '看成績' : '下一頁'
 })
 // 整份考卷看級分和名次；隨機抽題看答對率和答對題數
@@ -374,7 +380,12 @@ function onReset() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
+
+    // 手機上三顆按鈕排一列，字不折行
+    > * {
+      white-space: nowrap;
+    }
   }
 
   &__part {

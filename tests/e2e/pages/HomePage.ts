@@ -4,6 +4,8 @@ import { expect, type Locator, type Page } from '@playwright/test'
 export class HomePage {
   readonly heading: Locator
   readonly startButton: Locator
+  /** 開始測驗下面的「直接看答案」 */
+  readonly revealButton: Locator
   readonly countInput: Locator
   readonly timerSwitch: Locator
   readonly minutesInput: Locator
@@ -11,6 +13,7 @@ export class HomePage {
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { level: 1 })
     this.startButton = page.getByRole('button', { name: '開始測驗' })
+    this.revealButton = page.getByRole('button', { name: '直接看答案' })
     this.countInput = page.getByTestId('random-count').locator('input')
     this.timerSwitch = page.getByTestId('timer-switch')
     this.minutesInput = page.getByTestId('timer-minutes').locator('input')

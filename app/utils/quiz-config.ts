@@ -36,13 +36,14 @@ export function quizHeading(config: QuizConfig, subject: string) {
   return `${formatYears(config.years)}年 ${subject}`
 }
 
-/** 設定轉成作答頁網址的 query；依課綱時只帶課綱，整份考卷不帶題數，不計時不帶分鐘 */
+/** 設定轉成作答頁網址的 query；依課綱時只帶課綱，整份考卷不帶題數，不計時不帶分鐘，直接看答案帶 reveal 不帶分鐘 */
 export function toQuizQuery(config: QuizConfig): Record<string, string> {
   const query: Record<string, string> = { exam: config.exam, subject: config.subject, mode: config.mode }
   if (config.mode === 'random' && config.curriculum) query.curriculum = config.curriculum
   else query.years = config.years.join(',')
   if (config.mode === 'random') query.count = String(config.count)
-  if (config.minutes > 0) query.minutes = String(config.minutes)
+  if (config.reveal) query.reveal = '1'
+  else if (config.minutes > 0) query.minutes = String(config.minutes)
   return query
 }
 
@@ -92,11 +93,13 @@ export function parseQuizQuery(query: Record<string, unknown>, catalog: ExamKind
   const count = mode === 'random'
     ? Math.max(1, toInt(query.count) ?? DEFAULT_RANDOM_COUNT)
     : paperQuestions(papers).length
-  const minutes = clamp(toInt(query.minutes) ?? 0, 0, MAX_MINUTES)
+  const reveal = first(query.reveal) === '1'
+  // 直接看答案不計時
+  const minutes = reveal ? 0 : clamp(toInt(query.minutes) ?? 0, 0, MAX_MINUTES)
   const years = papers.map(paper => paper.year)
 
   return {
-    config: { exam: exam.id, subject: papers[0]!.id, mode, years, ...(curriculum ? { curriculum } : {}), count, minutes },
+    config: { exam: exam.id, subject: papers[0]!.id, mode, years, ...(curriculum ? { curriculum } : {}), count, minutes, ...(reveal ? { reveal } : {}) },
     exam,
     papers,
   }

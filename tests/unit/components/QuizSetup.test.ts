@@ -122,4 +122,17 @@ describe('QuizSetup', () => {
       { exam: 'gsat', subject: 'english', mode: 'random', curriculum: '99課綱', years: [109, 110], count: 5, minutes: 0 },
     ])
   })
+
+  it('QuizSetup_ClickRevealUnderStart_ShouldEmitRevealConfigWithoutTimer', async () => {
+    const wrapper = await mountSuspended(QuizSetup, { props })
+    await wrapper.find('[data-test="timer-switch"] input').setValue(true)
+
+    const buttons = wrapper.findAll('button').map(button => button.attributes('data-test'))
+    expect(buttons.slice(-2)).toEqual(['start-quiz', 'start-reveal'])
+    await wrapper.find('[data-test="start-reveal"]').trigger('click')
+
+    expect(wrapper.emitted('start')?.at(-1)).toEqual([
+      { exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 33, minutes: 0, reveal: true },
+    ])
+  })
 })

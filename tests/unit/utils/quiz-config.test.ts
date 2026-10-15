@@ -96,9 +96,30 @@ describe('toQuizQuery', () => {
       exam: 'gsat', subject: 'chinese', mode: 'random', curriculum: '108課綱', count: '5',
     })
   })
+
+  it('toQuizQuery_Reveal_ShouldAddRevealAndDropMinutes', () => {
+    const config: QuizConfig = { exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 33, minutes: 90, reveal: true }
+
+    expect(toQuizQuery(config)).toEqual({ exam: 'gsat', subject: 'chinese', mode: 'full', years: '115', reveal: '1' })
+  })
 })
 
 describe('parseQuizQuery', () => {
+  it('parseQuizQuery_Reveal_RoundTrip_ShouldKeepRevealAndNeverTime', () => {
+    const query = { ...toQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'full', years: [115], count: 33, minutes: 0, reveal: true }), minutes: '30' }
+
+    const quiz = parseQuizQuery(query, examCatalog)
+
+    expect(quiz?.config.reveal).toBe(true)
+    expect(quiz?.config.minutes).toBe(0)
+  })
+
+  it('parseQuizQuery_NoReveal_ShouldLeaveRevealOut', () => {
+    const quiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'full', years: '115' }, examCatalog)
+
+    expect(quiz?.config).not.toHaveProperty('reveal')
+  })
+
   it('parseQuizQuery_RandomByYears_RoundTrip_ShouldFindThosePapersOldestFirst', () => {
     const config: QuizConfig = {
       exam: 'gsat', subject: 'chinese', mode: 'random', years: [111, 112, 115], count: 5, minutes: 10,
