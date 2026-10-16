@@ -14,7 +14,10 @@ describe('TodayWords', () => {
     const rows = wrapper.findAll('[data-test="vocab-word"]')
     expect(rows).toHaveLength(2)
     expect(rows[1]!.text()).toContain('accomplish(ment)')
-    expect(rows[1]!.find('[data-test="vocab-meaning"]').text()).toBe('v. 完成；n. 成就')
+    const meaning = rows[1]!.find('[data-test="vocab-meaning"]')
+    expect(meaning.findAll('[data-test="vocab-pos"]').map(tag => tag.text())).toEqual(['v.', 'n.'])
+    expect(meaning.findAll('[data-test="vocab-pos"]').map(tag => tag.attributes('data-pos'))).toEqual(['v', 'n'])
+    expect(meaning.findAll('[data-test="vocab-zh"]').map(text => text.text())).toEqual(['完成', '成就'])
     expect(rows[1]!.text()).toContain('第 4 級')
     expect(rows[1]!.find('a').attributes('href')).toContain('/accomplish')
     expect(rows[1]!.find('a').attributes('target')).toBe('_blank')
@@ -57,6 +60,8 @@ describe('TodayWords', () => {
   it('TodayWords_NoMeaning_ShouldShowPos', async () => {
     const wrapper = await mountSuspended(TodayWords, { props: { words: [{ word: 'zoo', pos: 'n.' }], learned: {} } })
 
-    expect(wrapper.find('[data-test="vocab-word"]').text()).toContain('n.')
+    const tag = wrapper.find('[data-test="vocab-word"] [data-test="vocab-pos"]')
+    expect(tag.text()).toBe('n.')
+    expect(tag.attributes('data-pos')).toBe('n')
   })
 })

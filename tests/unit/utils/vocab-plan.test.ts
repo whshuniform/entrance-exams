@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
-  addDays, daysBetween, dictionaryUrl, formatDay, levelRange, lookupWord, orderWords, planSchedule, planToday, studyDaysLeft, toDateKey,
+  addDays, daysBetween, dictionaryUrl, formatDay, levelRange, lookupWord, meaningParts, orderWords, planSchedule, planToday, studyDaysLeft, toDateKey,
 } from '~/utils/vocab-plan'
 import type { VocabWord } from '~/types/vocab'
 
@@ -150,5 +150,26 @@ describe('vocab-plan 顯示', () => {
     expect(levelRange([word('a', 2), word('b', 2)])).toBe('第 2 級')
     expect(levelRange([word('a', 1), word('b', 3)])).toBe('第 1–3 級')
     expect(levelRange([word('a')])).toBe('')
+  })
+
+  it('meaningParts_SeveralPos_ShouldPairEachPosWithItsMeaning', () => {
+    expect(meaningParts({ word: 'alarm', pos: 'n./v.', zh: 'n. 警報；鬧鐘；v. 使驚慌' })).toEqual([
+      { pos: ['n'], text: '警報；鬧鐘' },
+      { pos: ['v'], text: '使驚慌' },
+    ])
+  })
+
+  it('meaningParts_NoPosInMeaning_ShouldUseListPos', () => {
+    expect(meaningParts({ word: 'he', pos: 'pron.', zh: '他' })).toEqual([{ pos: ['pron'], text: '他' }])
+    expect(meaningParts({ word: 'accomplish(ment)', pos: 'v./(n.)', zh: '完成' })).toEqual([{ pos: ['v', 'n'], text: '完成' }])
+  })
+
+  it('meaningParts_NoPosAnywhere_ShouldKeepMeaningWithoutTag', () => {
+    expect(meaningParts({ word: 'a few', zh: '一些；幾個' })).toEqual([{ pos: [], text: '一些；幾個' }])
+  })
+
+  it('meaningParts_NoMeaning_ShouldStillShowPos', () => {
+    expect(meaningParts({ word: 'zoo', pos: 'n.' })).toEqual([{ pos: ['n'], text: '' }])
+    expect(meaningParts({ word: 'zoo' })).toEqual([])
   })
 })

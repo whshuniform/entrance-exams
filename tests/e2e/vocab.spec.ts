@@ -125,6 +125,24 @@ test.describe('必背單字每日規劃', () => {
     }
   })
 
+  test('詞性是彩色標籤_同詞性同色不同詞性不同色_中文另一種顏色', async ({ page }) => {
+    const vocab = new VocabPage(page)
+    await vocab.goto()
+
+    const tags = await page.getByTestId('vocab-pos').evaluateAll(nodes =>
+      nodes.map(node => ({ pos: node.getAttribute('data-pos'), color: getComputedStyle(node).color })))
+    const colorOf = new Map<string, Set<string>>()
+    for (const tag of tags) colorOf.set(tag.pos!, (colorOf.get(tag.pos!) ?? new Set()).add(tag.color))
+
+    expect(colorOf.size).toBeGreaterThan(2)
+    for (const colors of colorOf.values()) expect(colors.size).toBe(1)
+    expect(new Set([...colorOf.values()].map(colors => [...colors][0])).size).toBe(colorOf.size)
+
+    const wordColor = await vocab.words.first().locator('label > span').first().evaluate(node => getComputedStyle(node).color)
+    const zhColor = await page.getByTestId('vocab-zh').first().evaluate(node => getComputedStyle(node).color)
+    expect(zhColor).not.toBe(wordColor)
+  })
+
   test('考試日已過_提醒改日期且沒有今天的字', async ({ page }) => {
     const vocab = new VocabPage(page)
     await vocab.goto('2027-01-23T09:00:00')
