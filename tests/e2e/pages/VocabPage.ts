@@ -5,12 +5,15 @@ export class VocabPage {
   readonly words: Locator
   readonly days: Locator
   readonly dateInput: Locator
+  /** 這一頁在背哪個考試的單字（從考試頁帶進來，不用再選） */
+  readonly examName: Locator
 
   constructor(private readonly page: Page) {
     this.summary = page.getByTestId('vocab-summary')
     this.words = page.getByTestId('vocab-word')
     this.days = page.getByTestId('vocab-day')
     this.dateInput = page.getByTestId('vocab-exam-date').locator('input')
+    this.examName = page.getByTestId('vocab-exam-name')
   }
 
   /** 固定「今天」是哪一天，再打開單字頁 */
@@ -18,10 +21,6 @@ export class VocabPage {
     await this.page.clock.setFixedTime(new Date(today))
     await this.page.goto(`/vocab${query}`)
     await expect(this.page.getByTestId('vocab-page')).toHaveAttribute('data-ready', 'true')
-  }
-
-  exam(id: 'gsat' | 'cap') {
-    return this.page.getByTestId(`vocab-exam-${id}`)
   }
 
   level(level: number) {

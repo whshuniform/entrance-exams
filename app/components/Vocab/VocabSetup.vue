@@ -2,34 +2,7 @@
   <div :class="$style['vocab-setup']">
     <fieldset :class="$style['vocab-setup__step']">
       <legend :class="$style['vocab-setup__legend']">
-        <span :class="$style['vocab-setup__number']">1</span>選考試
-      </legend>
-      <div :class="$style['vocab-setup__choices']">
-        <label
-          v-for="exam in exams"
-          :key="exam.id"
-          :data-test="`vocab-exam-${exam.id}`"
-          :for="`${uid}-exam-${exam.id}`"
-          :class="[$style['vocab-setup__choice'], examId === exam.id && $style['vocab-setup__choice--checked']]"
-        >
-          <RadioButton
-            :model-value="examId"
-            :input-id="`${uid}-exam-${exam.id}`"
-            name="vocab-exam"
-            :value="exam.id"
-            @update:model-value="emit('update:examId', $event)"
-          />
-          <span :class="$style['vocab-setup__text']">
-            <strong>{{ exam.name }}</strong>
-            <small :class="$style['vocab-setup__sub']">{{ exam.words.length.toLocaleString('en-US') }} 字</small>
-          </span>
-        </label>
-      </div>
-    </fieldset>
-
-    <fieldset :class="$style['vocab-setup__step']">
-      <legend :class="$style['vocab-setup__legend']">
-        <span :class="$style['vocab-setup__number']">2</span>考試日期
+        <span :class="$style['vocab-setup__number']">1</span>考試日期
       </legend>
       <div data-test="vocab-exam-date" :class="$style['vocab-setup__date']">
         <DatePicker
@@ -46,13 +19,13 @@
       </div>
     </fieldset>
 
-    <fieldset v-if="currentExam?.levels.length" :class="$style['vocab-setup__step']">
+    <fieldset v-if="exam.levels.length" :class="$style['vocab-setup__step']">
       <legend :class="$style['vocab-setup__legend']">
-        <span :class="$style['vocab-setup__number']">3</span>要背的級別
+        <span :class="$style['vocab-setup__number']">2</span>要背的級別
       </legend>
       <div :class="$style['vocab-setup__levels']">
         <label
-          v-for="level in currentExam.levels"
+          v-for="level in exam.levels"
           :key="level"
           :data-test="`vocab-level-${level}`"
           :for="`${uid}-level-${level}`"
@@ -74,24 +47,22 @@
 </template>
 
 <script setup lang="ts">
-import type { VocabExam, VocabExamId } from '~/types/vocab'
+import type { VocabExam } from '~/types/vocab'
 
 const props = defineProps<{
-  exams: VocabExam[]
-  examId: VocabExamId
+  /** 從考試頁帶進來的考試，這裡不再讓人選 */
+  exam: VocabExam
   /** YYYY-MM-DD */
   examDate: string
   levels: number[]
 }>()
 
 const emit = defineEmits<{
-  'update:examId': [id: VocabExamId]
   'update:examDate': [date: string]
   'update:levels': [levels: number[]]
 }>()
 
 const uid = useId()
-const currentExam = computed(() => props.exams.find(exam => exam.id === props.examId))
 
 const dateValue = computed(() => {
   const [year, month, day] = props.examDate.split('-').map(Number)
@@ -109,8 +80,6 @@ function onDate(value: unknown) {
 </script>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
-
 .vocab-setup {
   &__step {
     min-width: 0;
@@ -140,40 +109,6 @@ function onDate(value: unknown) {
     border-radius: 52% 48% 55% 45% / 47% 55% 45% 53%;
     font-size: 1rem;
     color: var(--color-pen-red);
-  }
-
-  &__choices {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    gap: 0.75rem;
-  }
-
-  &__choice {
-    min-height: 3.5rem;
-    padding: 0.6rem 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    border: 1.5px solid var(--color-ink);
-    border-radius: var(--radius-sketch-alt);
-    background: var(--color-paper);
-    cursor: pointer;
-
-    &--checked {
-      background: linear-gradient(transparent 55%, var(--color-marker) 55%, var(--color-marker) 90%, transparent 90%), var(--color-card);
-      box-shadow: 2px 3px 0 var(--color-ink);
-    }
-  }
-
-  &__text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.4;
-  }
-
-  &__sub {
-    font-size: 0.85rem;
-    color: var(--color-ink-soft);
   }
 
   &__date {
@@ -212,13 +147,6 @@ function onDate(value: unknown) {
     margin: 0.4rem 0 0;
     font-size: 0.85rem;
     color: var(--color-pencil);
-  }
-
-  @include respond-to('xs') {
-    &__choices {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
   }
 }
 </style>
