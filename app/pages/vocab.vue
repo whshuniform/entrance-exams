@@ -6,11 +6,13 @@
     </p>
 
     <section :class="$style['vocab-page__card']">
+      <p data-test="vocab-exam-name" :class="$style['vocab-page__exam']">
+        <strong :class="$style['vocab-page__exam-name']">{{ examKind.name }}</strong>必背單字，共 {{ exam.words.length.toLocaleString('en-US') }} 字
+      </p>
       <VocabSetup
-        v-model:exam-id="examId"
         v-model:exam-date="examDate"
         v-model:levels="levels"
-        :exams="vocabExams"
+        :exam="exam"
       />
 
       <div data-test="vocab-summary" :class="$style['vocab-page__summary']">
@@ -116,6 +118,17 @@ function onReset() {
     margin: 0 0 1.5rem;
     line-height: 1.6;
     color: var(--color-ink-soft);
+  }
+
+  &__exam {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+  }
+
+  &__exam-name {
+    margin-right: 0.25em;
+    padding: 0 0.2em;
+    background: linear-gradient(transparent 55%, var(--color-marker) 55%, var(--color-marker) 90%, transparent 90%);
   }
 
   &__card {
