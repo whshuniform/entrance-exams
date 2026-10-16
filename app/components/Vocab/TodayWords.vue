@@ -18,7 +18,6 @@
         />
         <label :for="`${uid}-${item.word}`" :class="$style['today-words__label']">
           <span :class="$style['today-words__word']">{{ item.word }}</span>
-          <small v-if="item.pos && !item.zh" :class="$style['today-words__pos']">{{ item.pos }}</small>
           <small v-if="item.level" :class="$style['today-words__level']">第 {{ item.level }} 級</small>
         </label>
         <a
@@ -27,15 +26,26 @@
           rel="noopener"
           :class="$style['today-words__lookup']"
         >查字典</a>
-        <template v-if="item.zh">
+        <template v-if="meaningParts(item).length">
           <button
-            v-if="hideMeaning && !revealed.includes(item.word)"
+            v-if="item.zh && hideMeaning && !revealed.includes(item.word)"
             type="button"
             data-test="vocab-reveal"
             :class="$style['today-words__reveal']"
             @click="revealed.push(item.word)"
           >看中文</button>
-          <span v-else data-test="vocab-meaning" :class="$style['today-words__meaning']">{{ item.zh }}</span>
+          <span v-else data-test="vocab-meaning" :class="$style['today-words__meaning']">
+            <span v-for="(part, i) in meaningParts(item)" :key="i" :class="$style['today-words__part']">
+              <small
+                v-for="pos in part.pos"
+                :key="pos"
+                data-test="vocab-pos"
+                :data-pos="pos"
+                :class="[$style['today-words__pos'], $style[`today-words__pos--${pos}`]]"
+              >{{ pos }}.</small>
+              <span v-if="part.text" data-test="vocab-zh" :class="$style['today-words__zh']">{{ part.text }}</span>
+            </span>
+          </span>
         </template>
       </li>
     </ul>
@@ -118,9 +128,27 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
     text-decoration: line-through 2px var(--color-pen-red);
   }
 
+  // 詞性像一張小貼紙，每種詞性一個顏色
   &__pos {
-    font-style: italic;
-    color: var(--color-ink-soft);
+    // 沒列到的詞性用灰色
+    --pos-color: var(--color-pen-gray);
+
+    margin-right: 0.3rem;
+    padding: 0 0.45em;
+    display: inline-block;
+    border: 1.5px solid var(--pos-color);
+    border-radius: var(--radius-sketch-alt);
+    background: color-mix(in srgb, var(--pos-color) 12%, var(--color-card));
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--pos-color);
+
+    @each $pos in n, v, adj, adv, prep, pron, conj, aux, art {
+      &--#{$pos} {
+        --pos-color: var(--color-pos-#{$pos});
+      }
+    }
   }
 
   &__level {
@@ -135,9 +163,24 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
   }
 
   &__meaning {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.75rem;
     font-size: 0.95rem;
     line-height: 1.5;
-    color: var(--color-ink-soft);
+  }
+
+  &__part {
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+  &__zh {
+    color: var(--color-meaning);
+  }
+
+  &__row--learned &__zh {
+    color: var(--color-pencil);
   }
 
   // 遮住的中文：像貼了一張便利貼，點了才撕開

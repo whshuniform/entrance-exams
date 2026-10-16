@@ -106,3 +106,31 @@ export function levelRange(words: VocabWord[]) {
   const high = Math.max(...levels)
   return low === high ? `第 ${low} 級` : `第 ${low}–${high} 級`
 }
+
+/** 中文意思的一段：詞性標籤（不含句點，例如 n、v）和這個詞性的中文 */
+export interface MeaningPart {
+  pos: string[]
+  text: string
+}
+
+/** 「n. 警報；鬧鐘；v. 使驚慌」裡每個詞性開頭的位置 */
+const POS_IN_MEANING = /(?:^|；)\s*([a-z]+)\.\s+/g
+
+/** 字表的詞性欄 "v./(n.)" → ['v', 'n'] */
+function listPos(pos?: string) {
+  return pos ? pos.split('/').map(item => item.replace(/[().\s]/g, '')).filter(Boolean) : []
+}
+
+/** 把中文意思拆成「詞性＋中文」幾段；中文裡沒寫詞性時用字表的詞性 */
+export function meaningParts(item: VocabWord): MeaningPart[] {
+  const zh = item.zh ?? ''
+  const marks = [...zh.matchAll(POS_IN_MEANING)]
+  if (!marks.length || marks[0]!.index !== 0) {
+    const pos = listPos(item.pos)
+    return zh || pos.length ? [{ pos, text: zh }] : []
+  }
+  return marks.map((mark, i) => ({
+    pos: [mark[1]!],
+    text: zh.slice(mark.index! + mark[0].length, marks[i + 1]?.index ?? zh.length),
+  }))
+}
