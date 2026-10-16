@@ -24,7 +24,7 @@ describe('exam-menu', () => {
   })
 
   it('examActivities_ExamWithoutPapers_ShouldMarkQuizComing', () => {
-    expect(examActivities(exam('cap'), { hasVocabPage: true })).toEqual([
+    expect(examActivities({ ...exam('cap'), papers: [] }, { hasVocabPage: true })).toEqual([
       { id: 'quiz', title: '作試題', hint: '準備中' },
       { id: 'vocab', title: '背單字', hint: '課綱基本 1,200 字，排每天要背的字', to: '/vocab?exam=cap' },
     ])
@@ -34,11 +34,11 @@ describe('exam-menu', () => {
     expect(examActivities(exam('ast'), { hasVocabPage: true }).map(item => item.id)).toEqual(['quiz'])
   })
 
-  it('examMenu_WithoutVocabPage_ShouldLinkOnlyExamsThatHaveSomethingToDo', () => {
+  it('examMenu_AllExamsHavePapers_ShouldLinkEveryExam', () => {
     expect(examMenu(examCatalog, { hasVocabPage: false })).toEqual([
       { id: 'gsat', title: '大學學測', hint: '大學學科能力測驗', to: '/gsat' },
-      { id: 'ast', title: '分科測驗', hint: '準備中' },
-      { id: 'cap', title: '國中會考', hint: '準備中' },
+      { id: 'ast', title: '分科測驗', hint: '大學分科測驗', to: '/ast' },
+      { id: 'cap', title: '國中會考', hint: '國中教育會考', to: '/cap' },
     ])
   })
 

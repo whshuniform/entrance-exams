@@ -2,9 +2,8 @@ import type { GradeResult, LevelStats, NumberRange, QuizPaper, RankRange, Subjec
 
 const round2 = (value: number) => Math.round(value * 100) / 100
 
-/** 原始得分 → 級分（依該年官方級分表；0 分為 0 級分） */
+/** 原始得分 → 級分（依該年官方級分表；學測、分科 0 分為 0 級分，會考 0 題仍是 C） */
 export function toLevel(stats: LevelStats, raw: number): number {
-  if (raw <= 0) return 0
   return stats.levels.find(({ above }) => raw > above)?.level ?? 0
 }
 
@@ -33,6 +32,11 @@ export function buildReport(paper: QuizPaper, results: Record<string, GradeResul
   const sampleMax = questions.reduce((sum, q) => sum + q.points, 0)
   const scores = scoreRange(earned, sampleMax, paper.fullMarks)
   const levelRange = { min: toLevel(paper.stats, scores.min), max: toLevel(paper.stats, scores.max) }
+  const rank = rankBetween(paper.stats, levelRange.min, levelRange.max)
+  const labelOf = (level: number) => paper.stats.levels.find(row => row.level === level)?.label
+  const labels = { min: labelOf(levelRange.min), max: labelOf(levelRange.max) }
+  // 會考：「這個標示以上的人占幾 %」，最好情況取最高標示、最差取最低標示
+  const percentAtOrAbove = (level: number) => round2(rankRange(paper.stats, level).worst / rank.total * 100)
   return {
     subject: paper.subject,
     year: paper.year,
@@ -41,6 +45,8 @@ export function buildReport(paper: QuizPaper, results: Record<string, GradeResul
     fullMarks: paper.fullMarks,
     scoreRange: scores,
     levelRange,
-    rank: rankBetween(paper.stats, levelRange.min, levelRange.max),
+    rank,
+    ...(labels.min && labels.max ? { labelRange: { min: labels.min, max: labels.max } } : {}),
+    ...(paper.stats.percentOnly ? { percentRange: { min: percentAtOrAbove(levelRange.max), max: percentAtOrAbove(levelRange.min) } } : {}),
   }
 }

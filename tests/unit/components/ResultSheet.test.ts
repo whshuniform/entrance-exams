@@ -26,6 +26,16 @@ describe('ResultSheet', () => {
     expect(row.find('[data-test="report-rank"]').text()).toContain('118,026')
   })
 
+  it('ResultSheet_CapReport_ShouldShowLabelsAndPercentInsteadOfLevelAndRank', async () => {
+    const capReport: SubjectReport = { ...report, subject: '國文', labelRange: { min: 'B+', max: 'A' }, percentRange: { min: 8.32, max: 56.4 } }
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [capReport] } })
+
+    expect(wrapper.find('[data-test="report-level"]').text()).toBe('B+～A')
+    expect(wrapper.find('[data-test="report-rank"]').text()).toContain('約前 8.32%～56.4%')
+    expect(wrapper.find('[data-test="report-rank"]').text()).not.toContain('名')
+    expect(wrapper.text()).toContain('心測中心')
+  })
+
   it('ResultSheet_SameLevelAtBothEnds_ShouldShowOneLevel', async () => {
     const exact = { ...report, levelRange: { min: 12, max: 12 } }
     const wrapper = await mountSuspended(ResultSheet, { props: { reports: [exact] } })

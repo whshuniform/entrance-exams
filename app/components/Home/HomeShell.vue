@@ -5,18 +5,20 @@
 
     <slot />
 
-    <p :class="$style['home-shell__source']">試題與答案來源：大學入學考試中心</p>
+    <p :class="$style['home-shell__source']">試題與答案來源：{{ source }}</p>
   </main>
 </template>
 
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
   /** 顯示在固定 header 中間的標題 */
   title: string
   subtitle?: string
   /** header 左邊的返回鍵，例如返回首頁 */
   back?: { to: string, label: string }
-}>()
+  /** 頁尾的出題單位；首頁列所有考試的出題單位 */
+  source?: string
+}>(), { subtitle: undefined, back: undefined, source: '大學入學考試中心、國家教育研究院心理與教育測驗研究發展中心' })
 </script>
 
 <style module lang="scss">

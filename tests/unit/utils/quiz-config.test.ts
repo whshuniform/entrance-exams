@@ -175,7 +175,7 @@ describe('parseQuizQuery', () => {
     const base = { exam: 'gsat', subject: 'chinese', mode: 'full', years: '115' }
 
     expect(parseQuizQuery({ ...base, exam: 'nope' }, examCatalog)).toBeNull()
-    expect(parseQuizQuery({ ...base, exam: 'cap' }, examCatalog)).toBeNull()
+    expect(parseQuizQuery({ ...base, exam: 'ast' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '99' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, subject: 'physics' }, examCatalog)).toBeNull()

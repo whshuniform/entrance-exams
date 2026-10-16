@@ -13,8 +13,19 @@ describe('examCatalog', () => {
     ])
   })
 
-  it('Catalog_ForNow_OnlyGsatHasPapers', () => {
-    expect(examCatalog.map(exam => exam.papers.length > 0)).toEqual([true, false, false])
+  it('Catalog_Source_ShouldNameWhoWroteTheExam', () => {
+    // 學測、分科是大考中心出題；會考是國家教育研究院心理與教育測驗研究發展中心（心測中心）
+    expect(examCatalog.map(exam => exam.source)).toEqual(['大學入學考試中心', '大學入學考試中心', '國家教育研究院心理與教育測驗研究發展中心'])
+  })
+
+  it('Catalog_EveryExam_ShouldHavePapers', () => {
+    expect(examCatalog.map(exam => exam.papers.length > 0)).toEqual([true, true, true])
+  })
+
+  it('Catalog_QuestionIds_ShouldBeUniqueAcrossExams', () => {
+    const ids = examCatalog.flatMap(exam => paperQuestions(exam.papers)).map(question => question.id)
+
+    expect(new Set(ids).size).toBe(ids.length)
   })
 
   it('Catalog_GsatPapers_ShouldCarryIdYearCurriculumAndExamTimeOfOriginalPaper', () => {

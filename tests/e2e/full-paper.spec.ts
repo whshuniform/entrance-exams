@@ -88,4 +88,24 @@ test.describe('完整考卷', () => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)
     expect(overflow).toBeLessThanOrEqual(0)
   })
+
+  test('分科物理_115整份考卷第一題是文字_交卷後有60級分與名次', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ exam: 'ast', subject: 'physics' })
+
+    await expect(quiz.stem('ast-115-physics-1')).toBeVisible()
+    await quiz.submit()
+    await expect(quiz.resultSheet).toContainText('級分')
+    await expect(quiz.resultSheet).toContainText('名')
+  })
+
+  test('會考國文_115整份考卷第一題是文字_交卷後看標示和約前幾%', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ exam: 'cap', subject: 'chinese' })
+
+    await expect(quiz.stem('cap-115-chinese-1')).toBeVisible()
+    await quiz.submit()
+    await expect(quiz.resultSheet.getByTestId('report-level')).toHaveText('C')
+    await expect(quiz.resultSheet.getByTestId('report-rank')).toContainText('約前')
+  })
 })

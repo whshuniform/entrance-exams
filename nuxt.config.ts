@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     '/vocab': { ssr: false },
   },
   nitro: {
-    prerender: { routes: ['/', '/gsat', '/gsat/practice', '/quiz', '/vocab'] },
+    prerender: { routes: ['/', '/gsat', '/gsat/practice', '/ast', '/ast/practice', '/cap', '/cap/practice', '/quiz', '/vocab'] },
   },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
