@@ -108,7 +108,7 @@
       <Button v-else-if="submitted" label="重新作答" severity="secondary" @click="onReset" />
     </nav>
 
-    <p :class="$style['quiz-page__source']">試題與答案來源：大學入學考試中心</p>
+    <p :class="$style['quiz-page__source']">試題與答案來源：{{ exam?.source ?? '大學入學考試中心' }}</p>
 
     <!-- 點文章裡的題號：跳出那一題的選項，不用捲到文章下面作答 -->
     <Dialog

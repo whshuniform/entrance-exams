@@ -15,6 +15,8 @@ interface FullQuestion {
 
 /** pdfcrop.py 輸出的整份考卷選擇題（/mnt/project-files/site-prototype/extract/pdfcrop.py） */
 export interface FullPaperData {
+  /** 分科（ast）、會考（cap）才有；學測沒有 */
+  exam?: string
   year: number
   id: string
   parts: { title: string, groups: { title: string, note: string, questions: FullQuestion[] }[] }[]
@@ -22,6 +24,7 @@ export interface FullPaperData {
 
 /** 轉成文字的一份考卷（/mnt/project-files/site-prototype/text/FORMAT.md；build_text.py 把圖裁好後放進 app/data/text/） */
 export interface TextPaperData {
+  exam?: string
   year: number
   id: string
   sets: { id: string, blocks: QuizBlock[] }[]
@@ -38,6 +41,9 @@ export interface TextPaperData {
 /** 題目 id 的科目段：數學A、數學B 沿用試作的「mathA」寫法 */
 const idPart = (id: string) => id.replace(/-(\w)/g, (_, letter: string) => letter.toUpperCase())
 
+/** 分科、會考的資料檔與題目 id 前面加考試代號，避免跟學測同年同科撞名；學測維持原本寫法 */
+const examPrefix = (exam?: string) => (exam && exam !== 'gsat' ? `${exam}-` : '')
+
 /**
  * 整份考卷：部分、題型、說明和題目照原卷；base 是同年同科已轉成文字的試卷（提供科目名稱、課綱、考試時間、級分表，
  * 以及已經校對過的文字題目），其餘題目用原卷截圖。
@@ -45,7 +51,8 @@ const idPart = (id: string) => id.replace(/-(\w)/g, (_, letter: string) => lette
 export function fullPaper(base: QuizPaper, data: FullPaperData, textData?: TextPaperData): QuizPaper {
   const textQuestions = new Map(base.parts.flatMap(part => part.groups.flatMap(group => group.questions)).map(q => [q.number, q]))
   // 同一題組的題目共用同一個文章物件
-  const leads = new Map((textData?.sets ?? []).map(set => [set.id, { id: `${data.year}-${data.id}-${set.id}`, blocks: set.blocks } satisfies QuizLead]))
+  const prefix = examPrefix(data.exam)
+  const leads = new Map((textData?.sets ?? []).map(set => [set.id, { id: `${prefix}${data.year}-${data.id}-${set.id}`, blocks: set.blocks } satisfies QuizLead]))
   const converted = new Map((textData?.questions ?? []).map(q => [q.number, q]))
   const toQuestion = (item: FullQuestion): QuizQuestion => {
     const full = converted.get(item.number)
@@ -53,7 +60,7 @@ export function fullPaper(base: QuizPaper, data: FullPaperData, textData?: TextP
       const keys = item.keys ?? textQuestions.get(item.number)?.options.map(option => option.key) ?? []
       const lead = full.set ? leads.get(full.set) : undefined
       return {
-        id: `${data.year}-${idPart(data.id)}-${item.number}`,
+        id: `${prefix}${data.year}-${idPart(data.id)}-${item.number}`,
         number: item.number,
         type: item.type === 'multi' ? 'multi' : 'single',
         stem: full.stem,
@@ -71,7 +78,7 @@ export function fullPaper(base: QuizPaper, data: FullPaperData, textData?: TextP
     const text = item.text ? textQuestions.get(item.number) : undefined
     if (text) return { ...text, pdfPage: item.pdfPage }
     return {
-      id: `${data.year}-${idPart(data.id)}-${item.number}`,
+      id: `${prefix}${data.year}-${idPart(data.id)}-${item.number}`,
       number: item.number,
       type: item.type === 'multi' ? 'multi' : 'single',
       stem: '',
@@ -95,19 +102,19 @@ export function fullPaper(base: QuizPaper, data: FullPaperData, textData?: TextP
 /** 有整份考卷資料的年度與科目（app/data/full/<年度>-<科目代號>.json），key 為「年度-科目代號」 */
 export const fullPaperData: Record<string, FullPaperData> = Object.fromEntries(
   Object.values(import.meta.glob<FullPaperData>('./full/*.json', { eager: true, import: 'default' }))
-    .map(data => [`${data.year}-${data.id}`, data]),
+    .map(data => [`${examPrefix(data.exam)}${data.year}-${data.id}`, data]),
 )
 
 /** 轉成文字的考卷（app/data/text/<年度>-<科目代號>.json），key 為「年度-科目代號」 */
 export const textPaperData: Record<string, TextPaperData> = Object.fromEntries(
   Object.values(import.meta.glob<TextPaperData>('./text/*.json', { eager: true, import: 'default' }))
-    .map(data => [`${data.year}-${data.id}`, data]),
+    .map(data => [`${examPrefix(data.exam)}${data.year}-${data.id}`, data]),
 )
 
-/** 有整份考卷資料就換成整份考卷（有轉成文字的用文字），沒有的維持原本的試作題目 */
-export function withFullPapers(papers: QuizPaper[]): QuizPaper[] {
+/** 有整份考卷資料就換成整份考卷（有轉成文字的用文字），沒有的維持原本的試作題目；exam 是考試代號（預設學測） */
+export function withFullPapers(papers: QuizPaper[], exam = 'gsat'): QuizPaper[] {
   return papers.map((paper) => {
-    const key = `${paper.year}-${paper.id}`
+    const key = `${examPrefix(exam)}${paper.year}-${paper.id}`
     const data = fullPaperData[key]
     return data ? fullPaper(paper, data, textPaperData[key]) : paper
   })

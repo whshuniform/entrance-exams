@@ -1,5 +1,5 @@
 <template>
-  <HomeShell :title="exam.name" :subtitle="`${exam.fullName}：要作試題還是背單字？`" :back="{ to: '/', label: '首頁' }">
+  <HomeShell :title="exam.name" :subtitle="`${exam.fullName}：要作試題還是背單字？`" :back="{ to: '/', label: '首頁' }" :source="exam.source">
     <HomeMenuLinks :items="items" />
   </HomeShell>
 </template>

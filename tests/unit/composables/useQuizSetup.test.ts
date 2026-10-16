@@ -17,7 +17,7 @@ describe('useQuizSetup', () => {
   })
 
   it('useQuizSetup_Exams_ShouldMarkExamsWithoutPapersUnavailable', () => {
-    const setup = useQuizSetup(examCatalog)
+    const setup = useQuizSetup(examCatalog.map(exam => (exam.id === 'gsat' ? exam : { ...exam, papers: [] })))
 
     expect(setup.exams.value.map(exam => [exam.id, exam.available])).toEqual([
       ['gsat', true], ['ast', false], ['cap', false],
@@ -25,7 +25,7 @@ describe('useQuizSetup', () => {
   })
 
   it('useQuizSetup_PickUnavailableExam_ShouldStayOnCurrentExam', () => {
-    const setup = useQuizSetup(examCatalog)
+    const setup = useQuizSetup(examCatalog.map(exam => (exam.id === 'cap' ? { ...exam, papers: [] } : exam)))
 
     setup.examId.value = 'cap'
 

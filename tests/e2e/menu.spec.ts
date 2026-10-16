@@ -3,17 +3,26 @@ import { MenuPage } from './pages/MenuPage'
 import { HomePage } from './pages/HomePage'
 
 test.describe('首頁選考試 → 考試頁選作試題或背單字', () => {
-  test('首頁_只列學測分科會考_還沒內容的標準備中不能點', async ({ page }) => {
+  test('首頁_列學測分科會考_三個都能點', async ({ page }) => {
     const menu = new MenuPage(page)
     await menu.goto()
 
-    // 會考有背單字可以點；分科還沒有內容
-    await expect(page.getByTestId('menu').getByRole('link')).toHaveCount(2)
+    await expect(page.getByTestId('menu').getByRole('link')).toHaveCount(3)
     await expect(menu.item('gsat')).toContainText('大學學測')
+    await expect(menu.item('ast')).toContainText('分科測驗')
     await expect(menu.item('cap')).toContainText('國中會考')
-    await expect(menu.item('ast')).toContainText('準備中')
-    await expect(menu.item('ast')).toHaveAttribute('aria-disabled', 'true')
     await expect(page.getByTestId('quiz-setup')).toHaveCount(0)
+  })
+
+  test('點分科測驗_作試題_科目有物理', async ({ page }) => {
+    const menu = new MenuPage(page)
+    await menu.goto()
+
+    await menu.item('ast').click()
+    await menu.item('quiz').click()
+
+    await expect(page).toHaveURL(/\/ast\/practice$/)
+    await expect(page.getByTestId('subject-physics')).toBeVisible()
   })
 
   test('首頁_header標題是考古題_沒有返回鍵_網頁標題是考古題', async ({ page }) => {

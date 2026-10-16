@@ -2,7 +2,9 @@ import { expect, type Locator, type Page } from '@playwright/test'
 
 /** 首頁選好的試卷：預設 115 學測國綜整份考卷、不計時 */
 export interface QuizOptions {
-  subject?: 'chinese' | 'english' | 'math-a' | 'math-b' | 'social' | 'science'
+  /** 考試代號，預設學測 */
+  exam?: 'gsat' | 'ast' | 'cap'
+  subject?: string
   mode?: 'full' | 'random'
   /** 整份考卷取第一個年度；隨機抽題可以多選 */
   years?: number[]
@@ -13,8 +15,8 @@ export interface QuizOptions {
 }
 
 /** 作答頁網址，跟首頁按「開始測驗」帶的參數一樣 */
-export function quizUrl({ subject = 'chinese', mode = 'full', years = [115], curriculum, count, minutes }: QuizOptions = {}) {
-  const query = new URLSearchParams({ exam: 'gsat', subject, mode })
+export function quizUrl({ exam = 'gsat', subject = 'chinese', mode = 'full', years = [115], curriculum, count, minutes }: QuizOptions = {}) {
+  const query = new URLSearchParams({ exam, subject, mode })
   if (curriculum) query.set('curriculum', curriculum)
   else query.set('years', years.join(','))
   if (count) query.set('count', String(count))

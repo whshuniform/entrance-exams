@@ -140,12 +140,14 @@ export interface QuizPart {
 
 /** 某年某科的級分換算表與各級分人數（大考中心統計資料） */
 export interface LevelStats {
-  /** 由 15 級分排到 1 級分；原始得分「大於」above 才達該級分 */
-  levels: { level: number, above: number }[]
+  /** 由 15 級分排到 1 級分（分科 60 級分；會考標示 A++ 為 7 到 C 為 1）；原始得分「大於」above 才達該級分 */
+  levels: { level: number, above: number, label?: string }[]
   /** 各級分人數 */
   counts: Record<number, number>
   /** 到考人數 */
   total: number
+  /** 官方不給名次、人數是用百分比推算（會考）：成績單只顯示約前幾 % */
+  percentOnly?: boolean
 }
 
 /** 全國名次區間：同級分的人無法再細分 */
@@ -215,6 +217,10 @@ export interface SubjectReport {
   levelRange: NumberRange
   /** 最好名次取最高級分、最差名次取最低級分 */
   rank: RankRange
+  /** 會考：標示範圍，例如 B+～A（取代級分） */
+  labelRange?: { min: string, max: string }
+  /** 會考：約前幾 %（取代名次），min 是最好 */
+  percentRange?: NumberRange
 }
 
 /** 考試項目：學測、分科、會考；還沒有題目的先顯示「準備中」 */
@@ -224,6 +230,8 @@ export interface ExamKind {
   name: string
   /** 正式名稱，例如「學科能力測驗」 */
   fullName: string
+  /** 出題單位，頁尾「試題與答案來源」 */
+  source: string
   papers: QuizPaper[]
   /** 有必背單字時，考試頁「背單字」卡片的說明；沒有就不出現背單字 */
   vocabHint?: string
