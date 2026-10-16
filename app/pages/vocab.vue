@@ -33,7 +33,7 @@
       </div>
     </section>
 
-    <section v-if="plan.words.length" :class="$style['vocab-page__section']">
+    <section v-if="plan.words.length" data-test="vocab-today" :class="[$style['vocab-page__card'], $style['vocab-page__section']]">
       <h2 :class="$style['vocab-page__heading']">
         今天要背的字
         <small :class="$style['vocab-page__count']">{{ plan.doneToday }} / {{ plan.words.length }}</small>
@@ -48,7 +48,7 @@
       <VocabTodayWords :words="plan.words" :learned="learned" :hide-meaning="hideMeaning" @toggle="toggle" />
     </section>
 
-    <section v-if="schedule.length" :class="$style['vocab-page__section']">
+    <section v-if="schedule.length" data-test="vocab-plan" :class="[$style['vocab-page__card'], $style['vocab-page__section']]">
       <h2 :class="$style['vocab-page__heading']">每天的進度</h2>
       <VocabPlanSchedule :days="schedule" />
     </section>
@@ -131,6 +131,7 @@ function onReset() {
     background: linear-gradient(transparent 55%, var(--color-marker) 55%, var(--color-marker) 90%, transparent 90%);
   }
 
+  // 白色卡片蓋住 body 的筆記本橫線，橫線才不會穿過單字
   &__card {
     padding: 1.25rem 1.5rem 1.5rem;
 
