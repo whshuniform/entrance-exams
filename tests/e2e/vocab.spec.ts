@@ -115,6 +115,16 @@ test.describe('必背單字每日規劃', () => {
     await expect(page).toHaveTitle('國中教育會考 背單字')
   })
 
+  test('今天的字和每天進度_放在白色卡片上_背景橫線不會穿過單字', async ({ page }) => {
+    const vocab = new VocabPage(page)
+    await vocab.goto()
+
+    // 卡片底色 --color-card #fffdf7，蓋住 body 的筆記本橫線
+    for (const id of ['vocab-today', 'vocab-plan']) {
+      await expect(page.getByTestId(id)).toHaveCSS('background-color', 'rgb(255, 253, 247)')
+    }
+  })
+
   test('考試日已過_提醒改日期且沒有今天的字', async ({ page }) => {
     const vocab = new VocabPage(page)
     await vocab.goto('2027-01-23T09:00:00')
