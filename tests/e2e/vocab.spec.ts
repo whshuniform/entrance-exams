@@ -30,7 +30,7 @@ test.describe('必背單字每日規劃', () => {
     const vocab = new VocabPage(page)
     await vocab.goto()
 
-    await expect(vocab.exam('gsat').locator('input')).toBeChecked()
+    await expect(vocab.examName).toContainText('大學學測')
     await expect(vocab.dateInput).toHaveValue('2027/01/22')
     await expect(vocab.summary).toContainText('還有 104 天')
     await expect(vocab.summary).toContainText('每天背 58 個字')
@@ -92,11 +92,9 @@ test.describe('必背單字每日規劃', () => {
     await expect(vocab.summary).toContainText('每天背 39 個字')
   })
 
-  test('換會考_用會考日期和基本字表_不分級', async ({ page }) => {
+  test('會考_用會考日期和基本字表_不分級', async ({ page }) => {
     const vocab = new VocabPage(page)
-    await vocab.goto()
-
-    await vocab.exam('cap').click()
+    await vocab.goto(undefined, '?exam=cap')
 
     await expect(vocab.dateInput).toHaveValue('2027/05/15')
     await expect(vocab.summary).toContainText('還有 217 天')
@@ -105,11 +103,13 @@ test.describe('必背單字每日規劃', () => {
     await expect(page.getByTestId('vocab-source')).toContainText('附錄五')
   })
 
-  test('從考試頁帶會考進來_直接選好會考', async ({ page }) => {
+  test('從考試頁帶會考進來_直接用會考_不用再選考試', async ({ page }) => {
     const vocab = new VocabPage(page)
     await vocab.goto(undefined, '?exam=cap')
 
-    await expect(vocab.exam('cap').locator('input')).toBeChecked()
+    await expect(vocab.examName).toContainText('國中會考')
+    await expect(page.getByRole('radio')).toHaveCount(0)
+    await expect(page.getByText('選考試')).toHaveCount(0)
     await expect(vocab.summary).toContainText('每天背 6 個字')
     await expect(page.getByTestId('app-back')).toHaveAccessibleName('返回國中會考')
     await expect(page).toHaveTitle('國中教育會考 背單字')
