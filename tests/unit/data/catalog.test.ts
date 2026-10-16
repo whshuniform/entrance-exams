@@ -1,0 +1,140 @@
+import { describe, it, expect } from 'vitest'
+import { examCatalog } from '~/data/catalog'
+import { paperQuestions } from '~/utils/paper'
+
+const gsat = examCatalog[0]!
+
+describe('examCatalog', () => {
+  it('Catalog_ShouldListGsatThenAstThenCap', () => {
+    expect(examCatalog.map(exam => [exam.id, exam.name])).toEqual([
+      ['gsat', '大學學測'],
+      ['ast', '分科測驗'],
+      ['cap', '國中會考'],
+    ])
+  })
+
+  it('Catalog_Source_ShouldNameWhoWroteTheExam', () => {
+    // 學測、分科是大考中心出題；會考是國家教育研究院心理與教育測驗研究發展中心（心測中心）
+    expect(examCatalog.map(exam => exam.source)).toEqual(['大學入學考試中心', '大學入學考試中心', '國家教育研究院心理與教育測驗研究發展中心'])
+  })
+
+  it('Catalog_EveryExam_ShouldHavePapers', () => {
+    expect(examCatalog.map(exam => exam.papers.length > 0)).toEqual([true, true, true])
+  })
+
+  it('Catalog_QuestionIds_ShouldBeUniqueAcrossExams', () => {
+    const ids = examCatalog.flatMap(exam => paperQuestions(exam.papers)).map(question => question.id)
+
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it('Catalog_GsatPapers_ShouldCarryIdYearCurriculumAndExamTimeOfOriginalPaper', () => {
+    // 國文 109–110 年是 101課綱「國文考科」80 分鐘，111 年起是 108課綱國綜 90 分鐘；
+    // 英文 109–110 年 99課綱、111 年起 108課綱，都是 100 分鐘；數學B 111 年起 100 分鐘；
+    // 社會、自然 109–110 年 99課綱（自然是 99課綱微調）、111 年起 108課綱，都是 110 分鐘（gsat/stats/curriculum_by_year.csv、各年試題卷頭）
+    const rows = gsat.papers.map(paper => [paper.id, paper.year, paper.exam, paper.subject, paper.curriculum, paper.minutes])
+
+    expect(rows.sort()).toEqual([
+      ['chinese', 109, '學測', '國文', '101課綱', 80],
+      ['chinese', 110, '學測', '國文', '101課綱', 80],
+      ['chinese', 111, '學測', '國語文綜合能力測驗', '108課綱', 90],
+      ['chinese', 112, '學測', '國語文綜合能力測驗', '108課綱', 90],
+      ['chinese', 113, '學測', '國語文綜合能力測驗', '108課綱', 90],
+      ['chinese', 114, '學測', '國語文綜合能力測驗', '108課綱', 90],
+      ['chinese', 115, '學測', '國語文綜合能力測驗', '108課綱', 90],
+      ['english', 109, '學測', '英文', '99課綱', 100],
+      ['english', 110, '學測', '英文', '99課綱', 100],
+      ['english', 111, '學測', '英文', '108課綱', 100],
+      ['english', 112, '學測', '英文', '108課綱', 100],
+      ['english', 113, '學測', '英文', '108課綱', 100],
+      ['english', 114, '學測', '英文', '108課綱', 100],
+      ['english', 115, '學測', '英文', '108課綱', 100],
+      ['math-a', 111, '學測', '數學A', '108課綱', 100],
+      ['math-a', 112, '學測', '數學A', '108課綱', 100],
+      ['math-a', 113, '學測', '數學A', '108課綱', 100],
+      ['math-a', 114, '學測', '數學A', '108課綱', 100],
+      ['math-a', 115, '學測', '數學A', '108課綱', 100],
+      ['math-b', 111, '學測', '數學B', '108課綱', 100],
+      ['math-b', 112, '學測', '數學B', '108課綱', 100],
+      ['math-b', 113, '學測', '數學B', '108課綱', 100],
+      ['math-b', 114, '學測', '數學B', '108課綱', 100],
+      ['math-b', 115, '學測', '數學B', '108課綱', 100],
+      ['science', 109, '學測', '自然', '99課綱微調', 110],
+      ['science', 110, '學測', '自然', '99課綱微調', 110],
+      ['science', 111, '學測', '自然', '108課綱', 110],
+      ['science', 112, '學測', '自然', '108課綱', 110],
+      ['science', 113, '學測', '自然', '108課綱', 110],
+      ['science', 114, '學測', '自然', '108課綱', 110],
+      ['science', 115, '學測', '自然', '108課綱', 110],
+      ['social', 109, '學測', '社會', '99課綱', 110],
+      ['social', 110, '學測', '社會', '99課綱', 110],
+      ['social', 111, '學測', '社會', '108課綱', 110],
+      ['social', 112, '學測', '社會', '108課綱', 110],
+      ['social', 113, '學測', '社會', '108課綱', 110],
+      ['social', 114, '學測', '社會', '108課綱', 110],
+      ['social', 115, '學測', '社會', '108課綱', 110],
+    ])
+  })
+
+  it('Catalog_GsatSubjects_ShouldFollowExamOrderChineseEnglishMathSocialScience', () => {
+    expect([...new Set(gsat.papers.map(paper => paper.id))]).toEqual(['chinese', 'english', 'math-a', 'math-b', 'social', 'science'])
+  })
+
+  it('Catalog_EachSubject_ShouldHaveOnePaperPerYear', () => {
+    const keys = gsat.papers.map(paper => `${paper.id}-${paper.year}`)
+
+    expect(new Set(keys).size).toBe(keys.length)
+  })
+
+  it('Catalog_QuestionIds_ShouldBeUniqueAcrossYears', () => {
+    const ids = paperQuestions(gsat.papers).map(question => question.id)
+
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it('Catalog_EveryAnswer_ShouldBeOneOfItsOwnOptions', () => {
+    for (const question of paperQuestions(gsat.papers)) {
+      const keys = question.options.map(option => option.key)
+
+      expect([...question.answer].every(key => keys.includes(key)), question.id).toBe(true)
+    }
+  })
+
+  it('Catalog_EveryQuestion_ShouldHaveOptionsAnswerAndPoints', () => {
+    // 選項要嘛都有文字（或圖），要嘛都空著（文意選填、選項印在表格裡的題目只留作答圈）
+    for (const question of paperQuestions(gsat.papers)) {
+      const filled = question.options.filter(option => option.text.trim() !== '' || option.figure)
+      expect([0, question.options.length], question.id).toContain(filled.length)
+      expect(question.options.length, question.id).toBeGreaterThanOrEqual(4)
+      expect(question.stem !== '' || question.lead !== undefined || Boolean(question.images?.length), question.id).toBe(true)
+      const keys = question.options.map(option => option.key)
+      expect([...question.answer].every(key => keys.includes(key)), question.id).toBe(true)
+      expect(question.points, question.id).toBeGreaterThan(0)
+    }
+  })
+
+  it('Catalog_EveryPaper_ShouldHaveFifteenLevelsAndTakers', () => {
+    for (const paper of gsat.papers) {
+      expect(paper.stats.levels.map(level => level.level), `${paper.id}-${paper.year}`).toEqual(
+        [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+      )
+      expect(paper.stats.total, `${paper.id}-${paper.year}`).toBeGreaterThan(0)
+    }
+  })
+
+  it('Catalog_EveryGsatQuestion_ShouldKnowWhichPageOfThePdfItIsOn', () => {
+    const questions = paperQuestions(gsat.papers)
+
+    expect(questions.every(question => Number.isInteger(question.pdfPage) && question.pdfPage! >= 1)).toBe(true)
+  })
+
+  it('Catalog_PdfPages_ShouldMatchOriginalPdf', () => {
+    // gsat/<年度>/<科目>/question.pdf：115 國綜第 1–5 題在第 2 頁、第 25 題第 8 頁、第 26 題第 9 頁；
+    // 英文詞彙題（109 年 15 題、114 年 10 題）都在第 2 頁
+    const page = (id: string) => paperQuestions(gsat.papers).find(question => question.id === id)?.pdfPage
+
+    expect(['115-chinese-1', '115-chinese-5', '115-chinese-25', '115-chinese-26'].map(page)).toEqual([2, 2, 8, 9])
+    expect(['114-english-10', '109-english-15', '115-mathA-1'].map(page)).toEqual([2, 2, 2])
+    expect(['109-chinese-7', '111-chinese-8', '114-chinese-4'].map(page)).toEqual([3, 3, 2])
+  })
+})

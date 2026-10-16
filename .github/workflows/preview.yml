@@ -1,0 +1,41 @@
+name: Preview site
+
+# 把靜態網站推到 gh-pages 分支，GitHub Pages 選「Deploy from a branch → gh-pages」就能用手機打開試用。
+# 網址是 https://<帳號>.github.io/<repo>/，所以 baseURL 要帶 repo 名稱。
+on:
+  push:
+    branches: [main, feature/EE-0-handdrawn-prototype]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: preview-site
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Static build
+        run: npm run generate
+        env:
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
+      - name: Push to gh-pages
+        working-directory: .output/public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # _nuxt 資料夾開頭是底線，要關掉 Jekyll 才會被 Pages 發佈
+          touch .nojekyll
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -q -m "Preview of ${GITHUB_REF_NAME} @ ${GITHUB_SHA}"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages

@@ -1,0 +1,678 @@
+{
+ "year": 112,
+ "subject": "英文",
+ "id": "english",
+ "parts": [
+  {
+   "title": "第壹部分、選擇題（占62分）",
+   "groups": [
+    {
+     "title": "一、詞彙題（占10分）",
+     "note": "說明︰第1題至第10題為單選題，每題1分。",
+     "questions": [
+      {
+       "number": 1,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 2,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C"
+      },
+      {
+       "number": 3,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C"
+      },
+      {
+       "number": 4,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B"
+      },
+      {
+       "number": 5,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D"
+      },
+      {
+       "number": 6,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D"
+      },
+      {
+       "number": 7,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B"
+      },
+      {
+       "number": 8,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 9,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A"
+      },
+      {
+       "number": 10,
+       "text": true,
+       "pdfPage": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D"
+      }
+     ]
+    },
+    {
+     "title": "二、綜合測驗（占10分）",
+     "note": "說明︰第11題至第20題為單選題，每題1分。",
+     "questions": [
+      {
+       "number": 11,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 19,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 20,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      }
+     ]
+    },
+    {
+     "title": "三、文意選填（占10分）",
+     "note": "說明：第21題至第30題為單選題，每題1分。",
+     "questions": [
+      {
+       "number": 21,
+       "type": "single",
+       "points": 1.0,
+       "answer": "J",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 22,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 23,
+       "type": "single",
+       "points": 1.0,
+       "answer": "G",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 24,
+       "type": "single",
+       "points": 1.0,
+       "answer": "F",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 25,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 26,
+       "type": "single",
+       "points": 1.0,
+       "answer": "H",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 27,
+       "type": "single",
+       "points": 1.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 28,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 29,
+       "type": "single",
+       "points": 1.0,
+       "answer": "I",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 30,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    },
+    {
+     "title": "四、篇章結構（占8分）",
+     "note": "說明︰第31題至第34題為單選題，每題2分。",
+     "questions": [
+      {
+       "number": 31,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 32,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 33,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 34,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    },
+    {
+     "title": "五、閱讀測驗（占24分）",
+     "note": "說明︰第35題至第46題為單選題，每題2分。",
+     "questions": [
+      {
+       "number": 35,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 36,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 37,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 38,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 39,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 40,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 41,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 42,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 43,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 8
+      },
+      {
+       "number": 44,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 9
+      },
+      {
+       "number": 45,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 9
+      },
+      {
+       "number": 46,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "第貳部分、混合題（占10分）",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明︰本部分共有1題組，每一子題配分標於題末。限在答題卷標示題號的作答區內作答，並以規定用筆作答。Evenifyou’renotavegetarian,there’sagoodchanceyou’veheardofplant-basedmeat.Thesemeatsubstitutesareoftenadvertisedasbeneficialfortheenvironment.Butdothecustomersreallylikethem?ReadthefollowingchatroomdiscussionsaboutGreenBurger,aproductusingalternative-meatpatties.(A)OliviaThat’safirmNO!ItriedonewhenIwasaprepcookforNextLevelBurgers…tastedawful,justlikemashedpeasgonetorot.(B)SmithIhaven’ttriedthem.Ijustdon’tseethepoint.Theyareheavilyprocessedwithmorecaloriesandsodiumthanmeatandaremoreexpensivetoo!Unlessyouareastrictvegetarianandeschewmeatforethicalreasons,meatissurelyabetterdeal.(C)MikaNotreally.Ittastestoomuchlikeactualmeat.IfIwantedtoeatadeadcow,Iwouldgoforrealburgers.BeingveganmeansItrytosticktoplantfood.Butthisisjustnotsomethingthatwilleverinterestme.(D)ThomasGreenBurgerjusttastes“beany”tome,soIthinkthatwhateverformitcomesin,itworksbetterinrecipesthatwouldusuallycontainbeans,suchasinaricebowl(asgroundmeatsubstitute).Thatbeingsaid,I’mdefinitelyacarnivoreandprefermeat,butIdon’tseeanythingwrongwithchoosingoneofthefakey-fakeymeatythingsonceinawhile—justforachange.(E)RicoIfinallytriedonelastweek.Itdidn’ttastethatbad,butIwassurprisedtofindithad40morecaloriesthanthemeatversion!Isn’titsupposedtobeahealthychoice?(F)LindaIlikeditfine.IdidNOTliketheprice,though.Hopefullythatwillcomedown.I’mtryingtoeatlessbeef.(G)AbloYes!Mywholefamilydoes.We’vebeenmostlyvegan90%ofthetimeforthelast6yearsandwecannotthankGreenBurgerenough!Especiallywhenaburgercravinghits…aGreenBurgerdoesthetrick.I’vetriedallkindsofvegan“burgers,”andGreenBurgersareclosertowhatI’mlookingfor.Infact,Icanhavethemeveryday—veganornot!(H)AlexanderWell,theytastegoodifyouaddplentyofspicesandsauces.Goodforyou?No,notatall.They’rehighlyprocessedandcontainnovegetables.Theyalsocontainaverylargeamountofprocessedcoconutoil,whichisevenworsethanlard.It’sakillerforsureifeatenregularly.Sowhyriskyourlife?",
+     "questions": [
+      {
+       "number": 49,
+       "type": "multi",
+       "points": 4,
+       "answer": "DF",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+       ],
+       "pdfPage": 11
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
