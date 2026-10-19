@@ -1,5 +1,5 @@
 <template>
-  <span :class="$style['markup-text']">
+  <span ref="root" :class="$style['markup-text']">
     <template v-for="segment in segments" :key="segment.start">
       <!-- 數學式：KaTeX 由自己的題目資料產生，不含使用者輸入 -->
       <span
@@ -72,6 +72,10 @@ const slots = useQuizSlots()
 
 const segments = computed(() => buildSegments(props.text, props.ranges))
 
+const style = useCssModule()
+const root = ref<HTMLElement | null>(null)
+useFormulaFit(root, () => style['markup-text__math--scroll'], () => props.text)
+
 function tagOf(segment: HighlightSegment) {
   if (segment.underline) return 'u'
   if (segment.bold) return 'strong'
@@ -80,7 +84,7 @@ function tagOf(segment: HighlightSegment) {
 }
 
 function renderMath(tex: string) {
-  return katex.renderToString(tex, { throwOnError: false, output: 'html' })
+  return katex.renderToString(breakableTex(tex), { throwOnError: false, output: 'html' })
 }
 </script>
 
@@ -146,8 +150,17 @@ function renderMath(tex: string) {
     color: var(--color-pen-purple);
   }
 
+  // 長算式在等號、加減號後面換行（KaTeX 每段 .base 之間可斷行），手機上才不會超出畫面
   &__math {
-    white-space: nowrap;
+    white-space: normal;
+
+    // 縮到下限還放不下：這條公式自己左右滑，不撐破版面
+    &--scroll {
+      display: inline-block;
+      max-width: 100%;
+      overflow: auto hidden;
+      vertical-align: middle;
+    }
   }
 }
 </style>
