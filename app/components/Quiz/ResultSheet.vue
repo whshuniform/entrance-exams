@@ -29,7 +29,7 @@
           <!-- 會考沒有名次：只說這個標示以上約占全國前幾 % -->
           <span v-if="report.percentRange" data-test="report-rank" :class="$style['result-sheet__rank']">
             全國約前 {{ formatNumber(report.percentRange.min) }}%～{{ formatNumber(report.percentRange.max) }}%
-            <small>到考 {{ formatCount(report.rank.total) }} 人</small>
+            <small v-if="!report.totalUnknown">到考 {{ formatCount(report.rank.total) }} 人</small>
           </span>
           <span v-else data-test="report-rank" :class="$style['result-sheet__rank']">
             全國第 {{ formatCount(report.rank.best) }}～{{ formatCount(report.rank.worst) }} 名
