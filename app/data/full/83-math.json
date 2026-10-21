@@ -1,0 +1,164 @@
+{
+ "year": 83,
+ "subject": "數學",
+ "id": "math",
+ "parts": [
+  {
+   "title": "一、選擇題",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明：下列第1至第7題為單一選擇題，每題5分，答錯不倒扣。在答案卡上選擇題（第一部分）答案區作答。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 1
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 1
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 1
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    },
+    {
+     "title": "",
+     "note": "說明：下列第8至第10題為多重選擇題，每題5分，仍在答案卡上選擇題（第一部分）答案區作答。每題的五個選項各自獨立，至少有一個正確選項。只錯一個給2.5分，錯兩個或兩個以上者不給分。不答不予計分。",
+     "questions": [
+      {
+       "number": 8,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "AE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 10,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "CDE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

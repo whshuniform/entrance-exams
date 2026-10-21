@@ -1,0 +1,178 @@
+{
+ "year": 84,
+ "subject": "數學",
+ "id": "math",
+ "parts": [
+  {
+   "title": "第一部份：選擇題",
+   "groups": [
+    {
+     "title": "壹、單一選擇題",
+     "note": "說明：第1至第7題，每題選出最適當的一個選項，標示在答案卡之「選擇題答案區」，每題答對得5分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 5.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    },
+    {
+     "title": "貳、多重選擇題",
+     "note": "說明：第8至第11題，每題的五個選項各自獨立，其中至少有一個選項是正確的，選出正確選項，標示在答案卡之「選擇題答案區」。每題答對得5分，答錯不倒扣，未答者不給分。只錯一個可獲2.5分，錯兩個或兩個以上不給分。",
+     "questions": [
+      {
+       "number": 8,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "AD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "DE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 10,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "AC",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 11,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "ABCD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
