@@ -168,7 +168,7 @@ describe('parseQuizQuery', () => {
   })
 
   it('parseQuizQuery_MessyYears_ShouldSortDropDuplicatesAndUnknownYears', () => {
-    const quiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'random', years: '115,111,111,99,abc' }, examCatalog)
+    const quiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'random', years: '115,111,111,80,abc' }, examCatalog)
 
     expect(quiz?.config.years).toEqual([111, 115])
   })
@@ -178,7 +178,7 @@ describe('parseQuizQuery', () => {
 
     expect(parseQuizQuery({ ...base, exam: 'nope' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, exam: 'ast' }, examCatalog)).toBeNull()
-    expect(parseQuizQuery({ ...base, years: '99' }, examCatalog)).toBeNull()
+    expect(parseQuizQuery({ ...base, years: '80' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, years: '' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, subject: 'physics' }, examCatalog)).toBeNull()
     expect(parseQuizQuery({ ...base, subject: 'math-a', years: '110' }, examCatalog)).toBeNull()

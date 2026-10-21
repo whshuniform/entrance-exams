@@ -106,8 +106,8 @@ describe('examCatalog', () => {
     for (const question of paperQuestions(gsat.papers)) {
       const filled = question.options.filter(option => option.text.trim() !== '' || option.figure)
       expect([0, question.options.length], question.id).toContain(filled.length)
-      // 舊卷有三個選項的題目（105 自然第 13 題）
-      expect(question.options.length, question.id).toBeGreaterThanOrEqual(3)
+      // 舊卷有三個選項（105 自然第 13 題）、甚至兩個選項（83 自然第 56 題）的題目
+      expect(question.options.length, question.id).toBeGreaterThanOrEqual(2)
       expect(question.stem !== '' || question.lead !== undefined || Boolean(question.images?.length), question.id).toBe(true)
       const keys = question.options.map(option => option.key)
       expect([...question.answer].every(key => keys.includes(key)), question.id).toBe(true)
