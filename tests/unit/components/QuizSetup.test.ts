@@ -1,6 +1,13 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import QuizSetup from '~/components/Home/QuizSetup.vue'
+
+// 設定表用固定的 109 年起題庫，舊卷陸續補上也不用改測試
+vi.mock('~/data/catalog', async (importOriginal) => {
+  const original = await importOriginal<typeof import('~/data/catalog')>()
+  const { catalogFrom109 } = await import('../fixtures/catalog-109')
+  return { ...original, examCatalog: catalogFrom109(original.examCatalog) }
+})
 
 /** 考試在上一頁選好了，設定表只問作答方式之後的事 */
 const props = { exam: 'gsat' }

@@ -68,7 +68,7 @@ describe('完整考卷（原卷截圖＋已轉成文字的題目）', () => {
 
   it('MathBSocialScience_EveryChoiceQuestion_ShouldBeText', () => {
     // 數學B 111–115、社會和自然 109–115 全部轉成文字，沒有原卷截圖
-    const papers = gsat.papers.filter(paper => ['math-b', 'social', 'science'].includes(paper.id))
+    const papers = gsat.papers.filter(paper => ['math-b', 'social', 'science'].includes(paper.id) && paper.year >= 109)
     expect(papers.map(paper => `${paper.id}-${paper.year}`).sort()).toHaveLength(19)
 
     for (const question of paperQuestions(papers)) {
@@ -85,7 +85,8 @@ describe('完整考卷（原卷截圖＋已轉成文字的題目）', () => {
       ...questions.flatMap(q => [q.stem, ...q.options.map(option => option.text), ...texts(q.body)]),
       ...new Set(questions.flatMap(q => (q.lead ? texts(q.lead.blocks) : []))),
     ]
-    const formulas = strings.flatMap(text => [...text.matchAll(/\$([^$]+)\$/g)].map(match => match[1]!))
+    // \$ 是一般的錢號，不是數學式
+    const formulas = strings.flatMap(text => [...text.replaceAll('\\$', '').matchAll(/\$([^$]+)\$/g)].map(match => match[1]!))
 
     for (const tex of formulas) {
       expect(() => katex.renderToString(tex, { throwOnError: true }), tex).not.toThrow()

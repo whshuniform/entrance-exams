@@ -32,7 +32,7 @@ describe('examCatalog', () => {
     // 國文 109–110 年是 101課綱「國文考科」80 分鐘，111 年起是 108課綱國綜 90 分鐘；
     // 英文 109–110 年 99課綱、111 年起 108課綱，都是 100 分鐘；數學B 111 年起 100 分鐘；
     // 社會、自然 109–110 年 99課綱（自然是 99課綱微調）、111 年起 108課綱，都是 110 分鐘（gsat/stats/curriculum_by_year.csv、各年試題卷頭）
-    const rows = gsat.papers.map(paper => [paper.id, paper.year, paper.exam, paper.subject, paper.curriculum, paper.minutes])
+    const rows = gsat.papers.filter(paper => paper.year >= 109 && paper.id !== 'math').map(paper => [paper.id, paper.year, paper.exam, paper.subject, paper.curriculum, paper.minutes])
 
     expect(rows.sort()).toEqual([
       ['chinese', 109, '學測', '國文', '101課綱', 80],
@@ -77,7 +77,8 @@ describe('examCatalog', () => {
   })
 
   it('Catalog_GsatSubjects_ShouldFollowExamOrderChineseEnglishMathSocialScience', () => {
-    expect([...new Set(gsat.papers.map(paper => paper.id))]).toEqual(['chinese', 'english', 'math-a', 'math-b', 'social', 'science'])
+    // 110 年以前的「數學」排在數學A、數學B 前面
+    expect([...new Set(gsat.papers.map(paper => paper.id))]).toEqual(['chinese', 'english', 'math', 'math-a', 'math-b', 'social', 'science'])
   })
 
   it('Catalog_EachSubject_ShouldHaveOnePaperPerYear', () => {
@@ -105,7 +106,8 @@ describe('examCatalog', () => {
     for (const question of paperQuestions(gsat.papers)) {
       const filled = question.options.filter(option => option.text.trim() !== '' || option.figure)
       expect([0, question.options.length], question.id).toContain(filled.length)
-      expect(question.options.length, question.id).toBeGreaterThanOrEqual(4)
+      // 舊卷有三個選項的題目（105 自然第 13 題）
+      expect(question.options.length, question.id).toBeGreaterThanOrEqual(3)
       expect(question.stem !== '' || question.lead !== undefined || Boolean(question.images?.length), question.id).toBe(true)
       const keys = question.options.map(option => option.key)
       expect([...question.answer].every(key => keys.includes(key)), question.id).toBe(true)
@@ -114,7 +116,8 @@ describe('examCatalog', () => {
   })
 
   it('Catalog_EveryPaper_ShouldHaveFifteenLevelsAndTakers', () => {
-    for (const paper of gsat.papers) {
+    // 83–87 年是 0–10 級分（另見 gsat-older-papers.test.ts）
+    for (const paper of gsat.papers.filter(paper => paper.year >= 88)) {
       expect(paper.stats.levels.map(level => level.level), `${paper.id}-${paper.year}`).toEqual(
         [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
       )

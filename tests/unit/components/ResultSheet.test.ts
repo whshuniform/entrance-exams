@@ -36,6 +36,16 @@ describe('ResultSheet', () => {
     expect(wrapper.text()).toContain('心測中心')
   })
 
+  it('ResultSheet_GsatPercentOnly_ShouldShowLevelAndPercentWithoutTakers', async () => {
+    // 90、91 學測只公布各級分百分比、沒有到考人數：顯示級分和約前幾 %，不寫到考人數
+    const old: SubjectReport = { ...report, subject: '國文', year: 90, percentRange: { min: 2.83, max: 26.95 }, totalUnknown: true }
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [old] } })
+
+    expect(wrapper.find('[data-test="report-level"]').text()).toBe('2～15 級分')
+    expect(wrapper.find('[data-test="report-rank"]').text()).toContain('約前 2.83%～26.95%')
+    expect(wrapper.find('[data-test="report-rank"]').text()).not.toContain('到考')
+  })
+
   it('ResultSheet_SameLevelAtBothEnds_ShouldShowOneLevel', async () => {
     const exact = { ...report, levelRange: { min: 12, max: 12 } }
     const wrapper = await mountSuspended(ResultSheet, { props: { reports: [exact] } })

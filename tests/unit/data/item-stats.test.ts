@@ -4,7 +4,8 @@ import { paperQuestions } from '~/utils/paper'
 import { itemStatsFor } from '~/utils/item-stats'
 
 const gsat = examCatalog.find(exam => exam.id === 'gsat')!
-const questions = paperQuestions(gsat.papers)
+// 大考中心選擇題選項分析 92 年起才有
+const questions = paperQuestions(gsat.papers.filter(paper => paper.year >= 92))
 
 describe('每題選項比例（大考中心選擇題選項分析）', () => {
   it('EveryGsatQuestion_ShouldHaveOfficialStats', () => {

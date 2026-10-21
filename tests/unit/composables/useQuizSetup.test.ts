@@ -1,7 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { nextTick } from 'vue'
-import { examCatalog } from '~/data/catalog'
+import { examCatalog as fullCatalog } from '~/data/catalog'
 import { useQuizSetup } from '~/composables/useQuizSetup'
+import { catalogFrom109 } from '../fixtures/catalog-109'
+
+const examCatalog = catalogFrom109(fullCatalog)
 
 const ALL_YEARS = [109, 110, 111, 112, 113, 114, 115]
 const NEW_CURRICULUM_YEARS = [111, 112, 113, 114, 115]
@@ -43,6 +46,17 @@ describe('useQuizSetup', () => {
       { id: 'social', name: '社會', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 416 },
       { id: 'science', name: '自然', years: [115, 114, 113, 112, 111, 110, 109], questionCount: 383 },
     ])
+  })
+
+  it('useQuizSetup_OlderPapers_ShouldAddOldMathAndEarlierYears', () => {
+    // 加入舊卷後：110 年以前的「數學」排在英文後面；國文、英文往前多了 108 年以前的年度
+    const setup = useQuizSetup(fullCatalog)
+    const subject = (id: string) => setup.subjects.value.find(item => item.id === id)!
+
+    expect(setup.subjects.value.map(item => item.id).slice(0, 4)).toEqual(['chinese', 'english', 'math', 'math-a'])
+    expect(subject('math')).toMatchObject({ name: '數學' })
+    expect(subject('math').years).toEqual(expect.arrayContaining([110, 109, 108]))
+    expect(subject('chinese').years).toEqual(expect.arrayContaining([115, 109, 108, 104]))
   })
 
   it('useQuizSetup_SubjectName_ShouldComeFromNewestYear', () => {

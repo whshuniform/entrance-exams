@@ -136,4 +136,15 @@ describe('buildReport', () => {
     expect(report.labelRange).toEqual({ min: 'B', max: 'A' })
     expect(report.percentRange).toEqual({ min: 20, max: 50 })
   })
+
+  it('buildReport_TotalUnknown_ShouldSaySo', () => {
+    // 90、91 學測只有百分比、沒有到考人數
+    const base = sample115Papers[0]!
+    const paper: QuizPaper = { ...base, stats: { ...base.stats, percentOnly: true, totalUnknown: true } }
+
+    const report = buildReport(paper, {})
+
+    expect(report.totalUnknown).toBe(true)
+    expect(report.percentRange).toBeDefined()
+  })
 })

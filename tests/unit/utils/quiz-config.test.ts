@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { examCatalog } from '~/data/catalog'
 import { DEFAULT_RANDOM_COUNT, defaultMinutes, formatYears, parseQuizQuery, quizHeading, toQuizQuery } from '~/utils/quiz-config'
 import type { QuizConfig } from '~/types/quiz'
+import { catalogFrom109 } from '../fixtures/catalog-109'
 
 const gsat = examCatalog[0]!
 const chinese = (...years: number[]) => gsat.papers.filter(paper => paper.id === 'chinese' && years.includes(paper.year))
@@ -144,8 +145,9 @@ describe('parseQuizQuery', () => {
   })
 
   it('parseQuizQuery_OldCurriculum_ShouldOnlyTakeThatCurriculumsYears', () => {
-    const chineseQuiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'random', curriculum: '101課綱' }, examCatalog)
-    const englishQuiz = parseQuizQuery({ exam: 'gsat', subject: 'english', mode: 'random', curriculum: '99課綱' }, examCatalog)
+    const catalog = catalogFrom109(examCatalog)
+    const chineseQuiz = parseQuizQuery({ exam: 'gsat', subject: 'chinese', mode: 'random', curriculum: '101課綱' }, catalog)
+    const englishQuiz = parseQuizQuery({ exam: 'gsat', subject: 'english', mode: 'random', curriculum: '99課綱' }, catalog)
 
     expect(chineseQuiz?.config).toMatchObject({ curriculum: '101課綱', years: [109, 110] })
     expect(englishQuiz?.config).toMatchObject({ curriculum: '99課綱', years: [109, 110] })

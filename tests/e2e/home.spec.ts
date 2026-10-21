@@ -4,7 +4,7 @@ import { QuizPage } from './pages/QuizPage'
 
 // 115 國綜選擇題：第 1–31 題和混合題的第 35、36 題
 const CHINESE = [...Array.from({ length: 31 }, (_, i) => `115-chinese-${i + 1}`), '115-chinese-35', '115-chinese-36']
-const ALL_YEARS = [115, 114, 113, 112, 111, 110, 109]
+const ALL_YEARS = Array.from({ length: 115 - 101 + 1 }, (_, i) => 115 - i)
 const yearOf = (id: string) => Number(id.split('-')[0])
 
 /** 題庫裡的順序：年度由舊到新，同一年照原卷題號 */
@@ -63,7 +63,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     for (const year of ALL_YEARS) {
       await expect(home.year(year).locator('input')).toBeChecked()
     }
-    for (const year of [114, 113, 112, 110, 109]) await home.toggleYear(year, false)
+    for (const year of ALL_YEARS.filter(y => y !== 111 && y !== 115)) await home.toggleYear(year, false)
     await expect(home.countInput).toHaveValue('5')
     await home.startButton.click()
     await quiz.startButton.click()
@@ -103,7 +103,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     expect(await quiz.questionIds()).toHaveLength(5)
   })
 
-  test('隨機抽題選英文99課綱_只出109和110年的英文詞彙題', async ({ page }) => {
+  test('隨機抽題選英文99課綱_只出102到110年的英文題', async ({ page }) => {
     const home = new HomePage(page)
     const quiz = new QuizPage(page)
     await home.goto()
@@ -113,7 +113,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await home.choose(home.scope('curriculum'))
     await expect(home.curriculum('108課綱')).toContainText('111–115 年')
     await home.choose(home.curriculum('99課綱'))
-    await expect(home.curriculum('99課綱')).toContainText('109–110 年')
+    await expect(home.curriculum('99課綱')).toContainText('102–110 年')
     await home.startButton.click()
 
     await expect(page).toHaveURL(/subject=english/)
@@ -121,7 +121,7 @@ test.describe('作試題設定表選模式、科目、年度和計時', () => {
     await quiz.startButton.click()
     const ids = await quiz.questionIds()
     expect(ids).toHaveLength(5)
-    expect(ids.every(id => /^(109|110)-english-\d+$/.test(id))).toBe(true)
+    expect(ids.every(id => /^(10[2-9]|110)-english-\d+$/.test(id))).toBe(true)
   })
 
   test('整份考卷選109年國文_舊試卷沒有部分標題_直接從單選題開始', async ({ page }) => {
