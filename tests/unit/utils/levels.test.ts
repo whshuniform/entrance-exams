@@ -147,4 +147,26 @@ describe('buildReport', () => {
     expect(report.totalUnknown).toBe(true)
     expect(report.percentRange).toBeDefined()
   })
+
+  it('buildReport_ZhiKaoRawScore_ShouldMarkReportAsRawScore', () => {
+    const base = sample115Papers[0]!
+    const question: QuizQuestion = { ...base.parts[0]!.groups[0]!.questions[0]!, id: 'zk-1', points: 100 }
+    const paper: QuizPaper = {
+      ...base,
+      stats: { levels: [{ level: 2, above: 1.99 }, { level: 1, above: 0.99 }], counts: { 2: 3, 1: 4, 0: 1 }, total: 8, rawScore: true },
+      parts: [{ title: '', groups: [{ title: '', note: '', questions: [question] }] }],
+    }
+
+    const report = buildReport(paper, { 'zk-1': { score: 2, isCorrect: false, wrongCount: 0 } })
+
+    expect(report.rawScore).toBe(true)
+    expect(report.rank).toEqual({ best: 1, worst: 3, total: 8 })
+  })
+
+  it('buildReport_NoRank_ShouldMarkReportAsNoRank', () => {
+    const base = sample115Papers[0]!
+    const paper: QuizPaper = { ...base, stats: { levels: [], counts: {}, total: 0, rawScore: true, noRank: true } }
+
+    expect(buildReport(paper, {}).noRank).toBe(true)
+  })
 })

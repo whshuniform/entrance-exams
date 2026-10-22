@@ -22,12 +22,13 @@
           <span>整卷 {{ formatRange(report.scoreRange) }} / {{ report.fullMarks }} 分</span>
         </div>
         <div :class="$style['result-sheet__grade']">
-          <span data-test="report-level" :class="$style['result-sheet__level']">
+          <span v-if="!report.rawScore" data-test="report-level" :class="$style['result-sheet__level']">
             <template v-if="report.labelRange">{{ formatLabels(report.labelRange) }}</template>
             <template v-else>{{ formatRange(report.levelRange) }} 級分</template>
           </span>
           <!-- 會考沒有名次：只說這個標示以上約占全國前幾 % -->
-          <span v-if="report.percentRange" data-test="report-rank" :class="$style['result-sheet__rank']">
+          <span v-if="report.noRank" />
+          <span v-else-if="report.percentRange" data-test="report-rank" :class="$style['result-sheet__rank']">
             全國約前 {{ formatNumber(report.percentRange.min) }}%～{{ formatNumber(report.percentRange.max) }}%
             <small v-if="!report.totalUnknown">到考 {{ formatCount(report.rank.total) }} 人</small>
           </span>
@@ -40,6 +41,12 @@
     </ul>
     <p v-if="props.accuracy" :class="$style['result-sheet__note']">
       隨機抽題只看答對幾題：整題答對才算對，多選題要全部選對，沒作答算錯。
+    </p>
+    <p v-else-if="props.reports[0]?.noRank" :class="$style['result-sheet__note']">
+      網站只有選擇題，非選擇題以 0 到滿分估計，所以分數是範圍。{{ props.reports[0]?.year }} 年官方沒有公布各分數的人數，所以查不到全國名次。
+    </p>
+    <p v-else-if="props.reports[0]?.rawScore" :class="$style['result-sheet__note']">
+      指考直接看原始分數。網站只有選擇題，非選擇題以 0 到滿分估計，再查 {{ props.reports[0]?.year }} 年大考中心各分數人數，所以整卷分數和名次都是範圍。
     </p>
     <p v-else-if="props.reports[0]?.labelRange" :class="$style['result-sheet__note']">
       網站只有選擇題（英語只有閱讀、數學沒有非選擇題），查 {{ props.reports[0]?.year }} 年心測中心標示對照表；數學非選擇題以 0 到滿分估計，所以標示是範圍。會考不公布名次，「約前幾 %」是拿到該標示以上的人數比例。
