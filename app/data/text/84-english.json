@@ -1,0 +1,632 @@
+{
+ "year": 84,
+ "id": "english",
+ "sets": [
+  {
+   "id": "1-3",
+   "blocks": [
+    "*(Julia and May are sitting on the sofa talking.)*",
+    "Julia: Would you excuse me for a moment? My mom is on the line.",
+    "May: [[1]].",
+    "*(twenty minutes later)*",
+    "Julia: Sorry to keep you waiting. Now, [[2]].",
+    "May: We were just talking about going out to a show, [[3]] we might have to do it some other time."
+   ]
+  },
+  {
+   "id": "4-5",
+   "blocks": [
+    "*(John, Bill, and Sue are at a party.)*",
+    "John: Where do you work, Bill?",
+    "Bill: I'm in foreign trade. [[4]].",
+    "John: I'm an English teacher.",
+    "Bill: And you, Sue? [[5]].",
+    "Sue: I'm a flight attendant.",
+    "Bill: Really?",
+    "John: Yes, she travels all over the world."
+   ]
+  },
+  {
+   "id": "6-8",
+   "blocks": [
+    "*(Maria and Jane are talking over the telephone.)*",
+    "Maria: Hello. May I speak to Eric Sung?",
+    "Jane: [[6]].",
+    "Maria: I see. When do you expect him back?",
+    "Jane: [[7]].",
+    "Maria: Yes. Just tell him Maria Moskovik called.",
+    "Jane: I'm sorry, I didn't catch your last name.",
+    "Maria: [[8]].",
+    "Jane: O.K. I'll give him the message."
+   ]
+  },
+  {
+   "id": "9-10",
+   "blocks": [
+    "*(Tom and Jack are lost on their tour in England.)*",
+    "Tom: Well, it looks like we're lost.",
+    "Jack: [[9]].",
+    "Tom: Who do you ask in a strange town?",
+    "Jack: [[10]].",
+    "Tom: Where can we find one?",
+    "Jack: See, there is one over there."
+   ]
+  },
+  {
+   "id": "21-30",
+   "blocks": [
+    "America encourages its young people to drink. [[21]], our society makes drinking a part of every celebration. Our personal celebrations, [[22]] weddings, promotions, graduations, and anniversaries, are [[23]] linked with drinking. [[24]] children can attend any family affair without seeing the adults enjoying their liquor. Drinking is part of our national celebrations as well. The Fourth of July means beer and New Year's Eve is an entire night dedicated to the proposition that everyone must get [[25]]. Secondly, the shows young people watch on television encourage them to drink. On [[26]] every soap opera, the characters drink casually and often. The rock videos young people watch over and over again feature alcohol, too. [[27]] on the videos sit in bars, nightclubs, and roadhouses. Drinking, the message goes, is cool. The strongest encouragement to drink that young people receive, [[28]], comes from advertisers. Beer companies often sponsor the sports events young people watch. In addition, advertisements for liquor, on TV and in print, show situations that are [[29]] to the young. People hoist their glasses [[30]] they are sitting around ski lodges, sailing, dancing, or enjoying a football game. We may say we don't want our children to drink, but our messages say just the opposite."
+   ]
+  },
+  {
+   "id": "31-40",
+   "blocks": [
+    "Although Grants Pass, Oregon, is a fairly small town, it offers much to amuse summer visitors. Water sports are [[31]] the most popular tourist attraction. Visitors can go rafting down the Rogue River [[32]] swimming in the Applegate River. Fishing in the area is another popular activity. Lots of people also go hunting for wild berries that grow along the roadsides. [[33]], there are lovely, clean campgrounds where campers can park their vehicles. [[34]] those who prefer to stay in town, Grants Pass offers several nice hotels. In town, tourists can browse through [[35]] number of interesting shops, such as antique stores and the shop that sells items [[36]] from Oregon's beautiful myrtlewood. Another fun [[37]] is shopping at the open market where local folks sell produce grown in their gardens. And [[38]], Grants Pass has a lot of places to eat, ranging from a low-calorie dessert place to lovely restaurants, some of which offer good food and gorgeous views. [[39]] you can see, Grants Pass offers a lot to do in the summer. [[40]] you want to give your family a nice, wholesome vacation, try visiting this charming town."
+   ]
+  },
+  {
+   "id": "41-43",
+   "blocks": [
+    "Breaking into the computer codes (known as 'hacking') of banks, large companies or even government departments is the latest game for super-intelligent teenagers. One young hacker said, \"Hacking is just intellectual. It's your brain against the computer. It's like climbing Mount Everest—it's something you have to do. You don't even need a very expensive computer—but you must understand everything about all kinds of computers.\"",
+    "At the moment most of these games are just fun for young people. But how long will it be before criminal gangs, like the Mafia, start to use computer experts to help them in their crimes? Future bank robbers will not need explosives to blow open bank safes—all they will need is someone who can break computer codes. Already in Britain people say that computer crimes are costing companies between 500 million pounds and 2.5 billion pounds a year."
+   ]
+  },
+  {
+   "id": "44-46",
+   "blocks": [
+    "There is increasing scientific evidence that large cars cause more highway accidents than small cars. In the news recently was the story of a woman who died of a heart attack while driving her station wagon. The car was moving so fast that it went through the highway-dividing fence, resulting in a collision in which five people died. Those unnecessary deaths are attributable in part to the woman's choice of a large automobile. A lighter and smaller car probably wouldn't have gone through the fence, its remaining energy would have been much less, and this would have reduced the chances of serious injury or death. Because of its small size, it might have missed the other car completely. The present design of the oversized automobile is largely responsible not only for increasing death toll on the highways but also for the rapid depletion of our resources of petroleum, for the pollution of our environment, and for the congestion and inconvenience of our cities."
+   ]
+  },
+  {
+   "id": "47-50",
+   "blocks": [
+    "Three pilot whales are believed to be swimming freely off the Atlantic Coast today. Their names are Tag, Notch, and Baby. These seagoing mammals are among the lucky survivors of a whale-stranding last December at Cape Cod.",
+    "As many as 60 pilot whales swam ashore. Scientists are still trying to find out why whales have this self-destructive behavior. Many of the whales died on the beach—crushed by their own weight. Whale experts found Tag, Notch, Baby alive. The three were believed to be too young to survive on their own or returned to sea.",
+    "The three whales were taken in a van to the New England Aquarium in Boston, Mass. They were kept in a 60,000-gallon tank for seven months. Only a few people worked with the whales so that they would not become too accustomed to human beings.",
+    "Early this past summer the three whales were pronounced fit enough to be returned to the Atlantic Ocean. A month after their release, the whales were spotted. They were found in a group of 50 whales about 60 miles from where they had been set free."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "",
+   "set": "1-3",
+   "options": [
+    "Certainly.",
+    "Not at all.",
+    "What's the matter?",
+    "All right."
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "",
+   "set": "1-3",
+   "options": [
+    "Shall we continue our discussion?",
+    "What are you going to say?",
+    "What did you say?",
+    "Where were we?"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "",
+   "set": "1-3",
+   "options": [
+    "but I'm afraid",
+    "so I think",
+    "unless it seems",
+    "as you know"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "",
+   "set": "4-5",
+   "options": [
+    "Do you speak English?",
+    "Are you a worker, too?",
+    "How do you like it?",
+    "How about you?"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "",
+   "set": "4-5",
+   "options": [
+    "Do you know each other?",
+    "Where have you been?",
+    "What do you do?",
+    "How are you?"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "",
+   "set": "6-8",
+   "options": [
+    "Hold on. I'll connect you.",
+    "Sure. Wait a moment, please.",
+    "I'm sorry, he's not come yet.",
+    "I'm sorry, he's out at this moment."
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "",
+   "set": "6-8",
+   "options": [
+    "I'm not sure. May I leave a message?",
+    "Any moment. Do you want to talk to him?",
+    "I'm not sure. Can I take a message?",
+    "I'm sorry, his line is busy."
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "",
+   "set": "6-8",
+   "options": [
+    "That's all right.",
+    "Moskovik, M-O-S-K-O-V-I-K.",
+    "It's an unusual name.",
+    "Don't worry. Eric and I are old friends."
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "",
+   "set": "9-10",
+   "options": [
+    "Don't worry. All we have to do is ask.",
+    "What should we see next?",
+    "I'm scared. Let's go home.",
+    "Yes, we just lost a tire."
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "",
+   "set": "9-10",
+   "options": [
+    "Who knows!",
+    "You ask a policeman.",
+    "There is a police station there.",
+    "I don't see any police station."
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "I sometimes take John's coat for my own, because the two of them look so ＿＿＿＿.",
+   "options": [
+    "original",
+    "cheerful",
+    "curious",
+    "similar"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "George at first had difficulty swimming across the pool, but he finally succeeded on his fourth ＿＿＿＿.",
+   "options": [
+    "attempt",
+    "process",
+    "instance",
+    "display"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "Several motorists were ＿＿＿＿ waiting for the light to change.",
+   "options": [
+    "impossibly",
+    "impracticably",
+    "importantly",
+    "impatiently"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "Mary wrote a letter of ＿＿＿＿ to the manufacturer after her new car broke down three times in the same week.",
+   "options": [
+    "complaint",
+    "repair",
+    "depression",
+    "madness"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "John's poor math score must have ＿＿＿＿ him a lot, because he is not attending the class any more.",
+   "options": [
+    "expelled",
+    "discouraged",
+    "impressed",
+    "finished"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "The issue of environmental protection has not received much attention until very ＿＿＿＿.",
+   "options": [
+    "seriously",
+    "recently",
+    "amazingly",
+    "dangerously"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "The old man could ＿＿＿＿ swallow because his throat was too dry.",
+   "options": [
+    "actually",
+    "strictly",
+    "exactly",
+    "hardly"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "We are more than willing to ＿＿＿＿ our ties with those countries that are friendly to us.",
+   "options": [
+    "appeal",
+    "strengthen",
+    "expect",
+    "connect"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "The artist is famous for his genius and great ＿＿＿＿.",
+   "options": [
+    "fragrance",
+    "originality",
+    "sculptor",
+    "therapy"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "Although some things are ＿＿＿＿, they nevertheless exist.",
+   "options": [
+    "important",
+    "intelligible",
+    "invisible",
+    "interesting"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "For example",
+    "Afterwards",
+    "For one thing",
+    "On the whole"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "so as",
+    "such as",
+    "as such",
+    "such that"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "simply",
+    "clumsily",
+    "closely",
+    "carefully"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "Few",
+    "Little",
+    "Small",
+    "Many"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "drink",
+    "to drink",
+    "drinking",
+    "drunk"
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "almost",
+    "mostly",
+    "altogether",
+    "hardly"
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "Stories",
+    "Drinks",
+    "Characters",
+    "Messages"
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "furthermore",
+    "consequently",
+    "moreover",
+    "however"
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "attentive",
+    "attributive",
+    "attractive",
+    "accustomed"
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "where",
+    "while",
+    "what",
+    "why"
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "far from",
+    "by far",
+    "a bit far",
+    "as far"
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "also",
+    "but",
+    "for",
+    "or"
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "In addition",
+    "In due time",
+    "For instance",
+    "By and large"
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "About",
+    "For",
+    "With",
+    "In"
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "the",
+    "this",
+    "a",
+    "that"
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "to make",
+    "make",
+    "made",
+    "making"
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "activity",
+    "advice",
+    "proposal",
+    "sport"
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "fairly",
+    "happily",
+    "gorgeously",
+    "finally"
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "As",
+    "Since",
+    "Until",
+    "Then"
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "",
+   "set": "31-40",
+   "options": [
+    "Where",
+    "What",
+    "If",
+    "That"
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "The preceding passage refers to the word 'hacking' in the context of",
+   "set": "41-43",
+   "options": [
+    "climbing Mount Everest.",
+    "a game for young individuals.",
+    "breaking into computer codes.",
+    "physically dismantling a solid object."
+   ]
+  },
+  {
+   "number": 42,
+   "stem": "According to the passage, breaking into computer codes of banks, large companies, and government departments is",
+   "set": "41-43",
+   "options": [
+    "a widespread criminal practice.",
+    "a game for computer literate individuals.",
+    "being studied by the Mafia for fun.",
+    "soon to replace coding bank safes."
+   ]
+  },
+  {
+   "number": 43,
+   "stem": "Based on the passage, in order to break into computer codes, one needs",
+   "set": "41-43",
+   "options": [
+    "an elaborate and expensive multi-media computer.",
+    "a group of computer science students.",
+    "the help and financial support from the Mafia.",
+    "a thorough understanding of a variety of computers."
+   ]
+  },
+  {
+   "number": 44,
+   "stem": "For the five highway deaths, the author blames",
+   "set": "44-46",
+   "options": [
+    "a large heavy station wagon.",
+    "the lack of more smaller vehicles.",
+    "the woman's ill-timed heart attack.",
+    "a weak highway-dividing fence."
+   ]
+  },
+  {
+   "number": 45,
+   "stem": "What is the author's main point in the passage above?",
+   "set": "44-46",
+   "options": [
+    "Large cars should be banned by the government.",
+    "Large cars are less safe and less economical than small cars.",
+    "Small cars are safer for the occupants than large cars.",
+    "A woman's heart attack caused the death of five people."
+   ]
+  },
+  {
+   "number": 46,
+   "stem": "The author's statement about the highway fence's ability to retain a smaller and lighter car",
+   "set": "44-46",
+   "options": [
+    "is the author's assumption.",
+    "derives from scientific evidence.",
+    "rests upon fact.",
+    "can never be verified."
+   ]
+  },
+  {
+   "number": 47,
+   "stem": "The 60 pilot whales swam ashore as a result of",
+   "set": "47-50",
+   "options": [
+    "a large winter storm off the coast of Cape Cod.",
+    "a behavior currently unknown to scientists.",
+    "a genetic phenomenon currently being studied by whale experts.",
+    "the return to their annual spawning ground near Cape Cod."
+   ]
+  },
+  {
+   "number": 48,
+   "stem": "The pilot whales died on the beaches of Cape Cod due to",
+   "set": "47-50",
+   "options": [
+    "the lack of salt water to facilitate their respiration.",
+    "the lack of nutrition to maintain their enormous body weight.",
+    "their body structure unable to support their body weight out of water.",
+    "a phenomenon yet to be figured out by scientists."
+   ]
+  },
+  {
+   "number": 49,
+   "stem": "The three whales Tag, Notch, and Baby were rescued because",
+   "set": "47-50",
+   "options": [
+    "younger whales have a greater chance of survival than the others.",
+    "amongst the many whales found beached, these three were deemed the healthiest.",
+    "they were alive when the rescue team found them.",
+    "the rescue crew liked them very much."
+   ]
+  },
+  {
+   "number": 50,
+   "stem": "Which of the following is NOT true?",
+   "set": "47-50",
+   "options": [
+    "Scientists are studying the suicidal behavior of pilot whales.",
+    "Tag, Notch, and Baby were too young to survive by themselves in the sea.",
+    "Pilot Whales are mammals that can become used to human beings.",
+    "After their release, Tag, Notch, and Baby were never seen again."
+   ]
+  }
+ ]
+}

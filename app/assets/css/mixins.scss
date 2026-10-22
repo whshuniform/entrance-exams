@@ -1,0 +1,26 @@
+@use 'sass:map';
+
+$breakpoints: (
+  'xs': 768px,
+  'sm': 992px,
+  'md': 1200px,
+  'lg': 1920px,
+);
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map.get($breakpoints, $breakpoint) - 1px}) {
+      @content;
+    }
+  }
+}
+
+// 手繪框線：不規則圓角 + 粗墨線
+@mixin sketch-border($width: 2px, $alt: false) {
+  border: $width solid var(--color-ink);
+  border-radius: var(--radius-sketch);
+
+  @if $alt {
+    border-radius: var(--radius-sketch-alt);
+  }
+}

@@ -1,0 +1,141 @@
+{
+ "year": 88,
+ "id": "math",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "下列何者是$2^{100}$除以$10$的餘數？",
+   "options": [
+    "$0$",
+    "$2$",
+    "$4$",
+    "$6$",
+    "$8$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "下列五個數中，何者為最小？",
+   "options": [
+    "$2^{\\frac{1}{3}}$",
+    "$\\left(\\frac{1}{8}\\right)^{-2}$",
+    "$2^{-\\frac{1}{4}}$",
+    "$\\left(\\frac{1}{2}\\right)^{\\frac{1}{2}}$",
+    "$8^{-\\frac{1}{3}}$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "圖一為一正立方體，$A,B,C$分別為所在的邊之中點，通過$A,B,C$三點的平面與此立方體表面相截，問下列何者為其截痕的形狀？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/88/math/text/3-1.webp",
+      "width": 342,
+      "height": 387
+     }
+    }
+   ],
+   "options": [
+    "直角三角形",
+    "非直角的三角形",
+    "正方形",
+    "非正方形的長方形",
+    "六邊形"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "設$\\Delta ABC$的三頂點$A,B,C$所對邊的邊長分別為$a,b,c$，$\\overline{AH}$為高，則$\\overline{AH}$之長為",
+   "options": [
+    "$b\\cdot\\sin B$",
+    "$c\\cdot\\sin C$",
+    "$b\\cdot\\sin C$",
+    "$c\\cdot\\sin B$",
+    "$a\\cdot\\sin A$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "試選出正確的選項：",
+   "options": [
+    "$0.3\\overline{43}$不是有理數",
+    "$0.\\overline{34}>\\frac{1}{3}$",
+    "$0.\\overline{34}>0.343$",
+    "$0.\\overline{34}<0.35$",
+    "$0.\\overline{34}=0.3\\overline{43}$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "三次方程式$x^3+x^2-2x-1=0$在下列那些連續整數之間有根？",
+   "options": [
+    "$-2$與$-1$之間",
+    "$-1$與$0$之間",
+    "$0$與$1$之間",
+    "$1$與$2$之間",
+    "$2$與$3$之間"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "關於橢圓$\\Gamma$：$\\sqrt{(x-1)^2+(y-2)^2}+\\sqrt{(x+1)^2+(y+2)^2}=6$，下列何者為真？",
+   "options": [
+    "$(0,0)$是$\\Gamma$的中心",
+    "$(1,2),(-1,-2)$為$\\Gamma$的焦點",
+    "$\\Gamma$的短軸為$4$",
+    "$\\Gamma$對稱於直線$x=y$",
+    "$\\Gamma$對稱於$(1,2)$與$(-1,-2)$的連線"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "下列各選項中的行列式，那些與行列式$\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix}$相等？",
+   "options": [
+    "$\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ c_1 & c_2 & c_3 \\\\ b_1 & b_2 & b_3 \\end{vmatrix}$",
+    "$\\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix}$",
+    "$\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1-c_1 & b_2-c_2 & b_3-c_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix}$",
+    "$\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1\\cdot c_1 & b_2\\cdot c_2 & b_3\\cdot c_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix}$",
+    "$\\begin{vmatrix} a_3 & a_2 & a_1 \\\\ b_3 & b_2 & b_1 \\\\ c_3 & c_2 & c_1 \\end{vmatrix}$"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "測量一物件的長度$9$次，得其長(公尺)為",
+   "blocks": [
+    "$2.43,\\ 2.46,\\ 2.41,\\ 2.45,\\ 2.44,\\ 2.48,\\ 2.46,\\ 2.47,\\ 2.45$",
+    "將上面的數據每一個都乘以$100$，再減去$240$得一組新數據為",
+    "$3,\\ 6,\\ 1,\\ 5,\\ 4,\\ 8,\\ 6,\\ 7,\\ 5$",
+    "問下列選項，何者為真？"
+   ],
+   "options": [
+    "新數據的算術平均數為$5$",
+    "新數據的標準差為$2$",
+    "原數據的算術平均數為$2.45$",
+    "原數據的標準差為$0.2$",
+    "原數據的中位數為$2.45$"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "圖二為一正立方體，試問下列何者為真？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/88/math/text/10-2.webp",
+      "width": 402,
+      "height": 474
+     }
+    }
+   ],
+   "options": [
+    "$\\overrightarrow{EA}\\cdot\\overrightarrow{EG}=0$",
+    "$\\overrightarrow{ED}\\cdot\\overrightarrow{EF}=0$",
+    "$\\overrightarrow{EF}+\\overrightarrow{EH}=\\overrightarrow{AC}$",
+    "$\\overrightarrow{EC}\\cdot\\overrightarrow{AG}=0$",
+    "$\\overrightarrow{EF}+\\overrightarrow{EA}+\\overrightarrow{EH}=\\overrightarrow{EC}$"
+   ]
+  }
+ ]
+}

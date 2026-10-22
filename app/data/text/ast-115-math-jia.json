@@ -1,0 +1,140 @@
+{
+ "exam": "ast",
+ "year": 115,
+ "id": "math-jia",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "已知圖中「粗灰線」橢圓的方程式為 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$，試選出最有可能為圖中「粗黑線」圖形方程式的選項。",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/115/math-jia/text/1-1.webp",
+      "width": 720,
+      "height": 447
+     }
+    }
+   ],
+   "options": [
+    "$\\frac{x^2}{b^2}+\\frac{y^2}{a^2}=1$",
+    "$\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$",
+    "$\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=-1$",
+    "$\\frac{x^2}{b^2}-\\frac{y^2}{a^2}=1$",
+    "$\\frac{x^2}{b^2}-\\frac{y^2}{a^2}=-1$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "已知 $a_1,a_2,a_3,\\ldots$ 為首項為 $1$、公比為 $r$ 的無窮等比數列（其中 $r$ 為非零實數），且知兩無窮等比級數 $a_1+a_2+a_3+\\cdots+a_n+\\cdots$ 與 $a_1+a_3+a_5+\\cdots+a_{2n-1}+\\cdots$ 皆收斂且其乘積為 $1$。試選出正確的 $r$ 值。",
+   "options": [
+    "$-\\frac{1}{2}$",
+    "$\\frac{1-\\sqrt{3}}{2}$",
+    "$\\frac{1+\\sqrt{3}}{2}$",
+    "$\\frac{1-\\sqrt{5}}{2}$",
+    "$\\frac{1+\\sqrt{5}}{2}$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "對任意實數 $x$，試選出函數 $f(x)=\\sin\\left(x+\\frac{\\pi}{3}\\right)+\\sin x-\\sqrt{3}\\cos x$ 的最大值。",
+   "options": [
+    "$1$",
+    "$\\sqrt{2}$",
+    "$\\sqrt{3}$",
+    "$1+\\sqrt{2}$",
+    "$1+\\sqrt{3}$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "箱中有編號分別為 $1,2,3$ 的球各 $n_1,n_2,n_3$ 顆（其中 $n_1,n_2,n_3$ 皆為正整數）。隨機抽取一球（每球被抽中的機率相等），所抽出球的編號為 $1,2,3$ 的機率分別記為 $p_1,p_2,p_3$。試選出正確的選項。",
+   "options": [
+    "在已知抽出一球且此球不是 $1$ 號球的條件下，則該球為 $2$ 號球的機率為 $\\frac{p_2}{1-p_1}$",
+    "抽出球編號的期望值等於 $2+p_3-p_1$",
+    "若 $n_1,n_2,n_3$ 為等差數列，則 $p_1,p_2,p_3$ 亦為等差數列",
+    "若 $n_1,n_2,n_3$ 為等比數列，則 $p_2\\geq\\frac{1}{3}$",
+    "若 $p_k<\\frac{1}{2}$ 對 $k=1,2,3$ 都成立，則 $n_1,n_2,n_3$ 可以構成一個三角形的三個邊長"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "設 $a$ 為實數，關於複數 $z=\\frac{a-2i}{1+2i}$ 的性質，試選出正確的選項（其中 $i=\\sqrt{-1}$，$\\overline{z}$ 為 $z$ 的共軛複數）。",
+   "options": [
+    "$z$ 的實部為 $\\frac{a-4}{5}$",
+    "若 $\\overline{z}=z$，則 $a=1$",
+    "$|z|^2\\geq\\frac{4}{5}$",
+    "若 $a=0$，則 $z$ 的主輻角大於 $\\pi$",
+    "無論 $a$ 值為何，$z$ 都不會落在複數平面上的第一象限"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "對於實係數多項式 $f(x)$，將閉區間 $[a,b]$ 分割成三等分段，取每個分段左端點上的 $f(x)$ 函數值所得到的黎曼和記為 $M_a^b(f)$，",
+   "blocks": [
+    "即 $M_a^b(f)=\\frac{b-a}{3}\\left[f(a)+f\\left(a+\\frac{b-a}{3}\\right)+f\\left(a+\\frac{2(b-a)}{3}\\right)\\right]$；",
+    "取每個分段右端點上的 $f(x)$ 函數值所得到的黎曼和記為 $N_a^b(f)$，",
+    "即 $N_a^b(f)=\\frac{b-a}{3}\\left[f\\left(a+\\frac{b-a}{3}\\right)+f\\left(a+\\frac{2(b-a)}{3}\\right)+f(b)\\right]$。",
+    "若已知 $f(x)$ 及其一階與二階導函數在三段開區間的正、負，如下表：",
+    {
+     "table": [
+      [
+       "區間",
+       "$(2,3)$",
+       "$(4,5)$",
+       "$(6,7)$"
+      ],
+      [
+       "$f(x)$",
+       "正",
+       "負",
+       "負"
+      ],
+      [
+       "$f'(x)$",
+       "負",
+       "正",
+       "負"
+      ],
+      [
+       "$f''(x)$",
+       "負",
+       "負",
+       "正"
+      ]
+     ]
+    },
+    "例如：在開區間 $(2,3)$ 上，滿足 $f(x)>0$，$f'(x)<0$ 且 $f''(x)<0$。試選出正確的選項。"
+   ],
+   "options": [
+    "在開區間 $(4,5)$ 上，函數 $y=f(x)$ 遞增且圖形凹口向上",
+    "在閉區間 $[5,6]$ 上，函數 $y=f(x)$ 的圖形有反曲點",
+    "$\\int_2^3 f(x)dx<M_2^3(f)$",
+    "$\\int_4^5 f(x)dx>N_4^5(f)$",
+    "$\\int_6^7 f(x)dx>\\frac{1}{2}\\left(M_6^7(f)+N_6^7(f)\\right)$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "考慮函數 $f(x)=\\log\\left(\\frac{1+x}{1-x}\\right)$，試選出正確的選項。",
+   "options": [
+    "當 $x<1$ 時，$f(x)$ 都有意義",
+    "當 $f(x)$ 與 $f(-x)$ 都有意義時，$f(-x)=-f(x)$ 成立",
+    "若 $f(x)>0$，則 $x>0$",
+    "存在實數 $a$，滿足 $f(a)=-100$",
+    "坐標平面上，$y=f(x)$ 的圖形與 $y=10^{\\frac{1+x}{1-x}}$ 的圖形對直線 $y=x$ 對稱"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "坐標平面上兩向量 $\\overrightarrow{u},\\overrightarrow{v}$ 滿足 $|\\overrightarrow{u}+\\overrightarrow{v}|=2$ 與 $\\overrightarrow{u}-\\overrightarrow{v}=(2,2)$。試選出正確的選項。",
+   "options": [
+    "$|\\overrightarrow{v}+(1,1)|=1$",
+    "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=-1$",
+    "$|\\overrightarrow{v}|\\leq 2$",
+    "$\\overrightarrow{u}$ 不可能與 $\\overrightarrow{v}$ 平行",
+    "若 $\\overrightarrow{u},\\overrightarrow{v}$ 的夾角為 $\\theta$，則 $|\\overrightarrow{u}||\\overrightarrow{v}|\\sin\\theta\\leq 2\\sqrt{2}$"
+   ]
+  }
+ ]
+}

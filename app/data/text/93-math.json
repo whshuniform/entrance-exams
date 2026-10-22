@@ -1,0 +1,176 @@
+{
+ "year": 93,
+ "id": "math",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "已知一等差數列共有十項，且知其奇數項之和為$15$，偶數項之和為$30$，則下列哪一選項為此數列之公差？",
+   "options": [
+    "$1$",
+    "$2$",
+    "$3$",
+    "$4$",
+    "$5$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "下列選項中的數，何者最大？ [其中 $n!=n\\times(n-1)\\times\\cdots\\times 2\\times 1$]",
+   "options": [
+    "$100^{10}$",
+    "$10^{100}$",
+    "$50^{50}$",
+    "$50!$",
+    "$\\frac{100!}{50!}$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "右圖陰影部分所示為複數平面上區域$A=\\{z: z=r(\\cos\\theta+i\\sin\\theta),\\ 0\\leq r\\leq 1,\\ \\frac{3\\pi}{4}\\leq\\theta\\leq\\frac{5\\pi}{4}\\}$之略圖。令$D=\\{w: w=z^3, z\\in A\\}$，試問下列選項中之略圖，何者之陰影部分與區域$D$最接近？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/93/math/text/3-1.webp",
+      "width": 285,
+      "height": 306
+     }
+    }
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/93/math/text/3-2.webp",
+      "width": 288,
+      "height": 348
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/93/math/text/3-3.webp",
+      "width": 270,
+      "height": 342
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/93/math/text/3-4.webp",
+      "width": 279,
+      "height": 336
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/93/math/text/3-5.webp",
+      "width": 288,
+      "height": 336
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/93/math/text/3-6.webp",
+      "width": 279,
+      "height": 333
+     }
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "在坐標空間中給定兩點$A(1,2,3)$與$B(7,6,5)$。令$S$為$xy$-平面上所有使得向量$\\overrightarrow{PA}$垂直於向量$\\overrightarrow{PB}$的$P$點所成的集合，則",
+   "options": [
+    "$S$為空集合",
+    "$S$恰含一點",
+    "$S$恰含兩點",
+    "$S$為一線段",
+    "$S$為一圓"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "設$\\triangle ABC$為平面上的一個三角形，$P$為平面上一點且$\\overrightarrow{AP}=\\frac{1}{3}\\overrightarrow{AB}+t\\overrightarrow{AC}$，其中$t$為一實數。試問下列哪一選項為$t$的最大範圍，使得$P$落在$\\triangle ABC$的內部？",
+   "options": [
+    "$0<t<\\frac{1}{4}$",
+    "$0<t<\\frac{1}{3}$",
+    "$0<t<\\frac{1}{2}$",
+    "$0<t<\\frac{2}{3}$",
+    "$0<t<\\frac{3}{4}$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "台灣證劵交易市場規定股票成交價格只能在前一個交易日的收盤價(即最後一筆的成交價)的漲、跌$7\\%$範圍內變動。例如：某支股票前一個交易日的收盤價是每股$100$元，則今天該支股票每股的買賣價格必須在$93$元至$107$元之間。假設有某支股票的價格起伏很大，某一天的收盤價是每股$40$元，次日起連續五個交易日以跌停板收盤(也就是每天跌$7\\%$)，緊接著卻連續五個交易日以漲停板收盤(也就是每天漲$7\\%$)。請問經過這十個交易日後，該支股票每股的收盤價最接近下列哪一個選項中的價格？",
+   "options": [
+    "$39$元",
+    "$39.5$元",
+    "$40$元",
+    "$40.5$元",
+    "$41$元"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "中山高速公路重慶北路交流道南下入口匝道分成內、外兩線車道，路旁立有標誌「外側車道 大客車專用」。請選出**不違反**此規定的選項：",
+   "options": [
+    "小型車行駛內側車道",
+    "小型車行駛外側車道",
+    "大客車行駛內側車道",
+    "大客車行駛外側車道",
+    "大貨車行駛外側車道"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "在坐標平面上，下列哪些方程式的圖形可以放進一個夠大的圓裡面？",
+   "options": [
+    "$3x=2y^2$",
+    "$3x^2+2y^2=1$",
+    "$3x^2-2y^2=1$",
+    "$|x+y|=1$",
+    "$|x|+|y|=1$"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "如右圖$O\\text{-}ABCD$為一金字塔，底是邊長為$1$之正方形，頂點$O$與$A$、$B$、$C$、$D$之距離均為$2$。試問下列哪些式子是正確的？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/93/math/text/9-7.webp",
+      "width": 384,
+      "height": 330
+     }
+    }
+   ],
+   "options": [
+    "$\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC}+\\overrightarrow{OD}=\\overrightarrow{0}$",
+    "$\\overrightarrow{OA}+\\overrightarrow{OB}-\\overrightarrow{OC}-\\overrightarrow{OD}=\\overrightarrow{0}$",
+    "$\\overrightarrow{OA}-\\overrightarrow{OB}+\\overrightarrow{OC}-\\overrightarrow{OD}=\\overrightarrow{0}$",
+    "$\\overrightarrow{OA}\\cdot\\overrightarrow{OB}=\\overrightarrow{OC}\\cdot\\overrightarrow{OD}$",
+    "$\\overrightarrow{OA}\\cdot\\overrightarrow{OC}=2$"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "從$1,2,\\ldots,10$這十個數中隨意取兩個，以$p$表示其和為偶數之機率，$q$表示其和為奇數之機率。試問下列哪些敘述是正確的？",
+   "options": [
+    "$p+q=1$",
+    "$p=q$",
+    "$|p-q|\\leq\\frac{1}{10}$",
+    "$|p-q|\\geq\\frac{1}{20}$",
+    "$p\\geq\\frac{1}{2}$"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "設$f(x)$為三次實係數多項式，且知複數$1+i$為$f(x)=0$之一解。試問下列哪些敘述是正確的？",
+   "options": [
+    "$f(1-i)=0$",
+    "$f(2+i)\\neq 0$",
+    "沒有實數$x$滿足$f(x)=x$",
+    "沒有實數$x$滿足$f(x^3)=0$",
+    "若$f(0)>0$且$f(2)<0$, 則$f(4)<0$."
+   ]
+  }
+ ]
+}
