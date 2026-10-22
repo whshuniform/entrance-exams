@@ -1,0 +1,689 @@
+{
+ "year": 89,
+ "id": "english",
+ "sets": [
+  {
+   "id": "16-20",
+   "blocks": [
+    "Joe: I see you’re busy right now, Sue.  As soon as you [[16]], I’d like to talk to you for a few minutes.",
+    "Sue: It’s O.K.  Come on in.",
+    "Joe: Oh, no, I don’t want to interrupt you.  I can wait.  I’ll come back [[17]].",
+    "Sue: I’m afraid it’s going to be a long wait!  I’m working [[18]] my history paper.",
+    "Joe: History paper?  I thought you’d finished it. [[19]] you turn it in on Friday?",
+    "Sue: Uh-huh.  But the professor just returned it to me.  I [[20]] to add 10 more pages.",
+    "Joe: Ten more pages!  That’s a lot.  How are you going to do it?",
+    "Sue: That’s what I’m trying to figure out.  Now what can I do for you?"
+   ]
+  },
+  {
+   "id": "21-30",
+   "blocks": [
+    "Basically, there are two kinds of sleep.  One is Rapid Eye Movement (REM) sleep.  In [[21]], the brain waves of a sleeping person are similar to those of a waking person, and the eyes move about rapidly under the closed lids. [[22]] kind of sleep is Non-Rapid Eye Movement sleep.  Scientists have discovered that dreams happen mainly in REM sleep.",
+    "Everyone dreams about 20 percent of their sleeping time. [[23]] people who say they never dream show about 20 percent of REM sleep. [[24]] these “non-dreamers” do their sleeping in a laboratory [[25]] researchers can wake them up and ask them whether they were having dreams the moment before, it [[26]] that they dream as much as others.",
+    "Events in daily life sometimes occur symbolically in dreams. [[27]], a boy is having difficulties on the school playground because a bigger boy keeps bullying him.  He may dream at night of being alone in the playground, [[28]] a lion.  At other times the dreaded event from daily life simply occurs in a dream in its real-life form; [[29]], the boy dreams of being bullied by the bigger boy.",
+    "[[30]] scientific research, we have known more about the relationship between sleep and dreams.  However, why a dream will take a certain symbolic form is still a mystery."
+   ]
+  },
+  {
+   "id": "31-35",
+   "blocks": [
+    "Jane: Hi, Mary.  It’s been a while.  How are you?",
+    "Mary: OK, I guess. [[31]]",
+    "Jane: Couldn’t be better.  By the way, is your house guest still staying with you?",
+    "Mary: No.  After three weeks, she finally left. [[32]]",
+    "Jane: So, how did you get rid of her?",
+    "Mary: [[33]] I told her my parents were coming for a visit and I needed the room.  I felt bad about it, though. [[34]]",
+    "Jane: Oh, I’d have told her to leave after one week.  That reminds me.  My father-in-law is coming to visit us next week.  Can I move in with you for a few days?",
+    "Mary: [[35]]",
+    "Jane: Please!"
+   ]
+  },
+  {
+   "id": "36-40",
+   "blocks": [
+    "Last Tuesday I took my two nieces, aged three and five, to town in the car.  It began to rain heavily so I decided [[36]], while I rushed into a shop.  I told the girls I would be back in a few minutes and asked them not to touch anything.  Then I locked all the doors and left.  I was back at the car in less than five minutes [[37]]!  I could hardly believe my eyes.  The car doors were still locked, the windows tightly shut, and on the back seat were their two jackets. [[38]], I ran to the corner of the street but there was no sign of them.  I rushed up to a couple of passers-by and asked in vain whether [[39]].  Feeling quite sick with fear, I sat on the driver’s seat, trying to stop trembling.  Suddenly, behind me I heard a tapping noise and laughter.  I jumped out of the car, ran round to open the trunk and there inside [[40]].  They had apparently pulled out the back seat, crawled behind it, and then had not been able to push the seat forward again.  I almost wept with relief!"
+   ]
+  },
+  {
+   "id": "41-43",
+   "blocks": [
+    "One day Nasreddin borrowed a big pot from his neighbor Ali.  The next day he returned the pot with a small one inside.  “That's not mine,” said Ali.  “Yes, it is,” said Nasreddin.  “While your pot was staying with me, it had a baby.”",
+    "One week later Nasreddin asked Ali to lend him the pot again.  Ali gladly agreed and waited to see if Nasreddin would again give him back two pots.  One week passed.  Then another.  In the end, Ali lost patience and went to demand his pot.  “I’m sorry, your pot has died,” said Nasreddin. “Died!” said Ali.  “How can a pot die?”  “Well, you believed me when I told you that your pot had a baby, didn’t you?”"
+   ]
+  },
+  {
+   "id": "44-47",
+   "blocks": [
+    "Sometimes it is impossible to deliver all the mail that arrives at the post office.  Perhaps there is an inadequate or illegible address and there is no return address.  The post office cannot just throw the mail away, so it becomes “dead mail.”  Dead mail is sent to one of the U.S. Postal Service’s dead mail offices in Atlanta, New York, Philadelphia, St. Paul, and San Francisco.  Seventy-five million pieces of mail can end up in these offices in one year.",
+    "The staff of the dead mail offices has a variety of ways to deal with all of these pieces of dead mail. First of all, they look for clues that can help them deliver the mail; they open packages in the hope that something inside will show where the package came from or is going to.  Dead mail will also be listed on a computer so that people can call in and check to see if a missing item is there.",
+    "However, all of this mail cannot simply be stored forever; there is just too much of it.  When a lot of dead mail has piled up, the dead mail offices hold public auctions.  Every three months, the public is invited to the offices and bins containing items found in dead mail packages are sold to the highest bidder."
+   ]
+  },
+  {
+   "id": "48-49",
+   "blocks": [
+    "I wandered lonely as a cloud",
+    "That floats on high o'er vales and hills,",
+    "When all at once I saw a crowd,",
+    "A host, of golden daffodils,",
+    "Beside the lake, beneath the trees,",
+    "Fluttering and dancing in the breeze.",
+    "Continuous as the stars that shine",
+    "And twinkle on the Milky Way,",
+    "They stretched in never-ending line",
+    "Along the margin of a bay:",
+    "Ten thousand saw I at a glance,",
+    "Tossing their heads in sprightly dance."
+   ]
+  },
+  {
+   "id": "50-53",
+   "blocks": [
+    "A linguist is always listening, never off-duty. Once I invited a group of friends round to my house, telling them that I was going to record their speech. I said I was interested in their regional accents, and that it would take only a few minutes. Thus, on one evening, three people turned up at my house and were shown into my front room. When they saw the room they were a bit alarmed, for it was laid out as a studio. In front of each easy chair there was a microphone at head height, with wires leading to a tape-recorder in the middle of the floor. They sat down, rather nervously, and I explained that all I wanted was for them to count from one to twenty. Then we could relax and have a drink.",
+    "I turned on the tape-recorder and each in turn solemnly counted from one to twenty in their best accent.  When it was over, I turned the tape-recorder off and brought round the drinks. I was sternly criticized for having such an idiotic job, and for the rest of the evening there was general jolly conversation—spoilt only by the fact that I had to take a telephone call in another room, which unfortunately lasted some time.",
+    "Or at least that was how it would appear. For, of course, the microphones were not connected to the tape-recorder in the middle of the room at all but to another one, which was turning happily away in the kitchen. The participants, having seen the visible tape-recorder turned off, paid no more attention to the microphones which stayed in front of their chairs, only a few inches from their mouths, thus giving excellent sound quality. And my lengthy absence meant that I was able to obtain as natural a piece of conversation as it would be possible to find.",
+    "I should add, perhaps, that I did tell my friends what had happened to them, after the event was over, and gave them the option of destroying the tape. None of them wanted to—though for some years afterwards I was left in no doubt that I was morally obliged to them, in the sense that it always seemed to be my round when it came to the buying of drinks. Linguistic research can be a very expensive business."
+   ]
+  },
+  {
+   "id": "54-55",
+   "blocks": [
+    "George Bernard Shaw and Winston Churchill apparently disliked each other.  It is said that the playwright once sent Churchill two tickets for the opening night of one of his plays, together with a card, which said, “Bring a friend (if you have one).”",
+    "Churchill, however, managed to get the better of this exchange.  He returned the tickets, enclosing a note, which said, “I shall be busy that evening.  Please send me two tickets for the second night (if there is one).”",
+    "There is no record of whether Shaw ever sent the tickets."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "Jack is a ＿＿＿＿ person: he is polite, kind, and always shows respect for others.",
+   "options": [
+    "courteous",
+    "handsome",
+    "hateful",
+    "sensitive"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "The traffic in the city was ＿＿＿＿ today, so Jane got home earlier than usual.",
+   "options": [
+    "heavy",
+    "weak",
+    "scarce",
+    "light"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "Jonathan had qualified as a doctor but later gave up the ＿＿＿＿ of medicine for full-time writing.",
+   "options": [
+    "treatment",
+    "diagnosis",
+    "practice",
+    "consumption"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "Bill was severely punished because he ＿＿＿＿ lied to his mother.",
+   "options": [
+    "notoriously",
+    "purposefully",
+    "roughly",
+    "strongly"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "The two security guards will be ＿＿＿＿ from all their duties until further investigation is completed.",
+   "options": [
+    "collapsed",
+    "measured",
+    "declared",
+    "suspended"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "He made his instruction ＿＿＿＿ and direct so that everyone could follow easily.",
+   "options": [
+    "tentative",
+    "explicit",
+    "plausible",
+    "informal"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "In order for a new product to sell well, manufacturers often invest a large sum of money on its ＿＿＿＿.",
+   "options": [
+    "liberation",
+    "promotion",
+    "destruction",
+    "concentration"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "The soldier was put on trial for ＿＿＿＿ to obey his commanding officer’s order.",
+   "options": [
+    "refusing",
+    "regretting",
+    "resigning",
+    "restricting"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "Since Michael was the best candidate, the committee voted ＿＿＿＿ for him to take charge of the company’s sales department.",
+   "options": [
+    "anonymously",
+    "drastically",
+    "customarily",
+    "unanimously"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "After hiking all day without drinking any water, the students sat down by the stream to quench their ＿＿＿＿.",
+   "options": [
+    "hunger",
+    "energy",
+    "thirst",
+    "nutrition"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "The more one is ＿＿＿＿ the English-speaking environment, the better he or she will learn the language.",
+   "options": [
+    "filled in",
+    "exposed to",
+    "caught on",
+    "kept up"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "Peter’s sudden death was a great blow to Jane and it took her a long time to ＿＿＿＿ the grief.",
+   "options": [
+    "put out",
+    "come across",
+    "go round",
+    "get over"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "A person who likes to ＿＿＿＿ others is definitely not easy to get along with.",
+   "options": [
+    "leave out",
+    "let off",
+    "pick on",
+    "turn up"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "The old houses will soon be ＿＿＿＿ and rebuilt because of the severe damage caused by the earthquake.",
+   "options": [
+    "put out",
+    "run down",
+    "knocked out",
+    "pulled down"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "I’d like to thank you for your hospitality ＿＿＿＿ our group.",
+   "options": [
+    "on behalf of",
+    "instead of",
+    "because of",
+    "as a result of"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "",
+   "set": "16-20",
+   "options": [
+    "finish",
+    "finished",
+    "are finishing",
+    "will finish"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "",
+   "set": "16-20",
+   "options": [
+    "later",
+    "late",
+    "latter",
+    "latest"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "",
+   "set": "16-20",
+   "options": [
+    "by",
+    "in",
+    "on",
+    "along"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "",
+   "set": "16-20",
+   "options": [
+    "Mustn’t",
+    "Needn’t",
+    "Couldn’t",
+    "Didn’t"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "",
+   "set": "16-20",
+   "options": [
+    "told",
+    "was told",
+    "had told",
+    "had been telling"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "this",
+    "each",
+    "both",
+    "those"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "Other",
+    "Another",
+    "The other",
+    "Others"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "Even",
+    "For",
+    "Except",
+    "Unless"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "If",
+    "No matter",
+    "No wonder",
+    "Although"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "that",
+    "where",
+    "which",
+    "who"
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "shows off",
+    "crosses out",
+    "brings up",
+    "turns out"
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "In general",
+    "As a result",
+    "For example",
+    "In contrast"
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "face",
+    "faced",
+    "facing",
+    "to face"
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "for instance",
+    "in addition",
+    "in a word",
+    "that is"
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "",
+   "set": "21-30",
+   "options": [
+    "Due to",
+    "As far as",
+    "In spite of",
+    "Consisting of"
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "",
+   "set": "31-35",
+   "options": [
+    "It’s a small world.",
+    "And you?",
+    "Thanks a lot.",
+    "Where are you going?"
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "",
+   "set": "31-35",
+   "options": [
+    "I look forward to seeing her again.",
+    "What a shame!",
+    "We had a great time.",
+    "Thank goodness!"
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "",
+   "set": "31-35",
+   "options": [
+    "I got no clue.",
+    "Well done.",
+    "Well, I lied to her.",
+    "It’s none of your business."
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "",
+   "set": "31-35",
+   "options": [
+    "What have you done?",
+    "What would you have done?",
+    "What do you think of her?",
+    "What did you do to her?"
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "",
+   "set": "31-35",
+   "options": [
+    "No way.",
+    "Sure.",
+    "Big deal!",
+    "Let’s check it out."
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "",
+   "set": "36-40",
+   "options": [
+    "I would drive them home",
+    "I would take them with me",
+    "I would leave the children in the car",
+    "I would stay in the car with the children"
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "",
+   "set": "36-40",
+   "options": [
+    "and the girls were sitting there",
+    "and the girls had gone home",
+    "but the girls were crying",
+    "but the girls had vanished"
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "",
+   "set": "36-40",
+   "options": [
+    "In a panic",
+    "With delight",
+    "Out of sorrow",
+    "Filled with embarrassment"
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "",
+   "set": "36-40",
+   "options": [
+    "they had seen my car",
+    "there was a shop nearby",
+    "they had seen two small girls",
+    "there was a police station in the neighborhood"
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "",
+   "set": "36-40",
+   "options": [
+    "were two scared and shivering little girls",
+    "were two red-faced and excited children",
+    "was one of the passers-by I had asked",
+    "was nothing at all"
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "Nasreddin gave Ali an extra small pot in the beginning because ＿＿＿＿.",
+   "set": "41-43",
+   "options": [
+    "he and Ali were really good friends",
+    "he had too many pots at home",
+    "he wanted to have more baby pots",
+    "he wanted to trick Ali"
+   ]
+  },
+  {
+   "number": 42,
+   "stem": "Why did Ali take Nasreddin’s words that his pot had a baby?",
+   "set": "41-43",
+   "options": [
+    "He had no reason to doubt it.",
+    "He wanted to keep the small pot.",
+    "He had seen pots having babies before.",
+    "He believed in whatever Nasreddin said."
+   ]
+  },
+  {
+   "number": 43,
+   "stem": "It can be inferred that Ali had ＿＿＿＿ at the end of the story.",
+   "set": "41-43",
+   "options": [
+    "neither of the pots",
+    "the big pot",
+    "the small pot",
+    "both pots"
+   ]
+  },
+  {
+   "number": 44,
+   "stem": "Which of the following is **NOT** mentioned as a way to deal with dead mail?",
+   "set": "44-47",
+   "options": [
+    "To search for clues.",
+    "To throw dead mail away.",
+    "To open dead mail.",
+    "To list dead mail on a computer."
+   ]
+  },
+  {
+   "number": 45,
+   "stem": "The staff in a dead mail office may open a package in order to find ＿＿＿＿.",
+   "set": "44-47",
+   "options": [
+    "some money",
+    "some missing objects",
+    "an address",
+    "a computer"
+   ]
+  },
+  {
+   "number": 46,
+   "stem": "The passage indicates that dead mail auctions are held ＿＿＿＿.",
+   "set": "44-47",
+   "options": [
+    "once a year",
+    "twice a year",
+    "three times a year",
+    "four times a year"
+   ]
+  },
+  {
+   "number": 47,
+   "stem": "Which is the best title for the passage?",
+   "set": "44-47",
+   "options": [
+    "Dead Mail",
+    "Mail Auction",
+    "Unknown Mail",
+    "The Dead Mail Office"
+   ]
+  },
+  {
+   "number": 48,
+   "stem": "Where was the poet?",
+   "set": "48-49",
+   "options": [
+    "In a garden.",
+    "In a dance hall.",
+    "In the countryside.",
+    "In a space ship."
+   ]
+  },
+  {
+   "number": 49,
+   "stem": "Which of the following is most likely true about the poet?",
+   "set": "48-49",
+   "options": [
+    "He was a great dancer.",
+    "He liked to be close to Nature.",
+    "He enjoyed the company of people.",
+    "He was a very lonely person."
+   ]
+  },
+  {
+   "number": 50,
+   "stem": "Why did the author ask his friends to count from one to twenty?",
+   "set": "50-53",
+   "options": [
+    "He wanted them to think that was all he wanted to record.",
+    "He wanted to record how they pronounced numbers.",
+    "He had to check whether his tape-recorder was working.",
+    "He wanted to discover who had the best accent."
+   ]
+  },
+  {
+   "number": 51,
+   "stem": "Why did the author leave the room in the middle of the evening?",
+   "set": "50-53",
+   "options": [
+    "He had to make a phone call to order some drinks.",
+    "He didn’t like to be criticized for being idiotic.",
+    "He wanted to turn off a tape recorder in another room.",
+    "He wanted the others to have a conversation without him."
+   ]
+  },
+  {
+   "number": 52,
+   "stem": "How did the author have the conversation recorded?",
+   "set": "50-53",
+   "options": [
+    "On the tape-recorder in the middle of the floor.",
+    "Through hidden microphones.",
+    "On a tape-recorder in another room.",
+    "In a studio."
+   ]
+  },
+  {
+   "number": 53,
+   "stem": "How did his friends react when the author told them what he had done?",
+   "set": "50-53",
+   "options": [
+    "They wanted him to destroy the recordings he had made.",
+    "They didn’t really feel offended.",
+    "They were upset because they felt he had cheated them.",
+    "They made him pay them for the recordings."
+   ]
+  },
+  {
+   "number": 54,
+   "stem": "What was Shaw trying to say to Churchill on his card?",
+   "set": "54-55",
+   "options": [
+    "Churchill should not go to the play alone.",
+    "Churchill should not bring too many people.",
+    "Churchill may have to waste the two tickets.",
+    "Churchill did not have any friend."
+   ]
+  },
+  {
+   "number": 55,
+   "stem": "Why didn’t Churchill want the tickets for the first night?",
+   "set": "54-55",
+   "options": [
+    "He didn’t want to take Shaw’s insult.",
+    "The theater would not be as crowded the second night.",
+    "He was busy on the first night of the show.",
+    "He couldn’t find a friend to go with him the first night."
+   ]
+  }
+ ]
+}

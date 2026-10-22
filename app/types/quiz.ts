@@ -148,6 +148,8 @@ export interface LevelStats {
   total: number
   /** 官方不給名次、人數是用百分比推算（會考）：成績單只顯示約前幾 % */
   percentOnly?: boolean
+  /** 官方沒公布到考人數（學測 90、91 年只有百分比）：成績單不寫到考人數 */
+  totalUnknown?: boolean
 }
 
 /** 全國名次區間：同級分的人無法再細分 */
@@ -221,6 +223,8 @@ export interface SubjectReport {
   labelRange?: { min: string, max: string }
   /** 會考：約前幾 %（取代名次），min 是最好 */
   percentRange?: NumberRange
+  /** 到考人數不明，不顯示 */
+  totalUnknown?: boolean
 }
 
 /** 考試項目：學測、分科、會考；還沒有題目的先顯示「準備中」 */

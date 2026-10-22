@@ -47,6 +47,7 @@ export function buildReport(paper: QuizPaper, results: Record<string, GradeResul
     levelRange,
     rank,
     ...(labels.min && labels.max ? { labelRange: { min: labels.min, max: labels.max } } : {}),
+    ...(paper.stats.totalUnknown ? { totalUnknown: true } : {}),
     ...(paper.stats.percentOnly ? { percentRange: { min: percentAtOrAbove(levelRange.max), max: percentAtOrAbove(levelRange.min) } } : {}),
   }
 }

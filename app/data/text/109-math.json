@@ -1,0 +1,288 @@
+{
+ "year": 109,
+ "id": "math",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "已知兩個直角三角形三邊長分別為$3,4,5$、$5,12,13$，$\\alpha,\\beta$分別為它們的一角，如下圖所示。試選出正確的選項。",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/109/math/text/1-1.webp",
+      "width": 696,
+      "height": 288
+     }
+    }
+   ],
+   "options": [
+    "$\\sin\\alpha>\\sin\\beta>\\sin 30^\\circ$",
+    "$\\sin\\alpha>\\sin 30^\\circ>\\sin\\beta$",
+    "$\\sin\\beta>\\sin\\alpha>\\sin 30^\\circ$",
+    "$\\sin\\beta>\\sin 30^\\circ>\\sin\\alpha$",
+    "$\\sin 30^\\circ>\\sin\\alpha>\\sin\\beta$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "空間中有相異四點$A,B,C,D$，已知內積$\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=\\overrightarrow{AB}\\cdot\\overrightarrow{AD}$。試選出正確的選項。",
+   "options": [
+    "$\\overrightarrow{AB}\\cdot\\overrightarrow{CD}=0$",
+    "$\\overline{AC}=\\overline{AD}$",
+    "$\\overrightarrow{AB}$與$\\overrightarrow{CD}$平行",
+    "$\\overrightarrow{AD}\\cdot\\overrightarrow{BC}=0$",
+    "$A,B,C,D$四點在同一平面上"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "如圖所示，$O$為正六邊形之中心。試問下列哪個向量的終點$P$落在$\\triangle ODE$內部（不含邊界）？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/109/math/text/3-2.webp",
+      "width": 492,
+      "height": 438
+     }
+    }
+   ],
+   "options": [
+    "$\\overrightarrow{OP}=\\overrightarrow{OC}+\\overrightarrow{OE}$",
+    "$\\overrightarrow{OP}=\\frac{1}{4}\\overrightarrow{OC}+\\frac{1}{2}\\overrightarrow{OE}$",
+    "$\\overrightarrow{OP}=-\\frac{1}{4}\\overrightarrow{OC}+\\frac{1}{2}\\overrightarrow{OE}$",
+    "$\\overrightarrow{OP}=\\frac{1}{4}\\overrightarrow{OC}-\\frac{1}{2}\\overrightarrow{OE}$",
+    "$\\overrightarrow{OP}=-\\frac{1}{4}\\overrightarrow{OC}-\\frac{1}{2}\\overrightarrow{OE}$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "令$I=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$，$A=\\begin{bmatrix}1&1\\\\3&4\\end{bmatrix}$，$B=I+A+A^{-1}$，試選出代表$BA$的選項。",
+   "options": [
+    "$\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}6&0\\\\0&6\\end{bmatrix}$",
+    "$\\begin{bmatrix}4&-1\\\\-3&1\\end{bmatrix}$",
+    "$\\begin{bmatrix}1&1\\\\3&4\\end{bmatrix}$",
+    "$\\begin{bmatrix}6&6\\\\18&24\\end{bmatrix}$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "試問數線上有多少個整數點與點$\\sqrt{101}$的距離小於$5$，但與點$\\sqrt{38}$的距離大於$3$？",
+   "options": [
+    "$1$個",
+    "$4$個",
+    "$6$個",
+    "$8$個",
+    "$10$個"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "連續投擲一公正骰子兩次，設出現的點數依序為$a,b$。試問發生$\\log\\left(a^2\\right)+\\log b>1$的機率為多少？",
+   "options": [
+    "$\\frac{1}{3}$",
+    "$\\frac{1}{2}$",
+    "$\\frac{2}{3}$",
+    "$\\frac{3}{4}$",
+    "$\\frac{5}{6}$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "坐標平面上，函數圖形$y=-\\sqrt{3}x^3$上有兩點$P,Q$到原點距離皆為$1$。已知點$P$坐標為$(\\cos\\theta,\\sin\\theta)$，試問點$Q$坐標為何？",
+   "options": [
+    "$\\left(\\cos(-\\theta),\\sin(-\\theta)\\right)$",
+    "$\\left(-\\cos\\theta,\\sin\\theta\\right)$",
+    "$\\left(\\cos(-\\theta),-\\sin\\theta\\right)$",
+    "$\\left(-\\cos\\theta,\\sin(-\\theta)\\right)$",
+    "$\\left(\\cos\\theta,-\\sin\\theta\\right)$"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "有一個遊戲的規則如下：丟三顆公正骰子，若所得的點數恰滿足下列（A）或（B）兩個條件之一，可得到獎金$100$元；若兩個條件都滿足，則共得$200$元獎金；若兩個條件都不滿足，則無獎金。",
+   "blocks": [
+    "（A）三個點數皆為奇數或者皆為偶數",
+    "（B）三個點數由小排到大為等差數列",
+    "若已知有兩顆骰子的點數分別為$1,3$，且所得獎金為$100$元，則未知的骰子點數可能為何？"
+   ],
+   "options": [
+    "$2$",
+    "$3$",
+    "$4$",
+    "$5$",
+    "$6$"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "在坐標平面上，有一通過原點$O$的直線$L$，以及一半徑為$2$、圓心為原點$O$的圓$\\Gamma$。$P,Q$為$\\Gamma$上相異$2$點，且$\\overline{OP},\\overline{OQ}$分別與$L$所夾的銳角皆為$30^\\circ$，試選出內積$\\overrightarrow{OP}\\cdot\\overrightarrow{OQ}$之值可能發生的選項。",
+   "options": [
+    "$2\\sqrt{3}$",
+    "$-2\\sqrt{3}$",
+    "$0$",
+    "$-2$",
+    "$-4$"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "考慮多項式$f(x)=3x^4+11x^2-4$，試選出正確的選項。",
+   "options": [
+    "$y=f(x)$的圖形和$y$軸交點的$y$坐標小於$0$",
+    "$f(x)=0$有$4$個實根",
+    "$f(x)=0$至少有一個有理根",
+    "$f(x)=0$有一根介於$0$與$1$之間",
+    "$f(x)=0$有一根介於$1$與$2$之間"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "設$a,b,c$為實數且滿足$\\log a=1.1$、$\\log b=2.2$、$\\log c=3.3$。試選出正確的選項。",
+   "options": [
+    "$a+c=2b$",
+    "$1<a<10$",
+    "$1000<c<2000$",
+    "$b=2a$",
+    "$a,b,c$成等比數列"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "下表是$2011$年至$2018$年某國總就業人口與農業就業人口的部分相關數據，各年度的人口以人數計，有些是以千人計，有些以萬人計，例如$2011$年總就業人口為$1,070.9$萬人，$65$歲以上男性農業就業人口為$69.1$千人。試根據表格資料選出正確的選項。",
+   "blocks": [
+    {
+     "table": [
+      [
+       "",
+       "就業人口",
+       "",
+       "",
+       "男性農業就業人口按年齡別分",
+       "",
+       "",
+       ""
+      ],
+      [
+       "年別",
+       "總就業人口（萬人）",
+       "農業就業人口（萬人）",
+       "男性農業就業人口（千人）",
+       "39 歲以下（千人）",
+       "40-49 歲（千人）",
+       "50-64 歲（千人）",
+       "65 歲以上（千人）"
+      ],
+      [
+       "2011 年",
+       "1,070.9",
+       "54.2",
+       "386.3",
+       "67.6",
+       "85.4",
+       "164.2",
+       "69.1"
+      ],
+      [
+       "2012 年",
+       "1,086.0",
+       "54.4",
+       "394.9",
+       "67.5",
+       "87.0",
+       "169.5",
+       "70.9"
+      ],
+      [
+       "2013 年",
+       "1,096.7",
+       "54.4",
+       "391.5",
+       "66.6",
+       "83.9",
+       "171.3",
+       "69.7"
+      ],
+      [
+       "2014 年",
+       "1,107.9",
+       "54.8",
+       "391.2",
+       "65.8",
+       "79.8",
+       "173.0",
+       "72.6"
+      ],
+      [
+       "2015 年",
+       "1,119.8",
+       "55.5",
+       "403.1",
+       "71.7",
+       "76.9",
+       "181.3",
+       "73.2"
+      ],
+      [
+       "2016 年",
+       "1,126.7",
+       "55.7",
+       "404.5",
+       "77.4",
+       "77.4",
+       "176.4",
+       "73.3"
+      ],
+      [
+       "2017 年",
+       "1,135.2",
+       "55.7",
+       "405.1",
+       "73.9",
+       "78.1",
+       "178.3",
+       "74.8"
+      ],
+      [
+       "2018 年",
+       "1,143.4",
+       "56.1",
+       "415.1",
+       "72.0",
+       "78.8",
+       "184.9",
+       "79.4"
+      ]
+     ]
+    }
+   ],
+   "options": [
+    "從$2013$年至$2018$年，$65$歲以上的男性農業就業人口逐年遞增",
+    "從$2013$年至$2018$年，$50$歲至$64$歲之男性農業就業人口逐年遞增",
+    "上表中，每一年的男性農業就業人口占總就業人口的比率都小於百分之五",
+    "上表中，每一年$50$歲至$64$歲之男性農業就業人口都少於$49$歲以下之男性農業就業人口",
+    "就$65$歲以上之男性農業就業人口而言，$2018$年比$2011$年增加了不到一萬人"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "如示意圖，四面體$OABC$中，$\\triangle OAB$和$\\triangle OAC$均為正三角形，$\\angle BOC=30^\\circ$。試選出正確的選項。",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/109/math/text/13-3.webp",
+      "width": 372,
+      "height": 381
+     }
+    }
+   ],
+   "options": [
+    "$\\overline{BC}>\\overline{OC}$",
+    "$\\triangle OBC$是等腰三角形",
+    "$\\triangle OBC$的面積大於$\\triangle OAB$的面積",
+    "$\\angle CAB=30^\\circ$",
+    "平面$OAB$和平面$OAC$的夾角（以銳角計）小於$30^\\circ$"
+   ]
+  }
+ ]
+}

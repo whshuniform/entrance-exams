@@ -6,11 +6,15 @@ import { withFullPapers } from './full-papers'
 import { mathA111To114 } from './math-a-111-114'
 import { mathBSocialScience } from './math-b-social-science'
 import { astPapers, capPapers } from './ast-cap-papers'
+import { gsatOlderPapers } from './gsat-older-papers'
 
-/** 學測科目照國、英、數的順序排，同一科年度由舊到新 */
-const GSAT_SUBJECTS = ['chinese', 'english', 'math-a', 'math-b', 'social', 'science']
+/** 學測科目照國、英、數（110 年以前的數學、數學A、數學B）、社、自的順序排，同一科年度由舊到新 */
+const GSAT_SUBJECTS = ['chinese', 'english', 'math', 'math-a', 'math-b', 'social', 'science']
 // 有整份考卷資料的年度科目換成整份（原卷截圖＋已轉成文字的題目）
-const gsatPapers = withFullPapers([...sampleChinese109To114, ...sampleEnglish109To115, ...mathA111To114, ...mathBSocialScience, ...sample115Papers])
+const gsatPapers = [
+  ...gsatOlderPapers,
+  ...withFullPapers([...sampleChinese109To114, ...sampleEnglish109To115, ...mathA111To114, ...mathBSocialScience, ...sample115Papers]),
+].sort((a, b) => a.year - b.year)
 
 const CEEC = '大學入學考試中心'
 

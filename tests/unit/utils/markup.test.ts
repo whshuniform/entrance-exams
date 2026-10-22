@@ -50,6 +50,14 @@ describe('parseMarkup', () => {
       { text: '。', underline: false },
     ])
   })
+  it('parseMarkup_EscapedDollar_ShouldStayPlainMoneySign', () => {
+    // 英文、社會的金額（105 英文「$2,000」）寫成 \$，不是數學式
+    const segments = parseMarkup('a ransom of \\$2,000 and \\$250 more')
+
+    expect(segments.some(segment => segment.math)).toBe(false)
+    expect(segments.map(segment => segment.text).join('')).toBe('a ransom of $2,000 and $250 more')
+  })
+
   it('parseMarkup_BoldUnderline_ShouldKeepBoth', () => {
     expect(parseMarkup('下列何者**__不是__**')).toEqual([
       { text: '下列何者', underline: false },
