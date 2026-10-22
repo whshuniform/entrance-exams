@@ -1,0 +1,643 @@
+{
+ "exam": "cap",
+ "year": 114,
+ "id": "english",
+ "sets": [
+  {
+   "id": "20-21",
+   "blocks": [
+    "Rex is a dog that lives at the bakery next to our school.  He is cute and friendly.  Every morning, he stands in front of the school to welcome everybody.  We all see Rex as one of us.  But one Monday morning, I was surprised that Rex was not there to say hello to us.  “Rex is in the hospital.  He was hit by a car last night,” my classmate told me.  We went to see Rex in the hospital that day after school.  Two weeks later, Rex was much better, and we decided to take him for a walk every evening.  Because of the exercise, Rex became healthier and stronger.  Soon he could happily run and jump again.  He is now as handsome and strong as before!",
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/20-21-1.webp",
+      "width": 336,
+      "height": 330
+     }
+    }
+   ]
+  },
+  {
+   "id": "22-23",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/22-23-2.webp",
+      "width": 1395,
+      "height": 1386
+     }
+    },
+    "likely 可能"
+   ]
+  },
+  {
+   "id": "24-25",
+   "blocks": [
+    "**Buy a White Lake City Card When You’re in the City**",
+    "① With any of the Cards, you can",
+    "- visit the city by metro, bus, or train as many times as you want. *",
+    "- take one child under 12 with you for free.",
+    "- save 20% on tickets to public museums.",
+    "② The 1-day, 3-day, and 5-day Cards are for trips from Monday to Friday, and the Weekend Card is for trips on weekends and holidays.",
+    "③ Check the map and buy the right Card for the zones you’ll be entering.",
+    {
+     "table": [
+      [
+       "Card",
+       "Zone 1",
+       "Zones 1-2",
+       "Zones 1-3"
+      ],
+      [
+       "1-day",
+       "\\$20",
+       "\\$40",
+       "\\$60"
+      ],
+      [
+       "3-day",
+       "\\$40",
+       "\\$60",
+       "\\$80"
+      ],
+      [
+       "5-day",
+       "\\$50",
+       "\\$80",
+       "\\$110"
+      ],
+      [
+       "Weekend",
+       "\\$30",
+       "\\$50",
+       "\\$80"
+      ]
+     ]
+    },
+    "* The Cards are only for trips inside the three zones.",
+    "ⓐ White Lake Main Station",
+    "ⓑ Museum of White Lake City History",
+    "ⓒ Museum of Modern Art",
+    "ⓓ White Lake",
+    "ⓔ White Lake Castle",
+    "ⓕ White Lake Airport",
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/24-25-3.webp",
+      "width": 486,
+      "height": 486
+     }
+    },
+    "zone 區"
+   ]
+  },
+  {
+   "id": "26-28",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/26-28-4.webp",
+      "width": 318,
+      "height": 456
+     }
+    },
+    "At 5 o’clock every morning, while most people are sleeping, 16-year-old Libby Larson is already up.  She mops the floor, gets the mail and the newspapers, and gets ready for visitors to Rolling Acres.  Libby’s grandparents started Rolling Acres in 1970, and since then all of the Larson family have been working there.  Rolling Acres used to be just a sheep farm, but now, with its fruit trees, vegetable gardens, and many other kinds of animals, it has become a popular place for families to go on vacation.  Visitors can pick fruits, collect eggs, and feed the animals.  It is one of Libby’s jobs to show kids how to feed the baby sheep.",
+    "For her work, Libby is paid \\$10 an hour.  This summer, she expects to make about \\$1,200 and plans to buy a cell phone.  Her friends think it’s great to make that much money in a summer.  However, for Libby, working at a family business also means __making sacrifices__.  “I’d love to sleep until noon or go to summer camp like other kids.  My friends stopped inviting me on trips because I’m always busy in the summer.”  However, Libby also said, “But it’s better to see both sides.  Working with your family is great.  You feel closer to each other.”",
+    "paragraph 段落"
+   ]
+  },
+  {
+   "id": "29-31",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/29-31-5.webp",
+      "width": 1395,
+      "height": 2058
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/29-31-6.webp",
+      "width": 1392,
+      "height": 1062
+     }
+    }
+   ]
+  },
+  {
+   "id": "32-34",
+   "blocks": [
+    "**The IKEA Effect**",
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/32-34-7.webp",
+      "width": 207,
+      "height": 216
+     }
+    },
+    "Many years ago, Dan Ariely bought a cabinet from IKEA.  IKEA is a famous furniture store that sells boxes of furniture parts.  People who buy them have to put all the parts together themselves.  It took Ariely hours to build his cabinet.  Ariely didn’t really enjoy himself when he was trying to put all the parts together.  However, after he finished, he felt quite good about himself and his cabinet.  Later, he found that he loved his cabinet more than any of his other furniture.",
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/32-34-8.webp",
+      "width": 240,
+      "height": 120
+     }
+    },
+    "Ariely wanted to know if anyone shared his feelings, so he did a fun origami study.  He invited two groups of people to join his study.  He called one group “builders” and the other group “buyers.”  Builders were told to make origami, like paper frogs or paper birds.  When they finished, they were asked how much they would spend on their works.  Ariely then showed the origami to buyers and asked them how much they would pay for them.  The two groups gave very different answers.  Though buyers would pay only five cents for builders’ origami, builders would spend 25 cents!  Interestingly, builders believed others would think their works were good enough to cost that much money!",
+    "Ariely’s study showed that he was not alone in his IKEA experience—we just love things more, sometimes blindly, when we make them ourselves.  Ariely called it “the IKEA effect.”",
+    "effect 效應　furniture 家具"
+   ]
+  },
+  {
+   "id": "35-37",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/35-37-9.webp",
+      "width": 855,
+      "height": 687
+     }
+    },
+    "In the picture is a UK electricity worker in the 1970s.  Pictures like this appeared in many newspapers at the time.  In 1972, electricity workers in the UK asked to be paid more, and they decided to stop working until their wish was answered.  The government worried that there wouldn’t be enough electricity for the country if these workers didn’t go to work, so it agreed to give them the pay rise.  However, the story didn’t end there.",
+    "A year later, the electricity workers asked for another pay rise.  To get what they wanted, they worked shorter hours and acted like they would walk away from their job anytime.  But this time, the government decided to fight.  To save electricity, it made new rules for people to follow.  For example, each family could turn on the heat in only one room; TV stations had to stop their shows at 10:30 p.m.; businesses could open only three days a week.",
+    "People’s lives were greatly changed.  Without enough heat to keep the house warm, people covered themselves in blankets all the time.  Hospitals had to use candles because they couldn’t keep all the lights on.  Factories couldn’t keep their machines working.  Many people lost their jobs.  For months, people were paying the price while the electricity workers were fighting for their wish.  In the end, the government agreed to the second pay rise.  This picture shows what many people thought of the electricity workers during the “dark” time.",
+    "electricity 電力　government 政府",
+    "likely 可能"
+   ]
+  },
+  {
+   "id": "38-43",
+   "blocks": [
+    "Most kids want gifts from their parents on their birthdays, but Cameron doesn’t.  On his birthday, he gives his mom a gift.  He [[38]] doing this in his first year of junior high school.  That year, during one class, he watched a video about how a baby is pushed from its mother’s body.  After class, [[39]] .  How brave a woman is to have a baby!  Thank God I’ll never have to do that!",
+    "When Cameron came home that day, he held his mom in his arms for a long time.  He decided that his birthday [[40]] .  During those nine months inside his mom, he just ate and slept while his mom was doing all the hard work.  So why should he get a birthday gift for doing nothing?  If anyone should get a gift on his birthday, it should be his mom.",
+    "The [[41]] “birthday gift” Cameron prepared was a bag of cookies he baked.  The cookies tasted so bad, but his mom said they were the best thing she ever got.  Hearing that [[42]] .  It was so much better than getting a gift.  Now, on his birthday every year, Cameron makes a gift for his mother to thank her for giving him life.",
+    "This year, Cameron [[43]] his mom a nice dress.  A few months ago, he learned to make dresses at school and decided to make one for his mom.  Now the dress is finished and hanging behind Cameron’s bedroom door.  He believes the gift will tell his mother how much he loves her."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "Look at the picture.  A ＿＿＿＿ is flying over the houses.",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/114/english/text/1-10.webp",
+      "width": 723,
+      "height": 531
+     }
+    }
+   ],
+   "options": [
+    "bird",
+    "butterfly",
+    "kite",
+    "plane"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "When I was a teenager, I was very ＿＿＿＿ .  But now, it’s easier for me to talk to people.",
+   "options": [
+    "happy",
+    "lazy",
+    "popular",
+    "shy"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "Lena doesn’t want to go ＿＿＿＿ with John because she is afraid of water.",
+   "options": [
+    "dancing",
+    "hiking",
+    "sailing",
+    "shopping"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "Cindy enjoys ＿＿＿＿ her dad read stories to her before bed.",
+   "options": [
+    "to listen to",
+    "listening to",
+    "listen to",
+    "listens to"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "Dad is busy cooking in the kitchen.  Dinner will be ＿＿＿＿ in ten minutes.",
+   "options": [
+    "free",
+    "full",
+    "medium",
+    "ready"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "There are so many new ＿＿＿＿ in the office.  It’ll take me some time to remember who is who.",
+   "options": [
+    "faces",
+    "ideas",
+    "rules",
+    "tools"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "I feel like a ＿＿＿＿ .  I was looking for my keys for hours but they have been in my pocket the whole time.",
+   "options": [
+    "fool",
+    "ghost",
+    "king",
+    "stranger"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "Mr. and Mrs. Wu have three daughters.  Two are in high school, and ＿＿＿＿ is in elementary school.",
+   "options": [
+    "each",
+    "the other",
+    "the one",
+    "the next"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "It is hard for trees to ＿＿＿＿ along this beach because of the strong winds from the sea.",
+   "options": [
+    "blow",
+    "build",
+    "follow",
+    "grow"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "Christmas ＿＿＿＿ and I want to visit my aunt abroad.  Do you have any plans yet?",
+   "options": [
+    "came",
+    "comes",
+    "is coming",
+    "was coming"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "Jo won’t be happy if you’re late for his party tonight, so ＿＿＿＿ sure that you arrive on time.",
+   "options": [
+    "make",
+    "makes",
+    "to make",
+    "is making"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "You may have a long drive because of the terrible ＿＿＿＿ .  There are usually a lot of cars and buses during this time.",
+   "options": [
+    "experience",
+    "machine",
+    "service",
+    "traffic"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "In the future, there will ＿＿＿＿ be greater basketball players than Stephen Curry, but now we believe he is the best!",
+   "options": [
+    "again",
+    "already",
+    "never",
+    "perhaps"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "I guess the rainwater has come in from the kitchen.  See?  ＿＿＿＿ of the windows are closed except the one in the kitchen.",
+   "options": [
+    "All",
+    "Both",
+    "Most",
+    "Some"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "＿＿＿＿ machines have been used to pick fruits for a long time, they were not used on strawberry farms until several years ago.",
+   "options": [
+    "Although",
+    "Because",
+    "Before",
+    "If"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "There are online videos that teach you exercises you can do at home.  They’ll ＿＿＿＿ you a trip to the gym, and some money too.",
+   "options": [
+    "cost",
+    "give",
+    "keep",
+    "save"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "Jane’s parents are always happy to see their grandchildren, but mine ＿＿＿＿ less so when I visit them with my kids.",
+   "options": [
+    "is",
+    "are",
+    "do",
+    "does"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "Before she ＿＿＿＿ about it, you should tell Daphne you broke her favorite cup.",
+   "options": [
+    "asks",
+    "asked",
+    "was asking",
+    "will ask"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "It was very windy this morning.  Some of the shirts on the balcony were blown away ＿＿＿＿ in the pond.",
+   "options": [
+    "fell",
+    "and fell",
+    "fallen",
+    "and fallen"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "What happened to Rex?",
+   "set": "20-21",
+   "options": [
+    "He got lost.",
+    "He got hurt.",
+    "He bit people.",
+    "He ate too much."
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "How did the writer help Rex?",
+   "set": "20-21",
+   "options": [
+    "By calling the police.",
+    "By making him exercise.",
+    "By taking him to see a doctor.",
+    "By looking for a new home for him."
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "What do we know about Mark from the dialogue?",
+   "set": "22-23",
+   "options": [
+    "He made Linda unhappy.",
+    "He is looking for a new job.",
+    "He did not like Linda’s cake.",
+    "He is getting married to Jenny."
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "Which is most likely an example of __stealing someone＇s thunder__?",
+   "set": "22-23",
+   "options": [
+    "Dennis never changes his mind except when his wife tells him to.",
+    "Melisa tells Tom she’ll go to the party but tells her mom she’ll stay home.",
+    "Jeff tells everyone he’ll move abroad when Ivy is still telling them about her baby.",
+    "Alisa says she doesn’t care what we have for lunch but also doesn’t like the restaurant we chose."
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "What can you do with a White Lake City Card?",
+   "set": "24-25",
+   "options": [
+    "Save 20% on children’s train tickets.",
+    "Visit any public museum in the city for free.",
+    "Take a train to places out of the three zones.",
+    "Move around the city by metro as much as you want."
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "Stacy is going to White Lake City and is staying at a hotel near the White Lake Main Station.  She wants to visit the Museum of White Lake City History on Friday and see White Lake on Saturday.  If she plans to buy (a) White Lake City Card(s), which of the four choices will be best for her and cost her the least?",
+   "set": "24-25",
+   "options": [
+    "A 3-day Card for Zone 1.",
+    "A Weekend Card for Zones 1-3.",
+    "A 1-day Card for Zone 1 and a Weekend Card for Zones 1-2.",
+    "A 1-day Card for Zones 1-2 and a Weekend Card for Zones 1-2."
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "What is Rolling Acres?",
+   "set": "26-28",
+   "options": [
+    "A zoo.",
+    "A campground.",
+    "A vacation farm.",
+    "A family restaurant."
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "What do we learn from the first paragraph?",
+   "set": "26-28",
+   "options": [
+    "What Libby does at Rolling Acres.",
+    "What visitors think of Rolling Acres.",
+    "Why Libby’s grandparents started Rolling Acres.",
+    "What the Larson family’s plans are for Rolling Acres."
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "What does __making sacrifices__ mean?",
+   "set": "26-28",
+   "options": [
+    "Learning to make money and use it wisely.",
+    "Getting to know different sides of your family.",
+    "Making excuses for failing to do something difficult.",
+    "Giving up something important to do something else."
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "What do the comics tell us?",
+   "set": "29-31",
+   "options": [
+    "Enjoy life while we can.",
+    "Follow the old ways of life.",
+    "Save our planet before it’s too late.",
+    "Treat others the way we want to be treated."
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "What can we learn about the people in the comics?",
+   "set": "29-31",
+   "options": [
+    "They made fire before starting a fight.",
+    "They fought for land and plants all the time.",
+    "They prayed to the statues beside a large fire.",
+    "They used statues to show how strong they were."
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "What does __did it__ in Picture 7 mean?",
+   "set": "29-31",
+   "options": [
+    "Fall to the ground.",
+    "Cut down the last trees.",
+    "Move the statues to fighting grounds.",
+    "Understand how important trees were."
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "What did Ariely try to find out in the origami study?",
+   "set": "32-34",
+   "options": [
+    "If he could stop the IKEA effect.",
+    "Why people love making origami.",
+    "Why IKEA furniture is so famous.",
+    "If anyone shared his IKEA experience."
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "Which is true about the origami study?",
+   "set": "32-34",
+   "options": [
+    "Buyers would spend less on builders’ origami than builders would.",
+    "Builders and buyers needed to decide a price on the origami they made.",
+    "Builders knew others would not pay as much for the origami as they would.",
+    "Buyers would spend more on builders’ origami after knowing how they were made."
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "Jerry just can’t get his daughter Mia to eat more vegetables at dinner.  Every time he tries to do so, there is always a lot of shouting and crying.  If Jerry wants to have Mia eat more vegetables by using the IKEA effect, what should he do?",
+   "set": "32-34",
+   "options": [
+    "Tell Mia that he cooks the vegetables just for her.",
+    "Ask Mia to help him cook vegetables for her meal.",
+    "Give Mia her favorite candy after she eats vegetables.",
+    "Ask Mia what vegetables she likes and cook them for her."
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "What is the reading mainly about?",
+   "set": "35-37",
+   "options": [
+    "The tips on using a picture to tell a story.",
+    "The change that electricity brought to people’s lives.",
+    "The history behind the picture of a UK electricity worker.",
+    "The story of a famous UK electricity worker from the 1970s."
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "In the UK in the 1970s, what did people most likely think of the UK electricity workers?",
+   "set": "35-37",
+   "options": [
+    "They were not brave enough to fix their problems.",
+    "They worked like robots and never learned to change.",
+    "They were asking too much and did not know when to stop.",
+    "They did not care whether their job might hurt people’s health."
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "Why does the writer put the “ ” mark around the word *dark* in the last sentence?",
+   "set": "35-37",
+   "options": [
+    "To say that the “dark” time was actually not dark.",
+    "To tell people that the word was said by the government.",
+    "To mean both the days without lights and the difficult lives people lived.",
+    "To show that the government and the electricity workers both lost their fights."
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "",
+   "set": "38-43",
+   "options": [
+    "starts",
+    "started",
+    "has started",
+    "will start"
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "",
+   "set": "38-43",
+   "options": [
+    "he got quite scared of two things",
+    "he still couldn’t understand two things",
+    "he couldn’t stop thinking about two things",
+    "he did two things that would change his life"
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "",
+   "set": "38-43",
+   "options": [
+    "should be spent helping his mom",
+    "should be a time of welcoming a new start",
+    "should not be about him, but about his mom",
+    "should not be celebrated for just one day, but for nine months"
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "",
+   "set": "38-43",
+   "options": [
+    "first",
+    "last",
+    "only",
+    "other"
+   ]
+  },
+  {
+   "number": 42,
+   "stem": "",
+   "set": "38-43",
+   "options": [
+    "made his head hurt",
+    "made his heart sing",
+    "made him change his mind",
+    "made him give up baking"
+   ]
+  },
+  {
+   "number": 43,
+   "stem": "",
+   "set": "38-43",
+   "options": [
+    "is going to give",
+    "gives",
+    "has given",
+    "gave"
+   ]
+  }
+ ]
+}
