@@ -1,0 +1,105 @@
+{
+ "exam": "ast",
+ "year": 109,
+ "id": "math-jia",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "已知 $45^\\circ<\\theta<50^\\circ$，且設 $a=1-\\cos^2\\theta$、$b=\\frac{1}{\\cos\\theta}-\\cos\\theta$、$c=\\frac{\\tan\\theta}{\\tan^2\\theta+1}$。關於 $a,b,c$ 三個數值的大小，試選出正確的選項。",
+   "options": [
+    "$a<b<c$",
+    "$a<c<b$",
+    "$b<a<c$",
+    "$b<c<a$",
+    "$c<a<b$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "有 $A,B$ 兩個箱子，其中 $A$ 箱有 $6$ 顆白球與 $4$ 顆紅球，$B$ 箱有 $8$ 顆白球與 $2$ 顆藍球。現有三種抽獎方式（各箱中每顆球被抽取的機率相同）：",
+   "blocks": [
+    "（一）先在 $A$ 箱中抽取一球，若抽中紅球則停止，若抽到白球則再從 $B$ 箱中抽取一球；",
+    "（二）先在 $B$ 箱中抽取一球，若抽中藍球則停止，若抽到白球則再從 $A$ 箱中抽取一球；",
+    "（三）同時分別在 $A,B$ 箱中各抽取一球。",
+    "給獎方式為：在紅、藍這兩種色球當中，若只抽到紅球得 $50$ 元獎金；若只抽到藍球得 $100$ 元獎金；若兩種色球都抽到，則仍只得 $100$ 元獎金；若都沒抽到，則無獎金。將上列（一）、（二）、（三）這 $3$ 種抽獎方式所得獎金的期望值分別記為 $E_1$、$E_2$、$E_3$，試選出正確的選項。"
+   ],
+   "options": [
+    "$E_1>E_2>E_3$",
+    "$E_1=E_2>E_3$",
+    "$E_2=E_3>E_1$",
+    "$E_1=E_3>E_2$",
+    "$E_3>E_2>E_1$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "根據實驗統計，某種細菌繁殖，其數量平均每 $3.5$ 小時會擴增為 $2.4$ 倍。假設實驗室的試管一開始有此種細菌 $1000$ 隻，根據指數函數模型，試問大約在多少小時後此種細菌的數量會到達 $4\\times10^{10}$ 隻左右？（註：$\\log2\\approx0.3010$，$\\log3\\approx0.4771$）",
+   "options": [
+    "$63$ 小時",
+    "$70$ 小時",
+    "$77$ 小時",
+    "$84$ 小時",
+    "$91$ 小時"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "在坐標平面上，設 $O$ 為原點，且 $A$、$B$ 為異於 $O$ 的相異兩點。令 $C_1,C_2,C_3$ 為平面上三個點，且滿足 $\\overrightarrow{OC_n}=\\overrightarrow{OA}+n\\overrightarrow{OB}$，$n=1,2,3$，試選出正確的選項。",
+   "options": [
+    "$\\overrightarrow{OC_1}\\neq\\overrightarrow{0}$",
+    "$\\overline{OC_1}<\\overline{OC_2}<\\overline{OC_3}$",
+    "$\\overrightarrow{OC_1}\\cdot\\overrightarrow{OA}<\\overrightarrow{OC_2}\\cdot\\overrightarrow{OA}<\\overrightarrow{OC_3}\\cdot\\overrightarrow{OA}$",
+    "$\\overrightarrow{OC_1}\\cdot\\overrightarrow{OB}<\\overrightarrow{OC_2}\\cdot\\overrightarrow{OB}<\\overrightarrow{OC_3}\\cdot\\overrightarrow{OB}$",
+    "$C_1,C_2,C_3$ 在同一直線上"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "對一實數 $a$，以 $[a]$ 表示不大於 $a$ 的最大整數，例如：$[1.2]=\\left[\\sqrt{2}\\right]=1$，$[-1.2]=-2$。",
+   "blocks": [
+    "考慮無理數 $\\theta=\\sqrt{10001}$，試選出正確的選項。"
+   ],
+   "options": [
+    "$a-1<[a]\\leq a$ 對任意實數 $a$ 均成立",
+    "數列 $b_n=\\frac{[n\\theta]}{n}$ 發散，$n$ 為正整數",
+    "數列 $c_n=\\frac{[-n\\theta]}{n}$ 發散，$n$ 為正整數",
+    "數列 $d_n=n\\left[\\frac{\\theta}{n}\\right]$ 發散，$n$ 為正整數",
+    "數列 $e_n=n\\left[\\frac{-\\theta}{n}\\right]$ 發散，$n$ 為正整數"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "設 $F(x)$、$f(x)$ 皆為實係數多項式函數。已知 $F'(x)=f(x)$，試選出正確的選項。",
+   "options": [
+    "若 $a\\geq0$，則 $F(a)-F(0)=\\int_0^a f(t)dt$",
+    "若 $F(x)$ 除以 $x$ 的商式為 $Q(x)$，則 $Q(0)=f(0)$",
+    "若 $f(x)$ 可被 $x+1$ 整除，則 $F(x)-F(0)$ 可被 $(x+1)^2$ 整除",
+    "若對所有實數 $x$，$F(x)\\geq\\frac{x^2}{2}$ 都成立，則對所有實數 $x$，$f(x)\\geq x$ 也都成立",
+    "若對所有 $x>0$，$f(x)\\geq x$ 都成立，則對所有 $x>0$，$F(x)\\geq\\frac{x^2}{2}$ 也都成立"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "在複數平面上，設 $O$ 為原點，且 $A$、$B$ 分別表示坐標為複數 $z$、$z+1$ 的點。已知點 $A$、點 $B$ 都在以 $O$ 為圓心的單位圓上，試選出正確的選項。",
+   "options": [
+    "直線 $AB$ 與實數軸平行",
+    "$\\Delta OAB$ 為直角三角形",
+    "點 $A$ 在第二象限",
+    "$z^3=1$",
+    "坐標為 $1+\\frac{1}{z}$ 的點也在同一單位圓上"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "設二階實係數方陣 $A$ 代表坐標平面的一個鏡射變換且滿足 $A^3=\\begin{bmatrix}0&-1\\\\-1&0\\end{bmatrix}$；另設二階實係數方陣 $B$ 代表坐標平面的一個（以原點為中心的）旋轉變換且滿足 $B^3=\\begin{bmatrix}-1&0\\\\0&-1\\end{bmatrix}$，試選出正確的選項。",
+   "options": [
+    "$A$ 恰有三種可能",
+    "$B$ 恰有三種可能",
+    "$AB=BA$",
+    "二階方陣 $AB$ 代表坐標平面的一個旋轉變換",
+    "$BABA=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$"
+   ]
+  }
+ ]
+}
