@@ -1,0 +1,100 @@
+{
+ "exam": "ast",
+ "year": 107,
+ "id": "math-jia",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "設 $A$ 為 $3\\times3$ 矩陣，且對任意實數 $a,b,c$，$A\\begin{bmatrix}a\\\\b\\\\c\\end{bmatrix}=\\begin{bmatrix}b\\\\c\\\\a\\end{bmatrix}$ 均成立。試問矩陣 $A^2\\begin{bmatrix}1\\\\0\\\\-1\\end{bmatrix}$ 為何？",
+   "options": [
+    "$\\begin{bmatrix}0\\\\1\\\\1\\end{bmatrix}$",
+    "$\\begin{bmatrix}-1\\\\1\\\\0\\end{bmatrix}$",
+    "$\\begin{bmatrix}1\\\\0\\\\1\\end{bmatrix}$",
+    "$\\begin{bmatrix}0\\\\1\\\\-1\\end{bmatrix}$",
+    "$\\begin{bmatrix}-1\\\\0\\\\1\\end{bmatrix}$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "坐標平面上，考慮 $A(2,3)$ 與 $B(-1,3)$ 兩點，並設 $O$ 為原點。令 $E$ 為滿足 $\\overrightarrow{OP}=a\\overrightarrow{OA}+b\\overrightarrow{OB}$ 的所有點 $P$ 所形成的區域，其中 $-1\\leq a\\leq 1$，$0\\leq b\\leq 4$。考慮函數 $f(x)=x^2+5$，試問當限定 $x$ 為區域 $E$ 中的點 $P(x,y)$ 的橫坐標時，$f(x)$ 的最大值為何？",
+   "options": [
+    "$5$",
+    "$9$",
+    "$30$",
+    "$41$",
+    "$54$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "某零售商店販賣「熊大」與「皮卡丘」兩種玩偶，其進貨來源有 $A,B,C$ 三家廠商。已知此零售商店從每家廠商進貨的玩偶總數相同，且三家廠商製作的每一種玩偶外觀也一樣，而從 $A,B,C$ 這三家廠商進貨的玩偶中，「皮卡丘」所占的比例分別為 $\\frac{1}{4}$、$\\frac{2}{5}$、$\\frac{1}{2}$。__阿德__從這家零售商店隨機挑選一隻「皮卡丘」送給__小安__作為生日禮物，試問此「皮卡丘」出自 $C$ 廠商的機率為何？",
+   "options": [
+    "$\\frac{1}{3}$",
+    "$\\frac{2}{5}$",
+    "$\\frac{10}{23}$",
+    "$\\frac{10}{19}$",
+    "$\\frac{5}{9}$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "設 $f(x)=-x^2+499$，且",
+   "blocks": [
+    "$A=\\int_0^{10}f(x)dx$、$B=\\sum_{n=0}^{9}f(n)$、$C=\\sum_{n=1}^{10}f(n)$、$D=\\sum_{n=0}^{9}\\frac{f(n)+f(n+1)}{2}$",
+    "試選出正確的選項。"
+   ],
+   "options": [
+    "$A$ 表示在坐標平面上函數 $y=-x^2+499$ 的圖形與直線 $y=0$、$x=0$、$x=10$ 所圍成的有界區域的面積",
+    "$B<C$",
+    "$B<A$",
+    "$C<D$",
+    "$A<D$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "坐標平面上，已知直線 $L$ 與函數 $y=\\log_2 x$ 的圖形有兩個交點 $P(a,b),Q(c,d)$，且 $\\overline{PQ}$ 的中點在 $x$ 軸上。試選出正確的選項。",
+   "options": [
+    "$L$ 的斜率大於 $0$",
+    "$bd=-1$",
+    "$ac=1$",
+    "$L$ 的 $y$ 截距大於 $-1$",
+    "$L$ 的 $x$ 截距大於 $1$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "坐標空間中，有 $\\overrightarrow{a}$、$\\overrightarrow{b}$、$\\overrightarrow{c}$、$\\overrightarrow{d}$ 四個向量，滿足外積 $\\overrightarrow{a}\\times\\overrightarrow{b}=\\overrightarrow{c}$，$\\overrightarrow{a}\\times\\overrightarrow{c}=\\overrightarrow{d}$，且 $\\overrightarrow{a}$、$\\overrightarrow{b}$、$\\overrightarrow{c}$ 的向量長度均為 $4$。設向量 $\\overrightarrow{a}$ 與 $\\overrightarrow{b}$ 的夾角為 $\\theta$（其中 $0\\leq\\theta\\leq\\pi$），試選出正確的選項。",
+   "options": [
+    "$\\cos\\theta=\\frac{1}{4}$",
+    "$\\overrightarrow{a}$、$\\overrightarrow{b}$、$\\overrightarrow{c}$ 所張出的平行六面體的體積為 $16$",
+    "$\\overrightarrow{a}$、$\\overrightarrow{c}$、$\\overrightarrow{d}$ 兩兩互相垂直",
+    "$\\overrightarrow{d}$ 的長度等於 $4$",
+    "$\\overrightarrow{b}$ 與 $\\overrightarrow{d}$ 的夾角等於 $\\theta$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "設 $O$ 為複數平面上的原點，並令點 $A,B$ 分別代表複數 $z_1,z_2$，且滿足 $|z_1|=2$，$|z_2|=3$，$|z_2-z_1|=\\sqrt{5}$。若 $\\frac{z_2}{z_1}=a+bi$，其中 $a,b$ 為實數，$i=\\sqrt{-1}$。試選出正確的選項。",
+   "options": [
+    "$\\cos\\angle AOB=\\frac{2}{3}$",
+    "$|z_2+z_1|=\\sqrt{23}$",
+    "$a>0$",
+    "$b>0$",
+    "設點 $C$ 代表 $\\frac{z_2}{z_1}$，則 $\\angle BOC$ 可能等於 $\\frac{\\pi}{2}$"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "設 $f(x)$ 為一定義在非零實數上的實數值函數。已知極限 $\\lim\\limits_{x\\to0}f(x)\\frac{|x|}{x}$ 存在，試選出正確的選項。",
+   "options": [
+    "$\\lim\\limits_{x\\to0}\\left(\\frac{x}{|x|}\\right)^2$ 存在",
+    "$\\lim\\limits_{x\\to0}f(x)\\frac{x}{|x|}$ 存在",
+    "$\\lim\\limits_{x\\to0}\\left(f(x)+1\\right)\\frac{x}{|x|}$ 存在",
+    "$\\lim\\limits_{x\\to0}f(x)$ 存在",
+    "$\\lim\\limits_{x\\to0}f(x)^2$ 存在"
+   ]
+  }
+ ]
+}

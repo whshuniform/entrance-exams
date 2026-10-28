@@ -1,0 +1,110 @@
+{
+ "exam": "ast",
+ "year": 103,
+ "id": "math-jia",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "在坐標平面上，圓 $x^2+y^2+2x-2y+1=0$ 與 $y=|2x+1|$ 的圖形有幾個交點？",
+   "options": [
+    "$1$ 個",
+    "$2$ 個",
+    "$3$ 個",
+    "$4$ 個",
+    "$0$ 個"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "在地面某定點測得數公里外高塔塔尖的仰角為 $\\theta_1$，朝高塔方向沿直線前進 $100$ 公尺之後，重新測得塔尖仰角為 $\\theta_2$，再沿同一直線繼續前進 $100$ 公尺後，測得仰角為 $\\theta_3$。請問下列哪一個選項的數值依序成等差數列？",
+   "options": [
+    "$\\theta_1,\\theta_2,\\theta_3$",
+    "$\\sin\\theta_1, \\sin\\theta_2, \\sin\\theta_3$",
+    "$\\cos\\theta_1, \\cos\\theta_2, \\cos\\theta_3$",
+    "$\\tan\\theta_1, \\tan\\theta_2, \\tan\\theta_3$",
+    "$\\cot\\theta_1, \\cot\\theta_2, \\cot\\theta_3$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "請問指數方程式 $2^{10^x}=10^6$ 的解 $x$ 最接近下列哪一個選項？",
+   "blocks": [
+    "（$\\log2\\approx0.3010$、$\\log3\\approx0.4771$、$\\log7\\approx0.8451$）"
+   ],
+   "options": [
+    "$1.1$",
+    "$1.2$",
+    "$1.3$",
+    "$1.4$",
+    "$1.5$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "令多項式 $2(x+1)^n$ 除以 $(3x-2)^n$ 所得餘式的常數項為 $r_n$。請問極限 $\\lim\\limits_{n\\to\\infty}r_n$ 為下列哪一選項？",
+   "options": [
+    "$0$",
+    "$\\frac{3}{2}$",
+    "$2$",
+    "$3$",
+    "不存在"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "給定向量 $\\overrightarrow{u}=(2,2,1)$，請選出正確的選項：",
+   "options": [
+    "可找到向量 $\\overrightarrow{v}$ 使得 $\\overrightarrow{u}\\cdot\\overrightarrow{v}=\\sqrt{2}$",
+    "可找到向量 $\\overrightarrow{v}$ 使得 $\\overrightarrow{u}\\times\\overrightarrow{v}=(1,3,4)$",
+    "若非零向量 $\\overrightarrow{v}$ 滿足 $|\\overrightarrow{u}\\cdot\\overrightarrow{v}|=2|\\overrightarrow{v}|$，則 $\\overrightarrow{u}\\times\\overrightarrow{v}=\\overrightarrow{0}$",
+    "若非零向量 $\\overrightarrow{v}$ 滿足 $|\\overrightarrow{u}\\times\\overrightarrow{v}|=3|\\overrightarrow{v}|$，則 $\\overrightarrow{u}\\cdot\\overrightarrow{v}=0$",
+    "若向量 $\\overrightarrow{v}$ 滿足 $\\overrightarrow{u}\\cdot\\overrightarrow{v}=0$ 且 $\\overrightarrow{u}\\times\\overrightarrow{v}=\\overrightarrow{0}$，則 $\\overrightarrow{v}=\\overrightarrow{0}$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "考慮多項式函數 $f(x)=4x^3-11x^2+6x$。請選出正確的選項：",
+   "options": [
+    "函數 $f$ 的圖形在點 $(1,-1)$ 的切線斜率為正",
+    "函數 $f$ 的圖形與直線 $y=1$ 交於三點",
+    "函數 $f$ 的唯一相對極小值為 $\\frac{-9}{4}$",
+    "$f(\\pi)>0$",
+    "$f(\\cos\\frac{4\\pi}{7})>0$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "職業棒球季後賽第一輪採五戰三勝制，當參賽甲、乙兩隊中有一隊贏得三場比賽時，就由該隊晉級而賽事結束。每場比賽皆須分出勝負，且每場比賽的勝負皆不受之前已賽結果影響。假設甲隊在任一場贏球的機率為定值 $p$，以 $f(p)$ 表實際比賽場數的期望值（其中 $0\\leq p\\leq1$），請選出正確的選項：",
+   "options": [
+    "只須比賽 $3$ 場就產生晉級球隊的機率為 $p^3+(1-p)^3$",
+    "$f(p)$ 是 $p$ 的 $5$ 次多項式",
+    "$f(p)$ 的常數項等於 $3$",
+    "函數 $f(p)$ 在 $p=\\frac{1}{2}$ 時有最大值",
+    "$f(\\frac{1}{4})<f(\\frac{4}{5})$"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "考慮 $x,y,z$ 的方程組 $\\begin{cases}2^x-3^y+5^z=-1\\\\2^{x+1}+3^y-5^z=4\\\\2^{x+1}+3^{y+1}+a5^z=8\\end{cases}$，其中 $a$ 為實數。請選出正確的選項：",
+   "options": [
+    "若 $(x,y,z)$ 為此方程組的解，則 $x=0$",
+    "若 $(x,y,z)$ 為此方程組的解，則 $y>0$",
+    "若 $(x,y,z)$ 為此方程組的解，則 $y<z$",
+    "當 $a\\neq-3$ 時，恰有一組 $(x,y,z)$ 滿足此方程組",
+    "當 $a=-3$ 時，滿足此方程組的所有解 $(x,y,z)$ 會在一條直線上"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "在（凸）四邊形 $ABCD$ 中，已知 $\\overline{AB}=3$，$\\overline{BC}=4$，$\\overline{CD}=3$，$\\overline{DA}=x$，且對角線 $\\overline{AC}=4$。請選出正確的選項：",
+   "options": [
+    "$\\cos\\angle ABC\\geq\\frac{3}{7}$",
+    "$\\cos\\angle BAD>\\cos\\angle ABC$",
+    "$x$ 可能為 $1$",
+    "$x<\\frac{13}{2}$",
+    "若 $A$、$B$、$C$、$D$ 四點共圓，則 $x=\\frac{7}{4}$"
+   ]
+  }
+ ]
+}
