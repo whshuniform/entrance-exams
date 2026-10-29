@@ -1,0 +1,277 @@
+{
+ "exam": "ast",
+ "year": 91,
+ "subject": "物理",
+ "id": "physics",
+ "parts": [
+  {
+   "title": "",
+   "groups": [
+    {
+     "title": "壹、單一選擇題 甲 （每題4分，共40分）",
+     "note": "說明：第1題至第10題，每題選出一個最適當的選項，標示在答案卡之「選擇題答案區」。每題答對得4分，答錯倒扣1分，未答者不給分亦不扣分。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 4.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 4.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 4.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 4.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 4.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 4.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 4.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 4.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 4.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 4.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    },
+    {
+     "title": "貳、單一選擇題 乙 （每題5分，共40分）",
+     "note": "說明：第11題至第18題，每題選出一個最適當的選項，標示在答案卡之「選擇題答案區」。每題答對得5分，答錯倒扣5/4分，未答者不給分亦不扣分。",
+     "questions": [
+      {
+       "number": 11,
+       "type": "single",
+       "points": 5.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 5.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 5.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 5.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 5.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 5.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
