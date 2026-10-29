@@ -1,0 +1,361 @@
+{
+ "exam": "ast",
+ "year": 108,
+ "subject": "化學",
+ "id": "chemistry",
+ "parts": [
+  {
+   "title": "第壹部分：選擇題（占80分）",
+   "groups": [
+    {
+     "title": "一、單選題（占48分）",
+     "note": "說明：第1題至第16題，每題有5個選項，其中只有一個是正確或最適當的選項，請畫記在答案卡之「選擇題答案區」。各題答對者，得3分；答錯、未作答或畫記多於一個選項者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 3.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 3.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 3.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 3.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 3.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 11,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 3.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 3.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 3.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 3.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占32分）",
+     "note": "說明：第17題至第24題，每題有5個選項，其中至少有一個是正確的選項，請將正確選項畫記在答案卡之「選擇題答案區」。各題之選項獨立判定，所有選項均答對者，得4分；答錯1個選項者，得2.4分；答錯2個選項者，得0.8分；答錯多於2個選項或所有選項均未作答者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 17,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 18,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CDE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 19,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 20,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "DE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 21,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "ADE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 22,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "BCE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 23,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 24,
+       "type": "multi",
+       "points": 4.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,472 @@
+{
+ "exam": "ast",
+ "year": 96,
+ "id": "chemistry",
+ "sets": [
+  {
+   "id": "2-3",
+   "blocks": [
+    "化合物$\\mathrm{A_{2(g)}}$與$\\mathrm{B_{2(g)}}$反應生成$\\mathrm{AB_{(g)}}$，其反應式如下：",
+    "$\\mathrm{A_{2(g)}+B_{2(g)}\\rightleftharpoons 2AB_{(g)}}$",
+    "將0.30莫耳的化合物$\\mathrm{A_{2(g)}}$與0.15莫耳的化合物$\\mathrm{B_{2(g)}}$混合在一溫度為60℃，體積為V升的容器內，當反應達到平衡時，得0.20莫耳的化合物$\\mathrm{AB_{(g)}}$。"
+   ]
+  },
+  {
+   "id": "15-16",
+   "blocks": [
+    "王同學取2.00 克的柳酸( 分子量=138) 與4.00 毫升的乙酐( 分子量=102 ，比重=1.08)，在濃硫酸的催化下反應，所得產物經純化、再結晶及烘乾後，得到1.80 克的阿司匹靈。柳酸與乙酐反應生成阿司匹靈的反應式如下：",
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/15-16-1.webp",
+      "width": 705,
+      "height": 210
+     }
+    }
+   ]
+  },
+  {
+   "id": "20-21",
+   "blocks": [
+    "化石燃料是現今地球上最主要的能源，一般火力發電廠利用燃燒反應，將化學能轉變為熱能，用來推動發電機以產生電能。但是使用這種方式，最有效率的發電廠也僅能轉換約40%的化學能為電能。若能利用電化學方法，直接將化學能轉變為電能，將更有效率，燃料電池即以此種方式產生電能。",
+    "氫—氧燃料電池與甲烷燃料電池所需半反應的標準還原電位如下：",
+    "$\\mathrm{O_{2(g)}+4H^+_{(aq)}+4e^-\\rightarrow 2H_2O_{(l)}}$　　$E^\\circ=1.23\\ \\mathrm{V}$",
+    "$\\mathrm{CO_{2(g)}+8H^+_{(aq)}+8e^-\\rightarrow CH_{4(g)}+2H_2O_{(l)}}$　　$E^\\circ=0.17\\ \\mathrm{V}$",
+    "$\\mathrm{2H^+_{(aq)}+2e^-\\rightarrow H_{2(g)}}$　　$E^\\circ=0.0\\ \\mathrm{V}$",
+    "燃料電池對外所能做的最大電功為：",
+    "$W=-nFE^\\circ$，其中：W為電功，單位焦耳",
+    "F 為法拉第常數，等於96500 庫倫/莫耳",
+    "E°為電動勢，單位伏特(V)",
+    "n 為燃燒一莫耳氫或甲烷所轉移的電子莫耳數"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "為達到環境保護及永續經營的目的，化學反應中，反應物的原子，應儘可能全部轉化為產物中的原子。若要使下列反應：",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/1-2.webp",
+      "width": 612,
+      "height": 132
+     }
+    },
+    "(式中的係數$x,y,z$均為整數)",
+    "符合環境保護及永續經營的要求，則$(x+y+z)$的最小數值為何？"
+   ],
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "試問60℃時，此反應的平衡常數為何？",
+   "set": "2-3",
+   "options": [
+    "0.20",
+    "1.0",
+    "2.0",
+    "4.0",
+    "8.8"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "已知有關化合物$\\mathrm{A_{2(g)}}$，$\\mathrm{B_{2(g)}}$與$\\mathrm{AB_{(g)}}$的熱化學反應式如下：",
+   "set": "2-3",
+   "blocks": [
+    "$\\mathrm{2A_{(g)}\\rightleftharpoons A_{2(g)}+36\\ kJ}$",
+    "$\\mathrm{2B_{(g)}\\rightleftharpoons B_{2(g)}+86\\ kJ}$",
+    "$\\mathrm{AB_{(g)}+70\\ kJ\\rightleftharpoons A_{(g)}+B_{(g)}}$",
+    "試問下列反應式中的Q值為何?",
+    "$\\mathrm{A_{2(g)}+B_{2(g)}\\rightleftharpoons 2AB_{(g)}+Q\\ kJ}$"
+   ],
+   "options": [
+    "18",
+    "35",
+    "43",
+    "–35",
+    "–18"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "圖1 為三個分別裝有相同理想氣體的定容器，開始時各活栓關閉，各容器內的氣體體積及壓力如圖1 所示。定溫下，將各活栓打開，當容器內氣體達到平衡後，若忽略各活栓的體積，則容器內的壓力應變為多少大氣壓(atm)？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/4-3.webp",
+      "width": 390,
+      "height": 249
+     }
+    }
+   ],
+   "options": [
+    "3.60",
+    "3.98",
+    "4.17",
+    "4.80",
+    "5.20"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "化合物$\\mathrm{A_{(g)}}$與$\\mathrm{B_{(g)}}$反應生成$\\mathrm{C_{(g)}}$，其反應式如下：",
+   "blocks": [
+    "$\\mathrm{2A_{(g)}+2B_{(g)}\\rightarrow 3C_{(g)}}$ (已知此反應的反應速率式可表示為$r=k[\\mathrm{A}]^2[\\mathrm{B}]$)。",
+    "王同學做了兩次實驗。第一次將化合物$\\mathrm{A_{(g)}}$及$\\mathrm{B_{(g)}}$各0.1莫耳置於一個500毫升的容器中反應。在相同的溫度下，做第二次實驗，將0.2莫耳的化合物$\\mathrm{A_{(g)}}$及0.1莫耳的化合物$\\mathrm{B_{(g)}}$置於一個1000毫升的容器中反應。試問第二次實驗的反應初速率為第一次的幾倍?"
+   ],
+   "options": [
+    "1/8",
+    "1/4",
+    "1/2",
+    "不變",
+    "2"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "表1 為元素週期表的一部分，甲至戊表元素符號，其中甲的原子序為13。試問表1 中，哪一個元素的原子半徑最小?",
+   "blocks": [
+    "表1",
+    {
+     "table": [
+      [
+       "",
+       "甲",
+       "乙"
+      ],
+      [
+       "丙",
+       "丁",
+       "戊"
+      ]
+     ]
+    }
+   ],
+   "options": [
+    "甲",
+    "乙",
+    "丙",
+    "丁",
+    "戊"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "單層奈米碳管是一個由單層石墨所形成的中空圓柱型分子。圖2 為無限奈米碳管的一部分，若按圖2 所示的方式將單層石墨捲曲成一直徑為1.4 奈米(或1400 皮米)的奈米碳管，則沿圓柱型的圓周繞一圈，需要多少個六圓環？[已知石墨中的碳—碳鍵長約為1.42 埃(或142 皮米)]",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/9-4.webp",
+      "width": 255,
+      "height": 285
+     }
+    }
+   ],
+   "options": [
+    "14",
+    "18",
+    "22",
+    "26",
+    "30"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "下列有關乙烷，乙烯，乙炔分子中碳—碳鍵長的比較，哪一個是正確的？",
+   "options": [
+    "乙烷＜乙烯＜乙炔",
+    "乙炔＜乙烷＜乙烯",
+    "乙炔＜乙烯＜乙烷",
+    "乙烯＜乙烷＜乙炔",
+    "乙烯＜乙炔＜乙烷"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "圖3 為一個容器內的液體與其蒸氣所形成平衡系統的示意圖。在定溫下，將活塞緩慢往上拉，整個過程中，一直使系統處於平衡狀態，當系統的體積達到$V_1$時，液體全部消失。試問下列哪一個最能表示此系統的壓力隨體積變化的關係圖？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/11-5.webp",
+      "width": 339,
+      "height": 258
+     }
+    }
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/11-6.webp",
+      "width": 216,
+      "height": 192
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/11-7.webp",
+      "width": 210,
+      "height": 192
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/11-8.webp",
+      "width": 216,
+      "height": 192
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/11-9.webp",
+      "width": 210,
+      "height": 192
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/11-10.webp",
+      "width": 210,
+      "height": 192
+     }
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "有甲、乙、丙、丁、戊、己、庚等七杯各含100 毫升濃度不等的鹽酸溶液，各溶液的pH 值分別為7.0、6.0、5.0、4.0、3.0、2.0、1.0。今將濃鹽酸逐滴滴入各溶液中，使各溶液的pH 值，分別降為6.0、5.0、4.0、3.0、2.0、1.0、0.0。若用各溶液所需加入濃鹽酸的滴數對各溶液的編號作圖，則所形成的曲線，應接近下列哪一個？",
+   "options": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/12-11.webp",
+      "width": 261,
+      "height": 204
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/12-12.webp",
+      "width": 258,
+      "height": 204
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/12-13.webp",
+      "width": 267,
+      "height": 204
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/12-14.webp",
+      "width": 255,
+      "height": 204
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/12-15.webp",
+      "width": 258,
+      "height": 204
+     }
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "圖4為氫原子結合成氫分子的位能變化圖。當二個氫原子逐漸接近時，電子與原子核相互吸引，導致其位能逐漸降低，直至位能最低時(－432kJ/mol)，形成最穩定的氫分子。(氫分子的鍵能即為432kJ/mol，而此時氫原子核間的距離(0.74埃)，即為氫分子的鍵長)。當二個氫原子更接近時，因原子核間的斥力大增，其位能亦急速增高。下列有關$\\mathrm{Cl_2}$、$\\mathrm{Br_2}$、$\\mathrm{I_2}$等分子形成過程中，位能變化的相對關係圖，何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/13-16.webp",
+      "width": 261,
+      "height": 270
+     }
+    }
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/13-17.webp",
+      "width": 285,
+      "height": 219
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/13-18.webp",
+      "width": 276,
+      "height": 219
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/13-19.webp",
+      "width": 270,
+      "height": 219
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/13-20.webp",
+      "width": 273,
+      "height": 219
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/13-21.webp",
+      "width": 273,
+      "height": 219
+     }
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "將$\\mathrm{PbI_{2(s)}}$($K_{\\mathrm{sp}}=7.1\\times10^{-9}$)溶於0.1 公升水中，直至溶液飽和時，其$\\mathrm{Pb^{2+}_{(aq)}}$與$\\mathrm{I^-_{(aq)}}$離子濃度隨時間變化的關係如圖5。若在T 時間時，將上述飽和溶液加入一0.1 公升，1.0M 的$\\mathrm{NaI_{(aq)}}$溶液中。試問：下列哪一個最適合表示T 時間後，$[\\mathrm{Pb^{2+}}]$與$[\\mathrm{I^-}]$隨時間改變的關係圖？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/14-22.webp",
+      "width": 273,
+      "height": 264
+     }
+    }
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/14-23.webp",
+      "width": 258,
+      "height": 207
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/14-24.webp",
+      "width": 246,
+      "height": 207
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/14-25.webp",
+      "width": 249,
+      "height": 207
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/14-26.webp",
+      "width": 246,
+      "height": 207
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/14-27.webp",
+      "width": 249,
+      "height": 207
+     }
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "下列哪一個化合物也可與柳酸反應生成阿司匹靈？",
+   "set": "15-16",
+   "options": [
+    "氯乙烯",
+    "乙醇",
+    "乙胺",
+    "溴乙烷",
+    "乙醯氯"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "試問王同學在本實驗所得的產率為何(%)？",
+   "set": "15-16",
+   "options": [
+    "35",
+    "47",
+    "52",
+    "69",
+    "78"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "常溫下，已知硫酸鈣與硫酸鋇的溶度積常數($K_{\\mathrm{sp}}$)分別為$2.5\\times10^{-5}$和$1.7\\times10^{-10}$。則下列有關溶液的敘述，哪些是正確的？",
+   "options": [
+    "硫酸鈣在純水中的溶解度為$5.0\\times10^{-3}$ M",
+    "硫酸鈣在0.10M氯化鈣溶液的溶解度為$2.5\\times10^{-4}$ M",
+    "硫酸鋇在0.01M氯化鋇溶液的溶解度為硫酸鋇在純水中溶解度的一半",
+    "將50毫升0.01M氯化鋇溶液，加入50毫升0.01M硫酸鉀溶液，會有沉澱產生",
+    "若將0.05M硫酸鉀溶液，逐滴加入一100mL含0.01M氯化鋇及0.01M氯化鈣的混合水溶液中，則會先產生硫酸鋇沉澱"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "某些只含C、H、O 三種元素的有機化合物，當一莫耳的該化合物完全燃燒時，所需氧的莫耳數及所產生水的莫耳數，均與一莫耳的甲烷完全燃燒時相同。試問下列化合物中，哪些能滿足上述條件？",
+   "options": [
+    "$\\mathrm{HCOOH}$",
+    "$\\mathrm{HCOOCH_3}$",
+    "$\\mathrm{CH_3COOH}$",
+    "$\\mathrm{C_2H_5COOH}$",
+    "$\\mathrm{H_2C(COOH)_2}$"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "已知三個相同材質的汽球，分別裝有等莫耳數的$\\mathrm{H_2}$、$\\mathrm{He}$、$\\mathrm{CH_4}$等三種氣體。假設這些氣體均為理想氣體，則在標準狀態下，對汽球內三種氣體的敘述，哪些是正確的？",
+   "options": [
+    "$\\mathrm{H_2}$的壓力為$\\mathrm{He}$的4倍",
+    "$\\mathrm{H_2}$汽球內的原子數為$\\mathrm{He}$汽球內原子數的2倍",
+    "當$\\mathrm{H_2}$汽球內的$\\mathrm{H_2}$逸散出50%時，則在同一時間，約有35%的$\\mathrm{He}$從$\\mathrm{He}$汽球內逸散出來",
+    "$\\mathrm{He}$的逸散速率為$\\mathrm{CH_4}$的2倍",
+    "$\\mathrm{CH_4}$的密度(克/升)為$\\mathrm{He}$的4倍"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "下列有關氫—氧與甲烷燃料電池的敘述，哪些是正確的？",
+   "set": "20-21",
+   "options": [
+    "每產生1.0莫耳的水，兩種電池都需要轉移2.0莫耳的電子",
+    "甲烷燃料電池的電動勢為1.40V",
+    "氫—氧燃料電池的電動勢為1.23V",
+    "甲烷燃料電池每消耗1.0莫耳的甲烷，可以產生$W=-409\\ \\mathrm{kJ}$的電功",
+    "氫—氧燃料電池每消耗1.0莫耳的氫氣，可以產生$W=-237\\ \\mathrm{kJ}$的電功"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "鐵生鏽是常見的氧化還原反應。反應中，鐵氧化為$\\mathrm{Fe^{2+}_{(aq)}}$，而氧還原與水反應生成$\\mathrm{OH^-_{(aq)}}$。$\\mathrm{Fe^{2+}_{(aq)}}$的檢驗可由$\\mathrm{Fe^{2+}_{(aq)}}$與$\\mathrm{K_3[Fe(CN)_6]_{(aq)}}$反應呈藍色而得知；而$\\mathrm{OH^-_{(aq)}}$的檢驗，可由$\\mathrm{OH^-_{(aq)}}$遇無色的酚酞呈紅色而得知。實驗初始時，王同學將左鐵棒的上、下兩端各聯上一鋅片，而在右鐵棒中段聯上一銅片(如實驗初始圖)，王同學將此二者靜置於含有$\\mathrm{K_3[Fe(CN)_6]_{(aq)}}$及酚酞的混合膠質溶液中，經一段時間後，發現圖中的甲、乙、丙、丁、戊、己等六區均有變化，則下列各區的變化，哪些是正確的？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/96/chemistry/text/22-28.webp",
+      "width": 885,
+      "height": 270
+     }
+    }
+   ],
+   "options": [
+    "甲區呈現藍色",
+    "乙區呈現紅色",
+    "丙區呈現藍色",
+    "丁區產生鐵(Ⅱ)離子",
+    "戊區產生銅(Ⅱ)離子"
+   ]
+  }
+ ]
+}

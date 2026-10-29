@@ -150,6 +150,10 @@ export interface LevelStats {
   percentOnly?: boolean
   /** 官方沒公布到考人數（學測 90、91 年只有百分比）：成績單不寫到考人數 */
   totalUnknown?: boolean
+  /** 指考（92–110 年）沒有級分：levels 是每 1 分一格的原始分數，成績單只寫分數和名次 */
+  rawScore?: boolean
+  /** 官方沒公布各分數人數（指考 91 年、會考 102 年）：成績單不寫名次 */
+  noRank?: boolean
 }
 
 /** 全國名次區間：同級分的人無法再細分 */
@@ -221,6 +225,10 @@ export interface SubjectReport {
   rank: RankRange
   /** 會考：標示範圍，例如 B+～A（取代級分） */
   labelRange?: { min: string, max: string }
+  /** 指考：沒有級分，只看分數和名次 */
+  rawScore?: boolean
+  /** 沒有名次可查 */
+  noRank?: boolean
   /** 會考：約前幾 %（取代名次），min 是最好 */
   percentRange?: NumberRange
   /** 到考人數不明，不顯示 */

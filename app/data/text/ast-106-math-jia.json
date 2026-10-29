@@ -1,0 +1,85 @@
+{
+ "exam": "ast",
+ "year": 106,
+ "id": "math-jia",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "從所有二位正整數中隨機選取一個數，設 $p$ 是其十位數字小於個位數字的機率。關於 $p$ 值的範圍，試選出正確的選項。",
+   "options": [
+    "$0.22\\leq p<0.33$",
+    "$0.33\\leq p<0.44$",
+    "$0.44\\leq p<0.55$",
+    "$0.55\\leq p<0.66$",
+    "$0.66\\leq p<0.77$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "設 $a=\\sqrt[3]{10}$。關於 $a^5$ 的範圍，試選出正確的選項。",
+   "options": [
+    "$25\\leq a^5<30$",
+    "$30\\leq a^5<35$",
+    "$35\\leq a^5<40$",
+    "$40\\leq a^5<45$",
+    "$45\\leq a^5<50$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "試問在 $0\\leq x\\leq 2\\pi$ 的範圍中，$y=3\\sin x$ 的函數圖形與 $y=2\\sin 2x$ 的函數圖形有幾個交點？",
+   "options": [
+    "$2$ 個交點",
+    "$3$ 個交點",
+    "$4$ 個交點",
+    "$5$ 個交點",
+    "$6$ 個交點"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "已知一實係數三次多項式 $f(x)$ 在 $x=1$ 有極大值 $3$，且圖形 $y=f(x)$ 在 $(4,f(4))$ 之切線方程式為 $y-f(4)+5(x-4)=0$，試問 $\\int_1^4 f''(x)dx$ 之值為下列哪一選項？",
+   "options": [
+    "$-5$",
+    "$-3$",
+    "$0$",
+    "$3$",
+    "$5$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "設 $\\overrightarrow{u}$ 與 $\\overrightarrow{v}$ 為兩非零向量，夾角為 $120^\\circ$。若 $\\overrightarrow{u}$ 與 $\\overrightarrow{u}+\\overrightarrow{v}$ 垂直，試選出正確的選項。",
+   "options": [
+    "$\\overrightarrow{u}$ 的長度是 $\\overrightarrow{v}$ 的長度的 $2$ 倍",
+    "$\\overrightarrow{v}$ 與 $\\overrightarrow{u}+\\overrightarrow{v}$ 的夾角為 $30^\\circ$",
+    "$\\overrightarrow{u}$ 與 $\\overrightarrow{u}-\\overrightarrow{v}$ 的夾角為銳角",
+    "$\\overrightarrow{v}$ 與 $\\overrightarrow{u}-\\overrightarrow{v}$ 的夾角為銳角",
+    "$\\overrightarrow{u}+\\overrightarrow{v}$ 的長度大於 $\\overrightarrow{u}-\\overrightarrow{v}$ 的長度"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "已知複數 $z$ 滿足 $z^n+z^{-n}+2=0$，其中 $n$ 為正整數。將 $z$ 用極式表示為 $r(\\cos\\theta+i\\sin\\theta)$，且 $r>0$。試選出正確的選項。",
+   "options": [
+    "$r=1$",
+    "$n$ 不能是偶數",
+    "對給定的 $n$，恰有 $2n$ 個不同的複數 $z$ 滿足題設",
+    "$\\theta$ 可能是 $\\frac{3\\pi}{7}$",
+    "$\\theta$ 可能是 $\\frac{4\\pi}{7}$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "設實係數三次多項式 $f(x)$ 的首項係數為正。已知 $y=f(x)$ 的圖形和直線 $y=g(x)$ 在 $x=1$ 相切，且兩圖形只有一個交點。試選出正確的選項。",
+   "options": [
+    "$f(1)=g(1)$",
+    "$f'(1)=g'(1)$",
+    "$f''(1)=0$",
+    "存在實數 $a\\neq 1$ 使得 $f'(a)=g'(a)$",
+    "存在實數 $a\\neq 1$ 使得 $f''(a)=g''(a)$"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,249 @@
+{
+ "exam": "ast",
+ "year": 93,
+ "subject": "物理",
+ "id": "physics",
+ "parts": [
+  {
+   "title": "",
+   "groups": [
+    {
+     "title": "壹、單一選擇題 （每題4分，共40分）",
+     "note": "說明：第1題至第10題，每題選出一個最適當的選項，標示在答案卡之「選擇題答案區」。每題答對得4分，答錯或劃記多於一個選項者倒扣1分，倒扣到本大題之實得分數為零為止，未作答者，不給分亦不扣分。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 4.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 4.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 4.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 4.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 4.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 4.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 4.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 4.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 4.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    },
+    {
+     "title": "貳、多重選擇題 （每題5分，共40分）",
+     "note": "說明：第11題至第18題，每題各有5個選項，其中至少有一個是正確的。選出正確選項，標示在答案卡之「選擇題答案區」。每題五分，各選項獨立計分，每答對一個選項，可得1分，每答錯一個選項，倒扣1分。倒扣到本大題之實得分數為零為止，完全答對得5分，整題未作答者，不給分亦不扣分。",
+     "questions": [
+      {
+       "number": 11,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "AD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 12,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "CD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 13,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "DE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 14,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "ACE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 15,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "BD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 17,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 18,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "BE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
