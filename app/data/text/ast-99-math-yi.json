@@ -1,0 +1,54 @@
+{
+ "exam": "ast",
+ "year": 99,
+ "id": "math-yi",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "關於行列式的性質，下列哪一選項恆成立？",
+   "options": [
+    "$\\begin{vmatrix}a&b&c\\\\d&e&f\\\\g&h&i\\end{vmatrix}=-\\begin{vmatrix}a&d&g\\\\b&e&h\\\\c&f&i\\end{vmatrix}$",
+    "$\\begin{vmatrix}a&b&0\\\\d&e&1\\\\g&h&0\\end{vmatrix}=\\begin{vmatrix}a&b\\\\g&h\\end{vmatrix}$",
+    "$\\begin{vmatrix}0&b&0\\\\d&e&f\\\\0&h&0\\end{vmatrix}=0$",
+    "$\\begin{vmatrix}a&0&c\\\\0&e&0\\\\g&0&i\\end{vmatrix}=0$",
+    "$\\begin{vmatrix}a+e&b+f\\\\c+g&d+h\\end{vmatrix}=\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix}+\\begin{vmatrix}e&f\\\\g&h\\end{vmatrix}$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "某校高三學生在一次考試中，成績呈常態分配，且已知其分數之平均數為$70$分，標準差為$10$分。若從這次考試的學生中，隨機抽出一位學生，則這位學生的成績低於$60$分的機率最接近以下哪一選項？",
+   "options": [
+    "$0.16$",
+    "$0.32$",
+    "$0.34$",
+    "$0.68$",
+    "$0.84$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "關於多項式不等式：",
+   "blocks": [
+    "$x^2(x+5)(x+1)(x-4)(x-7)<(2x-3)(x+5)(x+1)(x-4)(x-7)$，",
+    "下列哪些選項是它的一個解？"
+   ],
+   "options": [
+    "$-2\\pi$",
+    "$-\\pi$",
+    "$\\pi$",
+    "$2\\pi$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "關於指數函數或對數函數圖形的敘述，下列哪些選項是正確的？",
+   "options": [
+    "$y=2010^x$的圖形恆在$y=99^x$的上方",
+    "$y=\\log_{99}x$與$y=99^x$兩函數的圖形對稱於直線$y=x$",
+    "$y=\\log_{99}x$與$y=\\log_{\\frac{1}{99}}x$兩函數的圖形對稱於$x$軸",
+    "$y=\\log_{2010}(x^2-10x+33)$的圖形與$x$軸相交"
+   ]
+  }
+ ]
+}
