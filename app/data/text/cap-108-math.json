@@ -1,0 +1,433 @@
+{
+ "exam": "cap",
+ "year": 108,
+ "id": "math",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "算式$-\\frac{5}{3}-(-\\frac{1}{6})$之值為何？",
+   "options": [
+    "$-\\frac{3}{2}$",
+    "$-\\frac{4}{3}$",
+    "$-\\frac{11}{6}$",
+    "$-\\frac{4}{9}$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "某城市分為南、北兩區，圖(一)為$105$年到$107$年該城市兩區的人口數量長條圖。根據圖(一)判斷該城市的總人口數量，從$105$年到$107$年的變化情形為下列何者？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/2-1.webp",
+      "width": 771,
+      "height": 555
+     }
+    }
+   ],
+   "options": [
+    "逐年增加",
+    "逐年減少",
+    "先增加，再減少",
+    "先減少，再增加"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "計算$(2x-3)(3x+4)$的結果，與下列哪一個式子相同？",
+   "options": [
+    "$-7x+4$",
+    "$-7x-12$",
+    "$6x^2-12$",
+    "$6x^2-x-12$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "圖(二)的直角柱由$2$個正三角形底面和$3$個矩形側面組成，其中正三角形面積為$a$，矩形面積為$b$。若將$4$個圖(二)的直角柱緊密堆疊成圖(三)的直角柱，則圖(三)中直角柱的表面積為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/4-2.webp",
+      "width": 690,
+      "height": 348
+     }
+    }
+   ],
+   "options": [
+    "$4a+2b$",
+    "$4a+4b$",
+    "$8a+6b$",
+    "$8a+12b$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "若$\\sqrt{44}=2\\sqrt{a}$，$\\sqrt{54}=3\\sqrt{b}$，則$a+b$之值為何？",
+   "options": [
+    "$13$",
+    "$17$",
+    "$24$",
+    "$40$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "__民國__$106$年$8$月$15$日，__大潭發電廠__因跳電導致供電短少約$430$萬瓩，造成全__臺灣__多處地方停電。已知$1$瓩等於$1$千瓦，求$430$萬瓩等於多少瓦？",
+   "options": [
+    "$4.3\\times10^{7}$",
+    "$4.3\\times10^{8}$",
+    "$4.3\\times10^{9}$",
+    "$4.3\\times10^{10}$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "圖(四)的坐標平面上有原點$O$與$A$、$B$、$C$、$D$四點。若有一直線$L$通過點$(-3,4)$且與$y$軸垂直，則$L$也會通過下列哪一點？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/7-3.webp",
+      "width": 381,
+      "height": 516
+     }
+    }
+   ],
+   "options": [
+    "$A$",
+    "$B$",
+    "$C$",
+    "$D$"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "若多項式$5x^2+17x-12$可因式分解成$(x+a)(bx+c)$，其中$a$、$b$、$c$均為整數，則$a+c$之值為何？",
+   "options": [
+    "$1$",
+    "$7$",
+    "$11$",
+    "$13$"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "公園內有一矩形步道，其地面使用相同的灰色正方形地磚與相同的白色等腰直角三角形地磚排列而成。圖(五)表示此步道的地磚排列方式，其中正方形地磚為連續排列且總共有$40$個。求步道上總共使用多少個三角形地磚？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/9-4.webp",
+      "width": 720,
+      "height": 231
+     }
+    }
+   ],
+   "options": [
+    "$84$",
+    "$86$",
+    "$160$",
+    "$162$"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "數線上有$O$、$A$、$B$、$C$四點，各點位置與各點所表示的數如圖(六)所示。若數線上有一點$D$，$D$點所表示的數為$d$，且$\\left|d-5\\right|=\\left|d-c\\right|$，則關於$D$點的位置，下列敘述何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/10-5.webp",
+      "width": 504,
+      "height": 192
+     }
+    }
+   ],
+   "options": [
+    "在$A$的左邊",
+    "介於$A$、$C$之間",
+    "介於$C$、$O$之間",
+    "介於$O$、$B$之間"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "如圖(七)，將一長方形紙片沿著虛線剪成兩個全等的梯形紙片。根據圖中標示的長度與角度，求梯形紙片中較短的底邊長度為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/11-6.webp",
+      "width": 510,
+      "height": 348
+     }
+    }
+   ],
+   "options": [
+    "$4$",
+    "$5$",
+    "$6$",
+    "$7$"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "__阿慧__在店內購買兩種蛋糕當伴手禮，圖(八)為蛋糕的價目表。已知__阿慧__購買$10$盒蛋糕，花費的金額不超過$2500$元。若他將蛋糕分給$75$位同事，每人至少能拿到一個蛋糕，則__阿慧__花多少元購買蛋糕？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/12-7.webp",
+      "width": 579,
+      "height": 438
+     }
+    }
+   ],
+   "options": [
+    "$2150$",
+    "$2250$",
+    "$2300$",
+    "$2450$"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "如圖(九)，$\\triangle ABC$中，$D$點在$\\overline{BC}$上，將$D$點分別以$\\overline{AB}$、$\\overline{AC}$為對稱軸，畫出對稱點$E$、$F$，並連接$\\overline{AE}$、$\\overline{AF}$。根據圖中標示的角度，求$\\angle EAF$的度數為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/13-8.webp",
+      "width": 402,
+      "height": 357
+     }
+    }
+   ],
+   "options": [
+    "$113$",
+    "$124$",
+    "$129$",
+    "$134$"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "箱子內裝有$53$顆白球及$2$顆紅球，__小芬__打算從箱子內抽球，以每次抽出一球後將球再放回的方式抽$53$次球。若箱子內每顆球被抽到的機會相等，且前$52$次中抽到白球$51$次及紅球$1$次，則第$53$次抽球時，__小芬__抽到紅球的機率為何？",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{1}{3}$",
+    "$\\frac{2}{53}$",
+    "$\\frac{2}{55}$"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "如圖(十)，$\\triangle ABC$中，$\\overline{AC}=\\overline{BC}<\\overline{AB}$。若$\\angle 1$、$\\angle 2$分別為$\\angle ABC$、$\\angle ACB$的外角，則下列角度關係何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/15-9.webp",
+      "width": 372,
+      "height": 396
+     }
+    }
+   ],
+   "options": [
+    "$\\angle 1<\\angle 2$",
+    "$\\angle 1=\\angle 2$",
+    "$\\angle A+\\angle 2<180^\\circ$",
+    "$\\angle A+\\angle 1>180^\\circ$"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "__小涵__與__阿嘉__一起去咖啡店購買同款咖啡豆，咖啡豆每公克的價錢固定，購買時自備容器則結帳金額再減$5$元。若__小涵__購買咖啡豆$250$公克且自備容器，需支付$295$元；__阿嘉__購買咖啡豆$x$公克但__沒有__自備容器，需支付$y$元，則$y$與$x$的關係式為下列何者？",
+   "options": [
+    "$y=\\frac{295}{250}x$",
+    "$y=\\frac{300}{250}x$",
+    "$y=\\frac{295}{250}x+5$",
+    "$y=\\frac{300}{250}x+5$"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "如圖(十一)，將一張面積為$14$的大三角形紙片沿著虛線剪成三張小三角形紙片與一張平行四邊形紙片。根據圖中標示的長度，求平行四邊形紙片的面積為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/17-10.webp",
+      "width": 858,
+      "height": 330
+     }
+    }
+   ],
+   "options": [
+    "$\\frac{21}{5}$",
+    "$\\frac{42}{5}$",
+    "$\\frac{24}{7}$",
+    "$\\frac{48}{7}$"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "圖(十二)的摩天輪上以等間隔的方式設置$36$個車廂，車廂依順時針方向分別編號為$1$號到$36$號，且摩天輪運行時以逆時針方向等速旋轉，旋轉一圈花費$30$分鐘。若圖(十三)表示$21$號車廂運行到最高點的情形，則此時經過多少分鐘後，$9$號車廂才會運行到最高點？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/18-11.webp",
+      "width": 1065,
+      "height": 525
+     }
+    }
+   ],
+   "options": [
+    "$10$",
+    "$20$",
+    "$\\frac{15}{2}$",
+    "$\\frac{45}{2}$"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "如圖(十四)，直角三角形$ABC$的內切圓分別與$\\overline{AB}$、$\\overline{BC}$相切於$D$點、$E$點。根據圖中標示的長度與角度，求$\\overline{AD}$的長度為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/19-12.webp",
+      "width": 420,
+      "height": 408
+     }
+    }
+   ],
+   "options": [
+    "$\\frac{3}{2}$",
+    "$\\frac{5}{2}$",
+    "$\\frac{4}{3}$",
+    "$\\frac{5}{3}$"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "某旅行團到森林遊樂區參觀，表(一)為兩種參觀方式與所需的纜車費用。已知旅行團的每個人皆從這兩種方式中選擇一種，且去程有$15$人搭乘纜車，回程有$10$人搭乘纜車。若他們纜車費用的總花費為$4100$元，則此旅行團共有多少人？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/20-13.webp",
+      "width": 645,
+      "height": 255
+     }
+    }
+   ],
+   "options": [
+    "$16$",
+    "$19$",
+    "$22$",
+    "$25$"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "__小宜__跟同學在某餐廳吃飯，圖(十五)為此餐廳的菜單。若他們所點的餐點總共為$10$份義大利麵，$x$杯飲料，$y$份沙拉，則他們點了幾份$A$餐？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/21-14.webp",
+      "width": 816,
+      "height": 384
+     }
+    }
+   ],
+   "options": [
+    "$10-x$",
+    "$10-y$",
+    "$10-x+y$",
+    "$10-x-y$"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "若正整數$a$和$420$的最大公因數為$35$，則下列敘述何者正確？",
+   "options": [
+    "$20$可能是$a$的因數，$25$可能是$a$的因數",
+    "$20$可能是$a$的因數，$25$不可能是$a$的因數",
+    "$20$不可能是$a$的因數，$25$可能是$a$的因數",
+    "$20$不可能是$a$的因數，$25$不可能是$a$的因數"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "如圖(十六)，有一三角形$ABC$的頂點$B$、$C$皆在直線$L$上，且其內心為$I$。今固定$C$點，將此三角形依順時針方向旋轉，使得新三角形$A'B'C$的頂點$A'$落在$L$上，且其內心為$I'$。若$\\angle A<\\angle B<\\angle C$，則下列敘述何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/23-15.webp",
+      "width": 600,
+      "height": 342
+     }
+    }
+   ],
+   "options": [
+    "$\\overline{IC}$和$\\overline{I'A'}$平行，$\\overline{II'}$和$L$平行",
+    "$\\overline{IC}$和$\\overline{I'A'}$平行，$\\overline{II'}$和$L$不平行",
+    "$\\overline{IC}$和$\\overline{I'A'}$不平行，$\\overline{II'}$和$L$平行",
+    "$\\overline{IC}$和$\\overline{I'A'}$不平行，$\\overline{II'}$和$L$不平行"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "圖(十七)表示$A$、$B$、$C$、$D$四點在圓$O$上的位置，其中$\\overset{\\frown}{AD}=180^\\circ$，且$\\overset{\\frown}{AB}=\\overset{\\frown}{BD}$，$\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$。若__阿超__在$\\overset{\\frown}{AB}$上取一點$P$，在$\\overset{\\frown}{BD}$上取一點$Q$，使得$\\angle APQ=130^\\circ$，則下列敘述何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/24-16.webp",
+      "width": 414,
+      "height": 462
+     }
+    }
+   ],
+   "options": [
+    "$Q$點在$\\overset{\\frown}{BC}$上，且$\\overset{\\frown}{BQ}>\\overset{\\frown}{QC}$",
+    "$Q$點在$\\overset{\\frown}{BC}$上，且$\\overset{\\frown}{BQ}<\\overset{\\frown}{QC}$",
+    "$Q$點在$\\overset{\\frown}{CD}$上，且$\\overset{\\frown}{CQ}>\\overset{\\frown}{QD}$",
+    "$Q$點在$\\overset{\\frown}{CD}$上，且$\\overset{\\frown}{CQ}<\\overset{\\frown}{QD}$"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "圖(十八)的$\\triangle ABC$中，$\\overline{AB}>\\overline{AC}>\\overline{BC}$，且$D$為$\\overline{BC}$上一點。今打算在$\\overline{AB}$上找一點$P$，在$\\overline{AC}$上找一點$Q$，使得$\\triangle APQ$與$\\triangle PDQ$全等，以下是甲、乙兩人的作法：",
+   "blocks": [
+    "(甲)連接$\\overline{AD}$，作$\\overline{AD}$的中垂線分別交$\\overline{AB}$、$\\overline{AC}$於$P$點、$Q$點，則$P$、$Q$兩點即為所求",
+    "(乙)過$D$作與$\\overline{AC}$平行的直線交$\\overline{AB}$於$P$點，過$D$作與$\\overline{AB}$平行的直線交$\\overline{AC}$於$Q$點，則$P$、$Q$兩點即為所求",
+    "對於甲、乙兩人的作法，下列判斷何者正確？",
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/25-17.webp",
+      "width": 375,
+      "height": 447
+     }
+    }
+   ],
+   "options": [
+    "兩人皆正確",
+    "兩人皆錯誤",
+    "甲正確，乙錯誤",
+    "甲錯誤，乙正確"
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "如圖(十九)，坐標平面上有一頂點為$A$的拋物線，此拋物線與方程式$y=2$的圖形交於$B$、$C$兩點，且$\\triangle ABC$為正三角形。若$A$點坐標為$(-3,0)$，則此拋物線與$y$軸的交點坐標為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/108/math/text/26-18.webp",
+      "width": 480,
+      "height": 495
+     }
+    }
+   ],
+   "options": [
+    "$(0,\\frac{9}{2})$",
+    "$(0,\\frac{27}{2})$",
+    "$(0,9)$",
+    "$(0,18)$"
+   ]
+  }
+ ]
+}
