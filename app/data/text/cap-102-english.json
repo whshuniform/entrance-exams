@@ -1,0 +1,744 @@
+{
+ "exam": "cap",
+ "year": 102,
+ "id": "english",
+ "sets": [
+  {
+   "id": "35-36",
+   "blocks": [
+    "Dear Tina,",
+    "I think I have to say I’m sorry to you because I [[35]] the last time you came to me.  I was so busy with my own studies at that time that I didn’t spend any time listening to your problems with Mary.  I know you’re very sad about this, and it’s too late for me to make any excuses.",
+    "I’ve tried to call you many times, but you’ve never answered.  I think you [[36]] .  Please pick up the phone and talk to me.  We are still good friends, aren’t we?  Please give me another chance!",
+    "Your friend always,",
+    "Alice"
+   ]
+  },
+  {
+   "id": "37-38",
+   "blocks": [
+    "Below is a report on four new restaurants.",
+    {
+     "table": [
+      [
+       "",
+       "Food Station",
+       "Aunt Lucy’s",
+       "Fresh & Hot",
+       "Full House"
+      ],
+      [
+       "Food",
+       "excellent",
+       "good",
+       "good",
+       "poor"
+      ],
+      [
+       "Price",
+       "US\\$10 ~ US\\$25",
+       "US\\$25 ~ US\\$50",
+       "US\\$10 ~ US\\$25",
+       "US\\$25 ~ US\\$50"
+      ],
+      [
+       "Service",
+       "poor",
+       "excellent",
+       "excellent",
+       "poor"
+      ],
+      [
+       "Restroom",
+       "very clean",
+       "clean",
+       "dirty",
+       "very clean"
+      ],
+      [
+       "Seating",
+       "60",
+       "25",
+       "80",
+       "25"
+      ],
+      [
+       "Pets",
+       "Yes",
+       "No",
+       "Yes",
+       "No"
+      ]
+     ]
+    },
+    "service 服務"
+   ]
+  },
+  {
+   "id": "39-40",
+   "blocks": [
+    "Life is a long trip.",
+    "Both good and bad things happen on the road:",
+    "People love and hate,",
+    "They share and hide things.",
+    "Some things make me smile;",
+    "Some things make me cry.",
+    "Some days are sunny,",
+    "Some days are rainy—",
+    "Life is a trip full of __opposites__.",
+    "I can’t decide what will happen,",
+    "So I have decided to be happy right now, every minute of my life.",
+    "To remember all that is beautiful;",
+    "To let go of all that makes me sad—",
+    "In this way I will live my life to the fullest.",
+    "~Johnny Wang~"
+   ]
+  },
+  {
+   "id": "41-43",
+   "blocks": [
+    "**Home >> DVD >> Latest**",
+    "***Into the Amazon***",
+    "In this special part of our Earth, you can see small monkeys, big cats, and even flowers that bite!  The heavy rain has given life to the Amazon and made it a beautiful green world.  But over the past few years, the burning fires there have taken many lives.  What's going on?",
+    "***Best Friends at Home***",
+    "Sara, a 65-year-old woman, shares with us how her dog Patty has helped her since she became blind.  Larry, who lives with seven cats, tells us how his pets keep him happy and healthy every day.  You'll be surprised by how much pets can give to people.",
+    "***Down Under the Blue***",
+    "What kinds of animals live at the bottom of the sea?  How do they live in a place with almost no light?  This DVD will take you down to the lowest part of the Pacific Ocean.  But watch out!  Some fish are so __creepy__ that you might want to run away for help when they appear in front of you!"
+   ]
+  },
+  {
+   "id": "44-45",
+   "blocks": [
+    "(In front of the Golden Theater)",
+    "Fred : May I help you?",
+    "Nora : Yes, how can I get to the ticket office?  I have to meet with my friends there.",
+    "Fred : See the coffee shop over there?  Our ticket office’s right next to it.  May I ask which movie you are seeing?",
+    "Nora : *Dance with the Snake.*",
+    "Fred : I’m afraid you’ve come to the wrong place.  That movie is playing at another theater, the New Theater.",
+    "Nora : Oh, no!  What should I do now?",
+    "Fred : Don’t worry.  The theater is only a few blocks away.  You can get there in ten minutes by taxi.  Just have the driver stop on Market Street.  The theater is beside a big gift shop.",
+    "Nora : OK.  Thank you for your help.",
+    "Fred : No problem."
+   ]
+  },
+  {
+   "id": "46-47",
+   "blocks": [
+    "From: Page-Plus Bookstore (order@pageplus.com)",
+    "To: Andy Walker (andywalker@hooray.com)",
+    "Date:  Monday, May 24, 2010",
+    "Subject: Your Order",
+    "Dear Mr. Walker,",
+    "Your order (__order number: A2010-0515-2355-36__) has been sent out.",
+    "You ordered:",
+    {
+     "table": [
+      [
+       "1. *Dangerously Crazy*",
+       "NT\\$180  × 2",
+       "NT\\$360"
+      ],
+      [
+       "2. *Talking Horses*",
+       "NT\\$210  × 1",
+       "NT\\$210"
+      ],
+      [
+       "",
+       "Shipping Fee",
+       "NT\\$50"
+      ],
+      [
+       "",
+       "Total",
+       "NT\\$620"
+      ]
+     ]
+    },
+    "Please get your order at Q-Life Store (No. 157 Comfy Street, Cozy City) from 5/25 to 5/31. To get your order, please tell the clerk your name, and then pay at the store.",
+    "☑ The order will be picked up at Q-Life Store.",
+    "(For an order less than NT\\$600, you need to pay a shipping fee of NT\\$50.)",
+    "☐ The order will be sent to your house.",
+    "(For an order less than NT\\$1,000, you need to pay a shipping fee of NT\\$100.)",
+    "If there is any problem with your order, please send it back in five days (counting from the day you get your order).",
+    "__http://www.pageplus.com__",
+    "shipping fee 運費"
+   ]
+  },
+  {
+   "id": "48-49",
+   "blocks": [
+    "**A VISIT FROM SOMEONE FROM YOUR OWN BOOK!**",
+    "**This Winter’s Most Heartwarming Movie**",
+    "*Out of the Pages* is the newest work of Linda Kinsley, the “Magic Worker” in show business.  In this lovely movie, a young writer, Henry, is visited by a strange girl who says that she comes from the book he has written.  This young girl, Claire, is not happy about her part in the book and wants Henry to change the story.  Henry thinks Claire is just trying to catch his interest, but she acts just like the girl in his book . . . .",
+    "**Together with the popular Italian actor Julio Latio, the famous French singer Sophie Besson, and last year’s Rolling Prize winner Mary Keys, this movie is sure to give you a wonderful holiday experience!**",
+    "“First pick for the New Year’s Eve!” - *Theater Report*",
+    "“Mr. Latio’s best hope for his first Rolling Prize!”- *Picture Weekly*",
+    "“An excellent pick for Besson to start in the movies!” - *Movie News*",
+    "**__http://www.outofthepagesmovie.com__**"
+   ]
+  },
+  {
+   "id": "50-53",
+   "blocks": [
+    "You don’t want to be Kim’s assistant.  She gives you lots of work and never feels pleased with what you do.  However, if you “pass the test,” you’ll almost 100% sure be promoted to “real” lawyer.  I passed, and now I have my own office and my own assistant.",
+    "Last week Kim kicked out her new assistant.  And now she’s treating me like her assistant again.  “Maureen, get me a coffee.”  “Maureen, copy this for me.”  Yes, the coffee room is closer to my office, and yes, I know the copying machines better, but now my business card says L-A-W-Y-E-R, not A-S-S-I-S-T-A-N-T!",
+    "No one will fight Kim because she’s dating Emerson, our boss.  Fighting the boss’s girlfriend won’t do you any good.  Ted fought her once, and now he’s sitting in the “Cage,” the smallest office here.",
+    "Next to my office is Jackson’s.  He was Kim’s assistant before me.  He told me that I had to let her know that now I work WITH her, not FOR her.  “She’ll get very angry at first, but she’ll forget about you after she finds the next ‘lucky’ person, and then you’ll be OK,” said he.",
+    "assistant 助理　pleased 滿意　promote 升職"
+   ]
+  },
+  {
+   "id": "54-56",
+   "blocks": [
+    "Below is the video that was made for Pattie.",
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-56-1.webp",
+      "width": 357,
+      "height": 252
+     }
+    },
+    "Hey, Pattie.  You, Daddy and Jessie are the most important people in my life.  Mom died when I was little, so I remember few things about her.  To me, you’re just like my mother.  I’m so excited you’ll be living with us!",
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-56-2.webp",
+      "width": 357,
+      "height": 255
+     }
+    },
+    "Hi, Pattie.  Thank you for everything you’ve done for us.  After Mom died, you’re the one who has kept us together.  You brought our funny, smiling dad back.  You made our house a lovely warm home.  To me, you’re already family.",
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-56-3.webp",
+      "width": 357,
+      "height": 255
+     }
+    },
+    "Hello, Pattie.  You know I wasn’t happy about you and David at first.  For a mother, a man with two kids is never good enough for her daughter.  But after seeing how you four get along together, I started thinking maybe you do know what you’re doing.  You have my best wishes, my dear girl.",
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-56-4.webp",
+      "width": 357,
+      "height": 252
+     }
+    },
+    "Hi! Pattie.  I’m so happy for you and David!  I still can’t believe it!  My best friend and my brother!  Be happy on your __big day__ and all the days after!"
+   ]
+  },
+  {
+   "id": "57-60",
+   "blocks": [
+    "*Sports News*",
+    "Maria Sharapova is a world-famous tennis player.  She was born in Russia in 1987.  At the age of four, she started her first tennis lesson.  From then on, she [[57]] that she’s one of the best tennis players ever.  Tennis fans all over the world enjoy watching her play.",
+    "Although her family had little money, Sharapova moved to America with her father in 1994.  Soon after they arrived, Sharapova’s father brought her to a famous tennis school in Florida.  Back in Russia, her father [[58]] a great future ahead of little Sharapova.  He wanted to do his best to help her, and an American tennis school would be a good start.  Now the seven-year-old girl [[59]] at the school and would start to make her dream come true.",
+    "The little girl surprised the teachers when she knocked off the hat of one teacher with a strong serve.  They told her father that she [[60]] a scholarship when she was old enough to enter the school in 1995.",
+    "That is where it all began.  Sharapova has since caught the eye of the world with her excellent tennis skills.",
+    "serve 發球　scholarship 獎學金　skill 技巧"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 21,
+   "stem": "Look at the picture.  A bee is ＿＿＿＿ on the rose.",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/21-5.webp",
+      "width": 429,
+      "height": 306
+     }
+    }
+   ],
+   "options": [
+    "landing",
+    "lying",
+    "parking",
+    "surfing"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "I enjoy drinking a cup of black coffee ＿＿＿＿ Friday nights.",
+   "options": [
+    "at",
+    "by",
+    "in",
+    "on"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "It’s raining ＿＿＿＿.  I think you should stay here until the rain stops.",
+   "options": [
+    "politely",
+    "heavily",
+    "clearly",
+    "easily"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "This restaurant is ＿＿＿＿ for its chicken soup.  Many people come to eat it.",
+   "options": [
+    "crazy",
+    "delicious",
+    "famous",
+    "sharp"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "Lisa’s room was very dirty.  It took her three hours ＿＿＿＿ it.",
+   "options": [
+    "clean",
+    "cleaned",
+    "has cleaned",
+    "to clean"
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "It’s cold outside; ＿＿＿＿ sure to put on your coat before you leave the house.",
+   "options": [
+    "be",
+    "it is",
+    "being",
+    "it will be"
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "Tommy uses chopsticks well, but his younger brothers ＿＿＿＿, so they usually eat with spoons.",
+   "options": [
+    "don’t",
+    "doesn’t",
+    "aren’t",
+    "isn’t"
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "Jane is going fishing tomorrow.  She wants to know ＿＿＿＿ the weather will be fine.",
+   "options": [
+    "how",
+    "what",
+    "whether",
+    "why"
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "David forgot to bring money with him, so I ＿＿＿＿ him NT\\$60 to pay for his lunch.",
+   "options": [
+    "borrowed",
+    "lent",
+    "ordered",
+    "spent"
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "Why don’t we have a ＿＿＿＿ for our singing group?  I think it looks great when everybody in a group wears the same thing.",
+   "options": [
+    "party",
+    "program",
+    "test",
+    "uniform"
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "The tall man ＿＿＿＿ at the bookstore is my high school teacher.",
+   "options": [
+    "you saw",
+    "who saw",
+    "you saw him",
+    "that you saw him"
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "Stella: Is this Simon’s book?  I found it under the chair.",
+   "blocks": [
+    "Joyce: No, it’s ＿＿＿＿.  Thank you.  I’ve been looking for it."
+   ],
+   "options": [
+    "I",
+    "me",
+    "my",
+    "mine"
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "Shirley: How’s your new English teacher?  She looks friendly.",
+   "blocks": [
+    "Lauren: She is nice!  ＿＿＿＿, she’s the nicest person I’ve ever seen."
+   ],
+   "options": [
+    "Even so",
+    "In fact",
+    "Also",
+    "However"
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "Doris: Why ＿＿＿＿ so many things to do when I’m busy enough?",
+   "blocks": [
+    "Frank: That’s because you don’t know how to use your time well."
+   ],
+   "options": [
+    "does it have",
+    "have",
+    "are they",
+    "are there"
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "",
+   "set": "35-36",
+   "options": [
+    "was not of much help",
+    "spent too much money",
+    "said bad things about you",
+    "forgot to help you with your studies"
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "",
+   "set": "35-36",
+   "options": [
+    "are not interested in my friends",
+    "do not have enough time for study",
+    "may not even want to hear my voice",
+    "have found a better way to talk with Mary"
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "What CANNOT be found in the report?",
+   "set": "37-38",
+   "options": [
+    "How many seats each restaurant has.",
+    "Whether dogs can enter the restaurant.",
+    "What food can be ordered in each restaurant.",
+    "How much it may cost to eat in each restaurant."
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "Sherry is talking about one of the four restaurants:",
+   "set": "37-38",
+   "blocks": [
+    "“It’s a clean and comfortable place.  Even the floor of the restroom shines.  The food is delicious.  But each of their waiters has to take care of so many tables that you seldom see them smiling and may get spaghetti when you order steak.  It’s difficult to get a table on weekends.  To save time, it’s better to visit on weekdays.”",
+    "Which restaurant is Sherry talking about?"
+   ],
+   "options": [
+    "Food Station.",
+    "Aunt Lucy’s.",
+    "Fresh & Hot.",
+    "Full House."
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "What does the writer think of life?",
+   "set": "39-40",
+   "options": [
+    "He thinks that life is short.",
+    "He wants to enjoy life as much as he can.",
+    "He is glad to find that life can be planned.",
+    "He thinks that love is the most important thing in life."
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "What does __opposites__ mean in the reading?",
+   "set": "39-40",
+   "options": [
+    "Clear and fine days.",
+    "The joy and hope of life.",
+    "The bright and dark sides of life.",
+    "People who are sad about their lives."
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "Which is true about these three DVDs?",
+   "set": "41-43",
+   "options": [
+    "They all talk about special places.",
+    "They all talk about weather changes.",
+    "They all show what is hurting the Earth.",
+    "They all show something about animals."
+   ]
+  },
+  {
+   "number": 42,
+   "stem": "Which is NOT said about *Into the Amazon*?",
+   "set": "41-43",
+   "options": [
+    "There is lots of rain in the Amazon.",
+    "There are fires burning in the Amazon.",
+    "There are special flowers in the Amazon.",
+    "There are few people living in the Amazon."
+   ]
+  },
+  {
+   "number": 43,
+   "stem": "How does one feel when seeing something __creepy__?",
+   "set": "41-43",
+   "options": [
+    "Tired.",
+    "Bored.",
+    "Afraid.",
+    "Lonely."
+   ]
+  },
+  {
+   "number": 44,
+   "stem": "What is Nora going to do after talking to Fred?",
+   "set": "44-45",
+   "options": [
+    "Go to the coffee shop.",
+    "Hurry to another theater.",
+    "Buy gifts for her friends.",
+    "Decide which movie to see."
+   ]
+  },
+  {
+   "number": 45,
+   "stem": "Which is true?",
+   "set": "44-45",
+   "options": [
+    "The two theaters are next to each other.",
+    "There is a gift shop above the New Theater.",
+    "*Dance with the Snake* can be seen at both theaters.",
+    "More than one movie is playing at the Golden Theater."
+   ]
+  },
+  {
+   "number": 46,
+   "stem": "What do we know from this email?",
+   "set": "46-47",
+   "options": [
+    "Andy has already paid on the Internet for his order.",
+    "One has to pay a shipping fee for an order of NT\\$1,000.",
+    "Page-Plus Bookstore is at No. 157 Comfy Street, Cozy City.",
+    "Andy can get what he had ordered the day after the email was sent."
+   ]
+  },
+  {
+   "number": 47,
+   "stem": "If Andy picks up his order on May 29 and finds one page missing in *Talking Horses*, when is the last day for him to send *Talking Horses* back?",
+   "set": "46-47",
+   "options": [
+    "May 31.",
+    "June 2.",
+    "June 4.",
+    "June 5."
+   ]
+  },
+  {
+   "number": 48,
+   "stem": "What does the reading say about the story of the movie?",
+   "set": "48-49",
+   "options": [
+    "It happens in snowy winter.",
+    "It comes from a popular book.",
+    "Henry does not believe what Claire says when they first meet.",
+    "Henry does not know how to change the story of his book for Claire."
+   ]
+  },
+  {
+   "number": 49,
+   "stem": "Which do we know from the reading?",
+   "set": "48-49",
+   "options": [
+    "*Out of the Pages* is Sophie Besson’s first movie.",
+    "*Out of the Pages* has won Julio Latio a Rolling Prize.",
+    "*Out of the Pages* is Linda Kinsley’s best-selling work.",
+    "*Out of the Pages* has won Mary Keys a best actress prize."
+   ]
+  },
+  {
+   "number": 50,
+   "stem": "Why does Maureen say “my business card says L-A-W-Y-E-R, not A-S-S-I-S-T-A-N-T”?",
+   "set": "50-53",
+   "options": [
+    "She is not pleased with her assistant.",
+    "She has not got her new business cards yet.",
+    "She found a spelling mistake on her business card.",
+    "She is unhappy about still being seen as an assistant."
+   ]
+  },
+  {
+   "number": 51,
+   "stem": "What can we learn from the reading?",
+   "set": "50-53",
+   "options": [
+    "Kim’s assistants were all promoted.",
+    "Ted’s fight with Kim ended terribly.",
+    "Ted fought with Kim because of Maureen.",
+    "Maureen is popular with everyone in her workplace."
+   ]
+  },
+  {
+   "number": 52,
+   "stem": "Sally is another lawyer in Maureen’s workplace.  If Sally agrees with Jackson, what would she most likely say to Maureen?",
+   "set": "50-53",
+   "blocks": [
+    "likely 可能"
+   ],
+   "options": [
+    "“Make it clear to Kim that she is not your boss.”",
+    "“Help Kim find a new assistant or share yours with her.”",
+    "“Don’t fight with Kim, if you want to keep your job here.”",
+    "“I’m sorry, but I don’t want to be part of your fight with Kim.”"
+   ]
+  },
+  {
+   "number": 53,
+   "stem": "Which picture best shows Maureen’s workplace?",
+   "set": "50-53",
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/53-6.webp",
+      "width": 645,
+      "height": 690
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/53-7.webp",
+      "width": 651,
+      "height": 690
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/53-8.webp",
+      "width": 645,
+      "height": 693
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/53-9.webp",
+      "width": 651,
+      "height": 693
+     }
+    }
+   ]
+  },
+  {
+   "number": 54,
+   "stem": "A friend of Pattie’s took a picture on her __big day__.  Which is most likely the picture?",
+   "set": "54-56",
+   "blocks": [
+    "likely 可能"
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-10.webp",
+      "width": 372,
+      "height": 297
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-11.webp",
+      "width": 378,
+      "height": 297
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-12.webp",
+      "width": 369,
+      "height": 297
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/102/english/text/54-13.webp",
+      "width": 375,
+      "height": 297
+     }
+    }
+   ]
+  },
+  {
+   "number": 55,
+   "stem": "What do we know about the four people in the video?",
+   "set": "54-56",
+   "options": [
+    "One of them is Pattie’s sister.",
+    "One of them is David’s best friend.",
+    "One of them is the aunt of two of the others.",
+    "One of them is the mother of two of the others."
+   ]
+  },
+  {
+   "number": 56,
+   "stem": "What can we learn from the video?",
+   "set": "54-56",
+   "options": [
+    "Pattie is good at taking care of people.",
+    "Pattie remembers little about her mother.",
+    "David is a serious man who seldom smiles.",
+    "David finds it difficult to talk about his family."
+   ]
+  },
+  {
+   "number": 57,
+   "stem": "",
+   "set": "57-60",
+   "options": [
+    "has shown",
+    "had shown",
+    "showed",
+    "will show"
+   ]
+  },
+  {
+   "number": 58,
+   "stem": "",
+   "set": "57-60",
+   "options": [
+    "has seen",
+    "had seen",
+    "sees",
+    "would see"
+   ]
+  },
+  {
+   "number": 59,
+   "stem": "",
+   "set": "57-60",
+   "options": [
+    "has been",
+    "had been",
+    "was",
+    "will be"
+   ]
+  },
+  {
+   "number": 60,
+   "stem": "",
+   "set": "57-60",
+   "options": [
+    "has got",
+    "had got",
+    "got",
+    "would get"
+   ]
+  }
+ ]
+}

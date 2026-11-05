@@ -1,0 +1,217 @@
+{
+ "year": 113,
+ "subject": "數學B",
+ "id": "math-b",
+ "parts": [
+  {
+   "title": "第壹部分、選擇（填）題（占85分）",
+   "groups": [
+    {
+     "title": "一、單選題（占35分）",
+     "note": "說明：第1題至第7題，每題5分。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占25分）",
+     "note": "說明：第8題至第12題，每題5分。",
+     "questions": [
+      {
+       "number": 8,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "125",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "25",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 10,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "134",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 11,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "145",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 12,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "14",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "第貳部分、混合題或非選擇題（占15分）",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明︰本部分共有1題組，單選題每題3分，非選擇題配分標於題末。限在答題卷標示題號的作答區內作答。選擇（填）題與「非選擇題作圖部分」使用2B鉛筆作答，更正時以橡皮擦擦拭，切勿使用修正帶（液）。非選擇題請由左而右橫式書寫，作答時必須寫出計算過程或理由，否則將酌予扣分。",
+     "questions": [
+      {
+       "number": 18,
+       "type": "single",
+       "points": 3,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 7
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

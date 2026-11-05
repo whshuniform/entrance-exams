@@ -1,0 +1,623 @@
+{
+ "exam": "cap",
+ "year": 109,
+ "id": "english",
+ "sets": [
+  {
+   "id": "16-17",
+   "blocks": [
+    "When __it__ arrives,\nEveryone cheers.\nThe shirts and shorts dance\nOn the clothesline,\nThe trees and flowers wave\nLike they’re saying hi,\nAnd the clouds are so excited\nTo have a running race.",
+    "When __it__ comes,\nDad’s face falls.\nHis coat and jeans jump\nOff the clothesline\nInto the pond.\nThe tree leaves hop off\nAnd have a party on his new car.",
+    "When __it__ gets here,\nA lot of fun things I notice:\nThe pond’s face,\nSad and old with lines;\nMrs. Smith’s bread,\nDelicious and freshly baked.\nBut what smell is it?\nOh, no, it’s from Mr. Brown’s feet!",
+    "leaf (leaves) 葉子"
+   ]
+  },
+  {
+   "id": "18-19",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/18-19-1.webp",
+      "width": 1398,
+      "height": 1323
+     }
+    }
+   ]
+  },
+  {
+   "id": "20-21",
+   "blocks": [
+    "Here is an ad for Sunny Market.",
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/20-21-2.webp",
+      "width": 1368,
+      "height": 1014
+     }
+    }
+   ]
+  },
+  {
+   "id": "22-24",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/22-24-3.webp",
+      "width": 240,
+      "height": 471
+     }
+    },
+    "Now I’m going to show you how to work with chocolate.  I’ll do it in a “bain-marie,” or, well, some people call it “water bath.”  I myself love the name “bain-marie.”  To make a “bain-marie,” you need two pots, one bigger than the other.",
+    "First, break the chocolate into small pieces and put them in the smaller pot.  Usually when making chocolate desserts, you’ll need to mix chocolate with butter and sugar.  So if you do, put __them__ in the pot too.",
+    "Now, half fill the bigger pot with warm water.  Put the smaller pot over the bigger one, and start to slowly mix the chocolate, the butter, and the sugar together.  Keep the water under 50ºC, or the chocolate may lose its shine.  And make sure that no water goes in the smaller pot, or the chocolate will become hard and cannot be used.",
+    "Keep mixing for about five to ten minutes, and the job is done.  Easy, right?",
+    "mix 混合"
+   ]
+  },
+  {
+   "id": "25-27",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/25-27-4.webp",
+      "width": 312,
+      "height": 63
+     }
+    },
+    "Taiwanese Bian-dang in Manhattan, New York City",
+    "5/30/ 2014  by Eva Schmidt",
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/25-27-5.webp",
+      "width": 450,
+      "height": 264
+     }
+    },
+    "During lunch time, on 53rd Street, you’ll see a long line of people in front of a Taiwanese food truck for their “bian-dang,” a Taiwanese word for “lunch box.”  On the menu you can find fried chicken with rice, pork dumplings, tea eggs, and other popular Taiwanese dishes.",
+    "The owners of the food truck are Thomas and Diana Yang, two Taiwanese-Americans.  This brother-sister team started their business in 2009.  Back then, there were a few Taiwanese restaurants in the city and several thousand food trucks, but the Yangs were the first to sell Taiwanese food on a food truck.",
+    "At first, business was __slack__.  People thought they were just another Chinese food truck, and the food truck’s name, “Cravings,” often made people think of desserts, not lunch.  Few people would stop by and try their food.  “I couldn’t even give away free food,” said Thomas.  To catch people’s eye, they painted their truck blue, and drew Taiwan’s national flower, the plum blossom, on it.  They also changed the food truck’s name to “bian-dang.”  Soon people started to notice them, and business finally got better.  Now on a good day, they can sell about 150 bian-dangs in about two hours.",
+    "So what’s next for Thomas and Diana?  Well, they hope one day there will be a block with Taiwanese food in the city, just like there is a Chinatown, a Korea Town, and a Little Italy.  And their bian-dang food truck might just help to make __that__ happen.",
+    "national 國家的"
+   ]
+  },
+  {
+   "id": "28-30",
+   "blocks": [
+    "This is a letter by Selena Bieber to the students in her school.",
+    "http://www.nvhsstudsup.org/openletter",
+    "**Later Is Better!**",
+    "Selena Bieber",
+    "*Northville High School*",
+    "Do you feel it’s hard to get up early for school and even harder to listen well in the first class at 8 a.m.?  Well, this happens to most of us and is not helpful for our learning!",
+    "Some studies show that teenagers’ brains make melatonin, the hormone that helps sleep, between 11 p.m. and 8 a.m.  So it’s better for us to sleep during these nine hours.  But here comes the problem.  We’re asked to get to school by 7:30 a.m.  That means we have to get up before 7, when our brains should still be sleeping.  That’s why we’re always so tired and can’t think clearly in early morning classes.  *No clear head, no good learning, right?*",
+    "If we can’t change how our body works, why can’t school start later?  In this way, we can not only sleep more but also learn better!",
+    "Want to help us make it happen?",
+    "Visit __www.nvhsstudsup.org/later-better__ to learn more.",
+    "brain 大腦  hormone 荷爾蒙"
+   ]
+  },
+  {
+   "id": "31-34",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/31-34-6.webp",
+      "width": 1338,
+      "height": 162
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/31-34-7.webp",
+      "width": 576,
+      "height": 354
+     }
+    },
+    "Kivalina, an island village in Alaska, USA, is known by only a few people.  It cannot be found on most maps of Alaska because it is only 10 km².  This small Arctic village is home to 400 Inuit people*.  However, their home will become __uninhabitable__ because the island could be covered by the Chukchi Sea by 2025.  These Inuit people will have to leave their home.",
+    "But life now is already difficult.  Over the past twenty years, winters have become warmer, the Arctic ice has kept melting, and the sea has been rising.  These changes have made it harder to live by hunting and fishing than before.  What’s worse, there is no Arctic ice thick enough to keep them safe from terrible wind and rain.",
+    "These Inuit people think it is the oil and power companies in Alaska that have brought all these troubles, but they are the ones who are paying the price.  It would cost hundreds of millions to move their village, and they have no idea where to get the money.  Groups like ReLocate are working together with the Inuit people to save Kivalina, but nobody is sure if their hard work will come to anything.  All the Inuit people can do now is to pray the rising sea will not cover their home too soon.",
+    "* The Inuit people are a group of people who live in the Arctic.",
+    "melt 融化  hunt 打獵  company 公司"
+   ]
+  },
+  {
+   "id": "35-37",
+   "blocks": [
+    "After a lot of tests and interviews, you finally got into a good school or got a good job.  But there’s a problem: it’s a long way from home.  “Well, I can take the bus or drive,” you might think.  But before you decide whether it’s OK to have such a long commute, it’s best to know [[35]] .",
+    "Having a long commute means you’ll get fewer hours of sleep, and that’ll make you feel tired easily.  You’ll also have less time for friends and family, for exercise, or for a nice meal.",
+    "A long commute not only eats up your time but also [[36]] .  Studies show that people who have a long commute get fat easily and often have neck or back problems.  It’s easier for them to have heart problems too.  [[37]] .  Studies find that these people get angry more often, feel less happy with their lives, and do less well at work.",
+    "Now, does that good school or that good job still sound good to you?",
+    "interview 面試  commute 通勤"
+   ]
+  },
+  {
+   "id": "38-41",
+   "blocks": [
+    "NOlympics in Munich",
+    "11/11/2013",
+    "People in the city of Munich have spoken their mind: they do not want to host the Winter Olympics in 2022.  To the cities that fight for this chance, [[38]] .  The Olympics usually do a lot of good to the host city.  The Games bring in jobs, visitors, and, most important of all, money.  So why did people in Munich say no?",
+    "The Olympics [[39]] for people in Munich.  For them, the world’s biggest sports festival could invite serious trouble.  There would be a lot of building work before the Games, and during the Games, too much traffic and too many visitors.  Life would become terrible and nature would be hurt.  And [[40]] : Munich hosted the 1972 Summer Olympics, and its neighbor, the mountain town Garmisch-Partenkirchen, hosted the 1936 Winter Olympics.",
+    "Still, the heavy price Munich paid does not worry the cities that are in the race to get the 2022 Winter Olympics.  [[41]] , they are happy that Munich said no to the Olympics—their chances of getting the Games have become higher.",
+    "host 舉辦  Olympics 奧運  visitor 遊客"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "Look at the picture.  The man is holding one of the ＿＿＿＿.",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/1-8.webp",
+      "width": 384,
+      "height": 372
+     }
+    }
+   ],
+   "options": [
+    "bowls",
+    "glasses",
+    "plates",
+    "spoons"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "My mom puts the ＿＿＿＿ on to keep her hands away from water when she washes the dishes.",
+   "options": [
+    "gloves",
+    "jacket",
+    "ring",
+    "socks"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "Can you ＿＿＿＿ your feet a little off the floor?  I want to see if my keys are under the sofa.",
+   "options": [
+    "check",
+    "kick",
+    "raise",
+    "show"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "＿＿＿＿ of my sisters are older than I am.  I’m the youngest of the three children in my family.",
+   "options": [
+    "Both",
+    "Few",
+    "Most",
+    "Some"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "The beach near our town is a very ＿＿＿＿ place.  Every summer at least one kid dies there in the water.",
+   "options": [
+    "dangerous",
+    "exciting",
+    "lonely",
+    "popular"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "My wife enjoys going to the movies with her friends, but I like to watch TV at home by ＿＿＿＿.",
+   "options": [
+    "I",
+    "me",
+    "myself",
+    "mine"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "For the past twenty years, my father ＿＿＿＿ in a school library.  But he’ll leave the job next month.",
+   "options": [
+    "worked",
+    "has worked",
+    "is working",
+    "works"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "It’s great that we can buy train tickets over the phone without going out.  It ＿＿＿＿ us a lot of time.",
+   "options": [
+    "lends",
+    "prepares",
+    "saves",
+    "takes"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "Mozart ＿＿＿＿ his first music when he was only six years old.",
+   "options": [
+    "is writing",
+    "has written",
+    "will write",
+    "wrote"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "Jill: Have you decided ＿＿＿＿ you will celebrate your 30th birthday?",
+   "blocks": [
+    "Sue: Yeah, I’m going to have a big barbecue party."
+   ],
+   "options": [
+    "how",
+    "where",
+    "what",
+    "when"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "Alison doesn’t like ＿＿＿＿ what to do.  She only does things she wants to do.",
+   "options": [
+    "told",
+    "to tell",
+    "be told",
+    "to be told"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "Josh has planned to make a trip to New York and ＿＿＿＿ some of his friends there.",
+   "options": [
+    "visit",
+    "visits",
+    "visiting",
+    "visited"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "Ms. Johnson has been taking phone calls since she entered the office this morning.  Just when she thought she could finally leave work, ＿＿＿＿ call came in.",
+   "options": [
+    "another",
+    "each",
+    "the next",
+    "the other"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "We were so sure that Jerry ＿＿＿＿ well on the difficult job.  His past experience in other work showed he was the right guy for it.  So when he failed, no one believed it.",
+   "options": [
+    "had done",
+    "did",
+    "has done",
+    "would do"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "For Mike, the price is ＿＿＿＿ important thing when he shops for jeans.  He cares even more about the shape and the size of the pockets.",
+   "options": [
+    "the more",
+    "the most",
+    "the less",
+    "the least"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "What is __it__ in the reading?",
+   "set": "16-17",
+   "options": [
+    "The sun.",
+    "The rain.",
+    "The wind.",
+    "The rainbow."
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "How does Dad feel “when it comes” ?",
+   "set": "16-17",
+   "options": [
+    "He is scared.",
+    "He is excited.",
+    "He is not happy.",
+    "He is not interested."
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "What can we learn about Buffy’s friends?",
+   "set": "18-19",
+   "options": [
+    "Matt has experience of yard sales.",
+    "Jamie had a successful yard sale last week.",
+    "Albert thinks weather is important for yard sales.",
+    "Debby thinks things are cheaper online than at yard sales."
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "What do Buffy’s friends think about having a yard sale?",
+   "set": "18-19",
+   "options": [
+    "Albert and Matt think it’s a nice way to make friends.",
+    "Debby and Albert think it’s difficult to make money from it.",
+    "Matt agrees with Jamie that it’s a good chance to help people.",
+    "Jamie agrees with Debby that it’s a lot of trouble to prepare for it."
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "From the ad, which is true about Sunny Sun pictures?",
+   "set": "20-21",
+   "options": [
+    "The first day to use Sunny Sun pictures is Feb. 4.",
+    "The last day to collect Sunny Sun pictures is Feb. 10.",
+    "You cannot use Sunny Sun pictures to get free desserts.",
+    "You cannot get Sunny Sun pictures when you buy books."
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "Sammy has 7 Sunny Sun pictures.  She wants to get a Sunny Cup.  How can she get one?",
+   "set": "20-21",
+   "options": [
+    "Use 6 Sunny Sun pictures and pay \\$100.",
+    "Use 6 Sunny Sun pictures and pay \\$200.",
+    "Spend \\$150 to get 3 more Sunny Sun pictures.",
+    "Spend \\$200 to get 4 more Sunny Sun pictures."
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "From the reading, which picture best shows the “bain-marie” way of working with chocolate?",
+   "set": "22-24",
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/22-9.webp",
+      "width": 291,
+      "height": 333
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/22-10.webp",
+      "width": 297,
+      "height": 333
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/22-11.webp",
+      "width": 360,
+      "height": 519
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/109/english/text/22-12.webp",
+      "width": 381,
+      "height": 519
+     }
+    }
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "What does __them__ mean in the reading?",
+   "set": "22-24",
+   "options": [
+    "Bains-marie.",
+    "Butter and sugar.",
+    "Chocolate desserts.",
+    "Small pieces of chocolate."
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "From the reading, which is true about working with chocolate?",
+   "set": "22-24",
+   "options": [
+    "It is better to use a “bain-marie” than a “water bath.”",
+    "The water in the pot should not be warmer than 50ºC.",
+    "It is better to finish mixing it in less than five minutes.",
+    "We should not mix butter and sugar together at the same time."
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "What does the news story say about the Yangs’ food truck?",
+   "set": "25-27",
+   "options": [
+    "What people love about their food.",
+    "What made them start their business.",
+    "How they made delicious fried chicken.",
+    "How they fixed their business problems."
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "What does it mean when business is __slack__?",
+   "set": "25-27",
+   "options": [
+    "It is bad.",
+    "It is for sale.",
+    "It is growing.",
+    "It is open every day."
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "What does __that__ mean in the news story?",
+   "set": "25-27",
+   "options": [
+    "A Taiwanese restaurant.",
+    "A second Taiwanese food truck.",
+    "A city block that sells Taiwanese food.",
+    "A business that is popular across the country."
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "What problem is Selena Bieber trying to fix?",
+   "set": "28-30",
+   "options": [
+    "High school lessons are too difficult.",
+    "Classes start too early in the morning.",
+    "Too many students are late for school.",
+    "Lunch break is too short for taking a rest."
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "What can we learn from the letter?",
+   "set": "28-30",
+   "options": [
+    "Too much melatonin can hurt teenagers’ brain.",
+    "The brain stops making melatonin after 11 p.m.",
+    "Sleeping longer helps the body make more melatonin.",
+    "It is easier to fall asleep when the brain is making melatonin."
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "Below is some information from another study.",
+   "set": "28-30",
+   "blocks": [
+    "*We studied 48 high school students and found that the students who went to bed earlier did better on their school tests.  This is not only true for those who slept nine hours, but also true for those who slept less.  And some of them agreed that they learned better in early morning classes.*",
+    "Do the ideas in Selena Bieber’s letter agree with the information?"
+   ],
+   "options": [
+    "Yes, because her letter says it is better to sleep from 11 p.m. to 8 a.m.",
+    "Yes, because her letter says getting up early is not helpful for learning.",
+    "No, because her letter says students are asked to get to school by 7:30 a.m.",
+    "No, because her letter says teenagers’ brains do not work well in early morning classes."
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "What can we learn about Kivalina?",
+   "set": "31-34",
+   "options": [
+    "It is waiting to shine.",
+    "It has become history.",
+    "It is fighting for one last hope.",
+    "It has given up its chance to rise."
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "What does it mean when we say a place is __uninhabitable__?",
+   "set": "31-34",
+   "options": [
+    "It is not big.",
+    "It is not popular.",
+    "It cannot be bought.",
+    "It cannot be lived in."
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "What does the writer think about the Inuit people in Kivalina?",
+   "set": "31-34",
+   "options": [
+    "Their way of living has been hurting the earth.",
+    "They might not be able to get enough money to move their village.",
+    "They should make the oil and power companies fix their problems.",
+    "There are better ways than to move their village to somewhere else."
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "What does the reading say about the Arctic ice?",
+   "set": "31-34",
+   "options": [
+    "The Arctic ice covered 10 km² of Kivalina.",
+    "The melting Arctic ice kills about 400 Inuit people each year.",
+    "The Arctic ice helped the Inuit people in Kivalina during bad weather.",
+    "The melting Arctic ice has given the Inuit people enough water to use."
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "",
+   "set": "35-37",
+   "options": [
+    "what else you can do",
+    "how you can enjoy it more",
+    "how it will change your life",
+    "what is the best way of commute for you"
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "",
+   "set": "35-37",
+   "options": [
+    "costs you money",
+    "hurts your health",
+    "makes traffic terrible",
+    "kills the planet slowly"
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "",
+   "set": "35-37",
+   "options": [
+    "And that’s why",
+    "But that’s not all",
+    "And here’s an example",
+    "But that can be stopped"
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "this is surely a surprise",
+    "this sounds like a good idea",
+    "this is perhaps a smart answer",
+    "this is old news they have heard"
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "had given hopes",
+    "are a different story",
+    "bring a bright future",
+    "have been a great plan"
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "this will not go away; it will stay",
+    "they are not just saying it; they are going to do it",
+    "they do not speak for others; they only speak for themselves",
+    "this is not a guess; it is a lesson they learned from hard experience"
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "In fact",
+    "If so",
+    "However",
+    "Finally"
+   ]
+  }
+ ]
+}

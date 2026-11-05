@@ -1,0 +1,190 @@
+{
+ "exam": "ast",
+ "year": 115,
+ "subject": "數學乙",
+ "id": "math-yi",
+ "parts": [
+  {
+   "title": "第壹部分、選擇（填）題（占72分）",
+   "groups": [
+    {
+     "title": "一、單選題（占30分）",
+     "note": "說明：第1題至第6題，每題5分。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "5",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占24分）",
+     "note": "說明：第7題至第9題，每題8分。",
+     "questions": [
+      {
+       "number": 7,
+       "type": "multi",
+       "points": 8.0,
+       "answer": "145",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 8,
+       "type": "multi",
+       "points": 8.0,
+       "answer": "125",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 8.0,
+       "answer": "34",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "第貳部分、混合題或非選擇題（占28分）",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明︰本部分共有2題組，每一子題配分標於題末。限在答題卷標示題號的作答區內作答。選擇題與「非選擇題作圖部分」使用2B鉛筆作答，更正時以橡皮擦擦拭，切勿使用修正帶（液）。非選擇題請由左而右橫式書寫，作答時必須寫出計算過程或理由，否則將酌予扣分。",
+     "questions": [
+      {
+       "number": 13,
+       "type": "single",
+       "points": 3.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 3.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 7
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

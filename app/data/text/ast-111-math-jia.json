@@ -1,0 +1,105 @@
+{
+ "exam": "ast",
+ "year": 111,
+ "id": "math-jia",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "設 $a_1,a_2,a_3,a_4$ 是首項為 $10$、公比是 $10$ 的等比數列。令 $b=\\sum_{n=1}^{3}\\log_{a_n}a_{n+1}$，試選出正確的選項。",
+   "options": [
+    "$2<b\\leq3$",
+    "$3<b\\leq4$",
+    "$4<b\\leq5$",
+    "$5<b\\leq6$",
+    "$6<b\\leq7$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "設 $c$ 為實數使得三元一次方程組 $\\begin{cases}x-y+z=0\\\\2x+cy+3z=1\\\\3x-3y+cz=0\\end{cases}$ 無解。試選出 $c$ 之值。",
+   "options": [
+    "$-3$",
+    "$-2$",
+    "$0$",
+    "$2$",
+    "$3$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "坐標空間中 $O$ 為原點，點 $P$ 在第一卦限且 $\\overline{OP}=1$。已知直線 $OP$ 與 $x$ 軸有一夾角為 $45^\\circ$，且 $P$ 點到 $y$ 軸的距離為 $\\frac{\\sqrt{6}}{3}$。試選出點 $P$ 的 $z$ 坐標。",
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{\\sqrt{2}}{4}$",
+    "$\\frac{\\sqrt{3}}{3}$",
+    "$\\frac{\\sqrt{6}}{6}$",
+    "$\\frac{\\sqrt{3}}{6}$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "設多項式 $f(x)=x^3+2x^2-2x+k$、$g(x)=x^2+ax+1$，其中 $k,a$ 為實數。已知 $g(x)$ 整除 $f(x)$，且方程式 $g(x)=0$ 有虛根。試選出為方程式 $f(x)=0$ 的根之選項。",
+   "options": [
+    "$-3$",
+    "$0$",
+    "$1$",
+    "$\\frac{1+\\sqrt{-3}}{2}$",
+    "$\\frac{3+\\sqrt{-5}}{2}$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "坐標平面上有一圖形 $\\Gamma$，其方程式為 $(x-1)^2+(y-1)^2=101$。試選出正確的選項。",
+   "options": [
+    "$\\Gamma$ 與 $x$ 軸負向、$y$ 軸負向分別交於 $(-9,0)$、$(0,-9)$",
+    "$\\Gamma$ 上 $x$ 坐標最大的點是點 $(11,0)$",
+    "$\\Gamma$ 上的點與原點距離的最大值為 $\\sqrt{2}+\\sqrt{101}$",
+    "$\\Gamma$ 在第三象限的點之極坐標可用 $[9,\\theta]$ 表示，其中 $\\pi<\\theta<\\frac{3}{2}\\pi$",
+    "$\\Gamma$ 經旋轉線性變換後，其圖形仍可用一個不含 $xy$ 項的二元二次方程式表示"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "假設 $2$ 階方陣 $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$ 所代表的線性變換將坐標平面上三點 $O(0,0),A(1,0),B(0,1)$ 分別映射到 $O(0,0),A'(3,\\sqrt{3}),B'(-\\sqrt{3},3)$，並將與原點距離為 $1$ 的點 $C(x,y)$ 映射到點 $C'(x',y')$。試選出正確的選項。",
+   "options": [
+    "行列式 $\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix}=6$",
+    "$\\overline{OC'}=2\\sqrt{3}$",
+    "$\\overrightarrow{OC}$ 和 $\\overrightarrow{OC'}$ 的夾角為 $60^\\circ$",
+    "有可能 $y=y'$",
+    "若 $x<y$ 則 $x'<y'$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "假設 $A,B$ 為一拋物線 $\\Gamma$ 上兩點且其連線段通過 $\\Gamma$ 的焦點 $F$。設 $A,F,B$ 在 $\\Gamma$ 之準線上的投影分別為 $A',F',B'$。試選出等於 $\\frac{\\overline{A'F'}}{\\overline{A'A}}$ 的選項。（注意：此示意圖僅說明各點的相關位置，各點間距離關係並不正確）",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/ast/111/math-jia/text/7-1.webp",
+      "width": 450,
+      "height": 570
+     }
+    }
+   ],
+   "options": [
+    "$\\tan\\angle1$，其中 $\\angle1=\\angle A'F'A$",
+    "$\\sin\\angle2$，其中 $\\angle2=\\angle AF'F$",
+    "$\\sin\\angle3$，其中 $\\angle3=\\angle A'AF$",
+    "$\\cos\\angle4$，其中 $\\angle4=\\angle F'FB$",
+    "$\\tan\\angle5$，其中 $\\angle5=\\angle FF'B$"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "假設兩數列 $\\langle a_n\\rangle$、$\\langle b_n\\rangle$，對所有正整數 $n$ 都滿足 $b_n+\\frac{4n-1}{n}<a_n<3b_n$。已知 $\\lim_{n\\to\\infty}a_n=6$，試選出正確的選項。",
+   "options": [
+    "$b_n<6-\\frac{4n-1}{n}$",
+    "$b_n>\\frac{4n-1}{2n}$",
+    "數列 $\\langle b_n\\rangle$ 有可能發散",
+    "$a_{10000}<6.1$",
+    "$a_{10000}>5.9$"
+   ]
+  }
+ ]
+}
