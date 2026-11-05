@@ -1,0 +1,468 @@
+{
+ "exam": "cap",
+ "year": 107,
+ "id": "math",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "下列選項中的圖形有一個為線對稱圖形，判斷此圖形為何？",
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/1-1.webp",
+      "width": 249,
+      "height": 144
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/1-2.webp",
+      "width": 195,
+      "height": 171
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/1-3.webp",
+      "width": 282,
+      "height": 153
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/1-4.webp",
+      "width": 156,
+      "height": 177
+     }
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "已知$a=(\\frac{3}{14}-\\frac{2}{15})-\\frac{1}{16}$，$b=\\frac{3}{14}-(\\frac{2}{15}-\\frac{1}{16})$，$c=\\frac{3}{14}-\\frac{2}{15}-\\frac{1}{16}$，判斷下列敘述何者正確？",
+   "options": [
+    "$a=c$，$b=c$",
+    "$a=c$，$b\\neq c$",
+    "$a\\neq c$，$b=c$",
+    "$a\\neq c$，$b\\neq c$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "已知坐標平面上，一次函數$y=3x+a$的圖形通過點$(0,-4)$，其中$a$為一數，求$a$的值為何？",
+   "options": [
+    "$-12$",
+    "$-4$",
+    "$4$",
+    "$12$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "已知某文具店販售的筆記本每本售價均相等且超過$10$元，__小錦__和__小勳__在此文具店分別購買若干本筆記本。若__小錦__購買筆記本的花費為$36$元，則__小勳__購買筆記本的花費可能為下列何者？",
+   "options": [
+    "$16$元",
+    "$27$元",
+    "$30$元",
+    "$48$元"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "若二元一次聯立方程式$\\begin{cases}7x-3y=8\\\\3x-y=8\\end{cases}$的解為$x=a$，$y=b$，則$a+b$之值為何？",
+   "options": [
+    "$24$",
+    "$0$",
+    "$-4$",
+    "$-8$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "已知甲、乙兩袋中各裝有若干顆球，其種類與數量如表(一)所示。今__阿馮__打算從甲袋中抽出一顆球，__小潘__打算從乙袋中抽出一顆球，若甲袋中每顆球被抽出的機會相等，且乙袋中每顆球被抽出的機會相等，則下列敘述何者正確？",
+   "blocks": [
+    "表(一)",
+    {
+     "table": [
+      [
+       "",
+       "甲袋",
+       "乙袋"
+      ],
+      [
+       "紅球",
+       "$2$顆",
+       "$4$顆"
+      ],
+      [
+       "黃球",
+       "$2$顆",
+       "$2$顆"
+      ],
+      [
+       "綠球",
+       "$1$顆",
+       "$4$顆"
+      ],
+      [
+       "總計",
+       "$5$顆",
+       "$10$顆"
+      ]
+     ]
+    }
+   ],
+   "options": [
+    "__阿馮__抽出紅球的機率比__小潘__抽出紅球的機率大",
+    "__阿馮__抽出紅球的機率比__小潘__抽出紅球的機率小",
+    "__阿馮__抽出黃球的機率比__小潘__抽出黃球的機率大",
+    "__阿馮__抽出黃球的機率比__小潘__抽出黃球的機率小"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "算式$\\sqrt{6}\\times(\\frac{1}{\\sqrt{3}}-1)$之值為何？",
+   "options": [
+    "$\\sqrt{2}-\\sqrt{6}$",
+    "$\\sqrt{2}-1$",
+    "$2-\\sqrt{6}$",
+    "$1$"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "若一元二次方程式$x^2-8x-3\\times11=0$的兩根為$a$、$b$，且$a>b$，則$a-2b$之值為何？",
+   "options": [
+    "$-25$",
+    "$-19$",
+    "$5$",
+    "$17$"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "如圖(一)，$\\triangle ABC$中，$D$為$\\overline{BC}$的中點，以$D$為圓心，$\\overline{BD}$長為半徑畫一弧交$\\overline{AC}$於$E$點。若$\\angle A=60^\\circ$，$\\angle B=100^\\circ$，$\\overline{BC}=4$，則扇形$BDE$的面積為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/9-5.webp",
+      "width": 384,
+      "height": 282
+     }
+    }
+   ],
+   "options": [
+    "$\\frac{1}{3}\\pi$",
+    "$\\frac{2}{3}\\pi$",
+    "$\\frac{4}{9}\\pi$",
+    "$\\frac{5}{9}\\pi$"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "圖(二)為__大興電器行__的促銷活動傳單，已知促銷第一天__美食牌__微波爐賣出$10$台，且其銷售額為$61000$元。若活動期間此款微波爐總共賣出$50$台，則其總銷售額為多少元？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/10-6.webp",
+      "width": 495,
+      "height": 582
+     }
+    }
+   ],
+   "options": [
+    "$305000$",
+    "$321000$",
+    "$329000$",
+    "$342000$"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "如圖(三)，五邊形$ABCDE$中有一正三角形$ACD$。若$\\overline{AB}=\\overline{DE}$，$\\overline{BC}=\\overline{AE}$，$\\angle E=115^\\circ$，則$\\angle BAE$的度數為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/11-7.webp",
+      "width": 366,
+      "height": 363
+     }
+    }
+   ],
+   "options": [
+    "$115$",
+    "$120$",
+    "$125$",
+    "$130$"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "圖(四)為$O$、$A$、$B$、$C$四點在數線上的位置圖，其中$O$為原點，且$\\overline{AC}=1$，$\\overline{OA}=\\overline{OB}$。若$C$點所表示的數為$x$，則$B$點所表示的數與下列何者相等？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/12-8.webp",
+      "width": 432,
+      "height": 153
+     }
+    }
+   ],
+   "options": [
+    "$-(x+1)$",
+    "$-(x-1)$",
+    "$x+1$",
+    "$x-1$"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "圖(五)的宣傳單為__萊克印刷公司__設計與印刷卡片計價方式的說明，__妮娜__打算請此印刷公司設計一款母親節卡片並印刷，她再將卡片以每張$15$元的價格販售。若利潤等於收入扣掉成本，且成本只考慮設計費與印刷費，則她至少需印多少張卡片，才可使得卡片全數售出後的利潤超過成本的$2$成？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/13-9.webp",
+      "width": 420,
+      "height": 618
+     }
+    }
+   ],
+   "options": [
+    "$112$",
+    "$121$",
+    "$134$",
+    "$143$"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "如圖(六)，$I$點為$\\triangle ABC$的內心，$D$點在$\\overline{BC}$上，且$\\overline{ID}\\perp\\overline{BC}$。若$\\angle B=44^\\circ$，$\\angle C=56^\\circ$，則$\\angle AID$的度數為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/14-10.webp",
+      "width": 375,
+      "height": 351
+     }
+    }
+   ],
+   "options": [
+    "$174$",
+    "$176$",
+    "$178$",
+    "$180$"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "圖(七)為一直角柱，其底面是三邊長為$5$、$12$、$13$的直角三角形。若下列選項中的圖形均由三個矩形與兩個直角三角形組合而成，且其中一個為圖(七)的直角柱的展開圖，則根據圖形中標示的邊長與直角記號判斷，此展開圖為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/15-11.webp",
+      "width": 306,
+      "height": 507
+     }
+    }
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/15-12.webp",
+      "width": 408,
+      "height": 327
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/15-13.webp",
+      "width": 420,
+      "height": 327
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/15-14.webp",
+      "width": 408,
+      "height": 327
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/15-15.webp",
+      "width": 420,
+      "height": 327
+     }
+    }
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "若__小舒__從$1\\sim50$的整數中挑選$4$個數，使其由小到大排序後形成一等差數列，且$4$個數中最小的是$7$，則下列哪一個數__不可能__出現在__小舒__挑選的數之中？",
+   "options": [
+    "$20$",
+    "$25$",
+    "$30$",
+    "$35$"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "已知$a=3.1\\times10^{-4}$，$b=5.2\\times10^{-8}$，判斷下列關於$a-b$之值的敘述何者正確？",
+   "options": [
+    "比$1$大",
+    "介於$0$、$1$之間",
+    "介於$-1$、$0$之間",
+    "比$-1$小"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "如圖(八)，銳角三角形$ABC$中，$\\overline{BC}>\\overline{AB}>\\overline{AC}$，甲、乙兩人想找一點$P$，使得$\\angle BPC$與$\\angle A$互補，其作法分別如下：",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/18-16.webp",
+      "width": 375,
+      "height": 336
+     }
+    },
+    "(甲)以$A$為圓心，$\\overline{AC}$長為半徑畫弧交$\\overline{AB}$於$P$點，則$P$即為所求",
+    "(乙)作過$B$點且與$\\overline{AB}$垂直的直線$L$，作過$C$點且與$\\overline{AC}$垂直的直線，交$L$於$P$點，則$P$即為所求",
+    "對於甲、乙兩人的作法，下列敘述何者正確？"
+   ],
+   "options": [
+    "兩人皆正確",
+    "兩人皆錯誤",
+    "甲正確，乙錯誤",
+    "甲錯誤，乙正確"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "已知甲、乙兩班的學生人數相同，圖(九)為兩班某次數學小考成績的盒狀圖。若甲班、乙班學生小考成績的中位數分別為$a$、$b$；甲班、乙班中小考成績超過$80$分的學生人數分別為$c$、$d$，則下列$a$、$b$、$c$、$d$的大小關係，何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/19-17.webp",
+      "width": 525,
+      "height": 267
+     }
+    }
+   ],
+   "options": [
+    "$a>b$，$c>d$",
+    "$a>b$，$c<d$",
+    "$a<b$，$c>d$",
+    "$a<b$，$c<d$"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "圖(十)的矩形$ABCD$中，有一點$E$在$\\overline{AD}$上，今以$\\overline{BE}$為摺線將$A$點往右摺，如圖(十一)所示。再作過$A$點且與$\\overline{CD}$垂直的直線，交$\\overline{CD}$於$F$點，如圖(十二)所示。若$\\overline{AB}=6\\sqrt{3}$，$\\overline{BC}=13$，$\\angle BEA=60^\\circ$，則圖(十二)中$\\overline{AF}$的長度為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/20-18.webp",
+      "width": 1071,
+      "height": 300
+     }
+    }
+   ],
+   "options": [
+    "$2$",
+    "$4$",
+    "$2\\sqrt{3}$",
+    "$4\\sqrt{3}$"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "已知坐標平面上有一直線$L$，其方程式為$y+2=0$，且$L$與二次函數$y=3x^2+a$的圖形相交於$A$、$B$兩點；與二次函數$y=-2x^2+b$的圖形相交於$C$、$D$兩點，其中$a$、$b$為整數。若$\\overline{AB}=2$，$\\overline{CD}=4$，則$a+b$之值為何？",
+   "options": [
+    "$1$",
+    "$9$",
+    "$16$",
+    "$24$"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "如圖(十三)，兩圓外切於$P$點，且通過$P$點的公切線為$L$。過$P$點作兩直線，兩直線與兩圓的交點為$A$、$B$、$C$、$D$，其位置如圖(十三)所示。若$\\overline{AP}=10$，$\\overline{CP}=9$，則下列角度關係何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/22-19.webp",
+      "width": 450,
+      "height": 384
+     }
+    }
+   ],
+   "options": [
+    "$\\angle PBD>\\angle PAC$",
+    "$\\angle PBD<\\angle PAC$",
+    "$\\angle PBD>\\angle PDB$",
+    "$\\angle PBD<\\angle PDB$"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "__小柔__想要搾果汁，她有蘋果、芭樂、柳丁三種水果，且其顆數比為$9:7:6$。__小柔__搾完果汁後，蘋果、芭樂、柳丁的顆數比變為$6:3:4$。已知__小柔__搾果汁時沒有使用柳丁，關於她搾果汁時另外兩種水果的使用情形，下列敘述何者正確？",
+   "options": [
+    "只使用蘋果",
+    "只使用芭樂",
+    "使用蘋果及芭樂，且使用的蘋果顆數比使用的芭樂顆數多",
+    "使用蘋果及芭樂，且使用的芭樂顆數比使用的蘋果顆數多"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "如圖(十四)，$\\triangle ABC$、$\\triangle FGH$中，$D$、$E$兩點分別在$\\overline{AB}$、$\\overline{AC}$上，$F$點在$\\overline{DE}$上，$G$、$H$兩點在$\\overline{BC}$上，且$\\overline{DE}\\parallel\\overline{BC}$，$\\overline{FG}\\parallel\\overline{AB}$，$\\overline{FH}\\parallel\\overline{AC}$。若$\\overline{BG}:\\overline{GH}:\\overline{HC}=4:6:5$，則$\\triangle ADE$與$\\triangle FGH$的面積比為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/24-20.webp",
+      "width": 339,
+      "height": 447
+     }
+    }
+   ],
+   "options": [
+    "$2:1$",
+    "$3:2$",
+    "$5:2$",
+    "$9:4$"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "某商店將巧克力包裝成方形、圓形禮盒出售，且每盒方形禮盒的價錢相同，每盒圓形禮盒的價錢相同。__阿郁__原先想購買$3$盒方形禮盒和$7$盒圓形禮盒，但他身上的錢會不足$240$元，如果改成購買$7$盒方形禮盒和$3$盒圓形禮盒，他身上的錢會剩下$240$元。若__阿郁__最後購買$10$盒方形禮盒，則他身上的錢會剩下多少元？",
+   "options": [
+    "$360$",
+    "$480$",
+    "$600$",
+    "$720$"
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "如圖(十五)，坐標平面上，$A$、$B$兩點分別為圓$P$與$x$軸、$y$軸的交點，有一直線$L$通過$P$點且與$\\overline{AB}$垂直，$C$點為$L$與$y$軸的交點。若$A$、$B$、$C$的坐標分別為$(a,0)$、$(0,4)$、$(0,-5)$，其中$a<0$，則$a$的值為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/math/text/26-21.webp",
+      "width": 390,
+      "height": 501
+     }
+    }
+   ],
+   "options": [
+    "$-2\\sqrt{14}$",
+    "$-2\\sqrt{5}$",
+    "$-8$",
+    "$-7$"
+   ]
+  }
+ ]
+}

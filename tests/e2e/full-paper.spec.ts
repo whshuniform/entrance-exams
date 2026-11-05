@@ -99,6 +99,22 @@ test.describe('完整考卷', () => {
     await expect(quiz.resultSheet).toContainText('名')
   })
 
+  test('指考歷史_91年整份考卷第一題是文字_不是原卷截圖', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ exam: 'ast', subject: 'history', years: [91] })
+
+    await expect(quiz.stem('ast-91-history-1')).toBeVisible()
+    await expect(page.getByTestId('question-image')).toHaveCount(0)
+  })
+
+  test('會考英語_103年掃描卷_第一題是第21題文字', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto({ exam: 'cap', subject: 'english', years: [103] })
+
+    expect((await quiz.currentIds())[0]).toBe('cap-103-english-21')
+    await expect(quiz.stem('cap-103-english-21')).toBeVisible()
+  })
+
   test('會考國文_115整份考卷第一題是文字_交卷後看標示和約前幾%', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto({ exam: 'cap', subject: 'chinese' })

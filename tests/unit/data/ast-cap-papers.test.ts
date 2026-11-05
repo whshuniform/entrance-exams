@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { findExam } from '~/data/catalog'
 import { paperQuestions } from '~/utils/paper'
 import { itemStatsFor } from '~/utils/item-stats'
+import { toLevel } from '~/utils/levels'
+import { astInfo, astStats, capInfo, capStats } from '~/data/stats-ast-cap'
 
 const ast = findExam('ast')!
 const cap = findExam('cap')!
@@ -101,5 +103,45 @@ describe('國中會考試卷', () => {
   it('CapQuestionIds_ShouldStartWithExam', () => {
     expect(paperQuestions([paperOf(cap, 'chinese', 115)])[0]!.id).toBe('cap-115-chinese-1')
     expect(itemStatsFor('cap-115-chinese-1')?.key).toBe(paperQuestions([paperOf(cap, 'chinese', 115)])[0]!.answer)
+  })
+})
+
+describe('指考、舊年度會考的成績換算', () => {
+  it('AstStats_ZhiKao_ShouldRankByRawScoreOnePointPerRow', () => {
+    // 110 國文：原始分 1 分一格（ast/stats/distribution.json），成績單只看分數和名次
+    const stats = astStats[110]!['國文']!
+
+    expect(stats.rawScore).toBe(true)
+    expect(toLevel(stats, 77)).toBe(77)
+    expect(toLevel(stats, 76.99)).toBe(76)
+    expect(stats.total).toBe(37392)
+  })
+
+  it('AstStats_Year91_ShouldHaveNoRankBecauseNoDistributionWasPublished', () => {
+    expect(astStats[91]!['國文']!.noRank).toBe(true)
+  })
+
+  it('AstInfo_ShouldCarryCurriculumOfThatYear', () => {
+    // 指考跟同年學測同一套課綱：110 歷史 101課綱、地理 99課綱；91 是 84年課程標準
+    expect(astInfo[110]!['歷史']!.curriculum).toBe('101課綱')
+    expect(astInfo[110]!['地理']!.curriculum).toBe('99課綱')
+    expect(astInfo[91]!['物理']!.curriculum).toBe('84年課程標準')
+    expect(astInfo[110]!['國文']!).toMatchObject({ fullMarks: 100, minutes: 80 })
+  })
+
+  it('CapStats_Year102_ShouldOnlyHaveThreeLevelsWithoutPercent', () => {
+    // 102 試辦只公布精熟、基礎、待加強的答對題數範圍
+    const stats = capStats[102]!['國文']!
+
+    expect(stats.levels.map(level => level.label)).toEqual(['精熟', '基礎', '待加強'])
+    expect(stats.noRank).toBe(true)
+  })
+
+  it('CapInfo_EnglishBefore104_ShouldCountListeningInFullMarks', () => {
+    // 102、103 英語沒分聽力：整卷 60 題對照標示，網站只收閱讀 21–60 題
+    expect(capInfo[103]!['英語']!.fullMarks).toBe(60)
+    expect(capInfo[110]!['英語']!.fullMarks).toBeLessThan(60)
+    expect(capInfo[103]!['數學']!.fullMarks).toBe(27)
+    expect(capInfo[104]!['數學']!.fullMarks).toBe(100)
   })
 })

@@ -46,6 +46,32 @@ describe('ResultSheet', () => {
     expect(wrapper.find('[data-test="report-rank"]').text()).not.toContain('到考')
   })
 
+  it('ResultSheet_ZhiKaoRawScore_ShouldShowRankWithoutLevel', async () => {
+    // 指考沒有級分：只看整卷分數和全國名次
+    const zk: SubjectReport = { ...report, subject: '物理', year: 105, rawScore: true }
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [zk] } })
+
+    expect(wrapper.find('[data-test="report-level"]').exists()).toBe(false)
+    expect(wrapper.find('[data-test="report-rank"]').text()).toContain('第 1～117,976 名')
+    expect(wrapper.text()).not.toContain('級分')
+  })
+
+  it('ResultSheet_NoRank_ShouldHideRankAndSayNoDistribution', async () => {
+    const old: SubjectReport = { ...report, subject: '國文', year: 91, rawScore: true, noRank: true }
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [old] } })
+
+    expect(wrapper.find('[data-test="report-rank"]').exists()).toBe(false)
+    expect(wrapper.text()).toContain('沒有公布')
+  })
+
+  it('ResultSheet_Cap102Levels_ShouldShowLevelWithoutRank', async () => {
+    const cap: SubjectReport = { ...report, subject: '國文', year: 102, labelRange: { min: '基礎', max: '精熟' }, noRank: true }
+    const wrapper = await mountSuspended(ResultSheet, { props: { reports: [cap] } })
+
+    expect(wrapper.find('[data-test="report-level"]').text()).toBe('基礎～精熟')
+    expect(wrapper.find('[data-test="report-rank"]').exists()).toBe(false)
+  })
+
   it('ResultSheet_SameLevelAtBothEnds_ShouldShowOneLevel', async () => {
     const exact = { ...report, levelRange: { min: 12, max: 12 } }
     const wrapper = await mountSuspended(ResultSheet, { props: { reports: [exact] } })
