@@ -18,7 +18,7 @@
         />
         <label :for="`${uid}-${item.word}`" :class="$style['today-words__label']">
           <span :class="$style['today-words__word']">{{ item.word }}</span>
-          <small v-if="item.level" :class="$style['today-words__level']">第 {{ item.level }} 級</small>
+          <VocabLevelStars v-if="item.level" :level="item.level" />
         </label>
         <a
           :href="dictionaryUrl(item.word)"
@@ -149,11 +149,6 @@ const doneCount = computed(() => props.words.filter(item => props.learned[item.w
         --pos-color: var(--color-pos-#{$pos});
       }
     }
-  }
-
-  &__level {
-    font-size: 0.8rem;
-    color: var(--color-pencil);
   }
 
   &__meaning,

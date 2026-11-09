@@ -16,8 +16,11 @@ describe('PlanSchedule', () => {
     expect(rows).toHaveLength(7)
     expect(rows[0]!.text()).toContain('1/10（日）')
     expect(rows[0]!.text()).toContain('2 個字')
-    expect(rows[0]!.text()).toContain('第 1 級')
-    expect(rows[4]!.text()).toContain('第 1–2 級')
+    const levelsOf = (row: (typeof rows)[number]) =>
+      row.findAll('[data-test="level-stars"]').map(stars => stars.attributes('data-level'))
+    expect(levelsOf(rows[0]!)).toEqual(['1'])
+    expect(levelsOf(rows[4]!)).toEqual(['1', '2'])
+    expect(rows[0]!.text()).not.toContain('級')
     expect(wrapper.find('[data-test="vocab-schedule-more"]').text()).toContain('10 天')
   })
 

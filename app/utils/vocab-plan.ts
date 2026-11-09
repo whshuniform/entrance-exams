@@ -98,13 +98,11 @@ export function formatDay(key: string) {
   return `${month}/${day}（${WEEKDAYS[weekday]}）`
 }
 
-/** 一組字的級別範圍：「第 1 級」「第 1–2 級」；不分級回傳空字串 */
-export function levelRange(words: VocabWord[]) {
+/** 一組字最簡單和最難的級別；不分級回傳 undefined */
+export function levelSpan(words: VocabWord[]) {
   const levels = words.map(item => item.level).filter((level): level is number => level !== undefined)
-  if (!levels.length) return ''
-  const low = Math.min(...levels)
-  const high = Math.max(...levels)
-  return low === high ? `第 ${low} 級` : `第 ${low}–${high} 級`
+  if (!levels.length) return undefined
+  return { low: Math.min(...levels), high: Math.max(...levels) }
 }
 
 /** 中文意思的一段：詞性標籤（不含句點，例如 n、v）和這個詞性的中文 */

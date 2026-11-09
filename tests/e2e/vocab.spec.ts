@@ -35,7 +35,7 @@ test.describe('必背單字每日規劃', () => {
     await expect(vocab.summary).toContainText('還有 104 天')
     await expect(vocab.summary).toContainText('每天背 58 個字')
     await expect(vocab.words).toHaveCount(58)
-    await expect(vocab.words.first()).toContainText('第 1 級')
+    await expect(vocab.words.first().getByTestId('level-stars')).toHaveAttribute('aria-label', '難度 1 顆星（共 6 顆）')
     await expect(vocab.days).toHaveCount(7)
     await expect(page.getByTestId('vocab-source')).toContainText('大學入學考試中心')
   })
