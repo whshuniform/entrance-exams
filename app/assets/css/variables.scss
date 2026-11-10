@@ -32,6 +32,10 @@ $spacing-base: 8px;
   --color-pos-conj: #7c7a12;
   --color-pos-aux: #4b5bb8;
   --color-pos-art: #546e7a;
+  // 背單字：難度星星（實心金黃、空心淡鉛筆）
+  --color-star: #f2b705;
+  --color-star-line: #a86f00;
+  --color-star-empty: #c9c1ad;
 
   --radius-sketch: 255px 15px 225px 15px / 15px 225px 15px 255px;
   --radius-sketch-alt: 15px 255px 15px 225px / 225px 15px 255px 15px;

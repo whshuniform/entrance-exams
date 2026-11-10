@@ -21,7 +21,7 @@
 
     <fieldset v-if="exam.levels.length" :class="$style['vocab-setup__step']">
       <legend :class="$style['vocab-setup__legend']">
-        <span :class="$style['vocab-setup__number']">2</span>要背的級別
+        <span :class="$style['vocab-setup__number']">2</span>難度
       </legend>
       <div :class="$style['vocab-setup__levels']">
         <label
@@ -38,10 +38,10 @@
             :value="level"
             @update:model-value="emit('update:levels', $event)"
           />
-          <span>第 {{ level }} 級</span>
+          <VocabLevelStars :level="level" />
         </label>
       </div>
-      <p :class="$style['vocab-setup__hint']">第 1 級最簡單、第 6 級最難，從簡單的開始排。</p>
+      <p :class="$style['vocab-setup__hint']">星星越多越難：1 顆最簡單、6 顆最難，從簡單的開始排。</p>
     </fieldset>
   </div>
 </template>

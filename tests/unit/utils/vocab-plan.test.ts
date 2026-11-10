@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
-  addDays, daysBetween, dictionaryUrl, formatDay, levelRange, lookupWord, meaningParts, orderWords, planSchedule, planToday, studyDaysLeft, toDateKey,
+  addDays, daysBetween, dictionaryUrl, formatDay, levelSpan, lookupWord, meaningParts, orderWords, planSchedule, planToday, studyDaysLeft, toDateKey,
 } from '~/utils/vocab-plan'
 import type { VocabWord } from '~/types/vocab'
 
@@ -146,10 +146,10 @@ describe('vocab-plan 顯示', () => {
     expect(formatDay('2027-01-22')).toBe('1/22（五）')
   })
 
-  it('levelRange_Words_ShouldShowSingleOrSpanOrNothing', () => {
-    expect(levelRange([word('a', 2), word('b', 2)])).toBe('第 2 級')
-    expect(levelRange([word('a', 1), word('b', 3)])).toBe('第 1–3 級')
-    expect(levelRange([word('a')])).toBe('')
+  it('levelSpan_Words_ShouldGiveLowestAndHighestLevelOrNothing', () => {
+    expect(levelSpan([word('a', 2), word('b', 2)])).toEqual({ low: 2, high: 2 })
+    expect(levelSpan([word('a', 3), word('b', 1)])).toEqual({ low: 1, high: 3 })
+    expect(levelSpan([word('a')])).toBeUndefined()
   })
 
   it('meaningParts_SeveralPos_ShouldPairEachPosWithItsMeaning', () => {

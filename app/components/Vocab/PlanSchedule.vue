@@ -5,7 +5,10 @@
         <span :class="$style['plan-schedule__date']">{{ formatDay(day.date) }}</span>
         <span :class="$style['plan-schedule__count']">{{ day.words.length }} 個字</span>
         <span :class="$style['plan-schedule__range']">
-          {{ levelRange(day.words) }}
+          <span v-if="day.span" :class="$style['plan-schedule__levels']">
+            <VocabLevelStars :level="day.span.low" compact />
+            <template v-if="day.span.high !== day.span.low">～<VocabLevelStars :level="day.span.high" compact /></template>
+          </span>
           {{ day.words[0]?.word }}～{{ day.words.at(-1)?.word }}
         </span>
       </li>
@@ -29,7 +32,10 @@ const PREVIEW_DAYS = 7
 const props = defineProps<{ days: DayPlan[] }>()
 
 const expanded = ref(false)
-const shown = computed(() => (expanded.value ? props.days : props.days.slice(0, PREVIEW_DAYS)))
+const shown = computed(() =>
+  (expanded.value ? props.days : props.days.slice(0, PREVIEW_DAYS))
+    .map(day => ({ ...day, span: levelSpan(day.words) })),
+)
 </script>
 
 <style module lang="scss">
@@ -66,6 +72,12 @@ const shown = computed(() => (expanded.value ? props.days : props.days.slice(0, 
     color: var(--color-ink-soft);
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  // 星星和單字範圍之間留一點空
+  &__levels {
+    margin-right: 0.4rem;
+    white-space: nowrap;
   }
 
   @include respond-to('xs') {
