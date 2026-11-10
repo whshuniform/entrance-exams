@@ -21,7 +21,7 @@
 
     <fieldset v-if="exam.levels.length" :class="$style['vocab-setup__step']">
       <legend :class="$style['vocab-setup__legend']">
-        <span :class="$style['vocab-setup__number']">2</span>要背的級別
+        <span :class="$style['vocab-setup__number']">2</span>難度
       </legend>
       <div :class="$style['vocab-setup__levels']">
         <label

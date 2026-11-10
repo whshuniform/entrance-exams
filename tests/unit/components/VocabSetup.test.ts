@@ -21,6 +21,8 @@ describe('VocabSetup', () => {
     expect(wrapper.find('[data-test="vocab-level-6"] [data-test="level-stars"]').attributes('data-level')).toBe('6')
     expect(wrapper.find('[data-test="vocab-level-1"]').text()).not.toContain('級')
     expect(wrapper.text()).toContain('星星越多越難')
+    expect(wrapper.findAll('legend')[1]!.text()).toBe('2難度')
+    expect(wrapper.text()).not.toContain('要背的級別')
   })
 
   it('VocabSetup_Cap_ShouldHideLevels', async () => {
