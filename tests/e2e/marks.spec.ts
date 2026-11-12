@@ -54,6 +54,22 @@ test.describe('右下角繪畫工具列', () => {
     await expect(quiz.toolbarToggle).toHaveText('隱藏工具')
   })
 
+  test('隱藏工具後重新開網頁_工具仍是隱藏_按顯示工具後再開也記得', async ({ page }) => {
+    const quiz = new QuizPage(page)
+    await quiz.goto()
+    await quiz.toolbarToggle.click()
+    await expect(quiz.toolbarToggle).toHaveText('顯示工具')
+
+    await page.reload()
+    await expect(quiz.toolbarToggle).toHaveText('顯示工具')
+    await expect(quiz.tool('pen')).toBeHidden()
+
+    await quiz.toolbarToggle.click()
+    await page.reload()
+    await expect(quiz.toolbarToggle).toHaveText('隱藏工具')
+    await expect(quiz.tool('pen')).toBeVisible()
+  })
+
   test('畫畫時隱藏工具_應自動關閉繪畫_點選項可作答', async ({ page }) => {
     const quiz = new QuizPage(page)
     await quiz.goto()
