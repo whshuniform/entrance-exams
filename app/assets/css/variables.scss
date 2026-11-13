@@ -1,0 +1,49 @@
+// SCSS 編譯期變數
+$spacing-base: 8px;
+
+// CSS custom properties：手繪風主題色票
+:root {
+  --color-paper: #fbf7ec;
+  --color-paper-line: #dfe7f1;
+  --color-paper-margin: #f2b8b5;
+  --color-card: #fffdf7;
+  --color-ink: #22365c;
+  --color-ink-soft: #4e5d78;
+  --color-pencil: #6b614b;
+  --color-pen-red: #d1372e;
+  --color-ballpoint: #2457c5;
+  // 作答時的提示（空格上選的答案）；紅色留給批改
+  --color-pen-purple: #7a3fa8;
+  // 原子筆筆跡（固定灰色）
+  --color-pen-gray: #6e7076;
+  --color-marker: #ffe58a;
+  --color-marker-answer: #ffc9c4;
+  --color-tape: rgb(240 216 140 / 70%);
+
+  // 背單字：中文意思用深褐色，跟深藍的英文單字分開
+  --color-meaning: #7a4318;
+  // 背單字：每種詞性一個標籤顏色（不用紅色，紅色留給批改）
+  --color-pos-n: #2457c5;
+  --color-pos-v: #2e7d32;
+  --color-pos-adj: #c25e00;
+  --color-pos-adv: #7a3fa8;
+  --color-pos-prep: #00838f;
+  --color-pos-pron: #ad1457;
+  --color-pos-conj: #7c7a12;
+  --color-pos-aux: #4b5bb8;
+  --color-pos-art: #546e7a;
+
+  --radius-sketch: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-sketch-alt: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  --shadow-sketch: 3px 4px 0 var(--color-ink);
+
+  // 固定在畫面最上方的 header（iOS 樣式返回鍵＋標題）
+  --app-header-height: 3.25rem;
+
+  // 計時作答時固定在 header 下面的倒數長條高度
+  --timer-bar-height: 2rem;
+
+  --font-family-base: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", "BiauKai", "PingFang TC",
+    "Microsoft JhengHei", serif;
+  --font-size-base: 18px;
+}

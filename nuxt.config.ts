@@ -1,0 +1,59 @@
+import { defaultOptions } from '@primevue/core/config'
+import HandDrawnPreset from './app/theme/hand-drawn-preset'
+
+export default defineNuxtConfig({
+  compatibilityDate: '2026-10-01',
+  ssr: true,
+  devtools: { enabled: false },
+  modules: ['@primevue/nuxt-module'],
+  css: ['katex/dist/katex.min.css', '~/assets/css/index.scss'],
+  // 作答頁依網址參數出題、隨機抽題，只在瀏覽器畫；靜態輸出時仍產生 /quiz 頁
+  // 單字頁的進度存在瀏覽器，也只在瀏覽器畫
+  routeRules: {
+    '/quiz': { ssr: false },
+    '/vocab': { ssr: false },
+  },
+  nitro: {
+    prerender: { routes: ['/', '/gsat', '/gsat/practice', '/ast', '/ast/practice', '/cap', '/cap/practice', '/quiz', '/vocab'] },
+  },
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    head: {
+      // 網站本來就是中文：用瀏覽器認得的 zh-TW，並關掉 Google 翻譯提示
+      htmlAttrs: { lang: 'zh-TW', translate: 'no' },
+      title: '考古題',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'google', content: 'notranslate' },
+      ],
+      link: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap',
+        },
+      ],
+    },
+  },
+  primevue: {
+    options: {
+      // 日期選擇器用中文月份與星期
+      locale: {
+        ...defaultOptions.locale!,
+        dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        dayNamesShort: ['日', '一', '二', '三', '四', '五', '六'],
+        dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+        monthNames: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
+        monthNamesShort: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
+        today: '今天',
+        clear: '清除',
+        firstDayOfWeek: 0,
+      },
+      theme: {
+        preset: HandDrawnPreset,
+        options: { darkModeSelector: false, cssLayer: { name: 'primevue', order: 'primevue, app' } },
+      },
+    },
+  },
+})

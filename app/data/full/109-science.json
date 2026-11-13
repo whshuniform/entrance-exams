@@ -1,0 +1,994 @@
+{
+ "year": 109,
+ "subject": "自然",
+ "id": "science",
+ "parts": [
+  {
+   "title": "第壹部分（占80分）",
+   "groups": [
+    {
+     "title": "一、單選題（占46分）",
+     "note": "說明：第1題至第23題，每題均計分，每題有n個選項，其中只有一個是正確或最適當的選項，請畫記在答案卡之「選擇題答案區」。各題答對者，得2分；答錯、未作答或畫記多於一個選項者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 11,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 19,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 20,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 7
+      },
+      {
+       "number": 21,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8
+      },
+      {
+       "number": 22,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8
+      },
+      {
+       "number": 23,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占24分）",
+     "note": "說明：第24題至第35題，每題均計分。每題有n個選項，其中至少有一個是正確的選項，請將正確選項畫記在答案卡之「選擇題答案區」。各題之選項獨立判定，所有選項均答對者，得2分；答錯k個選項者，得該題(n−2k)/n的分數；但得分低於零分或所有選項均未作答者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 24,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "CE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 8
+      },
+      {
+       "number": 25,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "BD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 9
+      },
+      {
+       "number": 26,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ACE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 9
+      },
+      {
+       "number": 27,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "CDE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 10
+      },
+      {
+       "number": 28,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "BD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 10
+      },
+      {
+       "number": 29,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "BDE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 10
+      },
+      {
+       "number": 30,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ADE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 10
+      },
+      {
+       "number": 31,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "DE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 10
+      },
+      {
+       "number": 32,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "CD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 11
+      },
+      {
+       "number": 33,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ADE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 11
+      },
+      {
+       "number": 34,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "BD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 11
+      },
+      {
+       "number": 35,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ADE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 11
+      }
+     ]
+    },
+    {
+     "title": "三、綜合題（占10分）",
+     "note": "說明：第36題至第40題，每題2分，每題均計分，請將正確選項畫記在答案卡之「選擇題答案區」。單選題答錯、未作答或畫記多於一個選項者，該題以零分計算；多選題每題有n個選項，答錯k個選項者，得該題(n−2k)/n的分數；但得分低於零分或所有選項均未作答者，該題以零分計算。",
+     "questions": [
+      {
+       "number": 36,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ABC",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 12
+      },
+      {
+       "number": 37,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 12
+      },
+      {
+       "number": 38,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 12
+      },
+      {
+       "number": 39,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 13
+      },
+      {
+       "number": 40,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "CD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "第貳部分（占48分）",
+   "groups": [
+    {
+     "title": "",
+     "note": "說明：第41題至第68題，每題2分。單選題答錯、未作答或畫記多於一個選項者，該題以零分計算；多選題每題有n個選項，答錯k個選項者，得該題(n−2k)/n的分數；但得分低於零分或所有選項均未作答者，該題以零分計算。此部分得分超過48分以上，以滿分48分計。",
+     "questions": [
+      {
+       "number": 41,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 13
+      },
+      {
+       "number": 42,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "AE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 13
+      },
+      {
+       "number": 43,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 14
+      },
+      {
+       "number": 44,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 14
+      },
+      {
+       "number": 45,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ACD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 14
+      },
+      {
+       "number": 46,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 15
+      },
+      {
+       "number": 47,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 15
+      },
+      {
+       "number": 48,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 15
+      },
+      {
+       "number": 49,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 15
+      },
+      {
+       "number": 50,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ADE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 15
+      },
+      {
+       "number": 51,
+       "type": "single",
+       "points": 2.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 16
+      },
+      {
+       "number": 52,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ACE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 16
+      },
+      {
+       "number": 53,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 16
+      },
+      {
+       "number": 54,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ABC",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 16
+      },
+      {
+       "number": 55,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "BCE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 17
+      },
+      {
+       "number": 56,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "AB",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 17
+      },
+      {
+       "number": 57,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 17
+      },
+      {
+       "number": 58,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 18
+      },
+      {
+       "number": 59,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "AB",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 18
+      },
+      {
+       "number": 60,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "CD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 18
+      },
+      {
+       "number": 61,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 19
+      },
+      {
+       "number": 62,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 19
+      },
+      {
+       "number": 63,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 19
+      },
+      {
+       "number": 64,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 19
+      },
+      {
+       "number": 65,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "AD",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+       ],
+       "pdfPage": 19
+      },
+      {
+       "number": 66,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "BE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 20
+      },
+      {
+       "number": 67,
+       "type": "multi",
+       "points": 2.0,
+       "answer": "ABE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 20
+      },
+      {
+       "number": 68,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 20
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

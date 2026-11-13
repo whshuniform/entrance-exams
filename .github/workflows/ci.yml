@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # 歷屆考卷資料量大，nuxt generate／typecheck 需要較大的 Node 記憶體上限
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
+      - name: Static build
+        run: npm run generate
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+      - name: E2E tests
+        run: npm run test:e2e

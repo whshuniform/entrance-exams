@@ -1,0 +1,192 @@
+{
+ "year": 102,
+ "subject": "數學",
+ "id": "math",
+ "parts": [
+  {
+   "title": "第壹部分：選擇題（占60分）",
+   "groups": [
+    {
+     "title": "一、單選題（占30分）",
+     "note": "",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "5",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "5",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      }
+     ]
+    },
+    {
+     "title": "二、多選題（占30分）",
+     "note": "",
+     "questions": [
+      {
+       "number": 7,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "1235",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 8,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "12",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "45",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 10,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "134",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 11,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "125",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 12,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "13",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

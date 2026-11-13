@@ -1,0 +1,389 @@
+{
+ "exam": "cap",
+ "year": 110,
+ "id": "math",
+ "sets": [],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "圖(一)的坐標平面上有$A$、$B$、$C$、$D$四點。根據圖(一)中各點位置判斷，哪一個點在第二象限？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/1-1.webp",
+      "width": 405,
+      "height": 498
+     }
+    }
+   ],
+   "options": [
+    "$A$",
+    "$B$",
+    "$C$",
+    "$D$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "算式$(-8)+(-2)\\times(-3)$之值為何？",
+   "options": [
+    "$-14$",
+    "$-2$",
+    "$18$",
+    "$30$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "若二元一次聯立方程式$\\begin{cases}x=4y\\\\6y-x=10\\end{cases}$的解為$x=a$，$y=b$，則$a+b$之值為何？",
+   "options": [
+    "$-15$",
+    "$-3$",
+    "$5$",
+    "$25$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "如圖(二)，矩形$ABCD$、$\\triangle BDE$中，$A$點在$\\overline{BE}$上。若矩形$ABCD$的面積為$20$，$\\triangle BDE$的面積為$24$，則$\\triangle ADE$的面積為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/4-2.webp",
+      "width": 246,
+      "height": 390
+     }
+    }
+   ],
+   "options": [
+    "$10$",
+    "$12$",
+    "$14$",
+    "$16$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "$5^6$是$5^3$的多少倍？",
+   "options": [
+    "$2$",
+    "$3$",
+    "$25$",
+    "$125$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "下列等式何者__不成立__？",
+   "options": [
+    "$4\\sqrt{3}+2\\sqrt{3}=6\\sqrt{3}$",
+    "$4\\sqrt{3}-2\\sqrt{3}=2\\sqrt{3}$",
+    "$4\\sqrt{3}\\times2\\sqrt{3}=8\\sqrt{3}$",
+    "$4\\sqrt{3}\\div2\\sqrt{3}=2$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "已知纜車從起點行駛到終點需花費$8$分鐘，圖(三)表示行駛過程中纜車的海拔高度與行駛時間的關係。",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/7-3.webp",
+      "width": 816,
+      "height": 516
+     }
+    },
+    "根據圖(三)判斷，下列敘述何者正確？"
+   ],
+   "options": [
+    "終點的海拔高度比起點高$300$公尺，行駛時間的前$4$分鐘都在上升",
+    "終點的海拔高度比起點高$300$公尺，行駛時間的末$4$分鐘都在上升",
+    "終點的海拔高度比起點高$350$公尺，行駛時間的前$4$分鐘都在上升",
+    "終點的海拔高度比起點高$350$公尺，行駛時間的末$4$分鐘都在上升"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "利用乘法公式判斷，下列等式何者成立？",
+   "options": [
+    "$248^2+248\\times52+52^2=300^2$",
+    "$248^2-248\\times48-48^2=200^2$",
+    "$248^2+2\\times248\\times52+52^2=300^2$",
+    "$248^2-2\\times248\\times48-48^2=200^2$"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "圖(四)為甲城市$6$月到$9$月外國旅客人數的折線圖。根據圖(四)判斷，哪一個月到甲城市的外國旅客中，旅客人數最少的國家是__美國__？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/9-4.webp",
+      "width": 612,
+      "height": 480
+     }
+    }
+   ],
+   "options": [
+    "$6$",
+    "$7$",
+    "$8$",
+    "$9$"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "將一半徑為$6$的圓形紙片，沿著兩條半徑剪開形成兩個扇形。若其中一個扇形的弧長為$5\\pi$，則另一個扇形的圓心角度數是多少？",
+   "options": [
+    "$30$",
+    "$60$",
+    "$105$",
+    "$210$"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "動物園準備了$100$張刮刮樂，打算送給開幕當日的前$100$位遊客每人一張，其中可刮中獎品的刮刮樂共有$32$張，表(一)為獎品的種類及數量。若__小柏__為開幕當日的第一位遊客，且每張刮刮樂被__小柏__拿到的機會相等，則__小柏__刮中玩偶的機率為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/11-5.webp",
+      "width": 465,
+      "height": 366
+     }
+    }
+   ],
+   "options": [
+    "$\\frac{1}{2}$",
+    "$\\frac{1}{16}$",
+    "$\\frac{8}{25}$",
+    "$\\frac{1}{50}$"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "__美美__和__小儀__到超市購物，且超市正在舉辦摸彩活動，單次消費金額每滿$100$元可以拿到$1$張摸彩券。已知__美美__一次購買$5$盒餅乾拿到$3$張摸彩券；__小儀__一次購買$5$盒餅乾與$1$個蛋糕拿到$4$張摸彩券。若每盒餅乾的售價為$x$元，每個蛋糕的售價為$150$元，則$x$的範圍為下列何者？",
+   "options": [
+    "$50\\le x<60$",
+    "$60\\le x<70$",
+    "$70\\le x<80$",
+    "$80\\le x<90$"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "已知$a_1$，$a_2$，……，$a_{40}$為一等差數列，其中$a_1$為正數，且$a_{20}+a_{22}=0$。判斷下列敘述何者正確？",
+   "options": [
+    "$a_{21}+a_{22}>0$",
+    "$a_{21}+a_{22}<0$",
+    "$a_{21}\\times a_{22}>0$",
+    "$a_{21}\\times a_{22}<0$"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "已知$a=-\\frac{5}{223}$，$b=\\frac{6}{263}$，$c=-\\frac{7}{293}$，判斷下列各式之值何者最大？",
+   "options": [
+    "$|a+b+c|$",
+    "$|a+b-c|$",
+    "$|a-b+c|$",
+    "$|a-b-c|$"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "已知$\\triangle ABC$與$\\triangle DEF$全等，$A$、$B$、$C$的對應點分別為$D$、$E$、$F$，且$E$點在$\\overline{AC}$上，$B$、$F$、$C$、$D$四點共線，如圖(五)所示。若$\\angle A=40^\\circ$，$\\angle CED=35^\\circ$，則下列敘述何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/15-6.webp",
+      "width": 363,
+      "height": 420
+     }
+    }
+   ],
+   "options": [
+    "$\\overline{EF}=\\overline{EC}$，$\\overline{AE}=\\overline{FC}$",
+    "$\\overline{EF}=\\overline{EC}$，$\\overline{AE}\\neq \\overline{FC}$",
+    "$\\overline{EF}\\neq \\overline{EC}$，$\\overline{AE}=\\overline{FC}$",
+    "$\\overline{EF}\\neq \\overline{EC}$，$\\overline{AE}\\neq \\overline{FC}$"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "圖(六)為某超商促銷活動的內容，今__阿賢__到該超商拿相差$4$元的$2$種飯糰各$1$個結帳時，店員說：「要不要多買$2$瓶指定飲料？搭配促銷活動後$2$組優惠價的金額，只比你買$2$個飯糰的金額多$30$元。」若__阿賢__只多買$1$瓶指定飲料，且店員會以對消費者最便宜的方式結帳，則與原本只買$2$個飯糰相比，他要多付多少元？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/16-7.webp",
+      "width": 543,
+      "height": 372
+     }
+    }
+   ],
+   "options": [
+    "$12$",
+    "$13$",
+    "$15$",
+    "$16$"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "如圖(七)，梯形$ABCD$中，$\\overline{AD}\\parallel\\overline{BC}$，有一圓$O$通過$A$、$B$、$C$三點，且$\\overline{AD}$與圓$O$相切於$A$點。若$\\angle B=58^\\circ$，則$\\overset{\\frown}{BC}$的度數為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/17-8.webp",
+      "width": 348,
+      "height": 450
+     }
+    }
+   ],
+   "options": [
+    "$116$",
+    "$120$",
+    "$122$",
+    "$128$"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "若坐標平面上二次函數$y=a(x+b)^2+c$的圖形，經過平移後可與$y=(x+3)^2$的圖形完全疊合，則$a$、$b$、$c$的值可能為下列哪一組？",
+   "options": [
+    "$a=1$，$b=0$，$c=-2$",
+    "$a=2$，$b=6$，$c=0$",
+    "$a=-1$，$b=-3$，$c=0$",
+    "$a=-2$，$b=3$，$c=-2$"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "如圖(八)，$\\triangle ABC$中，$D$、$E$、$F$三點分別在$\\overline{AB}$、$\\overline{BC}$、$\\overline{AC}$上，且四邊形$BEFD$是以$\\overline{DE}$為對稱軸的線對稱圖形，四邊形$CFDE$是以$\\overline{FE}$為對稱軸的線對稱圖形。若$\\angle C=40^\\circ$，則$\\angle DFE$的度數為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/19-9.webp",
+      "width": 420,
+      "height": 399
+     }
+    }
+   ],
+   "options": [
+    "$65$",
+    "$70$",
+    "$75$",
+    "$80$"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "已知__捷立租車行__有甲、乙兩個營業據點，顧客租車後當日須於營業結束前在任意一個據點還車。某日營業結束清點車輛時，發現在甲歸還的自行車比從甲出租的多$4$輛。若當日從甲出租且在甲歸還的自行車為$15$輛，從乙出租且在乙歸還的自行車為$13$輛，則關於當日從甲、乙出租的自行車數量，下列比較何者正確？",
+   "options": [
+    "從甲出租的比從乙出租的多$2$輛",
+    "從甲出租的比從乙出租的少$2$輛",
+    "從甲出租的比從乙出租的多$6$輛",
+    "從甲出租的比從乙出租的少$6$輛"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "如圖(九)，四邊形$ABCD$中，$\\angle1$、$\\angle2$、$\\angle3$分別為$\\angle A$、$\\angle B$、$\\angle C$的外角。判斷下列大小關係何者正確？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/21-10.webp",
+      "width": 396,
+      "height": 360
+     }
+    }
+   ],
+   "options": [
+    "$\\angle1+\\angle3=\\angle ABC+\\angle D$",
+    "$\\angle1+\\angle3<\\angle ABC+\\angle D$",
+    "$\\angle1+\\angle2+\\angle3=360^\\circ$",
+    "$\\angle1+\\angle2+\\angle3>360^\\circ$"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "若$a$、$b$為正整數，且$a\\times b=2^5\\times3^2\\times5$，則下列何者__不可能__為$a$、$b$的最大公因數？",
+   "options": [
+    "$1$",
+    "$6$",
+    "$8$",
+    "$12$"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "如圖(十)，菱形$ABCD$中，$E$點在$\\overline{BC}$上，$F$點在$\\overline{CD}$上，$G$點、$H$點在$\\overline{AD}$上，且$\\overline{AE}\\parallel\\overline{HC}\\parallel\\overline{GF}$。若$\\overline{AH}=8$，$\\overline{HG}=5$，$\\overline{GD}=4$，則下列選項中的線段，何者的長度最長？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/23-11.webp",
+      "width": 348,
+      "height": 531
+     }
+    }
+   ],
+   "options": [
+    "$\\overline{CF}$",
+    "$\\overline{FD}$",
+    "$\\overline{BE}$",
+    "$\\overline{EC}$"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "__小文__原本計畫使用甲、乙兩臺影印機於$10$：$00$開始一起印製文件並持續到下午，但$10$：$00$時有人正在使用乙，於是他先使用甲印製，於$10$：$05$才開始使用乙一起印製，且到$10$：$15$時乙印製的總張數與甲相同，到$10$：$45$時甲、乙印製的總張數合計為$2100$張。若甲、乙的印製張數與印製時間皆成正比，則依照__小文__原本的計畫，甲、乙印製的總張數會在哪個時間達到$2100$張？",
+   "options": [
+    "$10$：$40$",
+    "$10$：$41$",
+    "$10$：$42$",
+    "$10$：$43$"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "如圖(十一)，銳角三角形$ABC$中，$D$點在$\\overline{BC}$上，$\\angle B=\\angle BAD=\\angle CAD$。今欲在$\\overline{AD}$上找一點$P$，使得$\\angle APC=\\angle ADB$，以下是甲、乙兩人的作法：",
+   "blocks": [
+    "(甲)作$\\overline{AC}$的中垂線交$\\overline{AD}$於$P$點，則$P$即為所求",
+    "(乙)以$C$為圓心，$\\overline{CD}$長為半徑畫弧，交$\\overline{AD}$於異於$D$點的一點$P$，則$P$即為所求",
+    "對於甲、乙兩人的作法，下列判斷何者正確？",
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/25-12.webp",
+      "width": 396,
+      "height": 423
+     }
+    }
+   ],
+   "options": [
+    "兩人皆正確",
+    "兩人皆錯誤",
+    "甲正確，乙錯誤",
+    "甲錯誤，乙正確"
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "如圖(十二)，$I$為$\\triangle ABC$的內心，有一直線通過$I$點且分別與$\\overline{AB}$、$\\overline{AC}$相交於$D$點、$E$點。若$\\overline{AD}=\\overline{DE}=5$，$\\overline{AE}=6$，則$I$點到$\\overline{BC}$的距離為何？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/math/text/26-13.webp",
+      "width": 384,
+      "height": 531
+     }
+    }
+   ],
+   "options": [
+    "$\\frac{24}{11}$",
+    "$\\frac{30}{11}$",
+    "$2$",
+    "$3$"
+   ]
+  }
+ ]
+}

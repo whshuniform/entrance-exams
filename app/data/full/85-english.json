@@ -1,0 +1,673 @@
+{
+ "year": 85,
+ "subject": "英文",
+ "id": "english",
+ "parts": [
+  {
+   "title": "第一部分：單一選擇題",
+   "groups": [
+    {
+     "title": "一、字彙與片語",
+     "note": "說明：第1至10題，每題依句意選出最適當的一個選項，標示在答案卡之「選擇題答案區」。每題答對得1分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      }
+     ]
+    },
+    {
+     "title": "",
+     "note": "說明：第11至20題，請選出與劃線部份語意最接近的字詞，標示在答案卡之「選擇題答案區」。每題答對得1分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 11,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 19,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 20,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      }
+     ]
+    },
+    {
+     "title": "二、綜合測驗",
+     "note": "說明：第21至40題，每題一個空格。請依文意選出最適當的一個選項，標示在答案卡之「選擇題答案區」。每題答對得1分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 21,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 22,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 23,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 24,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 25,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 26,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 27,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 28,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 29,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 30,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 31,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 32,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 33,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 34,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 35,
+       "type": "single",
+       "points": 1.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 36,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 37,
+       "type": "single",
+       "points": 1.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 38,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 39,
+       "type": "single",
+       "points": 1.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 40,
+       "type": "single",
+       "points": 1.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    },
+    {
+     "title": "三、閱讀測驗",
+     "note": "說明：第41至50題，請依各篇文章之文意選出最適當的一個選項，標示在答案卡之「選擇題答案區」。每題答對得2分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 41,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 42,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 43,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 44,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 45,
+       "type": "single",
+       "points": 2.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 46,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 47,
+       "type": "single",
+       "points": 2.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 48,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 49,
+       "type": "single",
+       "points": 2.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      },
+      {
+       "number": 50,
+       "type": "single",
+       "points": 2.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

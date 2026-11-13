@@ -1,0 +1,642 @@
+{
+ "exam": "cap",
+ "year": 107,
+ "id": "english",
+ "sets": [
+  {
+   "id": "16-18",
+   "blocks": [
+    "Robert likes to take a walk in the park after work.  One day when he was walking in the park, he heard a woman calling his name.  He stopped to look around, but didn’t see anything [[16]].  Shortly after Robert saw it, it was gone.",
+    "Though Robert felt a little strange, he did not think about it too much and sat down for a rest on a bench in the park.  Then he noticed the snake he had just seen [[17]].  Robert was too afraid to move away from the bench.  Right at this moment, a woman behind him shouted, “Come here, Robert.  You can’t stay on the bench like that.  [[18]].”",
+    "In surprise, Robert turned around and said to the woman, “Excuse me, but that’s not a very nice thing to say, and in fact some people say I’m handsome.”",
+    "“I’m not talking to you,” said the woman.  “I’m telling Robert, my pet snake, to get down from the bench, not you.”",
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/16-18-1.webp",
+      "width": 438,
+      "height": 276
+     }
+    }
+   ]
+  },
+  {
+   "id": "19-21",
+   "blocks": [
+    "If you cannot live without your car, Zurich might be the last city you would like to visit.  In Zurich, people are welcome, but cars are not!  Over the past 20 years, this city has used smart ways [[19]].  One is to keep the same total number of parking spaces.  For example, if 50 new parking spaces are built in one part of the city, then 50 old spaces in other parts are taken away for other uses.  So the total number does not change.  Some are unhappy that there are never enough spaces.  That is just what the city has in mind: If people find parking more difficult, they will drive less.",
+    "[[20]], the total number of cars in the city is counted.  Over 3,500 little computers are put under Zurich roads to check the number of cars that enter the city.  If the number is higher than the city can deal with, the traffic lights on the roads that enter the city will be kept red.  So drivers who are traveling into Zurich have to stop and wait until there are fewer cars in the city.  Now, you may wonder [[21]].  The answer is simple: The city wants to make more space for its people.",
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/19-21-2.webp",
+      "width": 1158,
+      "height": 156
+     }
+    }
+   ]
+  },
+  {
+   "id": "22-24",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/22-24-3.webp",
+      "width": 768,
+      "height": 168
+     }
+    },
+    "What kind of place do you usually choose to stay for the night during a trip?  Expensive hotels that may make you feel like you don’t get what you pay for?  Or cheap hostels that put you and five other strangers in the same bedroom?  If both choices sound terrible to you, here’s something new: holiday apartments.",
+    "In a holiday apartment, you have more space than what a hotel room can give you.  Everything in the apartment is __at your disposal__.  The living room, the kitchen, the study, and, of course, the bedrooms are all for your own use.  Some apartments even have a lovely garden or a game room.  You’ll feel at home in the holiday apartment.  The best thing is, a holiday apartment is not expensive.  The price for a holiday apartment is for two people, and the apartment is often cheaper than a hotel room for two.  You only need to pay a little more for a third or fourth person.  If you travel with friends or your family, a holiday apartment will be your best choice!",
+    "hostel (提供廉價食宿的)旅舍"
+   ]
+  },
+  {
+   "id": "25-26",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/25-26-4.webp",
+      "width": 1392,
+      "height": 2058
+     }
+    }
+   ]
+  },
+  {
+   "id": "27-28",
+   "blocks": [
+    "The sky is turning bright and clear.",
+    "The earth is wearing red and green.",
+    "Winter is gone; spring has come.",
+    "The air smells fresh and sweet.",
+    "The summer heat is not yet here;",
+    "A little fox comes out to play.",
+    "A bird is busy in a tree",
+    "Waking a __daisy__ from her sleep.",
+    "Little daisy, little daisy,",
+    "People call the flower the “day’s eye.”",
+    "When she opens her eye,",
+    "The springtime brings us cheer."
+   ]
+  },
+  {
+   "id": "29-31",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/29-31-5.webp",
+      "width": 330,
+      "height": 294
+     }
+    },
+    "When we get wet, we need a towel to get ourselves dry.  When a dog gets wet, all it needs is to shake its body.  A study in 2010 showed that a wet dog can throw off half the water on its body by shaking for less than a second.  In fact, this common act of dogs works better than a washing machine.",
+    "The study found that animal shaking begins with the head and ends with the tail.  During a shake, the animal’s head, body and skin all move.  Smaller animals must shake faster than bigger animals to get water off.  For example, in one second, a rat can shake 18 times, a dog 6 times, and a bear 4 times.  Bigger animals can get their bodies dry with fewer shakes.",
+    "For animals, shaking is not just about getting themselves dry.  It is also about saving their lives.  Being wet makes animals heavier, and that makes it harder to run.  In the animal world, how fast an animal can run often decides whether it will live or not.  Maybe that’s why the “wet-dog shake” has become a common habit of many animals.",
+    "skin 皮膚"
+   ]
+  },
+  {
+   "id": "32-34",
+   "blocks": [
+    "Josh: Do you know about “pay it forward coffee” at Flora Café?",
+    "Eric: You mean you pay for a cup of coffee for someone poor to have it later?",
+    "Josh: Yeah.  A cup of coffee is not much, but on cold winter days like today, it might warm them up a little.  And maybe their hearts too.",
+    "Eric: But will Flora Café really give this cup of coffee to someone later?",
+    "Josh: Come on.  I’ve known the shopkeeper well.  He’s an honest man.  He’s got a blackboard in the shop that says how many cups are paid for and how many have been given out.",
+    "Eric: But how will they know who to give?  Anyone can ask for it, even if they’re not poor.",
+    "Josh: True, but then I guess they’ll just have to believe in people.",
+    "Eric: Perhaps.  But will poor people go and ask for a free coffee?  Won’t they worry about losing face?",
+    "Josh: Why do you always say __things like that__?",
+    "Eric: Well, it may happen.",
+    "Josh: Yeah, I know, but I still think it’s a good thing to do, and it gets people to care about others.",
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/32-34-6.webp",
+      "width": 855,
+      "height": 213
+     }
+    }
+   ]
+  },
+  {
+   "id": "35-37",
+   "blocks": [
+    "*Jim Webb  Oct. 16, 1987*",
+    "Over the years, the number of whales has dropped sharply.  From 1946 to 1986, about 340,000 whales were killed.  People worry that children in the future can only see whales in pictures.  They believe all kinds of whaling (whale hunting) should be stopped before it’s too late.",
+    "Some people are trying to stop whaling all over the world.  But they fail to notice one fact: Whaling was going on for a long time before the number of whales went down and became a problem.",
+    "Whaling started as early as 1,500 years ago.  This was how tribespeople fed their families.  They hunted whales for meat because almost nothing could grow on their land.  They also made whale fat into oil and used it to make candles or oil lamps.  Over the years, whaling became their way of living, and even part of who they are.",
+    "Tribe whaling is not the thing we should worry about.  Of all the whales that were killed over the past forty years, only 10% were hunted by tribespeople.  The other 90% died at the hands of the money-making whaling business.  When we try to stop all kinds of whaling, we should think what we are asking tribespeople to give up and whether this is the best answer to the problem of whaling.",
+    "tribe 部落   fat 脂肪"
+   ]
+  },
+  {
+   "id": "38-41",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/38-41-7.webp",
+      "width": 1290,
+      "height": 90
+     }
+    },
+    "*Ryan Kim 7/15/2013*",
+    "Guesses about Carolyn Cole have been flying around since last week, and now things have taken __a new turn__.",
+    "Last week Carolyn Cole won the Inscriber Prize, the country’s biggest book prize, with her book *Paper Soldier*.  Cole herself did not show up for the prize.  It was not only the first time in history that a first-time writer won the prize, but also the first time that the winner did not appear.",
+    "Now here comes another “first time” for the Inscriber: Cole is not real.  “She” is in fact Thomas Goode.  Goode is known for his picture books.  His best-known book, *Blue Moon*, won him two national book prizes and sold over one million copies.",
+    "Goode had tried to write “serious” books before.  His first try was *Parent*, which came out in 2006.  Sadly, Goode’s big name did not help, and there was little interest in *Parent*.  Goode’s friend told NBN that he wanted to write a book under a different name.  Goode thought that people might treat his book seriously if they did not know it was from a picture book writer.",
+    "For the moment, there has been no word from Goode yet."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "Look at the picture.  The girl is ＿＿＿＿ the clothes.",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/1-8.webp",
+      "width": 468,
+      "height": 342
+     }
+    }
+   ],
+   "options": [
+    "making",
+    "packing",
+    "showing",
+    "washing"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "The ＿＿＿＿ is so strong today that my hair keeps blowing in the air.",
+   "options": [
+    "rain",
+    "snow",
+    "sun",
+    "wind"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "When the baby cried, Mr. Wu ＿＿＿＿ in the kitchen and did not hear it.",
+   "options": [
+    "cooked",
+    "was cooking",
+    "has cooked",
+    "is going to cook"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "I don’t have any money with me because I ＿＿＿＿ my wallet this morning.",
+   "options": [
+    "had lost",
+    "would lose",
+    "lost",
+    "was losing"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "You need not only good luck but also hard work to become a ＿＿＿＿ baseball player.",
+   "options": [
+    "young",
+    "successful",
+    "happy",
+    "friendly"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "The woman who lives next door to Ken is a ＿＿＿＿ to him.  They have never met and he doesn’t even know her name.",
+   "options": [
+    "daughter",
+    "friend",
+    "stranger",
+    "teacher"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "With the new bus line, it is much more ＿＿＿＿ for Fanny to go to school.  It saves her a lot of time now.",
+   "options": [
+    "useful",
+    "possible",
+    "interesting",
+    "convenient"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "Dad: Have you brushed your teeth yet?",
+   "blocks": [
+    "Ann: No, but I ＿＿＿＿ before I go to bed."
+   ],
+   "options": [
+    "haven’t",
+    "have",
+    "won’t",
+    "will"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "Alice: Do you know ＿＿＿＿ Grandma is going to visit us?",
+   "blocks": [
+    "Willy: It’s next week.  She told me on the phone.  And we’ll take her to the national park."
+   ],
+   "options": [
+    "where",
+    "when",
+    "whether",
+    "why"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "It took the police lots of time ＿＿＿＿ who entered Liu’s house and killed her one year ago.",
+   "options": [
+    "and found out",
+    "find out",
+    "finding out",
+    "to find out"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "Many famous people visit this restaurant.  Popular singers like A-mei and Jay Chou ＿＿＿＿ here with their friends.",
+   "options": [
+    "to be often seen",
+    "often seen",
+    "are often seen",
+    "and are often seen"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "The factory has been throwing trash into the river for years.  Now ＿＿＿＿ must be taken to stop this.",
+   "options": [
+    "action",
+    "chances",
+    "exercise",
+    "notes"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "The beach party tonight ＿＿＿＿ the end of our summer vacation.  Tomorrow we are all going back home and getting ready for school.",
+   "options": [
+    "changes",
+    "marks",
+    "passes",
+    "saves"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "Anyone who reads Loren’s business plan will quickly see some serious problems in it, or ＿＿＿＿ feel something is not right.",
+   "options": [
+    "at least",
+    "even",
+    "in fact",
+    "still"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "I’ve wanted to read *The Diary of a Young Girl* for months, ＿＿＿＿ today I finally borrowed the book from the library.",
+   "options": [
+    "and",
+    "since",
+    "so",
+    "until"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "",
+   "set": "16-18",
+   "options": [
+    "like a snake",
+    "that could move",
+    "except a little snake",
+    "that could make noise"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "",
+   "set": "16-18",
+   "options": [
+    "climbing up the bench",
+    "running after a woman",
+    "stopping beside his feet",
+    "falling down from a tree"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "",
+   "set": "16-18",
+   "options": [
+    "The bench is broken",
+    "The seat has been taken",
+    "People will be scared by you",
+    "The paint of the bench is still wet"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "",
+   "set": "19-21",
+   "options": [
+    "to make traffic lighter",
+    "to invite people to visit",
+    "to make itself a famous city",
+    "to build more parking spaces"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "",
+   "set": "19-21",
+   "options": [
+    "This way",
+    "However",
+    "For example",
+    "Also"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "",
+   "set": "19-21",
+   "options": [
+    "why Zurich is doing this",
+    "what all this has cost Zurich",
+    "if Zurich should try other ways",
+    "if Zurich can deal with angry drivers"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "What is the reading mostly about?",
+   "set": "22-24",
+   "options": [
+    "Where to find a nice holiday apartment.",
+    "How to choose a nice holiday apartment.",
+    "Why one should choose a holiday apartment.",
+    "How one can change their house into a holiday apartment."
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "From the reading, what can we learn about holiday apartments?",
+   "set": "22-24",
+   "options": [
+    "They are good for people who like to take one-day trips.",
+    "They are good for people who travel in a group of three or more.",
+    "They are good for people who want to make new friends when traveling.",
+    "They are good for people who like to spend their holidays in the country."
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "What does it mean to say that something is __at your disposal__?",
+   "set": "22-24",
+   "options": [
+    "You are free to use it.",
+    "You can find it everywhere.",
+    "You know everything about it.",
+    "You can buy it at a lower price."
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "What is the quick lesson of **SHARP WEAR** about?",
+   "set": "25-26",
+   "options": [
+    "How to get to one of **SHARP WEAR**’s stores.",
+    "How to send back a T-shirt to **SHARP WEAR**.",
+    "How to shop for a T-shirt from **SHARP WEAR**.",
+    "How to take care of a T-shirt from **SHARP WEAR**."
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "What can we learn about **SHARP WEAR**?",
+   "set": "25-26",
+   "options": [
+    "You have to order at least four T-shirts each time.",
+    "You can choose from sixteen colors for both the T-shirt and the pocket.",
+    "Some of the T-shirts have pictures on both the front side and the back side.",
+    "T-shirts in the wrong sizes cannot be sent back if they have pictures or pockets on them."
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "Which season is this poem about?",
+   "set": "27-28",
+   "blocks": [
+    "poem 詩"
+   ],
+   "options": [
+    "Spring.",
+    "Summer.",
+    "Autumn.",
+    "Winter."
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "What is a __daisy__?",
+   "set": "27-28",
+   "options": [
+    "A body part.",
+    "A kind of bird.",
+    "A kind of flower.",
+    "A kind of smell."
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "What does the reading say about shaking?",
+   "set": "29-31",
+   "options": [
+    "Different animals’ shaking begins with different body parts.",
+    "Shaking is a way that animals use to make other animals scared.",
+    "Animals that are not kept as pets do the shaking better than those that are.",
+    "Shaking themselves dry may help animals run faster in dangerous moments."
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "What can we learn from the reading?",
+   "set": "29-31",
+   "options": [
+    "The animal’s tail can help it run more quickly and easily.",
+    "Some animals shake more than they need to get water off.",
+    "The idea of washing machines came from the shaking of dogs.",
+    "Larger animals get themselves drier at each shake than smaller animals."
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "The four pictures below show how fast tigers, cats and mice can shake.  From the reading, which picture is most likely correct?",
+   "set": "29-31",
+   "blocks": [
+    "likely 可能"
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/31-9.webp",
+      "width": 606,
+      "height": 420
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/31-10.webp",
+      "width": 606,
+      "height": 420
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/31-11.webp",
+      "width": 606,
+      "height": 420
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/107/english/text/31-12.webp",
+      "width": 606,
+      "height": 420
+     }
+    }
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "What does __things like that__ mean?",
+   "set": "32-34",
+   "options": [
+    "Problems about the free coffee plan.",
+    "Trouble for people who go to Flora Café.",
+    "Ways to make the free coffee plan successful.",
+    "Good things free coffee will bring to Flora Café."
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "What can we learn about Josh and Eric?",
+   "set": "32-34",
+   "options": [
+    "Josh was not able to change Eric’s mind about free coffee.",
+    "Eric has more hope for the free coffee plan than Josh does.",
+    "They found a way to make people feel OK to take free coffee.",
+    "They do not know whether Flora Café will do business honestly."
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "What do we know about Flora Café from the dialogue?",
+   "set": "32-34",
+   "options": [
+    "It has a way to know who really is poor.",
+    "Free coffee has brought it more business.",
+    "People pay less for free coffee than other coffee.",
+    "Its blackboard shows if there are free coffees to be taken."
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "Below are the writer’s points in the reading:",
+   "set": "35-37",
+   "blocks": [
+    "a. Whether we should stop tribespeople whaling",
+    "b. The problem of whaling",
+    "c. Whaling as a way of life",
+    "In what order does the writer talk about his points?",
+    "order 順序"
+   ],
+   "options": [
+    "a→c→b.",
+    "b→c→a.",
+    "c→a→b.",
+    "c→b→a."
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "Which idea may the writer agree with?",
+   "set": "35-37",
+   "options": [
+    "We should stop all kinds of whale hunting.",
+    "We should not worry about the number of whales.",
+    "Tribespeople’s way of living is as important as animal lives.",
+    "Working with the whaling business can make tribespeople’s lives better."
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "What can we learn from the reading?",
+   "set": "35-37",
+   "options": [
+    "Tribespeople believe whales bring good luck.",
+    "Tribespeople become rich by selling whale oil.",
+    "Whaling was not a problem until 1,500 years ago.",
+    "Whaling helped tribespeople’s lives in different ways."
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "From the news story, which fact is seen as __a new turn__?",
+   "set": "38-41",
+   "options": [
+    "Carolyn Cole is a first-time writer.",
+    "Carolyn Cole won the Inscriber Prize.",
+    "Carolyn Cole is not the winner’s real name.",
+    "Carolyn Cole did not appear for the Inscriber Prize."
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "Which is most likely true about the Inscriber Prize?",
+   "set": "38-41",
+   "blocks": [
+    "likely 可能"
+   ],
+   "options": [
+    "It was started by NBN News.",
+    "It is a new prize for picture books.",
+    "It is a prize only for first-time writers.",
+    "It is treated seriously by writers in the country."
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "What can we learn about Thomas Goode?",
+   "set": "38-41",
+   "options": [
+    "He has won the Inscriber Prize twice.",
+    "He told NBN that *Paper Soldier* was his work.",
+    "He wants to be more than just a picture book writer.",
+    "His life as a picture book writer has not been successful."
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "What do we know about Thomas Goode’s books?",
+   "set": "38-41",
+   "options": [
+    "The sales of *Parent* were bad.",
+    "*Paper Soldier* is his best-selling book.",
+    "His first picture book came out in 2006.",
+    "*Blue Moon* was written under a different name."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "year": 111,
+ "id": "math-a",
+ "sets": [
+  {
+   "id": "18-20",
+   "blocks": [
+    "坐標平面上有一環狀區域由圓$x^2+y^2=3$的外部與圓$x^2+y^2=4$的內部交集而成。某甲欲用一支長度為$1$的筆直掃描棒來掃描此環狀區域之$x$軸上方的某區域$R$。他設計掃描棒黑、白兩端分別在半圓$C_1:x^2+y^2=3$（$y\\geq 0$）、$C_2:x^2+y^2=4$（$y\\geq 0$）上移動。開始時掃描棒黑端在點$A(\\sqrt{3},0)$，白端在$C_2$的點$B$。接著黑、白兩端各沿著$C_1$、$C_2$逆時針移動，直至白端碰到$C_2$的點$B'(-2,0)$便停止掃描。",
+    {
+     "figure": {
+      "src": "papers/111/math-a/text/18-20-1.webp",
+      "width": 438,
+      "height": 306
+     }
+    }
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "某冰淇淋店最少需準備$n$桶不同口味的冰淇淋，才能滿足廣告所稱「任選兩球不同口味冰淇淋的組合數超過$100$種」。試問來店顧客從$n$桶中任選兩球（可為同一口味）共有幾種方法？",
+   "options": [
+    "$101$",
+    "$105$",
+    "$115$",
+    "$120$",
+    "$225$"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "某品牌計算機在計算對數$\\log_a b$時需按$\\boxed{\\log}\\ \\boxed{(}\\ \\boxed{a}\\ \\boxed{,}\\ \\boxed{b}\\ \\boxed{)}$。某生在計算$\\log_a b$時（其中$a>1$且$b>1$）順序弄錯，誤按$\\boxed{\\log}\\ \\boxed{(}\\ \\boxed{b}\\ \\boxed{,}\\ \\boxed{a}\\ \\boxed{)}$，所得為正確值的$\\frac{9}{4}$倍。試選出$a,b$間的關係式。",
+   "options": [
+    "$a^2=b^3$",
+    "$a^3=b^2$",
+    "$a^4=b^9$",
+    "$2a=3b$",
+    "$3a=2b$"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "在處理二維數據時，有種方法是將數據垂直投影到某一直線，並以該直線為數線，進而了解投影點所成一維數據的變異。下圖的一組二維數據，試問投影到哪一選項的直線，所得之一維投影數據的變異數會是最小？",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/111/math-a/text/3-2.webp",
+      "width": 558,
+      "height": 507
+     }
+    }
+   ],
+   "options": [
+    "$y=2x$",
+    "$y=-2x$",
+    "$y=-x$",
+    "$y=\\frac{x}{2}$",
+    "$y=-\\frac{x}{2}$"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "設等差數列$\\langle a_n\\rangle$之首項$a_1$與公差$d$皆為正數，且$\\log a_1,\\log a_3,\\log a_6$依序也成等差數列。試選出數列$\\log a_1,\\log a_3,\\log a_6$的公差。",
+   "options": [
+    "$\\log d$",
+    "$\\log\\frac{2}{3}$",
+    "$\\log\\frac{3}{2}$",
+    "$\\log 2d$",
+    "$\\log 3d$"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "已知某地區有$30\\%$的人口感染某傳染病。針對該傳染病的快篩試劑檢驗，有陽性或陰性兩結果。已知該試劑將染病者判為陽性的機率為$80\\%$，將未染病者判為陰性的機率則為$60\\%$。為降低該試劑將染病者誤判為陰性的情況，專家建議連續採檢三次。若單次採檢判為陰性者中，染病者的機率為$P$；而連續採檢三次皆判為陰性者中，染病者的機率為$P'$。試問$\\frac{P}{P'}$最接近哪一選項？",
+   "options": [
+    "$7$",
+    "$8$",
+    "$9$",
+    "$10$",
+    "$11$"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "設坐標平面上兩直線$L_1,L_2$的斜率皆為正，且$L_1,L_2$有一夾角的平分線斜率為$\\frac{11}{9}$。另一直線$L$通過點$(2,\\frac{1}{3})$且與$L_1,L_2$所圍的有界區域為正三角形，試問$L$的方程式為下列哪一選項？",
+   "options": [
+    "$11x-9y=19$",
+    "$9x+11y=25$",
+    "$11x+9y=25$",
+    "$27x-33y=43$",
+    "$27x+33y=65$"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "設整數$n$滿足$\\left|5n-21\\right|\\geq 7\\left|n\\right|$。試選出正確的選項。",
+   "options": [
+    "$\\left|5n-7n\\right|\\geq 21$",
+    "$-1\\leq\\frac{7n}{5n-21}\\leq 1$",
+    "$7n\\leq 5n-21$",
+    "$(5n-21)^2\\geq 49n^2$",
+    "滿足題設不等式的整數$n$有無窮多個"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "坐標平面上，$\\triangle ABC$三頂點的坐標分別為$A(0,2),B(1,0),C(4,1)$，試選出正確的選項。",
+   "options": [
+    "$\\triangle ABC$的三邊中，$\\overline{AC}$最長",
+    "$\\sin A<\\sin C$",
+    "$\\triangle ABC$為銳角三角形",
+    "$\\sin B=\\frac{7\\sqrt{2}}{10}$",
+    "$\\triangle ABC$的外接圓半徑比$2$小"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "已知$P$為$\\triangle ABC$內一點，且$\\overrightarrow{AP}=a\\overrightarrow{AB}+b\\overrightarrow{AC}$，其中$a,b$為相異實數。設$Q,R$在同一平面上，且$\\overrightarrow{AQ}=b\\overrightarrow{AB}+a\\overrightarrow{AC}$，$\\overrightarrow{AR}=a\\overrightarrow{AB}+(b-0.05)\\overrightarrow{AC}$。試選出正確的選項。",
+   "options": [
+    "$Q,R$也都在$\\triangle ABC$內部",
+    "$\\left|\\overrightarrow{AP}\\right|=\\left|\\overrightarrow{AQ}\\right|$",
+    "$\\triangle ABP$面積$=\\triangle ACQ$面積",
+    "$\\triangle BCP$面積$=\\triangle BCQ$面積",
+    "$\\triangle ABP$面積$>\\triangle ABR$面積"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "給定一實係數三次多項式函數$f(x)=ax^3+bx^2+cx+3$。令$g(x)=f(-x)-3$，已知$y=g(x)$圖形的對稱中心為$(1,0)$且$g(-1)<0$。試選出正確的選項。",
+   "options": [
+    "$g(x)=0$有三相異整數根",
+    "$a<0$",
+    "$y=f(x)$圖形的對稱中心為$(-1,-3)$",
+    "$f(100)<0$",
+    "$y=f(x)$的圖形在點$(-1,f(-1))$附近會近似於一條斜率為$a$的直線"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "下圖為一個積木的示意圖，其中$ABC$為一直角三角形，$\\angle ACB=90^\\circ$，$\\overline{AC}=5$、$\\overline{BC}=6$，且$ADEB$與$ADFC$皆為矩形。試選出正確的選項。",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/111/math-a/text/11-3.webp",
+      "width": 438,
+      "height": 240
+     }
+    }
+   ],
+   "options": [
+    "將此積木沿平面$ACE$切下，可切得兩個四面體",
+    "平面$ADEB$與$ADFC$所夾銳角大於$45^\\circ$",
+    "$\\angle CEB<\\angle AEB$",
+    "$\\tan\\angle AEC<\\sin\\angle CEB$",
+    "$\\angle CEB<\\angle AEC$"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "設$f(x),g(x)$皆為實係數多項式，其中$g(x)$是首項係數為正的二次式。已知$(g(x))^2$除以$f(x)$的餘式為$g(x)$，且$y=f(x)$的圖形與$x$軸無交點。試選出__不可能__是$y=g(x)$圖形頂點的$y$坐標之選項。",
+   "options": [
+    "$\\frac{\\sqrt{2}}{2}$",
+    "$1$",
+    "$\\sqrt{2}$",
+    "$2$",
+    "$\\pi$"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "試問點$B$的坐標為下列哪一選項？（單選題，$3$分）",
+   "set": "18-20",
+   "options": [
+    "$(0,2)$",
+    "$(1,\\sqrt{3})$",
+    "$(\\sqrt{2},\\sqrt{2})$",
+    "$(\\sqrt{3},1)$",
+    "$(2,0)$"
+   ]
+  }
+ ]
+}

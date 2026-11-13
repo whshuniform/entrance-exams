@@ -1,0 +1,316 @@
+{
+ "year": 85,
+ "subject": "國文",
+ "id": "chinese",
+ "parts": [
+  {
+   "title": "第一部分：選擇題（佔60分，每題3分）",
+   "groups": [
+    {
+     "title": "壹、單一選擇題",
+     "note": "說明：第1題至第18題，每題選出一個最適當的選項，標示在答案卡之「選擇題答案區」。每題答對得3分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 3.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 3.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 3.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 3.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 9,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 10,
+       "type": "single",
+       "points": 3.0,
+       "answer": "D",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 11,
+       "type": "single",
+       "points": 3.0,
+       "answer": "C",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 12,
+       "type": "single",
+       "points": 3.0,
+       "answer": "B",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 13,
+       "type": "single",
+       "points": 3.0,
+       "answer": "H",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 14,
+       "type": "single",
+       "points": 3.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 15,
+       "type": "single",
+       "points": 3.0,
+       "answer": "I",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 16,
+       "type": "single",
+       "points": 3.0,
+       "answer": "I",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 17,
+       "type": "single",
+       "points": 3.0,
+       "answer": "E",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 18,
+       "type": "single",
+       "points": 3.0,
+       "answer": "A",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I"
+       ],
+       "pdfPage": 5
+      }
+     ]
+    },
+    {
+     "title": "貳、多重選擇題",
+     "note": "說明：第19題、第20題，每題的5個選項各自獨立，其中至少有一個選項是正確的，選出正確選項，標示在答案卡之「選擇題答案區」。每題答對得3分，答錯不倒扣。未答者不給分。只錯一個可獲1.5分，錯兩個或兩個以上不給分。",
+     "questions": [
+      {
+       "number": 19,
+       "type": "multi",
+       "points": 3.0,
+       "answer": "AC",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 5
+      },
+      {
+       "number": 20,
+       "type": "multi",
+       "points": 3.0,
+       "answer": "ABDE",
+       "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+       ],
+       "pdfPage": 6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

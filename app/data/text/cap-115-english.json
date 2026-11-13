@@ -1,0 +1,647 @@
+{
+ "exam": "cap",
+ "year": 115,
+ "id": "english",
+ "sets": [
+  {
+   "id": "20-21",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/20-21-1.webp",
+      "width": 1374,
+      "height": 1101
+     }
+    },
+    "stir 攪拌"
+   ]
+  },
+  {
+   "id": "22-23",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/22-23-2.webp",
+      "width": 1392,
+      "height": 1497
+     }
+    }
+   ]
+  },
+  {
+   "id": "24-26",
+   "blocks": [
+    "This is a brochure for the Marigolds’ Home.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/24-26-3.webp",
+      "width": 1317,
+      "height": 1107
+     }
+    },
+    "**To make sure you enjoy your visit to The Marigolds’ Home, we’d like to ask you to follow the rules below:**",
+    "1. Pets are not allowed in any areas of the Marigolds’ Home.",
+    "2. Eating and drinking are not allowed inside the buildings, except in the café.",
+    "3. Picture-taking is not allowed inside Sir Archie’s House.",
+    "4. Please take off your shoes before entering the Rabbit’s Temple.",
+    "*Become a member and save 10% on tickets and 30% on all items in the gift shops. To join, visit __www.themarigoldshome.com__.*",
+    "brochure 宣傳手冊"
+   ]
+  },
+  {
+   "id": "27-28",
+   "blocks": [
+    "One summer evening when English cello player Beatrice Harrison was practicing in her garden, she was joined by a visitor she did not expect.",
+    "The visitor was a nightingale.  The small brown bird sang together with Harrison’s cello music, and the birdsong sounded like the piece she was playing.  For the next few evenings, her visitor kept coming back, sometimes with several of its friends.  Harrison decided that more people should hear the little singers.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/27-28-4.webp",
+      "width": 393,
+      "height": 495
+     }
+    },
+    "So, on May 19, 1924, Harrison worked with the BBC, the UK’s national TV and radio station, and played in her garden.  At first, the artist was playing alone.  Fifteen minutes before the end of her playing, the nightingales began to sing with the cello.",
+    "The nightingale show was popular with radio listeners.  It was repeated the next week, and for the next twelve years Harrison played on the radio with her garden friends.  During this time, she got 50,000 fan letters.  People called her “the Nightingale Lady.”"
+   ]
+  },
+  {
+   "id": "29-31",
+   "blocks": [
+    "With heavy hearts, we are here to say goodbye to Rose Lacey, a wonderful writer who will be sadly missed.",
+    "Rose and I first met in 2010.  I was at a party to pick up my wife when I heard Rose explaining to her and her friends why *Get Across* was a great movie.  Her ideas were so interesting that I invited her to write some articles about movies for *Action! US*.  Rose was very excited and agreed right away.",
+    "Over the next ten years, Rose wrote more than 150 articles.  Rose could always bring out something new from movies that we thought we knew so well.  People often told me that Rose never failed to surprise them.  Her articles often made them think whether they actually saw the same movie, but if they went to see it again, they experienced the movie in a whole new way.",
+    "In her short life of 40 years, Rose has made her mark on the world of movies with her articles for *Action! US*.  We are lucky to have had her in our lives.  She was a very special person.",
+    "Alex Jackson",
+    "Head of *Action! US*",
+    "article 文章"
+   ]
+  },
+  {
+   "id": "32-34",
+   "blocks": [
+    "**SEA GLASS: GLASS BOTTLES’ SECOND LIFE**",
+    "Sea glass is made from the magic of the sea.  It usually comes from glass bottles that are thrown into the water.  Each piece of sea glass looks different, and sea glass is often seen on art pieces.  The pictures below explain how sea glass is born.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/32-34-5.webp",
+      "width": 615,
+      "height": 186
+     }
+    },
+    "Glass bottles are thrown as garbage into the sea.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/32-34-6.webp",
+      "width": 615,
+      "height": 243
+     }
+    },
+    "When these bottles ride the waves of the sea, they hit each other or other garbage in the sea and break into small pieces of glass.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/32-34-7.webp",
+      "width": 615,
+      "height": 243
+     }
+    },
+    "Pieces of glass are pushed by sea water and move along the sea floor.  The sharp pieces slowly become rounder and rounder.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/32-34-8.webp",
+      "width": 615,
+      "height": 243
+     }
+    },
+    "After tens or hundreds of years in the sea, the pieces of glass grow an ice-like white color on the outside and become sea glass.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/32-34-9.webp",
+      "width": 615,
+      "height": 243
+     }
+    },
+    "Sea glass is finally pushed up to the beach.",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/32-34-10.webp",
+      "width": 615,
+      "height": 255
+     }
+    },
+    "Artists collect pieces of sea glass and put them into their works.",
+    "However, people now seldom use glass to make bottles and bowls—paper bowls and cups have become more popular these days.  This means there are fewer glass items in the sea, so less and less sea glass will be found in the future.",
+    "title 標題"
+   ]
+  },
+  {
+   "id": "35-39",
+   "blocks": [
+    "**The Future of Icelandic**",
+    "Scandinavian News **by Anna Adams**",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/35-39-11.webp",
+      "width": 426,
+      "height": 309
+     }
+    },
+    "Icelandic is a language that is spoken only in Iceland. It has a long history.  But many Icelanders are worried that they’re losing Icelandic.",
+    "The reason for their worry is __the prevalence of English__ in Iceland.  “I use English when I talk to my housework robot, use my phone, and watch movies,” said Helgi Atlason, an engineer.  There is a reason for that.  Most of these products use English, and few companies care to change the language into Icelandic because there are only a small number of Icelandic speakers (314,000 people). Actually, you see English everywhere in Iceland.",
+    "Icelanders also speak and hear more English than Icelandic these days because many foreigners who come to live and work in Iceland speak only English.  “We can’t use Icelandic abroad, and we’re not using it much in Iceland, either.  How do you expect our kids will want to learn it?” said Eirikur Wilson, a teacher.",
+    "Will Iceland one day give up Icelandic for English?  It may happen soon.",
+    "**Our Future with Icelandic**",
+    "Scandinavian News **by Gunnar Eggertsson**",
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/35-39-12.webp",
+      "width": 426,
+      "height": 309
+     }
+    },
+    "Many people think Icelandic is a language in its sickbed and that it needs to be saved.  I understand their worries, but does the future of our language really look that bad?",
+    "According to Dr. David Clingingsmith, a language needs at least 35,000 speakers to be “safe” from becoming a dying language.  There are now 314,000 Icelandic speakers.  Also, every year Iceland spends 51.3 million Icelandic crowns (3.7 million US dollars) teaching Icelandic to machines: phones, computers, and robots.  Icelandic is appearing more often in products.  Most importantly, schools still teach Icelandic to children.  Clearly, we are not giving up our first language.",
+    "However, I’m not saying that Iceland has done enough for Icelandic.  Our country can do a better job at getting more people to speak this beautiful language.  One way to do so is to give more language courses to foreigners.  With much more work, I’m sure Icelandic can grow and even reach farther into the world.",
+    "Icelander 冰島人　product 商品",
+    "describe 形容"
+   ]
+  },
+  {
+   "id": "40-43",
+   "blocks": [
+    "A long time ago, there was an old king who had no child of his own. The king was worried that his land would fall into the wrong hands after his death, so he decided to pick a child in his land to take the high seat.  One day, he called all the children to his castle and gave each of them a seed.  “Come back on New Year’s Day and show me what you have grown,” he said to them, “and I will [[40]] .”",
+    "Every child brought their seeds home carefully.  One of the children, Wong, planted his seed in a pot.  He gave it water every day and made sure there was sun to help it grow.  [[41]] .",
+    "Then, Sung, the child of the richest family in the land, told people that a small plant was growing from his seed.  He was [[42]] .  Everyone excitedly said that he would be king.  Soon, one after another, more and more children were also saying that they had something in their pots.  But Wong still didn’t find anything in his.",
+    "On the big day, when Wong brought his pot to the castle, he saw all the other children carrying interesting plants.  Some had flowers in the shape of a bird, and some had grasses of different colors. Everyone proudly showed their plants to the king, but the king looked unhappy until he saw Wong’s pot.  “I boiled the seeds before I gave them out, so no plants could grow from them.”  The king looked seriously at the children.  “There is only one child who is [[43]] enough to be king.”",
+    "Ten years later, the king died.  On his deathbed, he was not worried because he knew Wong would be a good king."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "Look at the picture.  All of the students who are exercising are wearing ＿＿＿＿ .",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/115/english/text/1-13.webp",
+      "width": 756,
+      "height": 432
+     }
+    }
+   ],
+   "options": [
+    "caps",
+    "glasses",
+    "jackets",
+    "pants"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "Rita ＿＿＿＿ her dogs many times a day.  That’s why they’re too fat.",
+   "options": [
+    "feeds",
+    "kisses",
+    "walks",
+    "washes"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "You can ask Sophia anything about butterflies and bees.  She has great ＿＿＿＿ of insects.",
+   "options": [
+    "chances",
+    "knowledge",
+    "news",
+    "power"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "Adam slept ＿＿＿＿ last night because he kept waking up from bad dreams.",
+   "options": [
+    "deeply",
+    "early",
+    "terribly",
+    "quickly"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "Tara enjoys being with all kinds of animals; she even ＿＿＿＿ a snake as a pet.",
+   "options": [
+    "drops",
+    "gives",
+    "keeps",
+    "makes"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "Little Eric chose the doll ＿＿＿＿ big brown eyes because it was the cutest in the store.",
+   "options": [
+    "at",
+    "in",
+    "on",
+    "with"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "After four hours of mountain climbing, Rosa’s legs got ＿＿＿＿ , so she took a rest on the top of the mountain.",
+   "options": [
+    "dirty",
+    "sick",
+    "sore",
+    "strong"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "Having three cups of coffee a day can’t be bad for our health, ＿＿＿＿ ?",
+   "options": [
+    "can it",
+    "can they",
+    "is it",
+    "are they"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "You can’t push that door open with only one hand.  It’s too heavy.  You have to use ＿＿＿＿ !",
+   "options": [
+    "all",
+    "another",
+    "both",
+    "one"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "Alan works hard in his new job, and he wants to know ＿＿＿＿ his boss feels about him.",
+   "options": [
+    "how",
+    "that",
+    "whether",
+    "why"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "I thought the girl ＿＿＿＿ was Kate, but it was her sister, Candy.  They sounded almost the same.",
+   "options": [
+    "answered the phone",
+    "she answered the phone",
+    "who answered the phone",
+    "and answered the phone"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "Ken is going abroad with a woman he met online, though he doesn’t know ＿＿＿＿ well.",
+   "options": [
+    "her",
+    "each other",
+    "any",
+    "another"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "Joe is happy he is not at the ＿＿＿＿ of the class now.  His grades are better than half of his classmates’ this school year.",
+   "options": [
+    "side",
+    "front",
+    "center",
+    "bottom"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "Look!  There is not a cloud in the sky.  I think the chances of getting some rain today are really ＿＿＿＿ .",
+   "options": [
+    "far",
+    "good",
+    "possible",
+    "small"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "On windy days, the flowers in my garden ＿＿＿＿ like shy children with their heads down.",
+   "options": [
+    "bow",
+    "fall",
+    "rise",
+    "smell"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "Mr. Olson went to the doctor when he found he ＿＿＿＿ his hair.  He hoped he would be able to keep his thick hair.",
+   "options": [
+    "was losing",
+    "is losing",
+    "will lose",
+    "has lost"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "Do you know what Lindsey’s first job was?  Before becoming a movie star, she ＿＿＿＿ the floors at the supermarket.",
+   "options": [
+    "mops",
+    "is mopping",
+    "has mopped",
+    "mopped"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "Our dog Lassie hides under the bed every time the moon comes out.  She has been ＿＿＿＿ for years, but we don’t know why.",
+   "options": [
+    "it",
+    "like this",
+    "like us",
+    "that"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "Tom: Sam, could you help me in the kitchen now?",
+   "blocks": [
+    "Sam: No, I ＿＿＿＿ TV.  It’s the most important game of the season."
+   ],
+   "options": [
+    "watch",
+    "watched",
+    "have watched",
+    "am watching"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "Amanda wants to make fruit tea by following *The Best Fruit Tea You Can Make at Home*.  She has several kinds of fruit in the kitchen: apples, bananas, oranges, papayas, pears, and strawberries.  Which are some of the fruits she can use to make the fruit tea?",
+   "set": "20-21",
+   "options": [
+    "Oranges, papayas and pears.",
+    "Apples, bananas and oranges.",
+    "Apples, oranges and strawberries.",
+    "Bananas, papayas and strawberries."
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "According to the reading, which is correct when we make the fruit tea?",
+   "set": "20-21",
+   "options": [
+    "Boiling water with sugar in it.",
+    "Making sure to take out the fruit.",
+    "Putting in the fruit and the lemon juice at the same time.",
+    "Leaving the teabags in the pot of hot water for 2 to 3 minutes."
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "According to the comics, what kind of person is Hawkins?",
+   "set": "22-23",
+   "options": [
+    "He sees good things in people.",
+    "He never goes to work on time.",
+    "He blindly follows other people.",
+    "He talks about things he can’t do."
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "What does it mean when we say someone __bombed__ something?",
+   "set": "22-23",
+   "options": [
+    "They gave it up.",
+    "They failed at it.",
+    "They were fine with it.",
+    "They were careful about it."
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "Which question can the brochure answer?",
+   "set": "24-26",
+   "options": [
+    "Can I order tickets online?",
+    "How much are the tickets?",
+    "How can I get to the Marigolds’ Home?",
+    "When can I visit the Marigolds’ Home?"
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "What breaks the rules for visitors to the Marigolds’ Home?",
+   "set": "24-26",
+   "options": [
+    "Eating burgers in the Rose Garden.",
+    "Taking pictures in the Main House.",
+    "Entering the Rabbit’s Temple without shoes.",
+    "Taking pet dogs for a walk on the playground."
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "After shopping at the gift shop of the Main House, Lizzy walks out and sees the Family Library in front of her.  She wants to visit the Rose Garden.  How can she get there?",
+   "set": "24-26",
+   "options": [
+    "Turn left and walk past the Main House, then go straight and turn right at the corner.",
+    "Turn left and walk past Sir Archie’s House, then turn right and walk past the Main House.",
+    "Turn right and go straight to the Farmyard, then turn right and go straight, then turn left at the corner.",
+    "Turn right and walk through the Butterfly Garden, then walk past the Rabbit’s Temple and the café."
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "Why was Beatrice Harrison called the Nightingale Lady?",
+   "set": "27-28",
+   "options": [
+    "She wrote songs about nightingales.",
+    "She sang as beautifully as a nightingale did.",
+    "She taught nightingales to sing in a radio show.",
+    "She was famous for playing music with nightingales."
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "Which is NOT used in the reading to mean the nightingale(s) ?",
+   "set": "27-28",
+   "options": [
+    "Her visitor.",
+    "The little singers.",
+    "The artist.",
+    "Her garden friends."
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "Why does Alex Jackson write about Rose Lacey?",
+   "set": "29-31",
+   "options": [
+    "Because she died.",
+    "Because she is very sick.",
+    "Because she is moving away.",
+    "Because she is leaving for another job."
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "How did Rose Lacey and Alex Jackson get to know each other?",
+   "set": "29-31",
+   "options": [
+    "They met at a party.",
+    "They were relatives.",
+    "They worked in the same office.",
+    "They took a course on movies together."
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "What is special about Rose Lacey’s articles?",
+   "set": "29-31",
+   "options": [
+    "They are important to movie makers.",
+    "They talk about movies from a fresh angle.",
+    "They give interesting information about actors.",
+    "They are good examples of how to write stories."
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "Why does the title say “Glass Bottles’ Second Life” ?",
+   "set": "32-34",
+   "options": [
+    "People collect sea glass and use it to make new glass bottles.",
+    "People collect sea glass at the beach and use it to make wishes.",
+    "Glass bottles that are thrown into the sea become the homes of sea animals.",
+    "Glass bottles that are thrown into the sea become sea glass which is used in art pieces."
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "According to the reading, how is sea glass made?",
+   "set": "32-34",
+   "options": [
+    "Sea glass becomes rounder after it is pushed up to the beach.",
+    "Colder sea water helps pieces of glass become sea glass faster.",
+    "Pieces of glass become white on the outside after many years in the sea.",
+    "Glass bottles break into pieces when they are dug out from the sea floor."
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "According to the reading, why will less sea glass be found in the future?",
+   "set": "32-34",
+   "options": [
+    "People do not make as many glass items as before.",
+    "People have learned not to throw garbage into the sea.",
+    "Artists are using too much sea glass in their art pieces.",
+    "Waves are not big enough to push sea glass up to the beach."
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "What does __the prevalence of English__ mean?",
+   "set": "35-39",
+   "options": [
+    "That English is very common.",
+    "That English is not welcomed.",
+    "That English is easy and simple.",
+    "That English is not a national language."
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "In the first reading, which is one of the ways that Anna Adams uses to make readers believe in her ideas?",
+   "set": "35-39",
+   "options": [
+    "Sharing her own life stories.",
+    "Borrowing from people’s experience.",
+    "Using examples from another language.",
+    "Showing information from news reports."
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "Which words in the second reading are NOT used to describe Icelandic?",
+   "set": "35-39",
+   "options": [
+    "A language in its sickbed.",
+    "A dying language.",
+    "Our first language.",
+    "This beautiful language."
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "Are Anna Adams and Gunnar Eggertsson worried about the future of Icelandic?",
+   "set": "35-39",
+   "options": [
+    "No, they are not.",
+    "Yes, they both are.",
+    "Adams is, but Eggertsson is not.",
+    "Adams is not, but Eggertsson is."
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "Which idea do Anna Adams and Gunnar Eggertsson both talk about in the readings?",
+   "set": "35-39",
+   "options": [
+    "Whether Icelanders speak better English than Icelandic.",
+    "Whether the number of Icelandic speakers is big enough.",
+    "Whether school subjects should be taught only in Icelandic.",
+    "Whether Iceland should allow more foreigners to work in Iceland."
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "",
+   "set": "40-43",
+   "options": [
+    "give you a piece of good land",
+    "choose a person to be the next king",
+    "put the beautiful ones in my castle",
+    "decide who will work in my garden"
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "",
+   "set": "40-43",
+   "options": [
+    "But he lost his pot a few weeks later",
+    "Months passed but nothing grew from it",
+    "But soon the plant that grew from it died",
+    "The seed grew into a big tree in a short time"
+   ]
+  },
+  {
+   "number": 42,
+   "stem": "",
+   "set": "40-43",
+   "options": [
+    "the last one to give up",
+    "the first one to share good news",
+    "the first one to bring his pot to the king",
+    "the only one to take good care of his plant"
+   ]
+  },
+  {
+   "number": 43,
+   "stem": "",
+   "set": "40-43",
+   "options": [
+    "wise",
+    "strong",
+    "honest",
+    "popular"
+   ]
+  }
+ ]
+}

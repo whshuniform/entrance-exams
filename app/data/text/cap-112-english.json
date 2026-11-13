@@ -1,0 +1,600 @@
+{
+ "exam": "cap",
+ "year": 112,
+ "id": "english",
+ "sets": [
+  {
+   "id": "24-25",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/24-25-1.webp",
+      "width": 1401,
+      "height": 1074
+     }
+    },
+    "calendar 月曆"
+   ]
+  },
+  {
+   "id": "26-27",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/26-27-2.webp",
+      "width": 1395,
+      "height": 1344
+     }
+    },
+    "nest 鳥巢　feather 羽毛"
+   ]
+  },
+  {
+   "id": "28-29",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/28-29-3.webp",
+      "width": 1395,
+      "height": 1989
+     }
+    },
+    "stage 階段　waste 浪費　percentage 百分比"
+   ]
+  },
+  {
+   "id": "30-32",
+   "blocks": [
+    "Sometimes when the rain falls hard and fast on you, it might hurt a little.  But what happens when it hits a mosquito?  A 2012 study says when a raindrop falls on a mosquito, it’s like when a bus hits a person.  Besides, the little insect is hit by a raindrop about once every 20 seconds.  So why don’t we see many dead mosquitoes after it rains?",
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/30-32-4.webp",
+      "width": 297,
+      "height": 294
+     }
+    },
+    "A mosquito is as big as a raindrop, but it is much lighter — 0.002 g only.  This saves its life in raindrop attacks.  Because the mosquito is so light, when it is hit by a raindrop, it won’t experience a force that is strong enough to kill it.",
+    "The study also found that when a mosquito is hit by a raindrop, the insect is pushed by the raindrop and falls together with it.  But the mosquito doesn’t get wet easily because it is covered with hairs which keep off water.  After dropping about 6 cm, it will roll off the raindrop and fly away.",
+    "However, this __trick__ isn’t always successful.  If the mosquito flies too low when it is hit by the raindrop, it won’t have time to fly off.  Then it will hit the ground and meet its death.",
+    "force 力量"
+   ]
+  },
+  {
+   "id": "33-35",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/33-35-5.webp",
+      "width": 297,
+      "height": 399
+     }
+    },
+    "You probably have heard Beethoven’s famous piano piece “For Elise,” but do you know who “Elise” was?",
+    "One story is that Elise was Elisabeth Röckel.  She once sang in Beethoven’s opera *Fidelio*, and the two became very good friends.  Beethoven called her “Elise.”  When Röckel was leaving the city of Vienna, Beethoven wrote “For Elise” to say goodbye to her.  Another story is that Elise was Therese Malfatti.  Beethoven was in love with her.  He wrote a piece for her and put “For Therese” on the manuscript.  Malfatti kept the manuscript and left it to her family when she died.  Later, a man copied the manuscript and wrote “For Elise” by mistake.  There is another possible Elise: Elise Barensfeld.  She learned the piano from Malfatti, the same Malfatti in the second story.  To help Malfatti, Beethoven wrote the piece for her to use to teach Barensfeld.",
+    "These are just some guesses about who Elise was.  We may never know the right answer.  No one knew about the piece until 1867, when the manuscript was found.  This was 40 years after Beethoven’s death, so he wasn’t around to tell us who Elise was.  Only one thing is for sure: “For Elise” will always be enjoyed.",
+    "opera 歌劇　manuscript 手稿"
+   ]
+  },
+  {
+   "id": "36-38",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/36-38-6.webp",
+      "width": 1320,
+      "height": 126
+     }
+    },
+    "Which would you give a boy for his birthday, a toy truck or a doll?  If you choose the truck, well, you’re not alone.  Most people think that some toys are for boys and some are for girls.  We might pick building toys for boys and kitchen toys for girls.  But why do we do this?  Are boys and girls really born with different interests in toys?",
+    "No, they are not.  Children start to show different interests in toys at age three, but only because at this time, they begin to learn about gender and to follow what others of their gender do.  If you give a girl kitchen toys, she will think they are girls’ toys because she sees other girls playing with them.  But if you give a girl a toy car and show her a group of girls who are playing with cars, she’ll play with the toy car and think it is a girls’ toy.  This “watch and follow” habit often becomes a rule for both boys and girls in choosing the “right” toys.",
+    "However, this rule can be bad for children.  Different toys teach children different things.  Dolls help with their early language use, and building toys are good for learning math and science.  By playing with different toys, children can find out what they are interested in or what they are good at.  If they only play one kind of toy, they may lose this important chance.  They may also get a wrong idea about what boys or girls are able to do.  Some doctors worry that children may use the same kind of thinking when they look for jobs in the future.  If they do, they may miss something more important than just getting a chance to play with different toys.  They may miss many, perhaps better, chances in life.",
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/36-38-7.webp",
+      "width": 1326,
+      "height": 93
+     }
+    },
+    "gender 性別",
+    "paragraph 段落"
+   ]
+  },
+  {
+   "id": "39-41",
+   "blocks": [
+    "Marie Colvin was a world-famous war reporter.  She was born in New York, USA, in 1956 and died in Homs, Syria, in 2012.",
+    "When she was a student at Yale University, Colvin decided that she wanted to be a reporter in the future.  She joined the *Sunday Times*, a UK newspaper, in 1985 and soon became its Middle East reporter.  Besides the Middle East, she also reported from other parts of the world: Chechnya, Kosovo and Sri Lanka, for example.  When she was reporting on the war in Sri Lanka, she lost her left eye.  But that never stopped her.  She still went to dangerous places that few reporters wanted to visit and stayed when others left.",
+    "Colvin showed great __empathy__ in her stories.  For her, war reporting was not just some quick interviews and a few photos.  She wrote about real people and their real lives.  Her writing made you feel so strongly about these people’s stories, just like they were your own.  She hoped that through her work the world would understand what really happened in war, and would take action to stop the fighting.",
+    "On February 22, 2012, the day after she gave her report on the war in Homs, Colvin was killed when the house she was staying in was attacked.  She always knew what price a war reporter might have to pay.  She already lost an eye before.  This time, she gave her life to the work she could not give up — telling the true stories to the world.",
+    "war 戰爭"
+   ]
+  },
+  {
+   "id": "42-43",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/42-43-8.webp",
+      "width": 1329,
+      "height": 153
+     }
+    },
+    "*Speaking American* is a great book!",
+    "Lucia Leisure  ★★★★★",
+    "I just love Josh Katz’s new book!  It’s about [[42]] in different parts of the US.  The information in the book was collected from the quiz that Katz built on the website in 2013.  The quiz asked what words people use for something, and their answers showed interesting facts.  For example, there are different names for sports shoes.  In most parts of the US, people say “tennis shoes.”  In the northeast of the country, people wear “sneakers.”  In some towns, “tennis shoes” and “sneakers” become “gym shoes.”",
+    "The use of words tells us where people are from, like Katz’s book says.  But in my experience, it also shows [[43]] .  My family has lived in New York since my grandparents.  It’s not surprising that I say “sneakers.”  But my grandfather says “plimsolls,” and my daughter says “kicks” or “vans.”  Maybe Katz can study this difference for his next book.",
+    "website 網站"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "Look at the picture.  The man is holding a ＿＿＿＿ of grapes in his hands.",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/1-9.webp",
+      "width": 264,
+      "height": 387
+     }
+    }
+   ],
+   "options": [
+    "bag",
+    "basket",
+    "bowl",
+    "box"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "Dennis enjoys ＿＿＿＿ in public.  He is proud of his beautiful voice.",
+   "options": [
+    "dancing",
+    "drawing",
+    "shopping",
+    "singing"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "Mrs. Johnson can’t hear very well.  If you need to talk to her, you must ＿＿＿＿ .",
+   "options": [
+    "explain",
+    "hurry",
+    "listen",
+    "shout"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "People got very excited when they watched Ms. Smith ＿＿＿＿ at the party.",
+   "options": [
+    "danced",
+    "dancing",
+    "has danced",
+    "to dance"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "I tried on these shoes in several different ＿＿＿＿ , and I thought the white pair looked best on me.",
+   "options": [
+    "colors",
+    "prices",
+    "shapes",
+    "sizes"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "Rex did not feel the earthquake this morning.  He ＿＿＿＿ in the park at the time.",
+   "options": [
+    "jogged",
+    "was jogging",
+    "has jogged",
+    "would jog"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "Mr. Lee has worked in the same store for ten years; he’s never thought about ＿＿＿＿ his job.",
+   "options": [
+    "changing",
+    "finding",
+    "remembering",
+    "starting"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "I didn’t take the bus today because it was ＿＿＿＿ .  All the seats were taken and a lot of students were standing.",
+   "options": [
+    "dirty",
+    "fast",
+    "full",
+    "wrong"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "Don’t go away when you’re cooking, ＿＿＿＿ the food might burn.",
+   "options": [
+    "but",
+    "if",
+    "or",
+    "so"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "Jerry wanted to know ＿＿＿＿ he was kicked off the soccer team, but no one gave him a good reason.",
+   "options": [
+    "where",
+    "when",
+    "whether",
+    "why"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "Jenny is already forty, doesn’t have a job and often makes trouble for her parents.  To them, she is really a(n) ＿＿＿＿ .",
+   "options": [
+    "daughter",
+    "example",
+    "gift",
+    "headache"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "Ed and Jill ＿＿＿＿ camping this weekend, so they have to finish their homework by Friday.",
+   "options": [
+    "went",
+    "were going",
+    "are going",
+    "have gone"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "Doraemon, a blue Japanese robot cat, has hated mice since his ears ＿＿＿＿ by a mouse.",
+   "options": [
+    "bit",
+    "bite",
+    "were bitten",
+    "have bitten"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "If we play some interesting games in class, there ＿＿＿＿ more fun in learning English.",
+   "options": [
+    "are",
+    "has",
+    "will be",
+    "will have"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "The ＿＿＿＿ of this shop was so bad; I never got any answer after I emailed them my questions.",
+   "options": [
+    "item",
+    "business",
+    "price",
+    "service"
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "It’s not easy to see those islands clearly from here on sunny days, and it’s even less ＿＿＿＿ to see them on cloudy days.",
+   "options": [
+    "difficult",
+    "lucky",
+    "possible",
+    "special"
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "Do you remember the CD I was looking for for months?  I ＿＿＿＿ found it in a small shop.  Look, here it is!",
+   "options": [
+    "almost",
+    "even",
+    "finally",
+    "still"
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "Business at Jane’s shop has not been good these days.  And the new supermarket across the street only makes things ＿＿＿＿ .",
+   "options": [
+    "easier",
+    "worse",
+    "more boring",
+    "more convenient"
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "Scott wasn’t sure if the young woman before him was ＿＿＿＿ pulled him out of a car on fire.",
+   "options": [
+    "who",
+    "the one",
+    "the one she",
+    "the one who"
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "I ＿＿＿＿ swimming for several years before I went to this high school.  I gave it up because of heavy schoolwork.",
+   "options": [
+    "have practiced",
+    "am practicing",
+    "practiced",
+    "would practice"
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "Frank Kane is so good in the movie that many people ＿＿＿＿ he will win the best actor prize.",
+   "options": [
+    "expect",
+    "forget",
+    "notice",
+    "plan"
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "The new medicine that just came out on the market ＿＿＿＿ thousands of lives.",
+   "options": [
+    "and saved",
+    "has saved",
+    "saving",
+    "to save"
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "Now I often think of those days with Pip, my pet dog.  When I read in my room, he ＿＿＿＿ quietly beside me.",
+   "options": [
+    "will come and sit",
+    "comes and sits",
+    "has come and sat",
+    "used to come and sit"
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "Amy went to Four Seasons’ Kitchen with her mother after she collected 15 stars.  They ordered two Garden Sandwiches, an Autumn Wind, and a Winter Snow.  After using the stars, how much did they pay for their meals?",
+   "set": "24-25",
+   "options": [
+    "\\$290.",
+    "\\$230.",
+    "\\$220.",
+    "\\$160."
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "Amy wants to bring her friends to Four Seasons’ Kitchen in August.  She looks at her calendar to pick a time to go there.  Which are the time and date she can choose?",
+   "set": "24-25",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/112/english/text/25-10.webp",
+      "width": 765,
+      "height": 468
+     }
+    }
+   ],
+   "options": [
+    "8:30 pm, August 1.",
+    "5:00 pm, August 11.",
+    "3:00 pm, August 13.",
+    "2:00 pm, August 28."
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "According to the notes, which is the WRONG way to help a baby bird that is out of its nest?",
+   "set": "26-27",
+   "options": [
+    "Feed it before you take it to a hospital.",
+    "Leave it alone if it is not hurt and has feathers.",
+    "Call the animal center if you can’t find its nest.",
+    "Put it back in its nest if it is not hurt and has few feathers."
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "According to the notes, what do birds do if their babies have the smell of people on them?",
+   "set": "26-27",
+   "options": [
+    "They keep taking care of them.",
+    "They push them out of the nest.",
+    "They clean them until the smell goes away.",
+    "They leave them behind and move to a new nest."
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "According to the reading, which is one of the reasons for food waste?",
+   "set": "28-29",
+   "options": [
+    "Stores do not know how to pack food well.",
+    "Farmers do not have enough machines to collect food.",
+    "There is no refrigerator on the truck to keep food fresh.",
+    "Factories do not have enough trucks to carry food to stores."
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "Which is true about food waste at each stage in the three parts of the world?",
+   "set": "28-29",
+   "options": [
+    "For each area, the highest percentage of food waste happens at Stage 5.",
+    "Europe has a lower percentage of food waste at Stage 3 than the other two areas.",
+    "North America & Oceania has a higher percentage of food waste at Stage 1 than Europe.",
+    "South & Southeast Asia has a higher percentage of food waste at Stage 4 than the other two areas."
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "What is the __trick__ that the mosquito uses in rain?",
+   "set": "30-32",
+   "options": [
+    "It shakes its body fast enough to get water off.",
+    "It drops with the raindrop and then rolls off it.",
+    "It flies behind the raindrop and pushes it away.",
+    "It rides on the raindrop and lands on the ground."
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "What keeps a mosquito safe in the rain?",
+   "set": "30-32",
+   "options": [
+    "It is very light.",
+    "It has no body hairs.",
+    "It is as big as a raindrop.",
+    "It is strong enough to fight the force of a raindrop."
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "When would it be dangerous for a mosquito in the rain?",
+   "set": "30-32",
+   "options": [
+    "When it flies too close to the ground.",
+    "When the rain falls too hard and too fast.",
+    "When it is hit by raindrops too many times.",
+    "When it drops for more than 6 cm in the rain."
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "What do the three stories in the reading all talk about?",
+   "set": "33-35",
+   "options": [
+    "Who Beethoven’s true love was.",
+    "Who played “For Elise” the best.",
+    "How “For Elise” became popular.",
+    "Why Beethoven wrote “For Elise.”"
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "What do we know about “For Elise” from the reading?",
+   "set": "33-35",
+   "options": [
+    "It first appeared in the opera *Fidelio*.",
+    "The true “Elise” was Elise Barensfeld.",
+    "The manuscript was found after Beethoven died.",
+    "The manuscript is now kept by the city of Vienna."
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "What can we learn about the three women from the stories?",
+   "set": "33-35",
+   "options": [
+    "They were called “Elise” by their friends.",
+    "Elisabeth Röckel was a close friend of Beethoven’s.",
+    "Therese Malfatti changed “For Elise” to “For Therese.”",
+    "Elise Barensfeld was Beethoven’s student."
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "What idea does Jesse Cohen talk about in the reading?",
+   "set": "36-38",
+   "options": [
+    "Not all kinds of toys are helpful for children’s learning.",
+    "Parents should give their children the right toys for their age.",
+    "Children should learn about their gender from playing with toys.",
+    "We should not let gender decide which toys children can play with."
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "In the third paragraph, why does Jesse Cohen think “this rule can be bad for children”?",
+   "set": "36-38",
+   "options": [
+    "Children may not want to share their toys with others.",
+    "Children may have the wrong idea about following rules.",
+    "Children may not be able to learn from playing with toys.",
+    "Children may miss the chance to find out what they really like."
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "In the reading, after Jesse Cohen talks about an idea, he often gives an example to make it clear.  Below are four of the sentences in the third paragraph.  Which is used as an example?",
+   "set": "36-38",
+   "options": [
+    "“However, this rule can be bad for children.”",
+    "“Dolls help with their early language use, and building toys are good for learning math and science.”",
+    "“Some doctors worry that children may use the same kind of thinking when they look for jobs in the future.”",
+    "“If they do, they may miss something more important than just getting a chance to play with different toys.”"
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "What is the reading mostly about?",
+   "set": "39-41",
+   "options": [
+    "Marie Colvin’s war reports.",
+    "Marie Colvin’s working life.",
+    "Marie Colvin’s schooldays at Yale.",
+    "Marie Colvin’s experiences in Homs."
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "What does it mean when someone has __empathy__?",
+   "set": "39-41",
+   "options": [
+    "They are good at taking war photos.",
+    "They like to read other people’s life stories.",
+    "They are able to understand how other people feel.",
+    "They are good at helping people change their own lives."
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "Which is true about Marie Colvin?",
+   "set": "39-41",
+   "options": [
+    "The chance to study at Yale made her leave her job in the Middle East.",
+    "The experience in Sri Lanka did not change her way of reporting news.",
+    "She was killed in Homs when she was interviewing soldiers there for her report.",
+    "She was not sure what to do in the future until she worked for the *Sunday Times*."
+   ]
+  },
+  {
+   "number": 42,
+   "stem": "",
+   "set": "42-43",
+   "options": [
+    "what things are called",
+    "how sports are played",
+    "why different languages are spoken",
+    "what words are often spelled differently"
+   ]
+  },
+  {
+   "number": 43,
+   "stem": "",
+   "set": "42-43",
+   "options": [
+    "how old they are",
+    "who they speak to",
+    "where they grew up",
+    "whether they are men or women"
+   ]
+  }
+ ]
+}

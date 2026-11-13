@@ -1,0 +1,710 @@
+{
+ "exam": "cap",
+ "year": 110,
+ "id": "english",
+ "sets": [
+  {
+   "id": "15-16",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/15-16-1.webp",
+      "width": 1368,
+      "height": 228
+     }
+    },
+    "*We’ve prepared many wonderful surprises for you at e-BeautiMed, BeautiMed’s online store!*",
+    "**Surprise 1**",
+    "Join “BeautiMed Friend” online for free and get 2000 BeautiMed points!",
+    "**Surprise 2**",
+    "Already a “BeautiMed Friend” ?  Come collect your free gift by entering your “BeautiMed Friend” card number at e-BeautiMed before 8/31.",
+    "**Surprise 3**",
+    "Get 500 BeautiMed points by shopping at e-BeautiMed and you’ll get 500 more points if you spend more than \\$1,000.",
+    "**Surprise 4**",
+    "Shop at e-BeautiMed during 7/1-8/31 and you may win \\$5,000 or free movie tickets!",
+    "**Surprise 5**",
+    "Invite a friend to join “BeautiMed Friend” and you both can get 1000 points each!",
+    "enter 輸入"
+   ]
+  },
+  {
+   "id": "17-18",
+   "blocks": [
+    "Joey: Lynn, have you tried Caldron?  I’ve heard that restaurant is good.",
+    "Lynn: I have.  I went there once for Tom’s party.",
+    "Joey: And?",
+    "Lynn: Well, I never thought I would have to cook for myself when eating out.",
+    "Joey: But it’s fun to cook your own food.",
+    "Lynn: I don’t see any fun in that.  Besides, I want nice food.",
+    "Joey: So you didn’t like the food there?",
+    "Lynn: Everything tasted the same.  I mean, they were all cooked in the same boiling pot.  How could they taste different?  I just kept throwing strange things into the pot.  I didn’t even know what half the things were made of.",
+    "Joey: Don’t worry.  Everything should be safe to eat after a hot bath in the pot.  And you didn’t get sick after that, right?  Besides, you tried something different there.  Still a good experience, I think?",
+    "Lynn: I don’t think we share the same idea of good experiences."
+   ]
+  },
+  {
+   "id": "19-21",
+   "blocks": [
+    "Below is a page from Katie’s diary.",
+    "Dear Diary,",
+    "June 7, 2011",
+    "I was very sad to hear what happened to Woollie yesterday.  Woollie was my favorite sheep.  I have a storybook about Woollie.  It says when Woollie was four, he ran away from Mr. Armstrong’s farm, and it took Mr. Armstrong six years to find Woollie.  But Woollie had grown so much fleece that he didn’t even look like a sheep.  Mr. Armstrong decided to cut his fleece on TV so everyone could see.  Daddy said this happened on the day I was born.  Woollie’s fleece weighed 27 kg, and could make clothes for 20 large men.  I asked Daddy if his favorite vest was made from Woollie’s fleece.  Daddy said no, because Woollie’s fleece was sold to collect money for sick kids.  In the storybook, Woollie was taken to see Ms. Stella Clark, the leader of our city then.  They even had tea together.  Daddy said Woollie did meet Ms. Clark, but he wasn’t sure if they had tea.  Daddy said __Woollie was put down__ because he was too sick and there was no way to help him.  I cried.  I hope Woollie will be happy up there in the sky.",
+    "fleece 羊毛   weigh 重達"
+   ]
+  },
+  {
+   "id": "22-24",
+   "blocks": [
+    "Here’s *The Piano Lesson*, one of Henri Matisse’s most famous paintings.  The boy in the picture is the painter’s son, Pierre.  In the picture, Pierre looks quite serious.  Why?  Well, look at the yellow candle on the red piano.  It’s almost burned down.  So maybe Pierre has already practiced for hours.  And Matisse uses a lot of gray, not a very fun color, right?  It shows how the poor kid feels, don’t you think?",
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/22-24-2.webp",
+      "width": 540,
+      "height": 681
+     }
+    },
+    "On the top right corner, you can see a woman sitting straight on a seat.  Is she Pierre’s piano teacher?  Or his mother?  Well, if you’re a Matisse fan, you’ll know this is in fact another painting by him, *Woman on a High Stool*.   Interesting, right?  Matisse likes to __do that__ a lot.  In fact, there’s another work by Matisse in the picture.  Did you find it?  Right!  The sculpture on the bottom left corner!",
+    "Matisse painted this picture in 1916.  Pierre was already 16 then, but the artist painted his son much younger than he really was.  Pierre had gone away to be a soldier, and Matisse didn’t know whether he would come back.  Maybe this is a worried father’s way to remember the good old days.",
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/22-24-3.webp",
+      "width": 378,
+      "height": 324
+     }
+    },
+    "sculpture 雕像"
+   ]
+  },
+  {
+   "id": "25-28",
+   "blocks": [
+    "On Teachers’ Day, we thank our teachers for their hard work.  We also celebrate this day to remember Confucius, the great Chinese teacher from 2,500 years ago.  Well, that’s everything we’re taught about Teachers’ Day.  But, the first Teachers’ Day was not on Confucius’s birthday, and it was not about thanking our teachers.",
+    "In 1930, Mr. Tai Shuang-qiu and other teachers celebrated the first Teachers’ Day in Nanjing.  But there was nothing to celebrate.  Teachers were paid very little and not respected.  These teachers took this chance to shout out their problems.  They had Teachers’ Day on June 6 because the date was easy to remember and near the end of the school year.  This action by Mr. Tai and the other teachers was welcomed and followed by teachers from other cities.  In 1939, the government made Teachers’ Day a national holiday.  However, it was on August 27, the day when Confucius’s birthday was celebrated.  Not everyone __hailed__ this decision: Teachers’ Day was never about Confucius, and Confucius couldn’t speak for all the teachers either.",
+    "One funny thing was that the government was wrong about the date of Confucius’s birthday.  In 1952, people found out he was in fact born on September 28.  That was when we started to celebrate Teachers’ Day on Confucius’s real birthday.",
+    "respect 尊敬   government 政府"
+   ]
+  },
+  {
+   "id": "29-31",
+   "blocks": [
+    "Dear Traveler,",
+    "You have bought an NFR ticket online for a train that runs between **White Water City** and **Cloud City**.",
+    "We are sorry to tell you that, because of the typhoon last month, the **Sand Town – Spring Town** line will be closed between **August 14 and 28 2016**.  During this time, some trains will change lines and will not stop at a few stations.  There will be free buses to take travelers to these stations.  Please check below for the changes.  Visit __http://www.nfr.gov/__ for more information.",
+    "We wish you a nice summer.",
+    "*Lena Muller*",
+    "**N**ational **F**ormosa **R**ailway",
+    "1. Trains that run between **Green City** and **Cloud City** will take the **Smoke Town – Spring Town** line, and will stop at every station.  Below are the trains that will change lines.",
+    {
+     "table": [
+      [
+       "",
+       "**Train**",
+       "**New Line (**from 8/14 to 8/28**)**"
+      ],
+      [
+       "**Going South**",
+       "RL101",
+       "White Water City → Cloud City"
+      ],
+      [
+       "",
+       "RL102",
+       "White Water City → Spring Town"
+      ],
+      [
+       "",
+       "RL103",
+       "Green City → Cloud City"
+      ],
+      [
+       "**Going North**",
+       "RL201",
+       "Spring Town → Green City"
+      ],
+      [
+       "",
+       "RL202",
+       "Cloud City → Green City"
+      ]
+     ]
+    },
+    "2. The free buses for the **Sand Town – Spring Town** line will wait at **Green City** (going south) and **Spring Town** (going north) stations.  **No stop at Gray Village.**",
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/29-31-4.webp",
+      "width": 480,
+      "height": 756
+     }
+    },
+    "line 路線"
+   ]
+  },
+  {
+   "id": "32-34",
+   "blocks": [
+    "**Darayya’s Library**",
+    "*John Edwards, July 21 2016*",
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/32-34-5.webp",
+      "width": 525,
+      "height": 225
+     }
+    },
+    "In Darayya, a city in Syria, there’s a library, and it has 15,000 books on almost every subject you can think of.  However, it is different from any libraries you know: It is a secret underground library, and only people in Darayya know where it is.",
+    "Over the years, war has shaken Darayya badly.  Every day, houses are bombed and people are killed.  Stores are closed one after another, and so are schools.  To help the kids in Darayya with their learning, Anas Ahmad, a 19-year-old student, and his friends decided to build a library.  They built the library under the ground to keep it safe from bombing.  But it is dangerous to collect books for the library.  Often, Ahmad and his friends look for books in houses that were bombed.  They need to be careful because they may be killed in another bombing.",
+    "You may ask, “In a place like Darayya, would people be interested in books?”  “Just like the body needs food, the mind needs books,” says one library user.  In the library, people enjoy their time of reading and forget about the terrible world above, so their life doesn’t seem so hard.   Through reading, they are able to dream of a better life after war.",
+    "war 戰爭   bomb 轟炸   seem 彷彿"
+   ]
+  },
+  {
+   "id": "35-37",
+   "blocks": [
+    "From: Mia Loren <mloren@qmail.com>",
+    "To: Dave Doddo <dd1225@qmail.com>",
+    "Date: Tue, Oct 24, 2017 at 10:01 AM",
+    "Subject: Daniel’s 5th Birthday Party – This Saturday!",
+    "Hello Dave,",
+    "We’re happy to invite you and your family to Daniel’s fifth birthday party this Saturday.",
+    "We know we told you that the party would be in [[35]] .  However, we just moved to Carlton City last month, so the party won’t be in Pattersons Town.  It’ll be at Mosman Garden right next to Victor Zoo, just across from our new apartment.  Please don’t go to Northbank Park next to our old house.",
+    "The weather report said that it may be rainy this weekend, but [[36]] .  If it rains, we’ll move the party inside our home.  However, if we’re [[37]] and it is fine, we’ll still have the party at the garden.",
+    "Again, we’re all very happy and excited to welcome you to join us for some fun this weekend!",
+    "Best,",
+    "Mia, Sam & Daniel"
+   ]
+  },
+  {
+   "id": "38-41",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/38-41-6.webp",
+      "width": 300,
+      "height": 303
+     }
+    },
+    "Usually I wouldn’t cross the park at this time of night.  But walking around the park would take more time, and it was raining so hard that I couldn’t even see clearly what was right before me.  So I entered the park.  And that was the first stupid thing I did tonight.",
+    "Soon after I walked into the park, I saw a man under a tree up ahead.  My heart fell.  The stories I’d heard about the park [[38]] into my head at this moment.  Anyone with a clear mind would just turn back.  But me?  No.  I did [[39]] stupid thing: I decided to hurry past him.",
+    "Just when I was passing the man, he raised his head and gave me the strangest smile ever.  I got scared and started running.  “Hey!” the man shouted from behind.  “Wait!”  He was running after me!",
+    "I ran like crazy.  I had hoped the trees would keep some rain off.  And they [[40]] .  But they also made the park look even darker.  I couldn’t see what was ahead of me.  Then, I ran into something.  It was the man!",
+    "“Don’t kill me!” I cried.",
+    "“What?  I [[41]] to give back your bag!  You dropped it,” the man gave me my bag.",
+    "Now, I felt saying that to the man was the stupidest thing I did tonight.",
+    "ahead 在前面"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "number": 1,
+   "stem": "In the picture, the boy is ＿＿＿＿ the old man.",
+   "blocks": [
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/1-7.webp",
+      "width": 384,
+      "height": 348
+     }
+    }
+   ],
+   "options": [
+    "smiling at",
+    "dancing with",
+    "cheering for",
+    "bowing to"
+   ]
+  },
+  {
+   "number": 2,
+   "stem": "Listen!  The baby ＿＿＿＿ in the bedroom.  Why don’t you go in and take a look?",
+   "options": [
+    "cried",
+    "cries",
+    "is crying",
+    "will cry"
+   ]
+  },
+  {
+   "number": 3,
+   "stem": "Jill is ＿＿＿＿ that the city park is closed for the music festival because now she can’t jog there.",
+   "options": [
+    "excited",
+    "proud",
+    "scared",
+    "unhappy"
+   ]
+  },
+  {
+   "number": 4,
+   "stem": "Steven wants to be a ＿＿＿＿ , because he loves to watch people enjoy the food he prepares.",
+   "options": [
+    "cook",
+    "doctor",
+    "driver",
+    "farmer"
+   ]
+  },
+  {
+   "number": 5,
+   "stem": "Paul misses his parents a lot.  He ＿＿＿＿ them since he came to work in Taiwan a year ago.",
+   "options": [
+    "didn’t see",
+    "doesn’t see",
+    "hasn’t seen",
+    "won’t see"
+   ]
+  },
+  {
+   "number": 6,
+   "stem": "Our teacher Ms. Wu seldom laughs, but when she ＿＿＿＿ , everyone in the same building can hear her.",
+   "options": [
+    "can",
+    "does",
+    "has",
+    "will"
+   ]
+  },
+  {
+   "number": 7,
+   "stem": "My sister is coming to my home today.  She ＿＿＿＿ with me for a week.",
+   "options": [
+    "stays",
+    "stayed",
+    "has stayed",
+    "will stay"
+   ]
+  },
+  {
+   "number": 8,
+   "stem": "Edward had worked as a computer engineer for ten years.  This ＿＿＿＿ helped him a lot when he started his own computer shop.",
+   "options": [
+    "chance",
+    "experience",
+    "hobby",
+    "knowledge"
+   ]
+  },
+  {
+   "number": 9,
+   "stem": "If you’re interested in our business plan, ＿＿＿＿ this number and ask for Ms. Lee.  She’ll answer your questions.",
+   "options": [
+    "calling",
+    "call",
+    "and call",
+    "to call"
+   ]
+  },
+  {
+   "number": 10,
+   "stem": "Jimmy would not get up for breakfast, ＿＿＿＿ his dad had already tried to pull him from his bed several times.",
+   "options": [
+    "although",
+    "because",
+    "if",
+    "until"
+   ]
+  },
+  {
+   "number": 11,
+   "stem": "Duncan spent all his money trying to ＿＿＿＿ the bookstore his mom left him.  Sadly, the business never got better, and he had to close it in the end.",
+   "options": [
+    "build",
+    "buy",
+    "save",
+    "start"
+   ]
+  },
+  {
+   "number": 12,
+   "stem": "Fiona loves listening to her children sing songs ＿＿＿＿ at school.",
+   "options": [
+    "are learned",
+    "that learned",
+    "they learned",
+    "that they are learned"
+   ]
+  },
+  {
+   "number": 13,
+   "stem": "Beverly eats lots of snacks ＿＿＿＿ meals.  That’s why she is often too full to eat anything at mealtimes.",
+   "options": [
+    "after",
+    "between",
+    "during",
+    "from"
+   ]
+  },
+  {
+   "number": 14,
+   "stem": "Nora: Can I check your drawer for some tools we can use?",
+   "blocks": [
+    "Matt: Sure.  Take a look.  See if you can find ＿＿＿＿ in there."
+   ],
+   "options": [
+    "any",
+    "it",
+    "others",
+    "those"
+   ]
+  },
+  {
+   "number": 15,
+   "stem": "What is this ad for?",
+   "set": "15-16",
+   "options": [
+    "Teaching people how to use their BeautiMed points.",
+    "Telling people they can shop at BeautiMed on the Internet now.",
+    "Inviting people to share their shopping experience at e-BeautiMed.",
+    "Letting people know what is on sale at e-BeautiMed from 7/1 to 8/31."
+   ]
+  },
+  {
+   "number": 16,
+   "stem": "What will NOT get you BeautiMed points?",
+   "set": "15-16",
+   "options": [
+    "Shopping at e-BeautiMed.",
+    "Joining “BeautiMed Friend” online.",
+    "Inviting a friend to join “BeautiMed Friend.”",
+    "Entering the “BeautiMed Friend” card number."
+   ]
+  },
+  {
+   "number": 17,
+   "stem": "Lynn took some photos at Tom’s party.  Which is most likely one of them?",
+   "set": "17-18",
+   "blocks": [
+    "likely 可能"
+   ],
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/17-8.webp",
+      "width": 399,
+      "height": 288
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/17-9.webp",
+      "width": 399,
+      "height": 288
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/17-10.webp",
+      "width": 399,
+      "height": 288
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/17-11.webp",
+      "width": 399,
+      "height": 288
+     }
+    }
+   ]
+  },
+  {
+   "number": 18,
+   "stem": "What can we learn about Lynn from the dialogue?",
+   "set": "17-18",
+   "options": [
+    "She does not cook.",
+    "She likes to try new food.",
+    "She did not enjoy the food at Caldron.",
+    "She changed Joey’s idea about Caldron."
+   ]
+  },
+  {
+   "number": 19,
+   "stem": "What do we know about Woollie from Katie’s diary?",
+   "set": "19-21",
+   "options": [
+    "Woollie was older than Katie.",
+    "Woollie was taken to visit sick kids.",
+    "Woollie was sick when he ran away.",
+    "Woollie looked strange without his fleece."
+   ]
+  },
+  {
+   "number": 20,
+   "stem": "Which picture of Woollie and Ms. Clark did Katie talk about in her diary?",
+   "set": "19-21",
+   "options": [
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/20-12.webp",
+      "width": 294,
+      "height": 270
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/20-13.webp",
+      "width": 294,
+      "height": 270
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/20-14.webp",
+      "width": 297,
+      "height": 270
+     }
+    },
+    {
+     "figure": {
+      "src": "papers/cap/110/english/text/20-15.webp",
+      "width": 297,
+      "height": 270
+     }
+    }
+   ]
+  },
+  {
+   "number": 21,
+   "stem": "What happened when __Woollie was put down__?",
+   "set": "19-21",
+   "options": [
+    "He was sold.",
+    "He couldn’t be found.",
+    "He died.",
+    "He became famous."
+   ]
+  },
+  {
+   "number": 22,
+   "stem": "What can we learn about *The Piano Lesson* from the reading?",
+   "set": "22-24",
+   "options": [
+    "Matisse painted it when his son was away from home.",
+    "The woman who sits on a seat behind the boy is his mother.",
+    "Matisse uses yellow and red to show that his son was happy.",
+    "The candle on the piano shows that the piano lesson has just begun."
+   ]
+  },
+  {
+   "number": 23,
+   "stem": "What does __do that__ mean in the reading?",
+   "set": "22-24",
+   "options": [
+    "Put his family in his paintings.",
+    "Paint to remember the good old days.",
+    "Use a lot of fun colors in his art works.",
+    "Put his earlier art work in a new painting."
+   ]
+  },
+  {
+   "number": 24,
+   "stem": "What is NOT used in the reading to refer to Henri Matisse?",
+   "set": "22-24",
+   "blocks": [
+    "refer to 指稱"
+   ],
+   "options": [
+    "The artist.",
+    "The painter.",
+    "The poor kid.",
+    "A worried father."
+   ]
+  },
+  {
+   "number": 25,
+   "stem": "What idea is talked about in the reading?",
+   "set": "25-28",
+   "options": [
+    "How Teachers’ Day is celebrated now.",
+    "Why Teachers’ Day was celebrated at first.",
+    "Why Confucius was seen as a great teacher.",
+    "How teachers today feel about Teachers’ Day."
+   ]
+  },
+  {
+   "number": 26,
+   "stem": "Which is true about Teachers’ Day from the reading?",
+   "set": "25-28",
+   "options": [
+    "It used to be celebrated on different dates.",
+    "It was started by students for their teachers.",
+    "It has been celebrated in Nanjing for over 2,500 years.",
+    "Teachers decided to celebrate it on Confucius’s birthday."
+   ]
+  },
+  {
+   "number": 27,
+   "stem": "What does “not everyone __hailed__ this decision” mean in the reading?",
+   "set": "25-28",
+   "options": [
+    "Not everyone cared about the decision.",
+    "Not everyone welcomed the decision.",
+    "Not everyone heard about the decision.",
+    "Not everyone remembered the decision."
+   ]
+  },
+  {
+   "number": 28,
+   "stem": "What does the writer try to do with this reading?",
+   "set": "25-28",
+   "options": [
+    "To talk about a problem that no one notices.",
+    "To share a fun experience that was not common.",
+    "To tell a piece of history that few people know about.",
+    "To give an example of an idea that is hard to understand."
+   ]
+  },
+  {
+   "number": 29,
+   "stem": "Why does National Formosa Railway write this letter?",
+   "set": "29-31",
+   "options": [
+    "There is a train ticket sale.",
+    "A train line will be closed in July.",
+    "It will open a new train line in August.",
+    "Some of its trains will run on different lines."
+   ]
+  },
+  {
+   "number": 30,
+   "stem": "What is true about NFR’s trains between August 14 and 28 2016?",
+   "set": "29-31",
+   "options": [
+    "No trains will stop at Spring Town.",
+    "Trains that change lines will all stop at Cloud City.",
+    "People can take the free buses to any station on the Sand Town - Spring Town line.",
+    "People can go to Hill Town on any train that runs between Green City and Cloud City."
+   ]
+  },
+  {
+   "number": 31,
+   "stem": "James lives in Smoke Town.  He wants to go to Black Town on August 19.  How can he get there?",
+   "set": "29-31",
+   "options": [
+    "Take Train RL202 to Green City, get off there, and take the free bus.",
+    "Take Train RL103 to Green City, get off there, and take the free bus.",
+    "Take Train RL102 to Spring Town, get off there, and take Train RL201.",
+    "Take Train RL101 to Cloud City, get off there, and take the free bus."
+   ]
+  },
+  {
+   "number": 32,
+   "stem": "Below are the ideas that are talked about in the reading.",
+   "set": "32-34",
+   "blocks": [
+    "a. The problems Darayya has.",
+    "b. How Darayya’s library was started.",
+    "c. What makes Darayya’s library special.",
+    "d. How Darayya’s library helps people there.",
+    "In what order does the writer put his ideas in the reading?",
+    "order 順序"
+   ],
+   "options": [
+    "c→b→a→d.",
+    "b→a→d→c.",
+    "a→c→b→d.",
+    "c→a→b→d."
+   ]
+  },
+  {
+   "number": 33,
+   "stem": "Why do people in Darayya go to the library even during the war?",
+   "set": "32-34",
+   "options": [
+    "They can get free food.",
+    "They find joy and hope in reading.",
+    "They want to learn how to win the war.",
+    "Their school teachers give lessons there."
+   ]
+  },
+  {
+   "number": 34,
+   "stem": "What do we know about Darayya’s library?",
+   "set": "32-34",
+   "options": [
+    "It was built during the war.",
+    "It has been bombed many times.",
+    "It was built to remember people who died in the war.",
+    "Most of its books are collected from outside of Darayya."
+   ]
+  },
+  {
+   "number": 35,
+   "stem": "",
+   "set": "35-37",
+   "options": [
+    "Victor Zoo",
+    "Carlton City",
+    "Mosman Garden",
+    "Northbank Park"
+   ]
+  },
+  {
+   "number": 36,
+   "stem": "",
+   "set": "35-37",
+   "options": [
+    "we have a plan if this happens",
+    "we could just wait for the rain to stop",
+    "we should be fine if the rain isn’t too heavy",
+    "we will let you know if we’ll still have the party"
+   ]
+  },
+  {
+   "number": 37,
+   "stem": "",
+   "set": "35-37",
+   "options": [
+    "crazy",
+    "good",
+    "lucky",
+    "strong"
+   ]
+  },
+  {
+   "number": 38,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "are all coming",
+    "have all come",
+    "were all coming",
+    "would all come"
+   ]
+  },
+  {
+   "number": 39,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "another",
+    "one",
+    "the last",
+    "the other"
+   ]
+  },
+  {
+   "number": 40,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "have",
+    "did",
+    "had",
+    "would"
+   ]
+  },
+  {
+   "number": 41,
+   "stem": "",
+   "set": "38-41",
+   "options": [
+    "was trying",
+    "try",
+    "would try",
+    "will try"
+   ]
+  }
+ ]
+}

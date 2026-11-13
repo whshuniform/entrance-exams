@@ -1,0 +1,192 @@
+{
+ "year": 86,
+ "subject": "數學",
+ "id": "math",
+ "parts": [
+  {
+   "title": "第一部分：選擇題",
+   "groups": [
+    {
+     "title": "壹、單一選擇題",
+     "note": "說明：第1至8題，每題選出最適當的一個選項，標示在答案卡之「解答欄」，每題答對得5分，答錯不倒扣。",
+     "questions": [
+      {
+       "number": 1,
+       "type": "single",
+       "points": 5.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 2,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 3,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 4,
+       "type": "single",
+       "points": 5.0,
+       "answer": "3",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 5,
+       "type": "single",
+       "points": 5.0,
+       "answer": "5",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 6,
+       "type": "single",
+       "points": 5.0,
+       "answer": "2",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 2
+      },
+      {
+       "number": 7,
+       "type": "single",
+       "points": 5.0,
+       "answer": "1",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 8,
+       "type": "single",
+       "points": 5.0,
+       "answer": "4",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      }
+     ]
+    },
+    {
+     "title": "貳、多重選擇題.",
+     "note": "說明：第9至12題，每題至少有一個選項是正確的，選出正確選項，標示在答案卡之「解答欄」。每題答對得5分，答錯不倒扣，未答者不給分。只錯一個可獲2.5分，錯兩個或兩個以上不給分。",
+     "questions": [
+      {
+       "number": 9,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "23",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 10,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "14",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 3
+      },
+      {
+       "number": 11,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "345",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      },
+      {
+       "number": 12,
+       "type": "multi",
+       "points": 5.0,
+       "answer": "125",
+       "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+       ],
+       "pdfPage": 4
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
