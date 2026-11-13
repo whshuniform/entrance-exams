@@ -201,8 +201,8 @@ const { answers, submitted, answeredCount, results, setAnswer, submit, reset } =
 const { highlights, ink, markText, eraseText, setInk, clearAll } = useMarks()
 /** 右下角工具列，預設關閉繪畫 */
 const tool = ref<DrawTool>('off')
-/** 工具列隱藏時，題目往右延伸變滿版 */
-const toolsVisible = ref(true)
+/** 工具列隱藏時，題目往右延伸變滿版；隱藏與否記在瀏覽器，下次開網頁照舊 */
+const toolsVisible = useToolbarVisible()
 /** 首頁按「直接看答案」進來：每題圈出正解、列出大家怎麼選，不作答也不打分數 */
 const revealed = quiz?.config.reveal === true
 /** 每題計算紙開著與否，翻頁回來仍記得 */
