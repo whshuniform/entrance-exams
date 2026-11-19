@@ -18,6 +18,8 @@
     "@primevue/nuxt-module": "^4.5.5",
     "katex": "^0.16.22",
     "nuxt": "^4.5.2",
+    "pixi-live2d-display": "^0.4.0",
+    "pixi.js": "^6.5.10",
     "primevue": "^4.5.5"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 <template>
-  <HomeShell title="考古題" subtitle="先選考試，再選要作試題還是背單字。">
+  <HomeShell title="考古題" subtitle="先選考試，再選要作試題還是背單字。" :mascot="['先選一個考試吧！']">
     <HomeMenuLinks :items="items" />
   </HomeShell>
 </template>

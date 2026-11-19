@@ -4,6 +4,7 @@
     title="作試題"
     subtitle="選好作答方式和科目，像真的考試一樣一頁一題作答。交卷馬上批改：整份考卷看級分和全國名次（會考看標示），隨機抽題看答對率。"
     :back="{ to: `/${exam.id}`, label: exam.name }"
+    :mascot="['選好科目和年度，就按開始測驗！']"
   >
     <HomeQuizSetup :exam="exam.id" @start="onStart" />
   </HomeShell>
