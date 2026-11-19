@@ -6,6 +6,7 @@
     <slot />
 
     <p :class="$style['home-shell__source']">試題與答案來源：{{ source }}</p>
+    <p :class="[$style['home-shell__source'], $style['home-shell__source--credit']]">看板娘 Live2D 模型：This content uses sample data owned and copyrighted by Live2D Inc.</p>
   </main>
   <MascotCorner :lines="lines" />
 </template>
@@ -47,6 +48,11 @@ const lines = computed(() => mascotLines(new Date().getHours(), props.mascot))
     font-size: 0.8rem;
     color: var(--color-pencil);
     text-align: center;
+
+    // Live2D 官方要求的範例資料聲明，接在出題單位下面
+    &--credit {
+      margin-top: 0.25rem;
+    }
   }
 
   @include respond-to('xs') {

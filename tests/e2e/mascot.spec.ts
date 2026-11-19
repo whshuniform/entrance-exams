@@ -1,13 +1,14 @@
 import { test, expect } from '@playwright/test'
 import { QuizPage } from './pages/QuizPage'
 
-test.describe('看板娘小墨', () => {
+test.describe('看板娘 Live2D Haru', () => {
   test('首頁_看板娘打招呼_點她換一句話', async ({ page }) => {
     await page.goto('/')
     const girl = page.getByTestId('mascot-girl')
     const bubble = page.getByTestId('mascot-bubble')
 
-    await expect(girl).toBeVisible()
+    await expect(girl).toHaveAttribute('data-state', 'ready')
+    await expect(girl.locator('canvas')).toBeVisible()
     const first = await bubble.textContent()
     await girl.click()
 
@@ -33,6 +34,12 @@ test.describe('看板娘小墨', () => {
 
     await new QuizPage(page).goto()
     await expect(page.getByTestId('mascot-girl')).toHaveCount(0)
+  })
+
+  test('頁尾_附上Live2D官方範例資料聲明', async ({ page }) => {
+    await page.goto('/')
+
+    await expect(page.getByText('This content uses sample data owned and copyrighted by Live2D Inc.')).toBeVisible()
   })
 
   test('手機寬度_看板娘不造成水平捲動', async ({ page }) => {
